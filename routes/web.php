@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TentangKamiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,22 +25,7 @@ Route::get('/bengkel', function () {
         ]);
 });
 
-Route::get('/tentangkami', function () {
-    $isian = [
-        [
-            "title" => "judul pertama",
-            "author" => "pertama"
-        ],
-        [
-            "title" => "judul kedua",
-            "author" => "kedua"
-        ]
-    ];
-    return view('tentangKami', [
-        "title" => "Tentang Kami",
-        "posts" => $isian
-        ]);
-});
+Route::get('/tentangkami',[TentangKamiController::class, 'index']);
 
 Route::get('/bantuan', function () {
     return view('bantuan', [
