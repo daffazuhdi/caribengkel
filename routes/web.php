@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TentangKamiController;
+use App\Http\Controllers\HomePageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +14,12 @@ use App\Http\Controllers\TentangKamiController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        "title" => "Beranda"
-        ]);
-});
+// Route::get('/', function () {
+//     return view('home', [
+//         "title" => "Beranda"
+//         ]);
+// });
+Route::get('/',[HomePageController::class, 'test']);
 
 Route::get('/bengkel', function () {
     return view('bengkel', [

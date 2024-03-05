@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('car_brand_id')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreignId('car_brand_id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('car_model_id')->onUpdate('cascade')->onDelete('cascade');
             $table->string('license_plate');
             $table->date('last_service_date');
