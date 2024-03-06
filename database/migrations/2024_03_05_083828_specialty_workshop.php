@@ -14,16 +14,13 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('ratings', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('workshop_id')->onUpdate('cascade')->onDelete('cascade');
+        Schema::create('specialty_workshop', function (Blueprint $table) {
+            // $table->id();
             $table->foreignId('specialty_id')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('rate');
-            $table->string('comment');
+            $table->foreignId('workshop_id')->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
-         });
+        });
     }
 
     /**

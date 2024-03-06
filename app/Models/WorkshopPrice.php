@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rating extends Model
+class WorkshopPrice extends Model
 {
     use HasFactory;
 
-    public function specialty()
+    public function service()
     {
-        return $this->belongsTo(Specialty::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Price::class);
     }
 
     public function workshop()

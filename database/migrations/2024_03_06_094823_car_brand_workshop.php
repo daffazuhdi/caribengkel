@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('user_cars', function (Blueprint $table) {
-            $table->foreignId('user_id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('car_id')->onUpdate('cascade')->onDelete('cascade');
+        Schema::create('car_brand_workshop', function (Blueprint $table) {
+            // $table->id();
+            $table->foreignId('car_brand_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('workshop_id')->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
-        });
+         });
     }
 
     /**

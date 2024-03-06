@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('workshops_specialties', function (Blueprint $table) {
+        Schema::create('workshop_prices', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('service_id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('workshop_id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('specialty_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('price');
             $table->rememberToken();
             $table->timestamps();
-        });
+         });
     }
 
     /**

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Subdistrict extends Model
 {
     use HasFactory;
+
+    public function workshops()
+    {
+        return $this->hasMany(Workshop::class);
+    }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
         //
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('specialty_id')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->rememberToken();
             $table->timestamps();

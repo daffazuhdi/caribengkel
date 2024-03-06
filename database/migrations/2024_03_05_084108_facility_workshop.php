@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('specialty_services', function (Blueprint $table) {
-            $table->foreignId('specialty_id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('service_id')->onUpdate('cascade')->onDelete('cascade');
+        Schema::create('facility_workshop', function (Blueprint $table) {
+            // $table->id();
+            $table->foreignId('facility_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('workshop_id')->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

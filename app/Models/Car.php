@@ -12,4 +12,9 @@ class Car extends Model
     public function car_model(){
         return $this->belongsTo(CarModel::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
