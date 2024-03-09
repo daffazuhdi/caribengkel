@@ -32,7 +32,7 @@ class Workshop extends Model
 
     public function prices()
     {
-        return $this->hasMany(Price::class);
+        return $this->hasMany(WorkshopPrice::class);
     }
 
     public function ratings()

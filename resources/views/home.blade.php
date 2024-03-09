@@ -7,11 +7,28 @@
             <p>{{ $u->facility_workshop->workshop_id }}</p>
             <p>{{ $u->name }}</p>
         @endforeach --}}
-        @foreach ($car->users as $l)
-            <p>{{ $l->name }}</p>
+        {{-- @foreach ($user as $u) --}}
+        <p>{{ $user->name }}</p>
+         {{-- @foreach ($user->prices as $r)
+                <p>{{ $r->service->name }}</p>
+                {{-- <p>{{ $r->service->specialty->name }}</p> --}}
+         {{-- @endforeach --}}
+         @foreach ($user->specialties as $r)
+            <p>{{ $r->name }}</p>
+            @foreach ($r->services as $s)
+                <p>-> {{ $s->name }}</p>
+                {{-- <p>{{ $r->service->specialty->name }}</p> --}}
+            @endforeach
+         @endforeach
+        {{-- @endforeach --}}
+
+        @foreach ($user->facilities as $u)
+            <p>{{ $u->name }}</p>
         @endforeach
 
-        @foreach ($user->cars as $c)
-            <p>{{ $c->car_model->name }}</p>
+        @foreach ($user->car_brands as $s)
+            <p>Merek mobil: {{ $s->name }}</p>
+            {{-- <p>{{ $r->service->specialty->name }}</p> --}}
         @endforeach
+
 @endsection

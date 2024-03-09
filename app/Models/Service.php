@@ -9,7 +9,7 @@ class Service extends Model
 {
     use HasFactory;
 
-    public function specialties()
+    public function specialty()
     {
         return $this->belongsTo(Specialty::class);
     }

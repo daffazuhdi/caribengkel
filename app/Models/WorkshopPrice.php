@@ -11,7 +11,7 @@ class WorkshopPrice extends Model
 
     public function service()
     {
-        return $this->belongsTo(Price::class);
+        return $this->belongsTo(Service::class);
     }
 
     public function workshop()
