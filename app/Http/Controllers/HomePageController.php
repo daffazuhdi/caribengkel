@@ -13,6 +13,7 @@ use App\Models\Facility;
 use App\Models\Specialty;
 use App\Models\FacilityWorkshop;
 use App\Models\WorkshopPrice;
+use App\Models\Workhour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

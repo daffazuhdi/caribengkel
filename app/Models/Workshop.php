@@ -39,4 +39,9 @@ class Workshop extends Model
     {
         return $this->hasMany(Rating::class);
     }
+
+    public function workhours()
+    {
+        return $this->hasMany(Workhour::class);
+    }
 }

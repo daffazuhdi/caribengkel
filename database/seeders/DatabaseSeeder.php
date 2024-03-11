@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
             CarBrandWorkshopSeeder::class,
             FacilityWorkshopSeeder::class,
             WorkshopPriceSeeder::class,
-            RatingSeeder::class
+            RatingSeeder::class,
+            WorkhourSeeder::class
         ]);
     }
 }

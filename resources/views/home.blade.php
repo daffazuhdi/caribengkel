@@ -31,4 +31,13 @@
             {{-- <p>{{ $r->service->specialty->name }}</p> --}}
         @endforeach
 
+        @foreach ($user->workhours as $item)
+            <p>{{ $item->working_hour }}</p>
+            @if ($item->day_id == 1)
+                <p>Senin</p>
+            @endif
+            <p></p>
+        @endforeach
+
+
 @endsection
