@@ -32,12 +32,22 @@
         @endforeach
 
         @foreach ($user->workhours as $item)
-            <p>{{ $item->working_hour }}</p>
+            {{-- <p>{{ $item->working_hour }}</p> --}}
             @if ($item->day_id == 1)
-                <p>Senin</p>
+                <p>Senin {{ $item->working_hour }}</p>
+            @elseif ($item->day_id == 2)
+                <p>Selasa {{ $item->working_hour }}</p>
+            @elseif ($item->day_id == 3)
+                <p>Rabu {{ $item->working_hour }}</p>
+            @elseif ($item->day_id == 4)
+                <p>Kamis {{ $item->working_hour }}</p>
+            @elseif ($item->day_id == 5)
+                <p>Jumat {{ $item->working_hour }}</p>
+            @elseif ($item->day_id == 6)
+                <p>Sabtu {{ $item->working_hour }}</p>
+            @else
+                <p>Minggu {{ $item->working_hour }}</p>
             @endif
-            <p></p>
         @endforeach
-
 
 @endsection

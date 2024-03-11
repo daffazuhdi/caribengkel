@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\BengkelDetailController;
+use App\Http\Controllers\BengkelController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,11 +24,12 @@ use App\Http\Controllers\HomePageController;
 // });
 Route::get('/',[HomePageController::class, 'test']);
 
-Route::get('/bengkel', function () {
-    return view('bengkel', [
-        "title" => "Bengkel"
-        ]);
-});
+Route::get('/bengkel', [BengkelController::class, 'showAll']);
+// Route::get('/bengkel', function () {
+//     return view('bengkel', [
+//         "title" => "Bengkel"
+//         ]);
+// });
 
 Route::get('/tentangkami',[TentangKamiController::class, 'index']);
 
@@ -34,3 +38,5 @@ Route::get('/bantuan', function () {
         "title" => "Bantuan"
         ]);
 });
+
+Route::get('/bengkelDetail/{id}',[BengkelDetailController::class, 'test']);
