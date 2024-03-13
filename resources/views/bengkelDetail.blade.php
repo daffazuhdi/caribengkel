@@ -31,7 +31,7 @@
         </div>
         <hr style="height:1px;border-width:0;color:gray;background-color:gray">
 
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <ul class="nav nav-tabs" id="myTab" role="tablist" style="background:none;border:none">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="tentang-tab" data-bs-toggle="tab" data-bs-target="#tentang" type="button" role="tab" aria-controls="tentang" aria-selected="true">Tentang</button>
             </li>
@@ -109,6 +109,52 @@
             </div>
           </div>
 
+          <div class="showRating d-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 24 24">
+                    <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
+                </svg>
+                <h5 style="padding-right: 0.5%;padding-left: 0.2%">{{number_format($rate, 1)}}</h5>
+                <h5 style="padding-right: 0.5%;">•</h5>
+                <h5>{{$countUlasan}} Ulasan</h5>
+          </div>
+          <div class="cardRateDetail d-flex" style="justify-content:space-between;padding-right:70%">
+            @foreach ($workshop->specialties as $ws)
+            <div class="card d-flex" style="width: 12rem;padding-right:2%">
+              <div class="card-body" style="padding-right:2%">
+                  <h5 class="card-title">{{$ws->name}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    @foreach ($spesialisasiRate as $sr)
+                        @if ($ws->id === $sr->specialty_id)
+                            {{number_format($sr->avgrate,1)}}
+                        @endif
+                    @endforeach
+                    </h6>
+                  {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
+                  {{-- <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a> --}}
+              </div>
+            </div>
+            @endforeach
+          </div>
+            {{-- @foreach ($workshop->ratings as $wr)
+                {{$wr->rate}}
+                {{$wr->comment}}
+            @endforeach --}}
+            {{-- {{$spesialisasiRate->avgrate}} --}}
+            
+          </div>
+
 
 
 @endsection
+<style>
+    .nav-tabs .nav-item .nav-link {
+    color: #040404;
+    border: none;
+    }
+    .nav-tabs .nav-item .nav-link.active {
+    border:none;
+    background:none;border-bottom:3px solid black;color:#0D5C63
+    }
+ </style>
+
