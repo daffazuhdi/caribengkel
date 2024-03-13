@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
             'email' => 'daffa@gmail.com',
             'phone_number' => '0818111111222',
             'password' => bcrypt('password'),
+            'photo' => 'user_1_profile.png',
             'is_active' => 1
         ]);
 
@@ -34,6 +35,7 @@ class UserSeeder extends Seeder
             'email' => 'browna@gmail.com',
             'phone_number' => '0818111111223',
             'password' => bcrypt('12345678'),
+            'photo' => 'template.svg',
             'is_active' => 1
         ]);
 
@@ -45,6 +47,7 @@ class UserSeeder extends Seeder
             'email' => 'rrei@gmail.com',
             'phone_number' => '0818111111224',
             'password' => bcrypt('12345678'),
+            'photo' => 'template.svg',
             'is_active' => 1
         ]);
     }

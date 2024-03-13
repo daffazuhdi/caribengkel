@@ -21,10 +21,24 @@ class FacilityWorkshopSeeder extends Seeder
             'workshop_id' => '1',
             'facility_id' => '1',
         ]);
-
+        FacilityWorkshop::create([
+            // 'id' => 1,
+            'workshop_id' => '1',
+            'facility_id' => '2',
+        ]);
+        FacilityWorkshop::create([
+            // 'id' => 1,
+            'workshop_id' => '1',
+            'facility_id' => '3',
+        ]);
         FacilityWorkshop::create([
             // 'id' => 2,
-            'workshop_id' => '1',
+            'workshop_id' => '2',
+            'facility_id' => '1',
+        ]);
+        FacilityWorkshop::create([
+            // 'id' => 2,
+            'workshop_id' => '2',
             'facility_id' => '2',
         ]);
     }

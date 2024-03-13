@@ -21,5 +21,20 @@ class CarBrandWorkshopSeeder extends Seeder
             'car_brand_id' => 1,
             'workshop_id' => 1
         ]);
+        CarBrandWorkshop::create([
+            // 'id' => 1,
+            'car_brand_id' => 2,
+            'workshop_id' => 1
+        ]);
+        CarBrandWorkshop::create([
+            // 'id' => 1,
+            'car_brand_id' => 1,
+            'workshop_id' => 2
+        ]);
+        CarBrandWorkshop::create([
+            // 'id' => 1,
+            'car_brand_id' => 3,
+            'workshop_id' => 2
+        ]);
     }
 }

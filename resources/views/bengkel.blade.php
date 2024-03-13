@@ -44,21 +44,19 @@
         <div class="row row-cols-1 row-cols-md-4 my-2" style="padding-bottom: 2em;">
                 @foreach ($workshop as $workshop)
                 <div class="col">
-                <a href="/bengkelDetail/{{$workshop->id}}" class="" style="text-decoration: none">
+                <a href="/bengkelDetail/{{ $workshop->id }}" class="" style="text-decoration: none">
                   <div class="card h-100">
                     <img src="{{ Storage::url('/photos/'.$workshop->photo) }}"  style="padding: 1em 1em 0 1em;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
                     <div class="card-body border-bottom">
-                      {{-- <h5>{{ $a->name }}</h5> --}}
-                        <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{$workshop->name}}</h3>
+                        <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>
                         <div class="address d-flex justify-content-left align-items-center">
                                 <div class="img-fluid" style="padding-right: 4%">
                                         <img src="{{ Storage::url('photos/mapsLogo.svg') }}" style="width:16px;" alt="{{ $workshop->name }}">
                                 </div>
                                 <div>
-                                        {{$workshop->address}}
+                                        {{ $workshop->address }}
                                 </div>
                         </div>
-                      {{-- <p class="card-text">{{ $a->address }}</p> --}}
                     </div>
                     <div class="card-text d-flex justify-content-between m-3" style="">
                         <div class="card-text">

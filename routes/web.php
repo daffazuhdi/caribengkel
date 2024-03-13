@@ -5,6 +5,7 @@ use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\BengkelDetailController;
 use App\Http\Controllers\BengkelController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,5 @@ Route::get('/bantuan', function () {
 });
 
 Route::get('/bengkelDetail/{id}',[BengkelDetailController::class, 'test']);
+
+Route::get('/profile/', [UserController::class, 'viewProfile']);

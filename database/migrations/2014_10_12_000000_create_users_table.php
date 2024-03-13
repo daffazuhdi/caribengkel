@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('photo');
             $table->foreignId('role_id')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('is_active');
             $table->rememberToken();

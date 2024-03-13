@@ -99,7 +99,7 @@ class WorkhourSeeder extends Seeder
             'id' => 14,
             'workshop_id' => 2,
             'day_id' => 7,
-            'working_hour' => '09.00 - 17.00',
+            'working_hour' => '-',
         ]);
     }
 }

@@ -109,7 +109,7 @@
             </div>
           </div>
 
-          <div class="showRating d-flex">
+          <div class="showRating d-flex my-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                     <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
                 </svg>
@@ -117,31 +117,56 @@
                 <h5 style="padding-right: 0.5%;">•</h5>
                 <h5>{{$countUlasan}} Ulasan</h5>
           </div>
-          <div class="cardRateDetail d-flex" style="justify-content:space-between;padding-right:70%">
-            @foreach ($workshop->specialties as $ws)
-            <div class="card d-flex" style="width: 12rem;padding-right:2%">
-              <div class="card-body" style="padding-right:2%">
-                  <h5 class="card-title">{{$ws->name}}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    @foreach ($spesialisasiRate as $sr)
-                        @if ($ws->id === $sr->specialty_id)
-                            {{number_format($sr->avgrate,1)}}
-                        @endif
-                    @endforeach
-                    </h6>
-                  {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
-                  {{-- <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a> --}}
-              </div>
+          <div class="containerAllRate d-flex" style="justify-content: space-between">
+            <div class="row row-cols-1 row-cols-md-6 m-1">
+                @foreach ($workshop->specialties as $ws)
+                <div class="col p-0 m-1" style="width: 7rem;padding-right:0%">
+                    <div class="card d-flex m-0 p-2 h-100">
+                    <div class="card-body" style="padding:0.5rem">
+                        <h6 class="card-title">{{$ws->name}}</h6>
+                        <h7 class="card-subtitle mb-2 text-muted">
+                            @foreach ($spesialisasiRate as $sr)
+                                @if ($ws->id === $sr->specialty_id)
+                                    {{number_format($sr->avgrate,1)}}
+                                @endif
+                            @endforeach
+                        </h7>
+                    </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
-            @endforeach
-          </div>
-            {{-- @foreach ($workshop->ratings as $wr)
-                {{$wr->rate}}
-                {{$wr->comment}}
-            @endforeach --}}
+                <div class="d-grid gap-4">
+                    <a href="#" type="button" class="btn btn-success py-1" style="background-color: #0D5C63; border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:10rem">Lihat Semua</a>
+                </div>
+            </div>
+
+
+
+            <div class="row row-cols-1 row-cols-md-3 g-4 py-4 px-2">
+                @foreach ($ratingDetail as $wr)
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="card-body">
+                            <div class="cardTop d-flex" style="justify-content:space-between">
+                                <h6 class="card-title">{{$wr->user->first_name}} {{$wr->user->last_name}}</h6>
+                                <div class="cardRating d-flex px-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" style="margin-right: 10%">
+                                        <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
+                                    </svg>
+                                    <h6 class="card-title">{{number_format($wr->rate, 1)}}</h6>
+                                </div>
+                            </div>
+                            <p class="card-text">{{$wr->comment}}</p>
+                            <p class="card-text text-muted">{{$wr->created_at->format('d M Y')}}</p>
+                            <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{$wr->specialty->name}}</small>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+              </div>
             {{-- {{$spesialisasiRate->avgrate}} --}}
-            
+
           </div>
 
 
