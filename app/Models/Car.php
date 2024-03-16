@@ -17,4 +17,9 @@ class Car extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function car_services()
+    {
+        return $this->hasMany(CarService::class);
+    }
 }

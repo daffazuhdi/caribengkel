@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             CarModelSeeder::class,
             CarSeeder::class,
             CarUserSeeder::class,
+            CarServiceSeeder::class,
             SubdistrictSeeder::class,
             FacilitySeeder::class,
             SpecialtySeeder::class,

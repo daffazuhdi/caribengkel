@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('specialties', function (Blueprint $table) {
+        Schema::create('car_services', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('label');
+            // $table->foreignId('car_brand_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('car_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->date('service_date');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Workshop;
+use App\Models\Subdistrict;
+use App\Models\Specialty;
+use App\Models\CarBrand;
 use Illuminate\Support\Facades\DB;
 
 class BengkelController extends Controller
@@ -16,7 +19,13 @@ class BengkelController extends Controller
                 ->withAvg('ratings', 'rate')->where('name', 'LIKE', "%$search%")
                 ->get();
         // $workshops = Workshop::paginate(16);
-        // $rating = DB::table('ratings')->where('workshop_id', $id)->avg('rate');
-        return view('bengkel', ['search' => $search, 'workshop' => $workshop], ['title' => "Bengkel"]);
+
+        $subdistrict = Subdistrict::all();
+        $specialty = Specialty::all();
+        $brand = CarBrand::all();
+
+        return view('bengkel', compact('search', 'workshop', 'subdistrict', 'specialty', 'brand'),
+                    ['title' => "Bengkel"]
+        );
     }
 }

@@ -25,5 +25,10 @@ class OriginSeeder extends Seeder
             'id' => 2,
             'name' => 'Europe'
         ]);
+
+        Origin::create([
+            'id' => 3,
+            'name' => 'South Korea'
+        ]);
     }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('origin_id')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
+            $table->string('label');
             $table->rememberToken();
             $table->timestamps();
         });

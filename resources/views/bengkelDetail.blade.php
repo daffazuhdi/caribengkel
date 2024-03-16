@@ -137,7 +137,7 @@
                 @endforeach
             </div>
                 <div class="d-grid gap-4">
-                    <a href="#" type="button" class="btn btn-success py-1" style="background-color: #0D5C63; border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:10rem">Lihat Semua</a>
+                    <a href="/review/{{ $workshop->id }}" type="button" class="btn btn-success py-1" style="background-color: #0D5C63; border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:10rem">Lihat Semua</a>
                 </div>
             </div>
 

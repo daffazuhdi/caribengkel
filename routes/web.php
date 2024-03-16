@@ -6,6 +6,7 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\BengkelDetailController;
 use App\Http\Controllers\BengkelController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,8 @@ Route::get('/bantuan', function () {
 
 Route::get('/bengkelDetail/{id}',[BengkelDetailController::class, 'test']);
 
-Route::get('/profile/', [UserController::class, 'viewProfile']);
+Route::get('/profile/{id}?', [UserController::class, 'viewProfile']);
+
+Route::get('/review/{id}',[ReviewController::class, 'test']);
+
+Route::post('/review/{id}',[ReviewController::class, 'sort']);

@@ -2,12 +2,12 @@
         <link rel="stylesheet" href="../public/css/style.css">
 
         <style>
-                label {
+                label.m-0 {
                         position: relative;
                         width: 380px;
                 }
 
-                label:before {
+                label.m-0:before {
                         content: "";
                         position: absolute;
                         left: 12px;
@@ -22,7 +22,70 @@
 @section('title', $title)
 @extends('layouts.main')
 @section('container')
-        <h1 class="m-0" style="font-size: 28px; font-weight: 600">Bengkel</h1>
+        <div class="form-popup mx-auto" id="filter">
+                <div class="position-relative" style="height: 3.6rem;">
+                <button class="btn position-absolute end-0 p-0" style="border: none;" onclick="closeForm()" role="button">
+                        <p class="px-2 m-0 align-items-center" style="color: #0D5C63; border-radius: 50%; background-color: #E7EFEF; font-weight: 600;">✕</p>
+                </button>
+                </div>
+                <div class="d-flex justify-content-between" style="color: #052023;">
+                <h2 style="font-weight: 600; font-size: 24px;">Filter</h2>
+                <button class="btn btn-outline-dark px-4 py-0" style="font-weight: 600; font-size: 12px;" onclick="#" role="button">
+                        Atur ulang
+                </button>
+                </div>
+                <form class="form-container">
+                <div class="container p-0">
+                        <div class="row mx-auto">
+                        <div class="col-md-12 px-0 border-bottom">
+                                <label for="subdictrict" class="form-label">Lokasi Bengkel</label>
+                                <select id="subdistrict" class="form-select" name="subdistrict" placeholder="Wilayah">
+                                {{-- @if (auth()->user()->role_id == 1) --}}
+                                @foreach ($subdistrict as $sub)
+                                        <option value="{{ $sub->id }}">{{ $sub->name }}</option>
+                                @endforeach
+                                {{-- @else --}}
+                                {{-- @endif --}}
+                                </select>
+                        </div>
+                        <div class="col-md-12 px-0 border-bottom">
+                                <legend class="form-label">Spesialisasi Bengkel</legend><br>
+                                <div class="row row-cols-4 mx-auto">
+                                        @foreach ($specialty as $specialty)
+                                        <div class="col form-check">
+                                                <input class="form-check-input" type="checkbox" name="specialty" id="#" value="{{ $specialty->id }}" checked>
+                                                <label class="form-check-label" for="{{ $specialty->label }}">
+                                                        {{ $specialty->name }}
+                                                </label>
+                                        </div>
+
+                                        @endforeach
+                                </div>
+                        </div>
+                        <div class="col-md-12 px-0 mb-3">
+                                <legend class="form-label">Merek Mobil</legend><br>
+                                <div class="row row-cols-4 mx-auto">
+                                        @foreach ($brand as $brand)
+                                        <div class="col form-check">
+                                                <input class="form-check-input" type="checkbox" name="specialty" id="#" value="{{ $brand->id }}">
+                                                <label class="form-check-label" for="{{ $brand->label }}">
+                                                        {{ $brand->name }}
+                                                </label>
+                                        </div>
+                                        @endforeach
+                                </div>
+                        </div>
+                        </div>
+                </div>
+                <div class="d-grid">
+                        <button class="btn py-2" style="font-weight: 500; font-size: 16px; background-color: #0D5C63; color: white;" role="button" type="submit">
+                        Terapkan
+                        </button>
+                </div>
+                </form>
+        </div>
+
+        <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2>
 
         <div class="d-flex justify-content-between py-3 px-0">
                 <form class="d-flex align-items-center m-0" role="search">
@@ -33,20 +96,19 @@
                         </label>
                 </form>
 
-                <button class="btn btn-primary px-3" style="background-color: #0D5C63; border-radius: 8px;" type="#">
+                <button class="btn px-3" style="background-color: #0D5C63; color: white; font-weight: 600; border-radius: 8px;" onclick="openForm()" type="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                                 <path fill="white" d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z"/>
                         </svg>
                         Filter
                 </button>
         </div>
-
         <div class="row row-cols-1 row-cols-md-4 my-2" style="padding-bottom: 2em;">
                 @foreach ($workshop as $workshop)
                 <div class="col">
                 <a href="/bengkelDetail/{{ $workshop->id }}" class="" style="text-decoration: none">
                   <div class="card h-100">
-                    <img src="{{ Storage::url('/photos/'.$workshop->photo) }}"  style="padding: 1em 1em 0 1em;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
+                    <img src="{{ Storage::url('/photos/'.$workshop->photo) }}"  style="padding: 1em 1em 0 1em; border-radius:" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
                     <div class="card-body border-bottom">
                         <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>
                         <div class="address d-flex justify-content-left align-items-center">
@@ -79,3 +141,45 @@
                 @endforeach
         </div>
 @endsection
+
+<style>
+        .form-popup {
+            display: none;
+            position: relative;
+            right: 0;
+            /* top: 0; */
+            background-color: white;
+            border-radius: 1em 0 0 1em;
+            z-index: 9;
+            width: 64%;
+            height: 100vh;
+            padding: 1% 4%;
+        }
+        .col-md-12 {
+            padding: 1em 0 2em 0;
+        }
+        .form-label {
+            font-size: 20px;
+            font-weight: 600;
+            padding: 0.4em 0;
+        }
+        .form-check-label, option {
+            font-size: 16px;
+            color: #303030;
+        }
+        .form-check-input {
+            background-color: #E7EFEF;
+            border-color: #052023;
+        }
+        .form-check-input:checked {
+            background-color: #052023;
+        }
+</style>
+<script>
+        function openForm() {
+                document.getElementById("filter").style.display = "block";
+        }
+        function closeForm() {
+                document.getElementById("filter").style.display = "none";
+        }
+</script>

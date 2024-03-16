@@ -16,7 +16,8 @@
     }
   </style>
 </head>
-<nav class="navbar navbar-expand-lg sticky-top bg-white">
+<div class="sticky-top bg-white">
+<nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand m-0 p-0" href="#">
         <img src="{{ Storage::url('photos/logoNavbar.svg') }}" width="182px" height="36px"></img>
@@ -42,3 +43,4 @@
  </nav>
 
  <hr style="height:1px;border-width:0;color:gray;background-color:gray">
+</div>
