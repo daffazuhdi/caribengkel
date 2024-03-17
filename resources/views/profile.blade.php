@@ -78,54 +78,25 @@
             </div>
         </div>
         <div class="tab-pane fade px-0 py-4" id="vehicle" role="tabpanel" aria-labelledby="vehicle-tab" style="padding: 1%">
-            <div class="row row-cols-1 row-cols-md-2">
+            <div class="row row-cols-1 row-cols-md-4">
                 @foreach ($user->cars as $car)
                 <div class="col">
-                    <div class="card p-2" style="border: none;">
-                    <form>
-                        <div class="col-md-10 mb-4">
-                            <label for="car_brand" class="form-label">Merek mobil</label>
-                            <select id="car_brand" class="form-select">
-                                @foreach ($car_brand as $brand)
-                                    @if ($brand->id == $car->car_model->car_brand_id)
-                                        <option value="{{ $brand->id }}" selected>{{ $brand->name }}</option>
-                                    @else
-                                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                    <a href="/profile/car/{{ $car->id }}" style="text-decoration: none;">
+                    <div class="card p-4 h-100">
+                        <div class="col-md-10 mb-4" style="font-size: 18px;">
+                            <p style="font-weight: 600;">{{ $car->license_plate }}</p>
+                            <p>{{ $car->car_model->car_brand->name }} {{ $car->car_model->name }}</p>
                         </div>
-                        <div class="col-md-10 my-4">
-                            <label for="car_model" class="form-label">Tipe mobil</label>
-                            <select id="car_model" class="form-select">
-                                @foreach ($car_model as $model)
-                                    @if ($model->id == $car->car_model->id)
-                                        <option value="{{ $model->id }}" selected>{{ $model->name }}</option>
-                                    @else
-                                        <option value="{{ $model->id }}">{{ $model->name }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                        <div class="">
+                            <p class="text-muted">Terakhir kali servis/ganti oli</p>
+                            {{-- <p>{{ $car->car_services->date(('j F Y'), strtotime(max('service_date'))) }}</p> --}}
+                            <p>{{ $car->car_services->max('service_date') }}</p>
+                            {{-- @foreach ($car->car_services as $s)
+                                {{ $s->service_date->format('j F Y') }}
+                            @endforeach --}}
                         </div>
-                        <div class="col-md-10 my-4">
-                            <label for="plate" class="form-label">Plat nomor mobil</label>
-                            <input type="text" class="form-control" id="plate" name="plate"
-                                    value="{{ $car->license_plate }}"
-                            >
-                        </div>
-                        <div class="col-md-10 my-4">
-                            <label for="last_service" class="form-label">Terakhir kali servis/ganti oli</label>
-                            <input type="date" class="form-control" id="last_service" name="last_service"
-                                    value="{{ $car->car_service->max(service_date) }}"
-                            >
-                        </div>
-                        <div class="mt-5 mb-2">
-                            <button class="btn px-3" style="background-color: #0D5C63; color: white; font-weight: 500; border-radius: 8px;" type="submit">
-                                Simpan Data Kendaraan
-                            </button>
-                        </div>
-                    </form>
                     </div>
+                    </a>
                 </div>
                 @endforeach
             </div>

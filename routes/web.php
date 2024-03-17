@@ -43,8 +43,9 @@ Route::get('/bantuan', function () {
 
 Route::get('/bengkelDetail/{id}',[BengkelDetailController::class, 'test']);
 
-Route::get('/profile/{id}?', [UserController::class, 'viewProfile']);
+Route::get('/profile/{id}', [UserController::class, 'viewProfile']); # kalau udah ada middleware, harusnya route profile gaperlu id user
+Route::get('/profile/car/{id}', [UserController::class, 'viewCar']);
 
 Route::get('/review/{id}',[ReviewController::class, 'test']);
 
-Route::post('/review/{id}',[ReviewController::class, 'sort']);
+Route::get('/review/{id}/{sort}',[ReviewController::class, 'sort']);

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             // $table->foreignId('car_brand_id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('car_id')->onUpdate('cascade')->onDelete('cascade');
-            $table->date('service_date');
+            $table->dateTime('service_date');
             $table->rememberToken();
             $table->timestamps();
         });

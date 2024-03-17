@@ -33,8 +33,8 @@
                         <a href="/review/{{ $workshop->id }}" type="button" class="btn btn-success py-1" style="background-color: #0D5C63; border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:8rem">Tulis Ulasan</a>
                     </div>
                     <div class="d-grid gap-4">
-                        {{-- <form action="/review/{{ $workshop->id }}" method="POST" class="form-horizontal"></form> --}}
-                            <a href="/review/{{ $workshop->id }}" type="button" class="btn btn-success py-1 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color:black;border-color:black;border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:8rem">Urutkan</a>
+
+                            <a href="" type="button" class="btn btn-success py-1 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color:black;border-color:black;border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:8rem">Urutkan</a>
                             <ul class="dropdown-menu">
                                 <li><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label" for="flexRadioDefault1" >Default radio</label></li>
@@ -42,11 +42,13 @@
                                     <label class="form-check-label" for="flexRadioDefault1">Default radio</label></li>
                                 <li><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                     <label class="form-check-label" for="flexRadioDefault1" method="POST">Default radio</label></li>
-                                <li><a class="dropdown-item" href="/review/{{ $workshop->id }}" method="POST">Ulasan Terbaru</a></li>
-                                <li><a class="dropdown-item" href="/review/{{ $workshop->id }}" value="tinggikeRendah" method="POST">Rating (Tinggi ke Rendah)</a></li>
-                                <li><a class="dropdown-item" href="/review/{{ $workshop->id }}" value="rendahkeTinggi">Rating (Rendah ke Tinggi)</a></li>
+                                <form action="/review/{{ $workshop->id }}" method="POST">
+                                    <li><a class="dropdown-item" href="/review/{{ $workshop->id }}/{{'newest'}}" id="ulasanTerbaru" name="ulasanTerbaru" value="ulasanTerbaru">Ulasan Terbaru</a></li>
+                                    <li><a class="dropdown-item" href="/review/{{ $workshop->id }}/{{'hightolow'}}" id="tinggikeRendah" name="tinggikeRendah" value="tinggikeRendah">Rating (Tinggi ke Rendah)</a></li>
+                                    <li><a class="dropdown-item" href="/review/{{ $workshop->id }}/{{'lowtohigh'}}" id="rendahkeTinggi" name="rendahkeTinggi" value="rendahkeTinggi">Rating (Rendah ke Tinggi)</a></li>
+                                </form>
                             </ul>
-                        {{-- </form> --}}
+
                     </div>
                 </div>
             </div>
