@@ -79,7 +79,7 @@
                 </div>
                 <div class="d-grid">
                         <button class="btn py-2" style="font-weight: 500; font-size: 16px; background-color: #0D5C63; color: white;" role="button" type="submit">
-                        Terapkan
+                                Terapkan
                         </button>
                 </div>
                 </form>
@@ -108,7 +108,9 @@
                 <div class="col">
                 <a href="/bengkelDetail/{{ $workshop->id }}" class="" style="text-decoration: none">
                   <div class="card h-100">
-                    <img src="{{ Storage::url('/photos/'.$workshop->photo) }}"  style="padding: 1em 1em 0 1em; border-radius:" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
+                    <div style="padding: 1em 1em 0 1em;">
+                        <img src="{{ Storage::url('/photos/'.$workshop->photo) }}"  style="border-radius: 8px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
+                    </div>
                     <div class="card-body border-bottom">
                         <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>
                         <div class="address d-flex justify-content-left align-items-center">
@@ -139,6 +141,21 @@
                 </a>
                 </div>
                 @endforeach
+        </div>
+
+        <div class="p-3 pb-5">
+                <ul class="pagination m-0">
+                    <li class="page-item"><a class="page-link" href="{{ $workshop->previousPageUrl() }}">Previous</a></li>
+                    @for ($page = 1; $page <= $workshop->lastPage(); $page++)
+                        @if ($page == $workshop->currentPage())
+                            <li class="page-item active"><a class="page-link" href="{{ $workshop->url($page) }}">{{$page}}</a></li>
+                        @else
+                            <li class="page-item"><a class="page-link" href="{{ $workshop->url($page) }}">{{$page}}</a></li>
+                        @endif
+
+                    @endfor
+                    <li class="page-item"><a class="page-link" href="{{ $workshop->nextPageUrl() }}">Next</a></li>
+                </ul>
         </div>
 @endsection
 

@@ -15,7 +15,7 @@ class ReviewController extends Controller
     public function test($id){
         $workshop = Workshop::find($id);
         $rating = DB::table('ratings')->where('workshop_id', $id)->avg('rate');
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->get();
+        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->paginate(15);
         $countUlasan = DB::table('ratings')->where('workshop_id', $id)->count('rate');
         $spesialisasiRate = DB::table('ratings')->select('*',DB::raw('AVG(rate) as avgrate'))
                             ->where('workshop_id', $id)
@@ -24,21 +24,27 @@ class ReviewController extends Controller
         return view('review', ['workshop' => $workshop,'title' => "Bengkel", 'rate' => $rating, 'countUlasan' => $countUlasan, 'spesialisasiRate' =>  $spesialisasiRate, 'ratingDetail' => $ratingDetail]);
     }
 
-    public function sort($id){
-        $this->orderBy = $order;
-       if ($this->orderBy == 'ulasanTerbaru') {
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('created_at', 'DESC')->get();
+    public function sort($id, $sort){
+        $workshop = Workshop::find($id);
+        $rating = DB::table('ratings')->where('workshop_id', $id)->avg('rate');
+        $countUlasan = DB::table('ratings')->where('workshop_id', $id)->count('rate');
+        $spesialisasiRate = DB::table('ratings')->select('*',DB::raw('AVG(rate) as avgrate'))
+                            ->where('workshop_id', $id)
+                            ->groupBy('specialty_id')
+                            ->get();
+       if ($sort == 'newest') {
+        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('created_at', 'ASC')->paginate(15);
        }
-       else if ($this->orderBy == 'tinggikeRendah') {
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('rate', 'DESC')->get();
+       else if ($sort == 'lowtohigh') {
+        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('rate', 'ASC')->paginate(15);
        }
-       else if ($this->orderBy == 'rendahkeTinggi') {
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('rate', 'ASC')->get();
+       else if ($sort == 'hightolow') {
+        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('rate', 'DESC')->paginate(15);
        }
        else{
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->get();
+        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->paginate(15);
        }
-       return view('review', ['ratingDetail' => $ratingDetail]);
+       return view('review', ['workshop' => $workshop,'title' => "Bengkel", 'rate' => $rating, 'countUlasan' => $countUlasan, 'spesialisasiRate' =>  $spesialisasiRate, 'ratingDetail' => $ratingDetail]);
     }
 
 }
