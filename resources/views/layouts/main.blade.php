@@ -19,6 +19,7 @@
         font-weight: 300;
         font-style: normal;
         color: #052023;
+        min-height: 100vh;
       }
     </style>
   </head>

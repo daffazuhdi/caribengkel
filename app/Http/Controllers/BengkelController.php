@@ -27,4 +27,11 @@ class BengkelController extends Controller
                     ['title' => "Bengkel"]
         );
     }
+
+    // public function filter($filter)
+    // {
+    //     $workshop = ;
+
+    //     return view('bengkel');
+    // }
 }

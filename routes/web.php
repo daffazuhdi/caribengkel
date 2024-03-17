@@ -10,6 +10,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\WriteReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::post('/datakendaraan', [VehicleController::class, 'store'])->name('vehicl
 Route::get('/masuk', [LoginController::class, 'show'])->name('login.show');
 Route::post('/masuk', [LoginController::class, 'submit'])->name('login.submit');
 
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+
 Route::get('/bengkel', [BengkelController::class, 'showAll']);
 // Route::get('/bengkel', function () {
 //     return view('bengkel', [
@@ -55,9 +58,12 @@ Route::get('/bantuan', function () {
 
 Route::get('/bengkelDetail/{id}',[BengkelDetailController::class, 'test']);
 
-Route::get('/profile/{id}', [UserController::class, 'viewProfile']); # kalau udah ada middleware, harusnya route profile gaperlu id user
-Route::get('/profile/car/{id}', [UserController::class, 'viewCar']);
+Route::get('/profil', [UserController::class, 'viewProfile']);
+Route::get('/ubah-profil', [UserController::class, 'editProfile']);
+Route::get('/profil/car/{id}', [UserController::class, 'viewCar']);
 
 Route::get('/review/{id}',[ReviewController::class, 'test']);
-
 Route::get('/review/{id}/{sort}',[ReviewController::class, 'sort']);
+
+Route::get('/writeReview/{id}/',[WriteReviewController::class, 'showReview']);
+Route::post('/writeReview/{id}/',[WriteReviewController::class, 'writeReview']);

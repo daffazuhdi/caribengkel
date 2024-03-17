@@ -1,22 +1,5 @@
 <head>
         <link rel="stylesheet" href="../public/css/style.css">
-
-        <style>
-                label.m-0 {
-                        position: relative;
-                        width: 380px;
-                }
-
-                label.m-0:before {
-                        content: "";
-                        position: absolute;
-                        left: 12px;
-                        top: 0;
-                        bottom: 0;
-                        width: 20px;
-                        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23052023' d='m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5q0-1.875-1.312-3.187T9.5 5Q7.625 5 6.313 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14'/%3E%3C/svg%3E") center / contain no-repeat;
-                }
-        </style>
 </head>
 
 @section('title', $title)
@@ -143,53 +126,67 @@
                 @endforeach
         </div>
 
-        <div class="p-3 pb-5">
+        {{-- <div class="p-3 pb-5">
                 <ul class="pagination m-0">
-                    <li class="page-item"><a class="page-link" href="{{ $workshop->previousPageUrl() }}">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href=""></a></li>
                     @for ($page = 1; $page <= $workshop->lastPage(); $page++)
                         @if ($page == $workshop->currentPage())
-                            <li class="page-item active"><a class="page-link" href="{{ $workshop->url($page) }}">{{$page}}</a></li>
+                            <li class="page-item active"><a class="page-link" href="">{{ $page }}</a></li>
                         @else
-                            <li class="page-item"><a class="page-link" href="{{ $workshop->url($page) }}">{{$page}}</a></li>
+                            <li class="page-item"><a class="page-link" href="">{{ $page }}</a></li>
                         @endif
 
                     @endfor
-                    <li class="page-item"><a class="page-link" href="{{ $workshop->nextPageUrl() }}">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="">Next</a></li>
                 </ul>
-        </div>
+        </div> --}}
 @endsection
 
 <style>
         .form-popup {
-            display: none;
-            position: relative;
-            right: 0;
-            /* top: 0; */
-            background-color: white;
-            border-radius: 1em 0 0 1em;
-            z-index: 9;
-            width: 64%;
-            height: 100vh;
-            padding: 1% 4%;
+                display: none;
+                position: relative;
+                right: 0;
+                /* top: 0; */
+                background-color: white;
+                border-radius: 1em 0 0 1em;
+                z-index: 9;
+                width: 64%;
+                height: 100vh;
+                padding: 1% 4%;
         }
         .col-md-12 {
-            padding: 1em 0 2em 0;
+                padding: 1em 0 2em 0;
         }
         .form-label {
-            font-size: 20px;
-            font-weight: 600;
-            padding: 0.4em 0;
+                font-size: 20px;
+                font-weight: 600;
+                padding: 0.4em 0;
         }
         .form-check-label, option {
-            font-size: 16px;
-            color: #303030;
+                font-size: 16px;
+                color: #303030;
         }
         .form-check-input {
-            background-color: #E7EFEF;
-            border-color: #052023;
+                background-color: #E7EFEF;
+                border-color: #052023;
         }
         .form-check-input:checked {
-            background-color: #052023;
+                background-color: #052023;
+        }
+        label.m-0 {
+                position: relative;
+                width: 380px;
+        }
+
+        label.m-0:before {
+                content: "";
+                position: absolute;
+                left: 12px;
+                top: 0;
+                bottom: 0;
+                width: 20px;
+                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23052023' d='m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5q0-1.875-1.312-3.187T9.5 5Q7.625 5 6.313 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14'/%3E%3C/svg%3E") center / contain no-repeat;
         }
 </style>
 <script>

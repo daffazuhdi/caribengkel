@@ -1,15 +1,15 @@
 @section('title', $title)
 @extends('layouts.main')
 @section('container')
-    <div class="d-flex justify-content-between pb-4" style="width: 24%;">
-        <div class="">
-            <img src="{{ Storage::url('/photos/'.$user->photo) }}" style="border-radius: 50%; object-fit: cover; width: 117px; height: 117px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);" class="" alt="{{ $user->name }}">
+    <div class="d-flex flex-wrap justify-content-between pb-4" style="width: 24%;">
+        <div class="my-2">
+            <img src="{{ Storage::url('/photos/'.Auth::user()->photo) }}" style="border-radius: 50%; object-fit: cover; width: 7.313rem; height: 7.313rem; filter: drop-shadow(0.1em 0.1em 0.1em #727272);" class="" alt="{{ Auth::user()->name }}">
         </div>
-        <div class="">
-            <h4 style="font-weight: 600;">{{ $user->first_name }} {{ $user->last_name }}</h4>
-            <h6 style="font-size: 18px; color: #303030;">{{ $user->email }}</h6>
-            <button class="btn btn-primary px-3 mt-2" style="background-color: white; border-color: #052023; border-radius: 0.4rem;" type="#">
-                <a class="nav-link" style="color: #052023; font-weight: 600" href="/">Ubah Profil</a>
+        <div class="my-2">
+            <h4 style="font-weight: 600;">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h4>
+            <h6 style="font-size: 18px; color: #303030;">{{ Auth::user()->email }}</h6>
+            <button class="btn px-3 mt-2" style="background-color: white; border-color: #052023; border-radius: 0.4rem;" type="#">
+                <a class="nav-link" style="color: #052023; font-weight: 500" href="{{ url('/ubah-profil') }}">Ubah Profil</a>
             </button>
         </div>
     </div>
@@ -62,7 +62,7 @@
                                     </small>
                                 </div>
                             </div>
-                            <h6 class="py-2 m-0" style="font-size: 18px; font-weight: 400; color: #303030;">{{ $rating->comment }}</h6>
+                            <h6 class="py-2 m-0" style="font-size: 16px; font-weight: 400; color: #303030;">{{ $rating->comment }}</h6>
                         </div>
                         <div class="card-text">
                             <h6 class="text-black-50 my-4" style="font-size: 16px;">{{ $rating->created_at->format('j F Y') }}</h6>
@@ -79,7 +79,7 @@
         </div>
         <div class="tab-pane fade px-0 py-4" id="vehicle" role="tabpanel" aria-labelledby="vehicle-tab" style="padding: 1%">
             <div class="row row-cols-1 row-cols-md-4">
-                @foreach ($user->cars as $car)
+                @foreach (Auth::user()->cars as $car)
                 <div class="col">
                     <a href="/profile/car/{{ $car->id }}" style="text-decoration: none;">
                     <div class="card p-4 h-100">

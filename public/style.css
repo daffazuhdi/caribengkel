@@ -1,7 +1,7 @@
-html, body, .container, .row {
+/* html, body, .container, .row {
     height: 100%;
     overflow: hidden;
-}
+} */
 
 body {
     /* background-color: white; */
@@ -18,10 +18,24 @@ a{
     font-weight: 500;
 }
 
-.form-control:focus {
+
+.form-control:focus{
     border-color: #0D5C63;
     box-shadow :none;
 }
+
+.py-80px {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.input-group:focus-within {
+    border: 1.5px solid #0D5C63;
+    border-radius: 8px;
+  }
+  .input-group:focus-within *:focus {
+    border: 0;
+  }
 
 .form-control {
     border: 1px solid #D8D8D8;
@@ -31,7 +45,6 @@ a{
     font-size: x-small;
     font-weight: 500;
 }
-
 /* input {
     display: block;
     width: 50vw;
@@ -78,7 +91,7 @@ select option {
     .main-content {
         padding: 0px 36px;
     }
-    
+
     .heading {
         margin-top: 24px;
     }
