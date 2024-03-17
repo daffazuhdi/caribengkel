@@ -6,6 +6,9 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\BengkelDetailController;
 use App\Http\Controllers\BengkelController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\ReviewController;
 
 /*
@@ -24,7 +27,16 @@ use App\Http\Controllers\ReviewController;
 //         "title" => "Beranda"
 //         ]);
 // });
-Route::get('/',[HomePageController::class, 'test']);
+Route::get('/',[HomePageController::class, 'test'])->name('home');
+
+Route::get('/daftar', [RegisterController::class, 'show'])->name('register.show');
+Route::post('/daftar', [RegisterController::class, 'submit'])->name('register.submit');
+
+Route::get('/datakendaraan', [VehicleController::class, 'show'])->name('vehicle.show');
+Route::post('/datakendaraan', [VehicleController::class, 'store'])->name('vehicle.store');
+
+Route::get('/masuk', [LoginController::class, 'show'])->name('login.show');
+Route::post('/masuk', [LoginController::class, 'submit'])->name('login.submit');
 
 Route::get('/bengkel', [BengkelController::class, 'showAll']);
 // Route::get('/bengkel', function () {

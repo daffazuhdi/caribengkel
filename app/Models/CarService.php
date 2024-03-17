@@ -12,4 +12,8 @@ class CarService extends Model
     public function car(){
         return $this->belongsTo(Car::class);
     }
+
+    protected $fillable = [
+        'car_id',
+    ];
 }

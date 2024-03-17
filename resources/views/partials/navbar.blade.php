@@ -32,10 +32,10 @@
         </div>
         <div class="d-flex" id="navbarNavAltMarkup">
             <div class="navbar-nav mx-auto px-2" style="background-color: #0D5C63; border-radius: 8px">
-              <a class="nav-link" style="color: white; font-weight: 500" href="/">Daftar</a>
+              <a class="nav-link" style="color: white; font-weight: 500" href="/daftar">Daftar</a>
             </div>
             <div class="navbar-nav mx-auto px-2">
-              <a class="nav-link" style="color: #052023; font-weight: 500" href="/">Masuk</a>
+              <a class="nav-link" style="color: #052023; font-weight: 500" href="/masuk">Masuk</a>
             </div>
         </div>
       </div>

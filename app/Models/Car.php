@@ -22,4 +22,10 @@ class Car extends Model
     {
         return $this->hasMany(CarService::class);
     }
+
+    protected $fillable = [
+        'car_model_id',
+        'license_plate',
+        'service_date',
+    ];
 }
