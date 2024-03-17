@@ -17,8 +17,7 @@ class BengkelController extends Controller
 
         $workshop = Workshop::select()
                 ->withAvg('ratings', 'rate')->where('name', 'LIKE', "%$search%")
-                ->get();
-        // $workshops = Workshop::paginate(16);
+                ->paginate(16);
 
         $subdistrict = Subdistrict::all();
         $specialty = Specialty::all();

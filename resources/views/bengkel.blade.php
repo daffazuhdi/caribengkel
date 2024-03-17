@@ -79,7 +79,7 @@
                 </div>
                 <div class="d-grid">
                         <button class="btn py-2" style="font-weight: 500; font-size: 16px; background-color: #0D5C63; color: white;" role="button" type="submit">
-                        Terapkan
+                                Terapkan
                         </button>
                 </div>
                 </form>
@@ -141,6 +141,21 @@
                 </a>
                 </div>
                 @endforeach
+        </div>
+
+        <div class="p-3 pb-5">
+                <ul class="pagination m-0">
+                    <li class="page-item"><a class="page-link" href="{{ $workshop->previousPageUrl() }}">Previous</a></li>
+                    @for ($page = 1; $page <= $workshop->lastPage(); $page++)
+                        @if ($page == $workshop->currentPage())
+                            <li class="page-item active"><a class="page-link" href="{{ $workshop->url($page) }}">{{$page}}</a></li>
+                        @else
+                            <li class="page-item"><a class="page-link" href="{{ $workshop->url($page) }}">{{$page}}</a></li>
+                        @endif
+
+                    @endfor
+                    <li class="page-item"><a class="page-link" href="{{ $workshop->nextPageUrl() }}">Next</a></li>
+                </ul>
         </div>
 @endsection
 
