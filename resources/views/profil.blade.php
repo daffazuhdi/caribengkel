@@ -62,7 +62,7 @@
                                     </small>
                                 </div>
                             </div>
-                            <h6 class="py-2 m-0" style="font-size: 16px; font-weight: 400; color: #303030;">{{ $rating->comment }}</h6>
+                            <h6 class="py-2 m-0" style="font-size: 18px; font-weight: 400; color: #303030;">{{ $rating->comment }}</h6>
                         </div>
                         <div class="card-text">
                             <h6 class="text-black-50 my-4" style="font-size: 16px;">{{ $rating->created_at->format('j F Y') }}</h6>
@@ -91,9 +91,6 @@
                             <p class="text-muted">Terakhir kali servis/ganti oli</p>
                             {{-- <p>{{ $car->car_services->date(('j F Y'), strtotime(max('service_date'))) }}</p> --}}
                             <p>{{ $car->car_services->max('service_date') }}</p>
-                            {{-- @foreach ($car->car_services as $s)
-                                {{ $s->service_date->format('j F Y') }}
-                            @endforeach --}}
                         </div>
                     </div>
                     </a>
@@ -108,14 +105,6 @@
     h4, h6, a, .placeholder {
         color: #052023;
     }
-    .form-label {
-        color: #052023;
-        font-weight: 600;
-        font-size: 14px;
-    }
-    /* .form-control:focus, .form-control {
-        border-color: none !important;
-    } */
     .nav-tabs .nav-item .nav-link {
         color: #040404;
         font-size: 20px;

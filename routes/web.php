@@ -67,3 +67,10 @@ Route::get('/review/{id}/{sort}',[ReviewController::class, 'sort']);
 
 Route::get('/writeReview/{id}/',[WriteReviewController::class, 'showReview']);
 Route::post('/writeReview/{id}/',[WriteReviewController::class, 'writeReview']);
+
+
+Route::get('/coba', function () {
+    return view('nyoba', [
+        "title" => "Bengkel"
+        ]);
+});

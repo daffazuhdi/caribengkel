@@ -15,19 +15,16 @@
       margin: 2% 6%;
       /* background: none; */
     }
-    .form-popup {
-      display: none;
-      position: fixed;
-      right: 0;
-      top: 10vh;
-      background-color: white;
-      border-radius: 0.4em;
-      z-index: 9;
-      width: 10%;
-      /* height: 100vh; */
-      padding: 1%;
+    .hover_drop_down:hover ul.dropdown-menu{
+      display: block;
+      padding: 4%;
       margin: 1% 6.4% 1% 0;
     }
+    /* .menu {
+      padding: 1%;
+      margin: 1% 6.4% 1% 0;
+      width: 10%;
+    } */
   </style>
 </head>
 <div class="sticky-top bg-white">
@@ -43,18 +40,40 @@
           <a class="nav-link {{ ($title === "Bengkel" ? 'active' :'')}}" href="/bengkel">Bengkel</a>
           <a class="nav-link {{ ($title === "Tentang Kami" ? 'active' :'')}}" href="/tentangkami">Tentang Kami</a>
           <a class="nav-link {{ ($title === "Bantuan" ? 'active' :'')}}" href="/bantuan">Bantuan</a>
-        </div onmouseout="closeForm()">
-            @if (Auth::user())
-            <div>
-              {{-- {{ Auth::user()->id }} --}}
+        </div>
+        @if (Auth::user())
+        <div class="dropdown hover_drop_down">
+          <img src="{{ Storage::url('/photos/'.Auth::user()->photo) }}"
+            style="border-radius: 50%; object-fit: cover; width: 2.625rem; height: 2.625rem; filter: drop-shadow(0.1em 0.1em 0.1em #727272);"
+            class="" alt="{{ Auth::user()->name }}"
+          >
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li>
+              <a href="{{ url('/profil') }}">Profil Saya</a>
+            </li>
+            <li>
+              <a href="#">Notifikasi</a>
+            </li>
+            <li>
+              <form action="/logout" method="post">
+                @csrf
+                <button type="submit" class="btn btn-link m-0 p-0" style="text-decoration: none; color: #0D5C63; font-weight: 500;">
+                  Keluar
+                </button>
+              </form>
+            </li>
+          </ul>
+        </div>
+        {{-- <div>
+            <div onclick="openForm()">
               <img src="{{ Storage::url('/photos/'.Auth::user()->photo) }}"
                 style="border-radius: 50%; object-fit: cover; width: 2.625rem; height: 2.625rem; filter: drop-shadow(0.1em 0.1em 0.1em #727272);"
-                class="" alt="{{ Auth::user()->name }}" onmouseover="openForm()"
+                class="" alt="{{ Auth::user()->name }}"
               >
             </div>
-            <div class="form-popup border" id="profile">
+            <div class="form-popup border" id="profile" onmouseout="closeForm()">
               <div class="d-flex" style="flex-direction: column;">
-                <a href="{{ url('/profile') }}">Profil Saya</a>
+                <a href="{{ url('/profil') }}">Profil Saya</a>
                 <a href="#">Notifikasi</a>
                 <form action="/logout" method="post">
                   @csrf
@@ -63,7 +82,7 @@
                   </button>
                 </form>
               </div>
-            </div>
+            </div> --}}
             @else
             <div class="d-flex" id="">
                 <div class="btn btn-primary">
@@ -73,21 +92,19 @@
                   <a class="align-items-center" style="color: #052023; font-weight: 500" href="/masuk">Masuk</a>
                 </div>
             </div>
-
             @endif
-
       </div>
-    </div>
- </nav>
+    </nav>
+  </div>
 
  <hr style="height:1px;border-width:0;color:gray;background-color:gray">
 </div>
 
-<script>
+{{-- <script>
   function openForm() {
           document.getElementById("profile").style.display = "block";
   }
   function closeForm() {
           document.getElementById("profile").style.display = "none";
   }
-</script>
+</script> --}}
