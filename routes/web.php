@@ -58,7 +58,8 @@ Route::get('/bantuan', function () {
 
 Route::get('/bengkelDetail/{id}',[BengkelDetailController::class, 'test']);
 
-Route::get('/profil', [UserController::class, 'viewProfile']);
+Route::get('/profil', [UserController::class, 'viewProfile'])->name('profile.view');
+Route::post('/profil', [UserController::class, 'update'])->name('profile.update');
 Route::get('/ubah-profil', [UserController::class, 'editProfile']);
 Route::get('/profil/car/{id}', [UserController::class, 'viewCar']);
 

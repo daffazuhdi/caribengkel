@@ -17,7 +17,7 @@
                         Atur ulang
                 </button>
                 </div>
-                <form class="form-container">
+                <form class="form-container" action="/bengkel" method="get">
                 <div class="container p-0">
                         <div class="row mx-auto">
                         <div class="col-md-12 px-0 border-bottom">
@@ -36,7 +36,7 @@
                                 <div class="row row-cols-4 mx-auto">
                                         @foreach ($specialty as $specialty)
                                         <div class="col form-check">
-                                                <input class="form-check-input" type="checkbox" name="specialty" id="#" value="{{ $specialty->id }}" checked>
+                                                <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}">
                                                 <label class="form-check-label" for="{{ $specialty->label }}">
                                                         {{ $specialty->name }}
                                                 </label>
@@ -50,7 +50,7 @@
                                 <div class="row row-cols-4 mx-auto">
                                         @foreach ($brand as $brand)
                                         <div class="col form-check">
-                                                <input class="form-check-input" type="checkbox" name="specialty" id="#" value="{{ $brand->id }}">
+                                                <input class="form-check-input" type="checkbox" name="brand[]" id="#" value="{{ $brand->id }}">
                                                 <label class="form-check-label" for="{{ $brand->label }}">
                                                         {{ $brand->name }}
                                                 </label>
