@@ -60,8 +60,13 @@ Route::get('/bengkelDetail/{id}',[BengkelDetailController::class, 'test']);
 
 Route::get('/profil', [UserController::class, 'viewProfile'])->name('profile.view');
 Route::post('/profil', [UserController::class, 'update'])->name('profile.update');
-Route::get('/ubah-profil', [UserController::class, 'editProfile']);
-Route::get('/profil/car/{id}', [UserController::class, 'viewCar']);
+Route::get('/ubah-profil', [UserController::class, 'detail']);
+
+Route::get('/kendaraan-{id}', [VehicleController::class, 'view']);
+Route::post('/kendaraan-{id}', [VehicleController::class, 'update']);
+
+Route::get('/tambah-kendaraan', [VehicleController::class, 'showToAdd']);
+Route::post('/tambah-kendaraan', [VehicleController::class, 'store']);
 
 Route::get('/review/{id}',[ReviewController::class, 'test']);
 Route::get('/review/{id}/{sort}',[ReviewController::class, 'sort']);

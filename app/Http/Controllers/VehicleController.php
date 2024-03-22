@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Vehicle\StoreRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Car;
 use App\Models\CarBrand;
 use App\Models\CarModel;
@@ -17,6 +18,19 @@ class VehicleController extends Controller
     public function show() {
         $brands = CarBrand::all();
         return view('vehicle', compact('brands'));
+    }
+
+    public function showToAdd() {
+        $brands = CarBrand::all();
+        return view('tambah-kendaraan', compact('brands'), ['title' => "Tambah Kendaraan"]);
+    }
+
+    public function view($id) {
+        $car = Car::find($id);
+        $car_model = CarModel::all();
+        $car_brand = CarBrand::all();
+
+        return view('ubah-kendaraan', compact('car', 'car_model', 'car_brand'), ['title' => "Ubah Kendaraan"]);
     }
 
     public function store(StoreRequest $request) {
@@ -50,6 +64,36 @@ class VehicleController extends Controller
         $new_car_user = CarUser::create($car_user);
 
         return redirect()->route('home');
+    }
+
+    public function update(Request $request, $id) {
+        // Validate Input
+        // Insert Car Service
+        // Redirect
+        $car = Car::find($id);
+
+        $rules = [
+            // 'car_model_id' => 'required',
+            // 'license_plate' => 'required',
+            'service_date' => 'required'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
+
+        $date = date( 'Y-m-d H:i:s', strtotime( $request->input('service_date') ) );
+
+        $car_service = new CarService();
+
+        $car_service->car_id = $car->id;
+        $car_service->service_date = $date;
+
+        $car_service->save();
+
+        return redirect('/profil');
     }
 
     public function getModels($id) {

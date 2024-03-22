@@ -24,7 +24,7 @@ class UserController extends Controller
         return view('profil', compact('rating', 'car_model', 'car_brand'), ["title" => "Profil"]);
     }
 
-    public function editProfile()
+    public function detail()
     {
         return view('ubah-profil', ["title" => "Ubah Profil"]);
     }
@@ -86,15 +86,6 @@ class UserController extends Controller
         }
 
         return redirect('/profil');
-    }
-
-    public function viewCar($id) {
-        $car = Car::find($id);
-        // $rating = Rating::where('user_id', '=', $user->id)->get();
-        $car_model = CarModel::all();
-        $car_brand = CarBrand::all();
-
-        return view('profile-car', compact('car', 'car_model', 'car_brand'), ['title' => "Ubah Kendaraan"]);
     }
 
     public function logout(){

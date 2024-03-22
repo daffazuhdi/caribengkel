@@ -8,12 +8,12 @@
         <div class="form-popup mx-auto" id="filter">
                 <div class="position-relative" style="height: 3.6rem;">
                 <button class="btn position-absolute end-0 p-0" style="border: none;" onclick="closeForm()" role="button">
-                        <p class="px-2 m-0 align-items-center" style="color: #0D5C63; border-radius: 50%; background-color: #E7EFEF; font-weight: 600;">✕</p>
+                        <img src="{{ url('photos/img_x.svg') }}" style="padding: 4px; color: #0D5C63; border-radius: 50%; background-color: #E7EFEF;">
                 </button>
                 </div>
                 <div class="d-flex justify-content-between" style="color: #052023;">
                 <h2 style="font-weight: 600; font-size: 24px;">Filter</h2>
-                <button class="btn btn-outline-dark px-4 py-0" style="font-weight: 600; font-size: 12px;" onclick="#" role="button">
+                <button class="btn btn-outline-dark px-4 py-0" style="font-size: 14px;" onclick="#" role="button">
                         Atur ulang
                 </button>
                 </div>
@@ -21,18 +21,16 @@
                 <div class="container p-0">
                         <div class="row mx-auto">
                         <div class="col-md-12 px-0 border-bottom">
-                                <label for="subdictrict" class="form-label">Lokasi Bengkel</label>
-                                <select id="subdistrict" class="form-select" name="subdistrict" placeholder="Wilayah">
-                                {{-- @if (auth()->user()->role_id == 1) --}}
-                                @foreach ($subdistrict as $sub)
-                                        <option value="{{ $sub->id }}">{{ $sub->name }}</option>
-                                @endforeach
-                                {{-- @else --}}
-                                {{-- @endif --}}
+                                <label for="subdictrict" class="form-label-md">Lokasi Bengkel</label>
+                                <select id="subdistrict" class="form-select form-control form-select-sm" name="subdistrict" placeholder="Wilayah">
+                                    <option value="">Semua Lokasi</option>
+                                    @foreach ($subdistrict as $sub)
+                                            <option value="{{ $sub->id }}">{{ $sub->name }}</option>
+                                    @endforeach
                                 </select>
                         </div>
                         <div class="col-md-12 px-0 border-bottom">
-                                <legend class="form-label">Spesialisasi Bengkel</legend><br>
+                                <legend class="form-label-md">Spesialisasi Bengkel</legend><br>
                                 <div class="row row-cols-4 mx-auto">
                                         @foreach ($specialty as $specialty)
                                         <div class="col form-check">
@@ -46,7 +44,7 @@
                                 </div>
                         </div>
                         <div class="col-md-12 px-0 mb-3">
-                                <legend class="form-label">Merek Mobil</legend><br>
+                                <legend class="form-label-md">Merek Mobil</legend><br>
                                 <div class="row row-cols-4 mx-auto">
                                         @foreach ($brand as $brand)
                                         <div class="col form-check">
@@ -61,7 +59,7 @@
                         </div>
                 </div>
                 <div class="d-grid">
-                        <button class="btn py-2" style="font-weight: 500; font-size: 16px; background-color: #0D5C63; color: white;" role="button" type="submit">
+                        <button class="btn btn-primary w-100 py-2" style="font-size: 14px;" role="button" type="submit">
                                 Terapkan
                         </button>
                 </div>
@@ -92,16 +90,16 @@
                 <a href="/bengkelDetail/{{ $workshop->id }}" class="" style="text-decoration: none">
                   <div class="card h-100">
                     <div style="padding: 1em 1em 0 1em;">
-                        <img src="{{ Storage::url('/photos/'.$workshop->photo) }}"  style="border-radius: 8px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
+                        <img src="{{ url('/photos/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: auto; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
                     </div>
                     <div class="card-body border-bottom">
                         <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>
                         <div class="address d-flex justify-content-left align-items-center">
                                 <div class="img-fluid" style="padding-right: 4%">
-                                        <img src="{{ Storage::url('photos/mapsLogo.svg') }}" style="width:16px;" alt="{{ $workshop->name }}">
+                                        <img src="{{ url('photos/mapsLogo.svg') }}" style="width:16px;" alt="{{ $workshop->name }}">
                                 </div>
                                 <div>
-                                        {{ $workshop->address }}
+                                        <p class="m-0" style="font-size: 14px; font-weight: 400;">{{ $workshop->address }}</p>
                                 </div>
                         </div>
                     </div>
@@ -111,9 +109,9 @@
                                 <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{ $s->name }}</small>
                                 @endforeach
                         </div>
-                        <div class="card-text align-items-center">
-                                <small class="" style="font-size: 16px; font-weight: 600; color: #052023">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 24 24">
+                        <div class="card-text">
+                                <small class="d-flex align-items-center" style="font-size: 16px; font-weight: 600; color: #052023">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                                                 <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
                                         </svg>
                                         {{ number_format($workshop->ratings_avg_rate, 1) }}
@@ -158,21 +156,12 @@
         .col-md-12 {
                 padding: 1em 0 2em 0;
         }
-        .form-label {
-                font-size: 20px;
-                font-weight: 600;
-                padding: 0.4em 0;
+        .form-select {
+            font-size: 14px !important;
         }
         .form-check-label, option {
                 font-size: 16px;
                 color: #303030;
-        }
-        .form-check-input {
-                background-color: #E7EFEF;
-                border-color: #052023;
-        }
-        .form-check-input:checked {
-                background-color: #052023;
         }
         label.m-0 {
                 position: relative;

@@ -3,17 +3,17 @@
 @section('container')
         {{-- <h1>Bengkel</h1> --}}
         <div class="fotoBengkel">
-            <img src="{{ Storage::url('photos/'.$workshop->photo) }}" class="img-fluid" alt="..." style="padding:1%">
+            <img src="{{ url('photos/'.$workshop->photo) }}" class="img-fluid" alt="..." style="padding:1%">
         </div>
         <div class="containerInformationCard" style="display: flex;justify-content:space-between">
             <div class="information" style="padding: 1%">
                 <h3>{{$workshop->name}}</h3>
                 <div class="address">
-                    <img src="{{ Storage::url('photos/mapsLogo.svg') }}" class="img-fluid" alt="..." style="width:40px;padding:0.2%;padding-right:4%">
+                    <img src="{{ url('photos/mapsLogo.svg') }}" class="img-fluid" alt="..." style="width:40px;padding:0.2%;padding-right:4%">
                     {{$workshop->address}}<br>
                 </div>
                 <div class="phoneNumber">
-                    <img src="{{ Storage::url('photos/whatsappLogo.svg') }}" class="img-fluid" alt="..." style="width:40px;padding:0.2%;padding-right:3%">
+                    <img src="{{ url('photos/whatsappLogo.svg') }}" class="img-fluid" alt="..." style="width:40px;padding:0.2%;padding-right:3%">
                     {{$workshop->phone_number}}
                 </div>
             </div>
@@ -158,7 +158,7 @@
                                 </div>
                             </div>
                             <p class="card-text">{{$wr->comment}}</p>
-                            <p class="card-text text-muted">{{$wr->created_at->format('d M Y')}}</p>
+                            <p class="card-text text-muted" style="font-size: 14px;">{{$wr->created_at->format('j F Y')}}</p>
                             <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{$wr->specialty->name}}</small>
                             </div>
                         </div>
