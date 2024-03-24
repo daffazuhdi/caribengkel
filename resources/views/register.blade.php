@@ -5,7 +5,7 @@
 <div class="container-fluid mh-100 h-100">
     <div class="row align-items-center justify-content-center">
         <div class="col-12 col-md-6 main-content">
-            
+
             <div class="text-center d-md-none d-sm-block">
                 <img class="mb-2" style="width: 36px; height: 36px;" src="{{ url('photos/logo.png') }}" alt="">
                 <h3>CariBengkel</h3>
@@ -36,7 +36,7 @@
                          @enderror
                     </div>
                 </div>
-    
+
                 <div class="mb-2">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" name="email" id="email" placeholder="Masukkan email">
@@ -44,9 +44,9 @@
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
-                     @enderror
+                    @enderror
                 </div>
-    
+
                 <div class="mb-2">
                     <label for="phone_number" class="form-label">Nomor telepon</label>
                     <input type="phone" class="form-control form-control-sm @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number"  placeholder="Masukkan nomor telepon">
@@ -56,7 +56,7 @@
                     </div>
                      @enderror
                 </div>
-    
+
                 <div class="mb-4">
                     <label for="password" class="form-label">Kata sandi</label>
                     <input type="password" class="form-control form-control-sm  @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan kata sandi (min. 8 karakter)">
@@ -66,7 +66,7 @@
                     </div>
                      @enderror
                 </div>
-    
+
                 <button type="submit" class="btn btn-primary w-100">Daftar</button>
             </form>
 

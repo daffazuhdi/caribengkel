@@ -1,7 +1,7 @@
-html, body, .container, .row {
+/* html, body, .container, .row {
     height: 100%;
     overflow: hidden;
-}
+} */
 
 body {
     /* background-color: white; */
@@ -18,9 +18,24 @@ a{
     font-weight: 500;
 }
 
-.form-control:focus {
+
+.form-control:focus{
     border-color: #0D5C63;
     box-shadow :none;
+}
+
+.py-80px {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.input-group:focus-within {
+    border: 1.5px solid #0D5C63;
+    border-radius: 8px;
+}
+
+.input-group:focus-within *:focus {
+border: 0;
 }
 
 .form-control {
@@ -30,6 +45,26 @@ a{
 .form-label {
     font-size: x-small;
     font-weight: 500;
+}
+
+.form-label-md {
+    font-size: 14px;
+    font-weight: 500;
+    color: #052023;
+    margin-bottom: 6px;
+}
+
+.form-check-input {
+    border-color: #052023 !important;
+    box-shadow :none !important;
+    background-color: #E7EFEF;
+    width: 14px;
+    height: 14px;
+    /* margin: 0; */
+}
+
+.form-check-input:checked {
+    background-color: #052023 !important;
 }
 
 /* input {
@@ -57,6 +92,31 @@ select option {
     font-weight: 500;
 }
 
+.btn-outline-dark, .btn-outline-dark:hover, .btn-outline-dark:active, .btn-outline-dark:visited {
+    background-color: white;
+    border-color: #052023;
+    font-weight: 500;
+    color: #052023;
+}
+
+.nav-tabs .nav-item .nav-link {
+    color: #040404;
+    font-size: 18px;
+    border: none;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    border:none;
+    background:none;
+    border-bottom:3px solid #0D5C63;
+    color:#0D5C63;
+}
+
+button.nav-link {
+    padding: 0;
+    margin: 4px 12px;;
+}
+
 .main-content {
     padding: 0px 120px;
 }
@@ -78,7 +138,7 @@ select option {
     .main-content {
         padding: 0px 36px;
     }
-    
+
     .heading {
         margin-top: 24px;
     }

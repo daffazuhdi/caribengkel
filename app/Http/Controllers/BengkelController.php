@@ -13,18 +13,72 @@ class BengkelController extends Controller
 {
     public function showAll(Request $req)
     {
+        $reqspec = $req->specialty;
+        $reqbrand = $req->brand;
+        // dd($reqbrand);
         $search = $req->search;
+        // $subdistrict = $req->subdistrict;
 
-        $workshop = Workshop::select()
+        $query = Workshop::select('*')
+                ->join('specialty_workshop', 'specialty_workshop.workshop_id', '=', 'workshops.id')
+                ->join('car_brand_workshop', 'car_brand_workshop.workshop_id', '=', 'workshops.id')
                 ->withAvg('ratings', 'rate')->where('name', 'LIKE', "%$search%")
-                ->paginate(16);
+                // ->where('specialty_id', $req->specialty)
+                ->groupby('workshops.id');
+
+        // dd($query->all());
 
         $subdistrict = Subdistrict::all();
         $specialty = Specialty::all();
         $brand = CarBrand::all();
 
+        if(isset($req->subdistrict) && ($req->subdistrict != null)){
+            $query = $query->where('subdistrict_id', $req->subdistrict);
+        }
+
+        if(isset($req->specialty) && ($req->specialty != null)){
+            // $query = $query->where(function($specialtyQuery) {
+            //     $specialtyQuery->where('specialty_id', $reqspec);
+            //     foreach ($reqspec as $s) {
+            //         $query = $query->orWhere('specialty_id', $s);
+            //     }
+            // });
+            $query = $query->whereIn('specialty_id', $reqspec);
+            // foreach ($reqspec as $s) {
+            //     $query = $query->orWhere('specialty_id', $s);
+            // }
+        }
+
+        if (isset($req->brand) && ($req->brand != null)){
+            // if(isset($req->specialty) && ($req->specialty != null)){
+                // foreach ($reqbrand as $b) {
+                    $query = $query->whereIn('car_brand_id', $reqbrand);
+                // }
+            // }
+            // else{
+            //     $query = $query->whereIn('car_brand_id', $req->brand);
+            //     foreach ($reqbrand as $b) {
+            //         $query = $query->whereIn('car_brand_id', $b);
+            //     }
+            // }
+        }
+
+        $workshop = $query->get();
+        // $workshop = $workshop->paginate(15);
+
+        // dd($query);
+        // dd($workshop->all());
+        // return $workshop;
+
         return view('bengkel', compact('search', 'workshop', 'subdistrict', 'specialty', 'brand'),
                     ['title' => "Bengkel"]
         );
     }
+
+    // public function filter($filter)
+    // {
+    //     $workshop = ;
+
+    //     return view('bengkel');
+    // }
 }

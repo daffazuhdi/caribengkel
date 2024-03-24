@@ -33,7 +33,7 @@ class ReviewController extends Controller
                             ->groupBy('specialty_id')
                             ->get();
        if ($sort == 'newest') {
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('created_at', 'ASC')->paginate(15);
+        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('created_at', 'DESC')->paginate(15);
        }
        else if ($sort == 'lowtohigh') {
         $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('rate', 'ASC')->paginate(15);

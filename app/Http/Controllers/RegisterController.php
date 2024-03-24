@@ -18,7 +18,7 @@ class RegisterController extends Controller
     public function submit(RegisterRequest $request) {
         $validated = $request->validated();
         $validated['password'] = bcrypt($validated['password']);
-        $validated['photo'] = "-";
+        $validated['photo'] = "template.svg";
         $validated['is_active'] = 1;
         $validated['role_id'] = 2;
 
