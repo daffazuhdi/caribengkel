@@ -19,12 +19,14 @@ class BengkelController extends Controller
         $search = $req->search;
         // $subdistrict = $req->subdistrict;
 
-        $query = Workshop::select('*')
-                ->join('specialty_workshop', 'specialty_workshop.workshop_id', '=', 'workshops.id')
-                ->join('car_brand_workshop', 'car_brand_workshop.workshop_id', '=', 'workshops.id')
+        $query = Workshop::select('*')//->distinct()
+                ->leftjoin('specialty_workshop', 'specialty_workshop.workshop_id', '=', 'workshops.id')
+                ->leftjoin('car_brand_workshop', 'car_brand_workshop.workshop_id', '=', 'workshops.id')
                 ->withAvg('ratings', 'rate')->where('name', 'LIKE', "%$search%")
                 // ->where('specialty_id', $req->specialty)
-                ->groupby('workshops.id');
+                ->groupBy('workshops.id');
+                // ->distinct();
+                // ->paginate(16);
 
         // dd($query->all());
 
@@ -63,6 +65,7 @@ class BengkelController extends Controller
             // }
         }
 
+        $limit = 16;
         $workshop = $query->get();
         // $workshop = $workshop->paginate(15);
 

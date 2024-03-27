@@ -22,9 +22,25 @@ class HomePageController extends Controller
     public function test(){
         $user = Workshop::find(1);
        // $role = Role::all();
-        return view('home', ['user' => $user,'title' => "Beranda"]);
-    }
 
+       $workshop = Workshop::select('*')
+                    //    ->join('specialty_workshop', 'specialty_workshop.workshop_id', '=', 'workshops.id')
+                    //    ->join('car_brand_workshop', 'car_brand_workshop.workshop_id', '=', 'workshops.id')
+                    ->withAvg('ratings', 'rate')
+                    // ->where('specialty_id', $req->specialty)
+                    ->orderBy('ratings_avg_rate', 'desc')->paginate(4);
+
+        $specialty = Specialty::All();
+
+        $countWorkshop = Workshop::count('id');
+        $countCustomer = Rating::groupBy('user_id')->count('id');
+        $countUser = User::count('id');
+        $countBrand = CarBrand::count('id');
+
+        return view('home', ['user' => $user, 'workshop' => $workshop, 'specialty' => $specialty, 'countWorkshop' => $countWorkshop, 'countCustomer' => $countCustomer, 'countUser' => $countUser, 'countBrand' => $countBrand
+        ,'title' => "Beranda"]);
+    }
+    
     // kalau mau pake foreach loop, define id superclass
     // public function test(){
     //     $user = User::find(1);

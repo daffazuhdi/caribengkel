@@ -37,9 +37,10 @@
           <a class="nav-link {{ ($title === "Tentang Kami" ? 'active' :'')}}" href="/tentangkami">Tentang Kami</a>
           <a class="nav-link {{ ($title === "Bantuan" ? 'active' :'')}}" href="/bantuan">Bantuan</a>
         </div>
+
         @if (Auth::user())
-        <div class="dropdown hover_drop_down" style="float: right;">
-          <img src="{{ url('/photos/'.Auth::user()->photo) }}"
+        <div class="dropdown hover_drop_down" style="float: right; margin-left: 10%;">
+          <img src="{{ Storage::url('/profiles/'.Auth::user()->photo) }}"
             style="border-radius: 50%; object-fit: cover; width: 42px; height: 42px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);"
             class="m-1" alt="{{ Auth::user()->name }}"
           >
@@ -47,7 +48,7 @@
               <a href="{{ url('/profil') }}">Profil Saya</a>
               <a href="#">Notifikasi</a>
               <form action="/logout" method="post" class="m-0">
-                {{-- @csrf --}}
+                @csrf
                 <button type="submit" class="btn btn-link m-0 p-0" style="text-decoration: none; color: #0D5C63; font-weight: 500;">
                   Keluar
                 </button>

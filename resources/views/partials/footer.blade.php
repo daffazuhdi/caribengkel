@@ -3,6 +3,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/style.css">
+    <link href="{{ url('style.css') }}" rel="stylesheet">
 
     <style>
       footer {
@@ -18,16 +19,16 @@
   </head>
   <footer class="mt-auto p-5" style="background-color: #0D5C63;">
     <div class="top-footer d-flex justify-content-between align-middle">
-        <div class="top-footer-text">
-            <p class="m-0 align-middle" style="font-size: 160%; font-weight: 600;">CariBengkel</p>
+        <div class="top-footer-text" style="text-align: center;">
+            <p class="m-0 py-1" style="font-size: 140%; font-weight: 500;">CariBengkel</p>
         </div>
         <div class="collapse navbar-collapse d-flex justify-content-center p-0 m-0" id="navbarSupportedContent">
             <ul class="nav justify-content-center" id="navbarText">
                 <li class="nav-item" id="menu">
-                    <a class="nav-link text-white" aria-current="page" href="#">Beranda</a>
+                    <a class="nav-link text-white" aria-current="page" href="{{ url('/') }}">Beranda</a>
                 </li>
                 <li class="nav-item" id="menu">
-                    <a class="nav-link text-white" href="#">Bengkel</a>
+                    <a class="nav-link text-white" href="{{ url('/bengkel') }}">Bengkel</a>
                 </li>
                 <li class="nav-item" id="menu">
                     <a class="nav-link text-white" href="#">Tentang Kami</a>

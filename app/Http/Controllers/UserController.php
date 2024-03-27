@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -60,11 +61,11 @@ class UserController extends Controller
 
         $id = Auth::user()->id;
 
-        if($u->photo <> null)
+        if(is_null($u->photo) == false)
         {
             $file = $u->file('photo');
             $extension = $file->getClientOriginalExtension();
-            $fileName = 'user_'.$id.'_profile_'.$u->idtime().'.'.$extension;
+            $fileName = 'user_'.$id.'_profile_'.time().'.'.$extension;
 
             Storage::putFileAs('public/profiles', $file, $fileName);
 
@@ -88,7 +89,8 @@ class UserController extends Controller
         return redirect('/profil');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         // request()->session()->invalidate();
         // request()->session()->regenerateToken();

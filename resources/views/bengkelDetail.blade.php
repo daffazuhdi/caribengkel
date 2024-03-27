@@ -7,24 +7,32 @@
             <img src="{{ url('photos/'.$workshop->photo) }}" class="img-fluid" alt="..." style="padding:1%">
         </div>
         <div class="containerInformationCard" style="display: flex;justify-content:space-between">
-            <div class="information" style="padding: 1%">
-                <h3>{{$workshop->name}}</h3>
-                <div class="address">
-                    <img src="{{ url('photos/mapsLogo.svg') }}" class="img-fluid" alt="..." style="width:40px;padding:0.2%;padding-right:4%">
+            <div class="information" style="padding: 1% 0.6%">
+                <h4 style="font-weight: 600;">{{$workshop->name}}</h4>
+                {{-- <div class="address">
+                    <img src="{{ url('photos/mapsLogo.svg') }}" class="img-fluid" alt="..." style="width:16px;padding:0.2%;margin-right:3%">
                     {{$workshop->address}}<br>
+                </div> --}}
+                <div class="address d-flex justify-content-left align-items-center">
+                  <div class="img-fluid" style="padding-right: 4%">
+                    <img src="{{ url('photos/mapsLogo.svg') }}" style="width:18px;" alt="{{ $workshop->name }}">
+                  </div>
+                  <div>
+                    <p class="m-0" style="font-size: 16px; font-weight: 400;">{{ $workshop->address }}</p>
+                  </div>
                 </div>
                 <div class="phoneNumber">
-                    <img src="{{ url('photos/whatsappLogo.svg') }}" class="img-fluid" alt="..." style="width:40px;padding:0.2%;padding-right:3%">
+                    <img src="{{ url('photos/whatsappLogo.svg') }}" class="img-fluid" alt="..." style="width:30px;padding:0.2%;padding-right:1.4%">
                     {{$workshop->phone_number}}
                 </div>
             </div>
-            <div class="cardService" style="padding-right:2%;padding-top:1%">
+            <div class="cardService" style="padding-right:1%;padding-top:1%">
                 <div class="card" style="width: 23rem;">
                     <div class="card-body">
-                      <h5 class="card-title" style="padding-left:1%">Ingin Servis?</h5>
+                      <h5 class="card-title" style="padding-left:1%; font-size: 18px; font-weight: 600;">Ingin Servis?</h5>
                       <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%">Lakukan penjadwalan sekarang</h6>
                       <div class="d-grid gap-2">
-                        <a href="#" class="btn btn-info" style="background-color: #0D5C63;color:white">Jadwalkan Servis Sekarang</a>
+                        <a href="#" class="btn btn-primary" style="background-color: #0D5C63;color:white;text-decoration:none;">Jadwalkan Servis Sekarang</a>
                       </div>
                     </div>
                   </div>
@@ -138,7 +146,7 @@
                 @endforeach
             </div>
                 <div class="d-grid gap-4">
-                    <a href="/review/{{ $workshop->id }}" type="button" class="btn btn-success py-1" style="background-color: #0D5C63; border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:10rem">Lihat Semua</a>
+                    <a href="/review/{{ $workshop->id }}" type="button" class="btn btn-primary" style="margin-top:5.5rem;margin-right:0.5rem;font-size: 14px;">Lihat Semua</a>
                 </div>
             </div>
 
