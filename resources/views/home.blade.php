@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('container')
-  <div class="card bg-dark text-white">
+  <div style="border-radius: 0px" class="card  bg-dark text-white">
     <img src="{{ url('photos/img_hero.png') }}" class="card-img" alt="...">
     <div class="card-img-overlay d-flex flex-column text-center justify-content-center align-items-center">
       <h2 class="mb-2">Temukan Bengkel Sesuai dengan <br> Kebutuhan Kendaraanmu</h2>
@@ -14,7 +14,7 @@
   </div>
 
   <section>
-    <div class="py-80px">
+    <div class="container py-80px">
       <h6>Layanan yang Tersedia untuk Mobil</h6>
       <p style="font-size: 14px">Berbagai macam pilihan kategori sesuai dengan kebutuhan mobil</p>
 
@@ -66,7 +66,7 @@
     </div>
   </section>
 
-  <section>
+  <section style="background-color: #F3F9F9">
     <div class="container py-80px text-center">
       <div class="mb-4">
         <span class="py-1 px-2" style="border: 1.5px solid #052023; border-radius: 25px; font-size: 12px; font-weight: 500;">Tentang Kami</span>
@@ -99,8 +99,8 @@
     </div>
   </section>
 
-  <section>
-    <div class="container py-80px">
+  <section style="background-color: #F3F9F9">
+    <div class="container py-40px">
       <div class="row text-center">
         <div class="col-sm">
           <div class="cmb-3">
@@ -127,6 +127,46 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container py-80px">
+      <div class="text-center">
+        <div class="mb-4">
+          <span class="py-1 px-2" style="border: 1.5px solid #052023; border-radius: 25px; font-size: 12px; font-weight: 500;">Solusi yang Kami Berikan</span>
+        </div>
+        <h6 class="mb-4">Mempermudah Pencarian Bengkel</h6>
+      </div>
+        <div class="row">
+          <div class="col-12 col-lg-4 mb-3 d-grid gap-5">
+            <div class="card border-0 px-4 py-3 mx-4" style="background-color: #F3F9F9">
+              <div class="card-body text-left">
+                <img class="mb-3" style="width: 54px; height: 54px;" src="{{ url('photos/search-benefit.png') }}" alt="">
+                <h6>Pencarian berdasarkan lokasi</h6>
+                <p style="font-size: 14px">Memudahkan kamu untuk mencari bengkel yang sesuai dengan lokasi kamu berada.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 mb-3 d-grid gap-5">
+            <div class="card border-0 px-4 py-3 mx-4" style="background-color: #F3F9F9">
+              <div class="card-body text-left">
+                <img class="mb-3" style="width: 54px; height: 54px;" src="{{ url('photos/bengkel-benefit.png') }}" alt="">
+                <h6>Berbagai bengkel telah berpartisipasi</h6>
+                <p style="font-size: 14px">Banyak pilihan bagi kamu yang sulit untuk menemukan bengkel yang sesuai.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 mb-3  d-grid gap-5">
+            <div class="card border-0 px-4 py-3 mx-4" style="background-color: #F3F9F9">
+              <div class="card-body text-left">
+                <img class="mb-3" style="width: 54px; height: 54px;" src="{{ url('photos/notification-benefit.png') }}" alt="">
+                <h6>Pengingat untuk lakukan servis berkala</h6>
+                <p style="font-size: 14px">Memastikan bahwa kamu telah melakukan servis berkala setiap 6 bulan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
   </section>
 

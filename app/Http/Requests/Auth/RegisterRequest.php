@@ -29,8 +29,7 @@ class RegisterRequest extends FormRequest
             'last_name' => 'required|string|max:155',
             'email' => 'required|email|unique:App\Models\User,email|min:8|max:50',
             'phone_number' => 'required|unique:App\Models\User,phone_number|regex:/(08)[0-9]/|max:13',
-            'password' => ['required', Password::min(8)->mixedCase()->numbers()->symbols()],
-            'photo' => 'required|mimes:jpg,png,jpeg,svg'
+            'password' => ['required', Password::min(8)->mixedCase()->numbers()->symbols()]
         ];
     }
 }

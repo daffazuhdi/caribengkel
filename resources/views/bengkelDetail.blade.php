@@ -1,8 +1,9 @@
 @extends('layouts.main')
 @section('title', $workshop->name)
 @section('container')
-        {{-- <h1>Bengkel</h1> --}}
-        <div class="fotoBengkel">
+      <div class="container py-4 px-0 m-auto">
+          {{-- <h1>Bengkel</h1> --}}
+          <div class="fotoBengkel">
             <img src="{{ url('photos/'.$workshop->photo) }}" class="img-fluid" alt="..." style="padding:1%">
         </div>
         <div class="containerInformationCard" style="display: flex;justify-content:space-between">
@@ -168,6 +169,7 @@
             {{-- {{$spesialisasiRate->avgrate}} --}}
 
           </div>
+      </div>
 
 
 

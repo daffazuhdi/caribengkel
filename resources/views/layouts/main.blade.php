@@ -31,7 +31,7 @@
   </head>
   <body>
     @include('partials.navbar')
-    <div class="container py-4 px-0 m-auto">
+    <div class="container-fluid px-0 m-auto">
         @yield('container')
     </div>
     @include('partials.footer')

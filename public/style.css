@@ -29,6 +29,11 @@ a{
     padding-bottom: 80px;
 }
 
+.py-40px {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
 .input-group:focus-within {
     border: 1.5px solid #0D5C63;
     border-radius: 8px;

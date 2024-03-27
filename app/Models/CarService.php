@@ -15,5 +15,6 @@ class CarService extends Model
 
     protected $fillable = [
         'car_id',
+        'service_date'
     ];
 }

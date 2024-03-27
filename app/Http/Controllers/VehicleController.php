@@ -11,6 +11,7 @@ use App\Models\CarModel;
 use App\Models\CarUser;
 use App\Models\CarService;
 use Auth;
+use Carbon\Carbon;
 
 class VehicleController extends Controller
 {
@@ -48,11 +49,13 @@ class VehicleController extends Controller
         ];
 
         $new_car = Car::create($car);
+        $service_date = Carbon::createFromFormat('d/m/Y', $validated['service_date'])->format('Y-m-d');
 
         $car_service = [
             "car_id" => $new_car->id,
-            "service_date" => $validated['service_date'],
+            "service_date" => $service_date,
         ];
+
 
         $new_car_service = CarService::create($car_service);
 
