@@ -4,8 +4,8 @@
 
 @section('title', $title)
 @extends('layouts.main')
-@section('container')   
-        <div class="container py-4 px-0 m-auto">       
+@section('container')
+        <div class="container py-4 px-0 m-auto">
                 <div class="form-popup mx-auto" id="filter">
                         <div class="position-relative" style="height: 3.6rem;">
                         <button class="btn position-absolute end-0 p-0" style="border: none;" onclick="closeForm()" role="button">
@@ -40,7 +40,7 @@
                                                                 {{ $specialty->name }}
                                                         </label>
                                                 </div>
-        
+
                                                 @endforeach
                                         </div>
                                 </div>
@@ -66,9 +66,9 @@
                         </div>
                         </form>
                 </div>
-        
+
                 <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2>
-        
+
                 <div class="d-flex justify-content-between py-3 px-0">
                         <form class="d-flex align-items-center m-0" role="search">
                                 <label class="m-0">
@@ -77,23 +77,38 @@
                                         >
                                 </label>
                         </form>
-        
-                        <button class="btn px-3" style="background-color: #0D5C63; color: white; font-weight: 600; border-radius: 8px;" onclick="openForm()" type="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 24 24">
+
+                        <button class="btn px-3 d-inline-flex align-items-center" style="background-color: #0D5C63; color: white; font-weight: 600; border-radius: 8px;" onclick="openForm()" type="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                                         <path fill="white" d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z"/>
                                 </svg>
                                 Filter
                         </button>
                 </div>
+                @if (Auth::user())
+                    @if (Auth::user()->role_id == 1)
+                        <hr style="height:1px;border-width:0;color:gray;background-color:gray">
+                        <div class="d-flex justify-content-end">
+                                <a href="{{ url('/tambah-bengkel') }}" class="btn btn-outline-dark px-3 mt-2 mb-3 d-inline-flex align-items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1em" height="1em" viewBox="0 0 256 256">
+                                                <path fill="052023" d="M228 128a12 12 0 0 1-12 12h-76v76a12 12 0 0 1-24 0v-76H40a12 12 0 0 1 0-24h76V40a12 12 0 0 1 24 0v76h76a12 12 0 0 1 12 12"/>
+                                        </svg>
+                                        Tambah Bengkel
+                                </a>
+                        </div>
+                    @endif
+                @else
+                @endif
+
                 <div class="row row-cols-1 row-cols-md-4 my-2" style="padding-bottom: 2em;">
                         @foreach ($workshop as $workshop)
-                        <div class="col">
+                        <div class="col mb-4">
                         <a href="/bengkelDetail/{{ $workshop->id }}" class="" style="text-decoration: none">
                           <div class="card h-100">
                             <div style="padding: 1em 1em 0 1em;">
                                 <img src="{{ url('/photos/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: auto; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
                             </div>
-                            <div class="card-body border-bottom">
+                            <div class="card-body border-bottom mx-3 py-3 px-0">
                                 <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>
                                 <div class="address d-flex justify-content-left align-items-center">
                                         <div class="img-fluid" style="padding-right: 4%">
@@ -105,7 +120,7 @@
                                 </div>
                             </div>
                             <div class="card-text d-flex justify-content-between m-3" style="">
-                                <div class="card-text">
+                                <div class="card-text d-flex flex-wrap gap-1">
                                         @foreach ($workshop->specialties as $s)
                                         <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{ $s->name }}</small>
                                         @endforeach
@@ -124,7 +139,7 @@
                         </div>
                         @endforeach
                 </div>
-        
+
                 {{-- <div class="p-3 pb-5">
                         <ul class="pagination m-0">
                             <li class="page-item"><a class="page-link" href=""></a></li>
@@ -134,7 +149,7 @@
                                 @else
                                     <li class="page-item"><a class="page-link" href="">{{ $page }}</a></li>
                                 @endif
-        
+
                             @endfor
                             <li class="page-item"><a class="page-link" href="">Next</a></li>
                         </ul>

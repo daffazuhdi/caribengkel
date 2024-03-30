@@ -14,9 +14,9 @@
                 </button>
             </li>
         </ul>
-        <button class="btn btn-primary px-3" style="font-size: 14px;">
-            <a href="{{ url('/tambah-kendaraan') }}" style="color: white !important;">Tambah Kendaraan</a>
-        </button>
+        <a href="{{ url('/tambah-kendaraan') }}" class="btn btn-primary px-3" style="color: white !important; font-size: 14px;">
+            Tambah Kendaraan
+        </a>
     </div>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active px-0 py-4" id="review" role="tabpanel" aria-labelledby="review-tab" style="padding: 1%">

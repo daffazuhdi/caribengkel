@@ -44,5 +44,11 @@ class ServiceSeeder extends Seeder
             'specialty_id' => 1,
             'name' => 'Service AC Berkala'
         ]);
+
+        Service::create([
+            'id' => 6,
+            'specialty_id' => 5,
+            'name' => 'Bongkar Pasang Ban'
+        ]);
     }
 }

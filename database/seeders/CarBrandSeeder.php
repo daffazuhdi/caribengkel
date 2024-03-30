@@ -64,5 +64,11 @@ class CarBrandSeeder extends Seeder
             'name' => 'KIA',
             'label' => 'kia'
         ]);
+        CarBrand::create([
+            'id' => 9,
+            'origin_id' => 1,
+            'name' => 'Suzuki',
+            'label' => 'suzuki'
+        ]);
     }
 }

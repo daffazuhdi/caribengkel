@@ -19,7 +19,7 @@
                 <div class="row g-3 mb-2">
                     <div class="col-md-6">
                         <label for="first_name" class="form-label">Nama depan</label>
-                        <input type="text" class="form-control form-control-sm @error('first_name') is-invalid @enderror" name="first_name" id="first_name" placeholder="Masukkan nama depan">
+                        <input type="text" class="form-control form-control-sm @error('first_name') is-invalid @enderror" name="first_name" id="first_name" placeholder="Masukkan nama depan" value="{{ old('first_name') }}">
                         @error('first_name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="last_name" class="form-label">Nama akhir</label>
-                        <input type="text" class="form-control form-control-sm @error('last_name') is-invalid @enderror" name="last_name" id="last_name" placeholder="Masukkan nama akhir">
+                        <input type="text" class="form-control form-control-sm @error('last_name') is-invalid @enderror" name="last_name" id="last_name" placeholder="Masukkan nama akhir" value="{{ old('last_name') }}">
                         @error('last_name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -39,7 +39,7 @@
 
                 <div class="mb-2">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" name="email" id="email" placeholder="Masukkan email">
+                    <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" name="email" id="email" placeholder="Masukkan email" value="{{ old('email') }}">
                     @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -49,7 +49,7 @@
 
                 <div class="mb-2">
                     <label for="phone_number" class="form-label">Nomor telepon</label>
-                    <input type="phone" class="form-control form-control-sm @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number"  placeholder="Masukkan nomor telepon">
+                    <input type="phone" class="form-control form-control-sm @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number"  placeholder="Masukkan nomor telepon" value="{{ old('phone_number') }}">
                     @error('phone_number')
                     <div class="invalid-feedback">
                         {{ $message }}

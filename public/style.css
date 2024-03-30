@@ -126,6 +126,15 @@ button.nav-link {
     padding: 0px 120px;
 }
 
+thead.table-light {
+    background-color: #E7EFEF !important;
+}
+
+.table-light tr th {
+    font-weight: 400 !important;
+    text-align: center;
+}
+
 .img-hero {
     width: 100%;
     height: 500px;

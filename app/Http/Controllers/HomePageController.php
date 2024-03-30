@@ -19,9 +19,15 @@ use Illuminate\Support\Facades\DB;
 
 class HomePageController extends Controller
 {
-    public function test(){
+    public function test(Request $search){
         $user = Workshop::find(1);
-       // $role = Role::all();
+        // $search = $req->search;
+        // $querySearch = Workshop::select('*')
+        //                 ->leftjoin('specialty_workshop', 'specialty_workshop.workshop_id', '=', 'workshops.id')
+        //                 ->leftjoin('car_brand_workshop', 'car_brand_workshop.workshop_id', '=', 'workshops.id')
+        //                 ->leftjoin('specialties', 'specialties.id', '=', 'specialty_workshop.specialty_id')
+        //                 ->leftjoin('subdistricts', 'subdistricts.id', '=', 'workshops.subdistrict_id');
+
 
        $workshop = Workshop::select('*')
                     //    ->join('specialty_workshop', 'specialty_workshop.workshop_id', '=', 'workshops.id')
@@ -37,12 +43,14 @@ class HomePageController extends Controller
         $countUser = User::count('id');
         $countBrand = CarBrand::count('id');
 
-        return view('home', ['user' => $user, 'workshop' => $workshop, 'specialty' => $specialty, 'countWorkshop' => $countWorkshop, 'countCustomer' => $countCustomer, 'countUser' => $countUser, 'countBrand' => $countBrand
-        ,'title' => "Beranda"]);
+        return view('home', ['user' => $user, 'workshop' => $workshop, 'specialty' => $specialty,
+                    'countWorkshop' => $countWorkshop, 'countCustomer' => $countCustomer,
+                    'countUser' => $countUser, 'countBrand' => $countBrand,
+                    'search' => $search, 'title' => "Beranda"]);
     }
-    
+
     // kalau mau pake foreach loop, define id superclass
-    // public function test(){
+    // public function test() {
     //     $user = User::find(1);
     //     $car = Car::find(1);
     //     return view('home', ['user' => $user, 'car' => $car, 'title' => "Beranda"]);

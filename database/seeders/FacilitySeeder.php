@@ -29,5 +29,20 @@ class FacilitySeeder extends Seeder
             'id' => 3,
             'name' => 'Mushola'
         ]);
+
+        Facility::create([
+            'id' => 4,
+            'name' => 'Kantin'
+        ]);
+
+        Facility::create([
+            'id' => 5,
+            'name' => 'Kursi Pijat'
+        ]);
+
+        Facility::create([
+            'id' => 6,
+            'name' => 'Meja Biliard'
+        ]);
     }
 }

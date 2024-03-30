@@ -51,5 +51,12 @@ class WorkshopPriceSeeder extends Seeder
             'price' => 200000
         ]);
 
+        WorkshopPrice::create([
+            'id' => 6,
+            'service_id' => 6,
+            'workshop_id' => 1,
+            'price' => 30000
+        ]);
+
     }
 }

@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="car_model_id" class="form-label-md">Model mobil</label>
+                        <label for="car_model_id" class="form-label-md">Tipe mobil</label>
                         <select name="car_model_id" id="car_model_id" class="form-select form-control form-select-sm" disabled>
                           <option>Pilih merek mobil terlebih dahulu</option>
                         </select>
@@ -30,7 +30,7 @@
 
                     <div class="mb-4">
                         <label for="license_plate" class="form-label-md">Plat nomor mobil</label>
-                        <input name="license_plate" id="license_plate" type="text" class="form-control form-control-sm" placeholder="Masukkan plat nomor mobil">
+                        <input name="license_plate" id="license_plate" type="text" class="form-control form-control-sm" placeholder="Masukkan plat nomor mobil" value="{{ old('license_plate') }}">
                     </div>
 
                     <div class="mb-4">
@@ -45,7 +45,7 @@
                             </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary my-4" style="font-size: 14px;" >Simpan Data Kendaraan</button>
+                    <button type="submit" class="btn btn-primary my-4" style="font-size: 14px;">Simpan Data Kendaraan</button>
 
                 </form>
             </div>

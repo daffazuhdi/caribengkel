@@ -29,6 +29,7 @@ use App\Http\Controllers\WriteReviewController;
 //         ]);
 // });
 Route::get('/',[HomePageController::class, 'test'])->name('home');
+// Route::get('/',[BengkelController::class, 'showAll']);
 
 Route::get('/daftar', [RegisterController::class, 'show'])->name('register.show');
 Route::post('/daftar', [RegisterController::class, 'submit'])->name('register.submit');
@@ -47,6 +48,11 @@ Route::get('/bengkel', [BengkelController::class, 'showAll']);
 //         "title" => "Bengkel"
 //         ]);
 // });
+
+Route::get('/tambah-bengkel', [BengkelController::class, 'add']);
+Route::post('/tambah-bengkel', [BengkelController::class, 'addWorkshop']);
+
+// Route::post('/tambah-bengkel2', [BengkelController::class, 'add']);
 
 Route::get('/tentangkami',[TentangKamiController::class, 'index']);
 
