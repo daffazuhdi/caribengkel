@@ -8,7 +8,16 @@ use App\Models\Subdistrict;
 use App\Models\Specialty;
 use App\Models\Facility;
 use App\Models\CarBrand;
+use App\Models\SpecialtyWorkshop;
+use App\Models\FacilityWorkshop;
+use App\Models\CarBrandWorkshop;
+use App\Models\Workhour;
+use App\Models\Service;
+use App\Models\WorkshopPrice;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+
+
 
 class BengkelController extends Controller
 {
@@ -68,29 +77,119 @@ class BengkelController extends Controller
         return view('tambah-bengkel', compact('subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
     }
 
-    public function addWorkshop(Request $req)
+    public function addWorkshop(Request $req1)
     {
-        $name = $req->name;
-        $subdistrict = $req->subdistrict_id;
-        $address = $req->address;
-        $phone_number = $req->phone_number;
-        $about = $req->about;
+
+        $name = $req1->name;
+        $subdistrict = $req1->subdistrict_id;
+        $address = $req1->address;
+        $phone_number = $req1->phone_number;
+        $about = $req1->about;
+
+        if(is_null($req1->photo) == false)
+        {
+            $file = $req1->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $name.'.'.time().'.'.$extension;
+
+            Storage::putFileAs('public/workshop', $file, $fileName);
+
+            $createWorkshop = Workshop::create([
+                'name' => $req1->name,
+                'subdistrict_id' => $req1->subdistrict_id,
+                'address' => $req1->address,
+                'phone_number' => $req1->phone_number,
+                'about' => $req1->about,
+                'photo' => $fileName
+            ]);
+
+        $id = $createWorkshop->id;
+        // $id = Workshop::select('id')->orderBy('id', 'desc')->first();
+
+        // return $id;
+        // $this->tempStore1($req1);
+        // return $this->storeWorkshop;
 
         $subdistrict = Subdistrict::all();
         $specialty = Specialty::all();
         $facility = Facility::all();
         $car_brand = CarBrand::all();
 
-        return view('tambah-bengkel2', compact('subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
+        return view('tambah-bengkel2', compact('id', 'subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
+        }
     }
 
-    public function add2()
+    public function addWorkshopDetail(Request $req2)
     {
-        $subdistrict = Subdistrict::all();
-        $specialty = Specialty::all();
-        $facility = Facility::all();
-        $car_brand = CarBrand::all();
+            //   return $req2;
+        $workhour = $req2->day;
 
-        return view('tambah-bengkel2', compact('subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Detail Bengkel']);
+        foreach ($req2->specialty as $s) {
+            SpecialtyWorkshop::create([
+                'workshop_id' => $req2->workshop_id,
+                'specialty_id' => $s
+            ]);
+        }
+
+        foreach ($req2->facility as $f) {
+            FacilityWorkshop::create([
+                'workshop_id' => $req2->workshop_id,
+                'facility_id' => $f
+            ]);
+        }
+
+        foreach ($req2->car_brand as $cb) {
+            CarBrandWorkshop::create([
+                'workshop_id' => $req2->workshop_id,
+                'car_brand_id' => $cb
+            ]);
+        }
+        $day_id = 0;
+        // return $workhour;
+        foreach ($workhour as $w) {
+            if ($w === null) {
+                $w = '-';
+            }
+
+            $day_id++;
+            Workhour::create([
+                'workshop_id' => $req2->workshop_id,
+                'day_id' => $day_id,
+                'working_hour' => $w
+            ]);
+        }
+
+        // $workshopSpecialty[] = $req2->specialty;
+
+        $service = Service::select('*')->whereIn('specialty_id', $req2->specialty)->get();
+
+        $workshop_id = $req2->workshop_id;
+
+        // $subdistrict = Subdistrict::all();
+        // $specialty = Specialty::all();
+        // $facility = Facility::all();
+        // $car_brand = CarBrand::all();
+
+        return view('tambah-bengkel3', compact('workshop_id', 'service'), ['title' => 'Tambah Harga Bengkel']);
+    }
+
+    public function addWorkshopPrice(Request $req3)
+    {
+        // return $req3;
+
+        $workshop_id = $req3->workshop_id;
+        $serviceInput = $req3->service_id;
+        $price = $req3->price;
+
+        array_map(function($serviceInput, $price, $workshop_id) {
+            WorkshopPrice::create([
+                'workshop_id' => $workshop_id,
+                'service_id' => $serviceInput,
+                'price' => $price
+             ]);
+
+        }, $serviceInput, $price, $workshop_id);
+
+        return redirect('/bengkel');
     }
 }

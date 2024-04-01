@@ -42,7 +42,7 @@ Route::post('/masuk', [LoginController::class, 'submit'])->name('login.submit');
 
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
-Route::get('/bengkel', [BengkelController::class, 'showAll']);
+Route::get('/bengkel', [BengkelController::class, 'showAll'])->name('bengkel');
 // Route::get('/bengkel', function () {
 //     return view('bengkel', [
 //         "title" => "Bengkel"
@@ -51,6 +51,10 @@ Route::get('/bengkel', [BengkelController::class, 'showAll']);
 
 Route::get('/tambah-bengkel', [BengkelController::class, 'add']);
 Route::post('/tambah-bengkel', [BengkelController::class, 'addWorkshop']);
+
+Route::post('/tambah-bengkel-detail', [BengkelController::class, 'addWorkshopDetail']);
+
+Route::post('/tambah-bengkel-detail-harga', [BengkelController::class, 'addWorkshopPrice']);
 
 // Route::post('/tambah-bengkel2', [BengkelController::class, 'add']);
 
@@ -82,7 +86,7 @@ Route::post('/writeReview/{id}/',[WriteReviewController::class, 'writeReview']);
 
 
 Route::get('/coba', function () {
-    return view('nyoba', [
+    return view('tambah-bengkel3', [
         "title" => "Bengkel"
         ]);
 });

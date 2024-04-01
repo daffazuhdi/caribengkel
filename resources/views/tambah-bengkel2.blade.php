@@ -8,8 +8,9 @@
             <h5 class="my-1" style="font-weight: 500;">Spesialisasi Dasar Bengkel</h5>
             <p>Isi informasi mengenai spesialisasi bengkel di bawah ini untuk mendaftarkan bengkel baru.</p>
 
-            <form method="post" action="#" enctype="multipart/form-data">
+            <form method="post" action="/tambah-bengkel-detail" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" id="workshop_id" name="workshop_id" value='{{$id}}'>
                 <div class="container p-0">
                     <div class="row">
                         <div class="col-12 col-md-12">
@@ -32,7 +33,7 @@
                                 <div class="row row-cols-4 mx-auto">
                                     @foreach ($facility as $f)
                                         <div class="col form-check py-1">
-                                            <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $f->id }}">
+                                            <input class="form-check-input" type="checkbox" name="facility[]" id="#" value="{{ $f->id }}">
                                             <label class="form-check-label" for="{{ $f->label }}">
                                                 {{ $f->name }}
                                             </label>
@@ -46,7 +47,7 @@
                                 <div class="row row-cols-4 mx-auto">
                                     @foreach ($car_brand as $cb)
                                         <div class="col form-check py-1">
-                                            <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $cb->id }}">
+                                            <input class="form-check-input" type="checkbox" name="car_brand[]" id="#" value="{{ $cb->id }}">
                                             <label class="form-check-label" for="{{ $cb->label }}">
                                                 {{ $cb->name }}
                                             </label>
@@ -69,49 +70,49 @@
                                           <tr>
                                             <th scope="row">Senin</th>
                                             <td>
-                                                <input type="phone" class="form-control form-control-sm" name="senin" id="senin"
+                                                <input type="phone" class="form-control form-control-sm" name="day[]" id="senin"
                                                 placeholder="Jam" value="{{ old('senin') }}">
                                             </td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Selasa</th>
                                             <td>
-                                                <input type="phone" class="form-control form-control-sm" name="selasa" id="selasa"
+                                                <input type="phone" class="form-control form-control-sm" name="day[]" id="selasa"
                                                 placeholder="Jam" value="{{ old('selasa') }}">
                                             </td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Rabu</th>
                                             <td>
-                                                <input type="phone" class="form-control form-control-sm" name="rabu" id="rabu"
+                                                <input type="phone" class="form-control form-control-sm" name="day[]" id="rabu"
                                                 placeholder="Jam" value="{{ old('rabu') }}">
                                             </td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Kamis</th>
                                             <td>
-                                                <input type="phone" class="form-control form-control-sm" name="kamis" id="kamis"
+                                                <input type="phone" class="form-control form-control-sm" name="day[]" id="kamis"
                                                 placeholder="Jam" value="{{ old('kamis') }}">
                                             </td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Jumat</th>
                                             <td>
-                                                <input type="phone" class="form-control form-control-sm" name="jumat" id="jumat"
+                                                <input type="phone" class="form-control form-control-sm" name="day[]" id="jumat"
                                                 placeholder="Jam" value="{{ old('jumat') }}">
                                             </td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Sabtu</th>
                                             <td>
-                                                <input type="phone" class="form-control form-control-sm" name="sabtu" id="sabtu"
+                                                <input type="phone" class="form-control form-control-sm" name="day[]" id="sabtu"
                                                 placeholder="Jam" value="{{ old('sabtu') }}">
                                             </td>
                                           </tr>
                                           <tr>
                                             <th scope="row">Minggu</th>
                                             <td>
-                                                <input type="phone" class="form-control form-control-sm" name="minggu" id="minggu"
+                                                <input type="phone" class="form-control form-control-sm" name="day[]" id="minggu"
                                                 placeholder="Jam" value="{{ old('minggu') }}">
                                             </td>
                                           </tr>

@@ -64,10 +64,10 @@
                         <div class="mb-4">
                             <label for="service_date" class="form-label-md">Terakhir servis/ganti oli</label>
                             <div class="date" style="position: relative">
-                                {{-- <img style="width: 16px; height: 16px; position: absolute; right: 10px; top: 6px;" src="{{ url('photos/calendar.svg') }}" alt=""> --}}
-                                <input type="date" name="service_date" id="service_date" class="form-control form-control-sm"
+                                <img style="width: 16px; height: 16px; position: absolute; right: 10px; top: 6px;" src="{{ url('photos/calendar.svg') }}" alt="">
+                                <input type="text" name="service_date" id="service_date" class="form-control form-control-sm" autocomplete="off"
                                     {{-- data-date="" data-date-format="dd/mm/yyyy" --}}
-                                    placeholder="Terakhir servis: {{ date('d/m/Y', strtotime($car->car_services->max('service_date'))) }}">
+                                    placeholder="{{ date('d/m/Y', strtotime($car->car_services->max('service_date'))) }}">
                                 <span class="input-group-append">
                                     <span class="input-group-text d-none">
                                     </span>
@@ -89,6 +89,16 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script type="text/javascript">
+    $(function() {
+        $('#service_date').datepicker({
+           format: 'dd/mm/yyyy'
+        });
+    })
+</script>
 @endsection
 
 <style>

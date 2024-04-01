@@ -9,6 +9,8 @@ class Workhour extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['workshop_id', 'day_id', 'working_hour'];
+
     public function workshop()
     {
         return $this->belongsTo(Workshop::class);
