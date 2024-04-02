@@ -32,6 +32,7 @@ class UserController extends Controller
 
     public function update(Request $u)
     {
+
         if($u->phone_number == Auth::user()->phone_number) {
             $rules = [
                 'first_name' => 'required|string|max:155',

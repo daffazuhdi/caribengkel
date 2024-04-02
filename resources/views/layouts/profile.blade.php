@@ -31,10 +31,10 @@
   <body>
     @include('partials.navbar')
     <div class="container py-4 px-0 m-auto">
-        <div class="d-flex flex-wrap justify-content-between pb-4" style="width: 380px;">
+        <div class="d-flex flex-wrap justify-content-start gap-4 pb-4">
             <div class="my-1">
                 {{-- ubah route foto ke storage link --}}
-                <img src="{{ Storage::url('profiles/'.Auth::user()->photo) }}" style="border-radius: 50%; object-fit: cover; width: 110px; height: 110px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);" class="" alt="{{ Auth::user()->name }}">
+                <img src="{{ url('storage/profiles/'.Auth::user()->photo) }}" style="border-radius: 50%; object-fit: cover; width: 110px; height: 110px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);" class="" alt="{{ Auth::user()->name }}">
             </div>
             <div class="my-1">
                 <h5 style="font-weight: 600;">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h5>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Vehicle\StoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Route;
 use App\Models\Car;
 use App\Models\CarBrand;
 use App\Models\CarModel;
@@ -66,7 +67,14 @@ class VehicleController extends Controller
 
         $new_car_user = CarUser::create($car_user);
 
-        return redirect()->route('home');
+        $route = Route::currentRouteName();
+
+        if($route == 'vehicle.store') {
+            return redirect()->route('home');
+        }
+        else {
+            return redirect()->route('profile.view');
+        }
     }
 
     public function update(Request $request, $id) {
@@ -87,7 +95,8 @@ class VehicleController extends Controller
             return back()->withErrors($validator);
         }
 
-        $date = date( 'Y-m-d H:i:s', strtotime( $request->input('service_date') ) );
+        // $date = date( 'Y-m-d H:i:s', strtotime( $request->input('service_date') ) );
+        $date = Carbon::createFromFormat('d/m/Y', $request->input('service_date'))->format('Y-m-d');
 
         $car_service = new CarService();
 

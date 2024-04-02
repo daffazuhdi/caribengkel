@@ -36,8 +36,8 @@
                     <div class="mb-4">
                         <label for="service_date" class="form-label-md">Terakhir servis/ganti oli</label>
                             <div class="date" style="position: relative">
-                                {{-- <img style="width: 16px; height: 16px; position: absolute; right: 10px; top: 6px;" src="{{ url('photos/calendar.svg') }}" alt=""> --}}
-                                <input type="date" name="service_date" id="service_date" class="form-control form-control-sm" placeholder="Tanggal/Bulan/Tahun">
+                                <img style="width: 16px; height: 16px; position: absolute; right: 10px; top: 6px;" src="{{ url('photos/calendar.svg') }}" alt="">
+                                <input type="text" name="service_date" id="service_date" class="form-control form-control-sm" placeholder="Tanggal/Bulan/Tahun" autocomplete="off">
                                 <span class="input-group-append">
                                     <span class="input-group-text d-none">
                                     </span>
@@ -56,9 +56,9 @@
 @section('script')
 <script type="text/javascript">
     $(function() {
-        // $('#service_date').datepicker({
-        //     format: 'dd/mm/yyyy'
-        // });
+        $('#service_date').datepicker({
+           format: 'dd/mm/yyyy'
+        });
         $('#car_brand_id').on('change', (event) => {
             const id = event.target.value
 

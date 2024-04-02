@@ -9,6 +9,8 @@ class WorkshopPrice extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['workshop_id', 'service_id', 'price'];
+
     public function service()
     {
         return $this->belongsTo(Service::class);
