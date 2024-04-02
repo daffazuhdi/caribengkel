@@ -43,6 +43,7 @@ Route::post('/masuk', [LoginController::class, 'submit'])->name('login.submit');
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 Route::get('/bengkel', [BengkelController::class, 'showAll'])->name('bengkel');
+Route::get('/bengkel', [BengkelController::class, 'showAll'])->name('bengkel');
 // Route::get('/bengkel', function () {
 //     return view('bengkel', [
 //         "title" => "Bengkel"
@@ -87,6 +88,7 @@ Route::post('/writeReview/{id}/',[WriteReviewController::class, 'writeReview']);
 
 
 Route::get('/coba', function () {
+    return view('tambah-bengkel3', [
     return view('tambah-bengkel3', [
         "title" => "Bengkel"
         ]);

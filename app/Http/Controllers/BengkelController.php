@@ -15,6 +15,13 @@ use App\Models\Workhour;
 use App\Models\Service;
 use App\Models\WorkshopPrice;
 use Illuminate\Support\Facades\Storage;
+use App\Models\SpecialtyWorkshop;
+use App\Models\FacilityWorkshop;
+use App\Models\CarBrandWorkshop;
+use App\Models\Workhour;
+use App\Models\Service;
+use App\Models\WorkshopPrice;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
 
@@ -78,6 +85,7 @@ class BengkelController extends Controller
     }
 
     public function addWorkshop(Request $req1)
+    public function addWorkshop(Request $req1)
     {
 
         $name = $req1->name;
@@ -110,6 +118,8 @@ class BengkelController extends Controller
         $facility = Facility::all();
         $car_brand = CarBrand::all();
 
+        return view('tambah-bengkel2', compact('id', 'subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
+        }
         return view('tambah-bengkel2', compact('id', 'subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
         }
     }
@@ -199,5 +209,26 @@ class BengkelController extends Controller
         $car_brand = CarBrand::all();
 
         return view('tambah-bengkel2', compact('id', 'subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
+        return view('tambah-bengkel3', compact('workshop_id', 'service'), ['title' => 'Tambah Harga Bengkel']);
+    }
+
+    public function addWorkshopPrice(Request $req3)
+    {
+        // return $req3;
+
+        $workshop_id = $req3->workshop_id;
+        $serviceInput = $req3->service_id;
+        $price = $req3->price;
+
+        array_map(function($serviceInput, $price, $workshop_id) {
+            WorkshopPrice::create([
+                'workshop_id' => $workshop_id,
+                'service_id' => $serviceInput,
+                'price' => $price
+             ]);
+
+        }, $serviceInput, $price, $workshop_id);
+
+        return redirect('/bengkel');
     }
 }
