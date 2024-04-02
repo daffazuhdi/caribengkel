@@ -109,10 +109,10 @@ class BengkelController extends Controller
         $specialty = Specialty::all();
         $facility = Facility::all();
         $car_brand = CarBrand::all();
-
+        
         return view('tambah-bengkel2', compact('id', 'subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
         }
-        return view('tambah-bengkel2', compact('id', 'subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
+
     }
 
 
