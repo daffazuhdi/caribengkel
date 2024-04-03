@@ -109,7 +109,7 @@ class BengkelController extends Controller
         $specialty = Specialty::all();
         $facility = Facility::all();
         $car_brand = CarBrand::all();
-        
+
         return view('tambah-bengkel2', compact('id', 'subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
         }
 
@@ -177,7 +177,7 @@ class BengkelController extends Controller
 
         }, $serviceInput, $price, $workshop_id);
 
-        return redirect('/bengkel');
+        return redirect('/bengkel')->with('message', 'Bengkel Berhasil Ditambahkan!');;
     }
 
     public function removeWorkshop($id)
