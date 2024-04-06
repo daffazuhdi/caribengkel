@@ -15,6 +15,7 @@ use App\Models\Workhour;
 use App\Models\Service;
 use App\Models\WorkshopPrice;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
 
@@ -38,10 +39,11 @@ class BengkelController extends Controller
                 ->leftjoin('specialties', 'specialties.id', '=', 'specialty_workshop.specialty_id')
                 ->leftjoin('subdistricts', 'subdistricts.id', '=', 'workshops.subdistrict_id')
                 ->leftjoin('car_brands', 'car_brands.id', '=', 'car_brand_workshop.car_brand_id')
-                ->withAvg('ratings', 'rate');
+                ->withAvg('ratings', 'rate')
+                ->where('workshops.is_active', '=', '1');
 
         if (isset($req->search) && ($req->search != null)) {
-            $query = $query->where('workshops.name', 'LIKE', "%$search%")
+            $query = $query->where('workshops.is_active', '=', '1')->where('workshops.name', 'LIKE', "%$search%")
                     ->orWhere('specialties.name', 'LIKE', "%$search%")
                     ->orWhere('subdistricts.name', 'LIKE', "%$search%")
                     ->orWhere('car_brands.name', 'LIKE', "%$search%");
@@ -60,7 +62,7 @@ class BengkelController extends Controller
         }
 
         $limit = 16;
-        $workshop = $query->groupBy('workshops.id')->get();
+        $workshop = $query->where('workshops.is_active', '=', '1')->groupBy('workshops.id')->get();
 
         return view('bengkel', compact('search', 'workshop', 'subdistrict', 'specialty', 'brand'),
                     ['title' => "Bengkel"]
@@ -79,29 +81,35 @@ class BengkelController extends Controller
 
     public function addWorkshop(Request $req1)
     {
+        $rules = [
+            'name' => 'required|string|max:255',
+            'subdistrict_id' => 'required',
+            'address' => 'required|string|max:500',
+            'about' => 'required|string|max:500',
+            'phone_number' => 'required|string|unique:App\Models\Workshop,phone_number|regex:/(0)[0-9]/|max:13',
+            'photo' => 'required|mimes:jpg,png,jpeg,svg'
+        ];
 
-        $name = $req1->name;
-        $subdistrict = $req1->subdistrict_id;
-        $address = $req1->address;
-        $phone_number = $req1->phone_number;
-        $about = $req1->about;
+        $validator = Validator::make($req1->all(), $rules);
 
-        if(is_null($req1->photo) == false)
-        {
-            $file = $req1->file('photo');
-            $extension = $file->getClientOriginalExtension();
-            $fileName = $name.'.'.time().'.'.$extension;
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
 
-            Storage::putFileAs('public/workshop', $file, $fileName);
+        $file = $req1->file('photo');
+        $extension = $file->getClientOriginalExtension();
+        $fileName = $req1->name.'.'.time().'.'.$extension;
 
-            $createWorkshop = Workshop::create([
-                'name' => $req1->name,
-                'subdistrict_id' => $req1->subdistrict_id,
-                'address' => $req1->address,
-                'phone_number' => $req1->phone_number,
-                'about' => $req1->about,
-                'photo' => $fileName
-            ]);
+        Storage::putFileAs('public/workshop', $file, $fileName);
+
+        $createWorkshop = Workshop::create([
+            'name' => $req1->name,
+            'subdistrict_id' => $req1->subdistrict_id,
+            'address' => $req1->address,
+            'phone_number' => $req1->phone_number,
+            'about' => $req1->about,
+            'photo' => $fileName
+        ]);
 
         $id = $createWorkshop->id;
 
@@ -111,14 +119,31 @@ class BengkelController extends Controller
         $car_brand = CarBrand::all();
 
         return view('tambah-bengkel2', compact('id', 'subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
-        }
-
     }
-
 
     public function addWorkshopDetail(Request $req2)
     {
         $workhour = $req2->day;
+
+    //    return $req2;
+
+        $rules = [
+            'specialty' => 'required',
+            'facility' => 'required',
+            'car_brand' => 'required'
+        ];
+
+        $validator = Validator::make($req2->all(), $rules);
+
+        if($validator->fails()){
+            $id = $req2->workshop_id;
+            $specialty = Specialty::all();
+            $facility = Facility::all();
+            $car_brand = CarBrand::all();
+
+            return view('tambah-bengkel2', compact('id', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel'])->withErrors($validator);
+            // return back()->withErrors($validator);
+        }
 
         foreach ($req2->specialty as $s) {
             SpecialtyWorkshop::create([
@@ -158,32 +183,55 @@ class BengkelController extends Controller
 
         $service = Service::select('*')->whereIn('specialty_id', $req2->specialty)->get();
         $workshop_id = $req2->workshop_id;
+        $specialty = $req2->specialty;
 
-        return view('tambah-bengkel3', compact('workshop_id', 'service'), ['title' => 'Tambah Harga Bengkel']);
+        return view('tambah-bengkel3', compact('workshop_id', 'service', 'specialty'), ['title' => 'Tambah Harga Bengkel']);
     }
 
     public function addWorkshopPrice(Request $req3)
     {
+
+        //    return $req3;
         $workshop_id = $req3->workshop_id;
         $serviceInput = $req3->service_id;
-        $price = $req3->price;
+        $Fprice = $req3->price;
 
-        array_map(function($serviceInput, $price, $workshop_id) {
+        $index = 0;
+        foreach ($req3->price as $price) {
+            if ($price === null) {
+                $Fprice[$index] = '0';
+            }
+            $index++;
+        }
+        // return $Fprice;
+
+        array_map(function($serviceInput, $Fprice, $workshop_id) {
             WorkshopPrice::create([
                 'workshop_id' => $workshop_id,
                 'service_id' => $serviceInput,
-                'price' => $price
+                'price' => $Fprice
              ]);
 
-        }, $serviceInput, $price, $workshop_id);
+        }, $serviceInput, $Fprice, $workshop_id);
 
-        return redirect('/bengkel')->with('message', 'Bengkel Berhasil Ditambahkan!');;
+        Workshop::where('id', $workshop_id)->update([
+            'is_active' => '1'
+        ]);
+
+        return redirect('/bengkel')->with('message', 'Bengkel berhasil ditambahkan!');
     }
 
     public function removeWorkshop($id)
     {
         Workshop::where('id', $id)->delete();
-        return redirect()->back()->withInput();
+        // return redirect()->back()->withInput();
+
+        $subdistrict = Subdistrict::all();
+        $specialty = Specialty::all();
+        $facility = Facility::all();
+        $car_brand = CarBrand::all();
+
+        return view('tambah-bengkel', compact('subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
     }
 
     public function removeWorkshopDetail($id)
@@ -201,5 +249,96 @@ class BengkelController extends Controller
         $car_brand = CarBrand::all();
 
         return view('tambah-bengkel2', compact('id', 'subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Tambah Bengkel']);
+    }
+
+    public function delete($id)
+    {
+        Workshop::where('id', $id)->update([
+            'is_active' => '0',
+            'phone_number' => '-'
+        ]);
+
+        return redirect('/bengkel')->with('message', 'Bengkel berhasil dihapus!');
+    }
+
+    public function edit($id)
+    {
+        $workshop = Workshop::find($id);
+        $subdistrict = Subdistrict::all();
+
+        return view('ubah-bengkel', compact('workshop', 'subdistrict'), ['title' => 'Ubah Bengkel']);
+    }
+
+    public function update(Request $req, $id)
+    {
+        $workshop = Workshop::find($id);
+
+        if($req->phone_number == $workshop->phone_number)
+        {
+            $rules = [
+                // 'name' => 'required|string|max:255',
+                'subdistrict_id' => 'required',
+                'address' => 'required|string|max:500',
+                'about' => 'required|string|max:500',
+                'phone_number' => 'required|string|regex:/(0)[0-9]/|max:13',
+                'photo' => 'mimes:jpg,png,jpeg,svg'
+            ];
+        }
+        else {
+            $rules = [
+                // 'name' => 'required|string|max:255',
+                'subdistrict_id' => 'required',
+                'address' => 'required|string|max:500',
+                'about' => 'required|string|max:500',
+                'phone_number' => 'required|string|unique:App\Models\Workshop,phone_number|regex:/(0)[0-9]/|max:13',
+                'photo' => 'mimes:jpg,png,jpeg,svg'
+            ];
+        }
+
+        $validator = Validator::make($req->all(), $rules);
+
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
+
+        if(is_null($req->photo) == false)
+        {
+            $file = $req->file('photo');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $req->name.'.'.time().'.'.$extension;
+
+            Storage::putFileAs('public/workshop', $file, $fileName);
+
+            Workshop::where('id', $id)->update([
+                'name' => $workshop->name,
+                'subdistrict_id' => $req->subdistrict_id,
+                'address' => $req->address,
+                'phone_number' => $req->phone_number,
+                'about' => $req->about,
+                'photo' => $fileName
+            ]);
+        }
+        else {
+            Workshop::where('id', $id)->update([
+                'name' => $workshop->name,
+                'subdistrict_id' => $req->subdistrict_id,
+                'address' => $req->address,
+                'phone_number' => $req->phone_number,
+                'about' => $req->about
+            ]);
+        }
+
+        $subdistrict = Subdistrict::all();
+        $specialty = Specialty::all();
+        $facility = Facility::all();
+        $car_brand = CarBrand::all();
+
+        return view('ubah-bengkel-detail', compact('id', 'workshop', 'subdistrict', 'specialty', 'facility', 'car_brand'), ['title' => 'Ubah Bengkel']);
+    }
+
+    public function updatePrice($id)
+    {
+        $workshop = Workshop::find($id);
+        return view('ubah-bengkel-harga', compact('workshop'), ['title' => 'Ubah Bengkel']);
     }
 }

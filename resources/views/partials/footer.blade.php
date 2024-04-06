@@ -17,7 +17,7 @@
       }
     </style>
   </head>
-  <footer class="mt-auto p-5" style="background-color: #0D5C63;">
+  <footer class="mt-auto py-4 px-5" style="background-color: #0D5C63;">
     <div class="top-footer d-flex justify-content-between align-middle">
         <div class="top-footer-text" style="text-align: center;">
             <p class="m-0 py-1" style="font-size: 140%; font-weight: 500;">CariBengkel</p>
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div class="py-5"></div>
+    <div class="py-3"></div>
 
     <div class="footer-text d-flex justify-content-between" style="font-size: 90%; width: 30%;">
         <p class="m-0">&copy; 2024 CariBengkel</p>

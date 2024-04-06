@@ -5,12 +5,13 @@
 @section('title', $title)
 @extends('layouts.main')
 @section('container')
-
         @if (session('message'))
-            <div class="alert alert-success px-5 m-auto d-flex align-items-center" role="alert" style="font-weight: 600;">
-                <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1.1em" height="1.1em" viewBox="0 0 24 24"><path fill="#0D5C63" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/></svg>
-                {{ session('message') }}
-            </div>
+                <div class="alert alert-success main-content d-flex align-items-center" role="alert" style="font-weight: 600; border-radius: 0; padding: 0 100px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1.1em" height="1.1em" viewBox="0 0 24 24">
+                                <path fill="#0D5C63" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/>
+                        </svg>
+                        {{ session('message') }}
+                </div>
         @endif
 
         <div class="container py-4 px-0 m-auto">
@@ -32,10 +33,10 @@
                                 <div class="col-md-12 px-0 border-bottom">
                                         <label for="subdictrict" class="form-label-md">Lokasi Bengkel</label>
                                         <select id="subdistrict" class="form-select form-control form-select-sm" name="subdistrict" placeholder="Wilayah">
-                                            <option value="">Semua Lokasi</option>
-                                            @foreach ($subdistrict as $sub)
-                                                    <option value="{{ $sub->id }}">{{ $sub->name }}</option>
-                                            @endforeach
+                                                <option value="">Semua Lokasi</option>
+                                                @foreach ($subdistrict as $sub)
+                                                        <option value="{{ $sub->id }}">{{ $sub->name }}</option>
+                                                @endforeach
                                         </select>
                                 </div>
                                 <div class="col-md-12 px-0 border-bottom">
@@ -94,7 +95,7 @@
                         </button>
                 </div>
                 @if (Auth::user())
-                    @if (Auth::user()->role_id == 1)
+                        @if (Auth::user()->role_id == 1)
                         <hr style="height:1px;border-width:0;color:gray;background-color:gray">
                         <div class="d-flex justify-content-end">
                                 <a href="{{ url('/tambah-bengkel') }}" class="btn btn-outline-dark px-3 mt-2 mb-3 d-inline-flex align-items-center">
@@ -104,7 +105,7 @@
                                         Tambah Bengkel
                                 </a>
                         </div>
-                    @endif
+                        @endif
                 @else
                 @endif
 
@@ -112,11 +113,11 @@
                         @foreach ($workshop as $workshop)
                         <div class="col mb-4">
                         <a href="/bengkelDetail/{{ $workshop->id }}" class="" style="text-decoration: none">
-                          <div class="card h-100">
-                            <div style="padding: 1em 1em 0 1em;">
-                                <img src="{{ url('/photos/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: auto; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
-                            </div>
-                            <div class="card-body border-bottom mx-3 py-3 px-0">
+                                <div class="card h-100">
+                                <div style="padding: 1em 1em 0 1em;">
+                                <img src="{{ url('storage/workshop/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: 100vh; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
+                                </div>
+                                <div class="card-body border-bottom mx-3 py-3 px-0">
                                 <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>
                                 <div class="address d-flex justify-content-left align-items-center">
                                         <div class="img-fluid" style="padding-right: 4%">
@@ -126,8 +127,8 @@
                                                 <p class="m-0" style="font-size: 14px; font-weight: 400;">{{ $workshop->address }}</p>
                                         </div>
                                 </div>
-                            </div>
-                            <div class="card-text d-flex justify-content-between m-3" style="">
+                                </div>
+                                <div class="card-text d-flex justify-content-between m-3" style="">
                                 <div class="card-text d-flex flex-wrap gap-1">
                                         @foreach ($workshop->specialties as $s)
                                         <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{ $s->name }}</small>
@@ -141,8 +142,8 @@
                                                 {{ number_format($workshop->ratings_avg_rate, 1) }}
                                         </small>
                                 </div>
-                            </div>
-                          </div>
+                                </div>
+                                </div>
                         </a>
                         </div>
                         @endforeach
@@ -150,16 +151,16 @@
 
                 {{-- <div class="p-3 pb-5">
                         <ul class="pagination m-0">
-                            <li class="page-item"><a class="page-link" href=""></a></li>
-                            @for ($page = 1; $page <= $workshop->lastPage(); $page++)
+                                <li class="page-item"><a class="page-link" href=""></a></li>
+                                @for ($page = 1; $page <= $workshop->lastPage(); $page++)
                                 @if ($page == $workshop->currentPage())
-                                    <li class="page-item active"><a class="page-link" href="">{{ $page }}</a></li>
+                                        <li class="page-item active"><a class="page-link" href="">{{ $page }}</a></li>
                                 @else
-                                    <li class="page-item"><a class="page-link" href="">{{ $page }}</a></li>
+                                        <li class="page-item"><a class="page-link" href="">{{ $page }}</a></li>
                                 @endif
 
-                            @endfor
-                            <li class="page-item"><a class="page-link" href="">Next</a></li>
+                                @endfor
+                                <li class="page-item"><a class="page-link" href="">Next</a></li>
                         </ul>
                 </div> --}}
         </div>

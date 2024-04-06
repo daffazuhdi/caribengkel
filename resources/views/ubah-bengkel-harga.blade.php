@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('container')
 <div class="container" style="width: 50%;">
-    <h2 class="mx-auto mb-5" style="font-size: 28px; font-weight: 600; text-align: center;">Tambah Bengkel</h2>
+    <h2 class="mx-auto mb-5" style="font-size: 28px; font-weight: 600; text-align: center;">Ubah Bengkel</h2>
     <div class="position-relative mb-4">
         <div class="progress" style="height: 3px;">
             <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #0D5C63;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -28,7 +28,7 @@
         <h5 class="my-1" style="font-weight: 600;">Harga Layanan Bengkel</h5>
         <p>Isi informasi mengenai harga layanan bengkel di bawah ini untuk mendaftarkan bengkel baru.</p>
 
-        <form method="post" action="/tambah-bengkel-detail-harga" enctype="multipart/form-data">
+        {{-- <form method="post" action="#" enctype="multipart/form-data">
             @csrf
             <div class="container p-0">
                 <div class="row">
@@ -75,7 +75,7 @@
                     </button>
                 </div>
             </div>
-        </form>
+        </form> --}}
     </div>
 </div>
 @endsection

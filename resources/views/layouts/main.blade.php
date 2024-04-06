@@ -31,7 +31,7 @@
   </head>
   <body>
     @include('partials.navbar')
-    <div class="container-fluid px-0 m-auto" style="min-height: 60vh;">
+    <div class="container-fluid px-0 m-auto" style="min-height: 70vh;">
         @yield('container')
     </div>
     @include('partials.footer')

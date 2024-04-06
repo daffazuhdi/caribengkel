@@ -12,7 +12,7 @@ body {
     color: #052023;
   }
 
-a{
+a {
     text-decoration: none;
     color: #0D5C63;
     font-weight: 500;
@@ -97,11 +97,45 @@ select option {
     font-weight: 500;
 }
 
-.btn-outline-dark, .btn-outline-dark:hover, .btn-outline-dark:active, .btn-outline-dark:visited {
-    background-color: white;
+.btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
+    background-color: #F3F9F9 !important;
+    color: #0D5C63;
+    border: none;
+    font-weight: 600 !important;
+}
+
+.btn-outline-dark, .btn-outline-dark:hover, .btn-outline-dark:active, .btn-outline-dark:visited, .btn-outline-dark:focus {
+    background-color: white !important;
     border-color: #052023;
     font-weight: 500;
     color: #052023;
+}
+
+.btn-outline-dark.rounded-pill {
+    border: 3px solid #0D5C63 !important;
+}
+
+.btn-outline-secondary, .btn-outline-secondary:hover, .btn-outline-secondary:focus {
+    background-color: white !important;
+    border-color: #D9D9D9;
+    color: #D9D9D9;
+}
+
+.btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited, .btn-danger:focus {
+    background-color: #B00020;
+}
+
+button.rounded-pill.active {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0D5C63;
+}
+
+button.rounded-pill {
+    font-size: 18px;
+    font-weight: 600;
+    color: #D9D9D9;
+    pointer-events: none;
 }
 
 .nav-tabs .nav-item .nav-link {
@@ -126,13 +160,21 @@ button.nav-link {
     padding: 0px 120px;
 }
 
-thead.table-light {
-    background-color: #E7EFEF !important;
-}
-
 .table-light tr th {
     font-weight: 400 !important;
     text-align: center;
+}
+
+p.text.page-active {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0D5C63;
+}
+
+p.text.page {
+    font-size: 14px;
+    font-weight: 600;
+    color: #D9D9D9;
 }
 
 .img-hero {

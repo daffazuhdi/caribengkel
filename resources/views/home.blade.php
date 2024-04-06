@@ -26,11 +26,7 @@
             {{ $s->name }}
           </a>
         </div>
-          {{-- </button> --}}
         @endforeach
-        {{-- <button class="col-sm-3 btn btn-primary mb-3 mx-1">
-              <a href="/bengkel" style="text-decoration: none; color: #FFFFFF; font-size: 14px; ">Semua Bengkel</a>
-          </button> --}}
         <div class="col-12 col-sm-3 mb-3">
           <a href="{{ url('/bengkel') }}" class="btn btn-primary w-100 h-100" style="text-decoration: none; color: #FFFFFF; font-size: 14px;">
             Semua Bengkel
@@ -76,7 +72,7 @@
         <a href="/bengkelDetail/{{ $workshop->id }}" class="" style="text-decoration: none">
           <div class="card h-100">
             <div style="padding: 1em 1em 0 1em;">
-                <img src="{{ url('/photos/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: auto; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
+                <img src="{{ url('storage/workshop/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: auto; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
             </div>
             <div class="card-body border-bottom">
                 <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>
@@ -90,7 +86,7 @@
                 </div>
             </div>
             <div class="card-text d-flex justify-content-between m-3" style="">
-                <div class="card-text">
+                <div class="card-text d-flex flex-wrap gap-1">
                         @foreach ($workshop->specialties as $s)
                         <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{ $s->name }}</small>
                         @endforeach
