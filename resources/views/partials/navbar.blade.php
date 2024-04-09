@@ -21,12 +21,19 @@
       margin-top: 0;
       right: 0;
     }
+    .hoverable {
+      color: #052023;
+    }
+    .hoverable:hover {
+      color: #0D5C63;
+      background-color:#F3F9F9;
+    }
   </style>
 </head>
 <div class="sticky-top bg-white">
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand m-0 p-0" href="#">
+      <a class="navbar-brand m-0 p-0" href="/">
         <img src="{{ url('photos/logoNavbar.svg') }}" width="182px" height="36px"></img>
       </a>
 
@@ -35,7 +42,6 @@
           <a class="nav-link {{ ($title === "Beranda" ? 'active' :'')}}" href="/">Beranda</a>
           <a class="nav-link {{ ($title === "Bengkel" ? 'active' :'')}}" href="/bengkel">Bengkel</a>
           <a class="nav-link {{ ($title === "Tentang Kami" ? 'active' :'')}}" href="/tentangkami">Tentang Kami</a>
-          <a class="nav-link {{ ($title === "Bantuan" ? 'active' :'')}}" href="/bantuan">Bantuan</a>
         </div>
 
         @if (Auth::user())
@@ -45,12 +51,18 @@
             class="m-1" alt="{{ Auth::user()->name }}"
           >
           <div class="dropdown-menu">
-              <a href="{{ url('/profil') }}">Profil Saya</a>
-              <a href="#">Notifikasi</a>
+              <a href="{{ url('/profil') }}">
+                <div class="hoverable">Profil Saya</div>
+              </a>
+              <a href="#">
+                <div class="hoverable">
+                  Notifikasi
+                </div>
+              </a>
               <form action="/logout" method="post" class="m-0">
                 @csrf
-                <button type="submit" class="btn btn-link m-0 p-0" style="text-decoration: none; color: #0D5C63; font-weight: 500;">
-                  Keluar
+                <button type="submit" class="btn btn-link m-0 p-0 hoverable text-start" style="text-decoration: none; font-weight: 500; width: 100%;">
+                    Keluar
                 </button>
               </form>
           </div>

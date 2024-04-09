@@ -221,7 +221,7 @@ class SpecialtyWorkshopSeeder extends Seeder
         ]);
 
         SpecialtyWorkshop::create([
-            'specialty_id' => 3,
+            'specialty_id' => 5,
             'workshop_id' => 19
         ]);
 

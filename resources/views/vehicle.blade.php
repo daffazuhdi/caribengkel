@@ -94,18 +94,6 @@
                             .remove()
                             .end()
 
-                        if (!result.length) {
-                            // TODO: To be deleted
-                            $("#car_model_id")
-                            .append( 
-                                $("<option>")
-                                    .val('')
-                                    .html('Tipe mobil tidak tersedia')
-                            )
-                            .prop('disabled', true)
-                            return
-                        }
-
                         $("#car_model_id")
                             .append( 
                                 $("<option>")

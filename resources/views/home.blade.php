@@ -48,8 +48,8 @@
       <h6 class="mb-4">Hubungkan Kamu dengan Bengkel Terbaik</h6>
         <div class="row align-items-center">
           <div class="col-12 col-lg-6">
-            <p class="text-start" style="font-size: 16px">CariBengkel merupakan website yang menghubungkan kamu <br> dengan bengkel-bengkel terbaik di daerah Tangerang Selatan. </p>
-            <p class="text-start" style="font-size: 16px" >Kami berupaya untuk memudahkan pengguna kami dalam <br> mencari bengkel, berdasarkan lokasi, merk mobil, dan layanan <br> yang disediakan oleh bengkel tersebut.</p>
+            <p class="text-start" style="font-size: 14px">CariBengkel merupakan website yang menghubungkan kamu dengan <br> bengkel-bengkel terbaik di bidangnya di daerah Tangerang Selatan. </p>
+            <p class="text-start" style="font-size: 14px" >Kami berupaya untuk memudahkan pengguna kami dalam mencari <br> bengkel, berdasarkan lokasi, spesialisasi, merek mobil yang dikerjakan <br> oleh bengkel tersebut.</p>
             <button class="btn btn-primary d-flex justify-content-start"><a href="" style="text-decoration: none; color: #FFFFFF;">Mulai Cari Bengkel <img style="width: 20px; height: 20px;" src="{{ url('photos/arrow-right.svg') }}" alt=""></a></button>
           </div>
           <div class="col-12 col-lg-6">
@@ -67,10 +67,10 @@
             <p style="font-size: 14px">Banyak orang yang memberikan ulasan bagus untuk bengkel ini.</p>
         </div>
         <div class="col d-flex justify-content-end">
-          <button class="btn btn-primary d-flex justify-content-start"><a href="" style="text-decoration: none; color: #FFFFFF;">Lihat Semua</a></button>
+          <button class="btn btn-primary d-flex justify-content-start"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #FFFFFF;">Lihat Semua</a></button>
         </div>
       </div>
-      <div class="row row-cols-1 row-cols-md-4 my-2" style="padding-bottom: 2em;">
+      <div class="row row-cols-1 row-cols-md-4 my-2">
         @foreach ($workshop as $workshop)
         <div class="col mb-2">
         <a href="/bengkelDetail/{{ $workshop->id }}" class="" style="text-decoration: none">
@@ -78,7 +78,7 @@
             <div style="padding: 1em 1em 0 1em;">
                 <img src="{{ url('/photos/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: auto; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
             </div>
-            <div class="card-body border-bottom">
+            <div class="card-body border-bottom mx-3 py-3 px-0">
                 <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>
                 <div class="address d-flex justify-content-left align-items-center">
                         <div class="img-fluid" style="padding-right: 4%">
@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="card-text d-flex justify-content-between m-3" style="">
-                <div class="card-text">
+                <div class="card-text d-flex flex-wrap gap-1">
                         @foreach ($workshop->specialties as $s)
                         <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{ $s->name }}</small>
                         @endforeach
@@ -112,31 +112,31 @@
     </div>
   </section>
 
-  <section style="background-color: #F3F9F9">
+  <section style="background-color: #0D5C63">
     <div class="container py-40px">
       <div class="row text-center">
         <div class="col-sm">
           <div class="cmb-3">
-            <h2>{{$countWorkshop}}</h2>
-            <p style="font-size: 14px;">Bengkel</p>
+            <h2 style="color:#F3F9F9;">{{$countWorkshop}}</h2>
+            <p style="font-size: 14px; color:#F3F9F9;">Bengkel</p>
           </div>
         </div>
         <div class="col-sm">
           <div class="mb-3">
-            <h2>{{$countCustomer}}</h2>
-            <p style="font-size: 14px;">Kustomer</p>
+            <h2 style="color:#F3F9F9;" >{{$countCustomer}}</h2>
+            <p style="font-size: 14px; color:#F3F9F9;">Kustomer</p>
           </div>
         </div>
         <div class="col-sm">
           <div class="mb-3">
-            <h2>{{$countUser}}</h2>
-            <p style="font-size: 14px;">Pengguna</p>
+            <h2 style="color:#F3F9F9;">{{$countUser}}</h2>
+            <p style="font-size: 14px; color:#F3F9F9;">Pengguna</p>
           </div>
         </div>
         <div class="col-sm">
           <div class="mb-3">
-            <h2>{{$countBrand}}</h2>
-            <p style="font-size: 14px;">Merek Mobil</p>
+            <h2 style="color:#F3F9F9;">{{$countBrand}}</h2>
+            <p style="font-size: 14px; color:#F3F9F9;">Merek Mobil</p>
           </div>
         </div>
       </div>

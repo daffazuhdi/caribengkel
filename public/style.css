@@ -24,6 +24,16 @@ a{
     box-shadow :none;
 }
 
+.px-72px {
+    padding-left: 72px;
+    padding-right: 72px;
+}
+
+.py-120px {
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
 .py-80px {
     padding-top: 80px;
     padding-bottom: 80px;

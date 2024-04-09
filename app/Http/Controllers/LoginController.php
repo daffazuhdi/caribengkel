@@ -20,6 +20,6 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
 
-        return redirect()->back()->withInput->withErrors(['credentials' => 'The email or password is incorrect']);
+        return redirect()->back()->withInput()->withErrors(['credentials' => 'The email or password is incorrect']);
     }
 }

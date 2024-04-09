@@ -20,7 +20,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 1,
             'name' => 'Bengkel Mobil BOS BSD',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Kp., Cilenggang, Kec. Serpong, Kota Tangerang Selatan',
             'photo' => 'bengkel_bos_bsd.png',
             'operational_hour' => 'Senin s.d. Sabtu, 10:00 - 16:00',
@@ -33,7 +33,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 4,
             'name' => 'Bengkel Servis AC Ciputat',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Kec. Ciputat',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Sabtu, 10:00 - 16:00',
@@ -46,7 +46,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 2,
             'name' => 'BengkelIN BSD',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Kec. Serpong Utara',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Sabtu, 10:00 - 16:00',
@@ -59,7 +59,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 1,
             'name' => 'Bengkel Dokter Mobil BSD',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Ciater Bar. No.182, Buaran, Kec. Serpong, Kota Tangerang Selatan, Banten 15310',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Sabtu, 10:00 - 16:00',
@@ -72,7 +72,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 6,
             'name' => 'Bengkel.Ku',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Pd. Kacang No.55, RT.4/RW.3, Parigi, Kec. Pd. Aren, Kota Tangerang Selatan, Banten 15228',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Sabtu, 10:00 - 16:00',
@@ -85,7 +85,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 3,
             'name' => 'Bengkel Oli Surya',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Suryamas No.01, RT.1/RW.3, Suri, Kec. Ciputat, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Sabtu, 09:00 - 18:00',
@@ -98,7 +98,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 2,
             'name' => 'Bengkel Sampoerna',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. M. Yamin No.11, RT.1/RW.2, Pamil, Kec. Serpong Utara, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 09:00 - 18:00',
@@ -111,7 +111,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 4,
             'name' => 'BAPAK JAYA MOTOR',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Sampiran No.65, RT.2/RW.5, Rahma, Kec. Ciputat Timur, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 09:30 - 19:00',
@@ -124,7 +124,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 5,
             'name' => 'Devina Motor',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Braina No.02, RT.2/RW.4, Samin, Kec. Pamulang, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 09:00 - 19:00',
@@ -137,7 +137,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 7,
             'name' => 'Bengkel Berkah Kelompok',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Selir No.35, RT.3/RW.2, Rumpang, Kec. Setu, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 09:30 - 19:00',
@@ -150,7 +150,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 1,
             'name' => 'Bengkel Surya Paloh',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Sinar Silver No.12, RT.3/RW.2, Kemiri, Kec. Serpong, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 09:30 - 19:00',
@@ -163,7 +163,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 1,
             'name' => 'MESHIN FAST',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Prima No.23, RT.1/RW.1, Talaga, Kec. Serpong, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 09:30 - 19:00',
@@ -176,7 +176,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 3,
             'name' => 'Bengkel Manual Ciputat',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Lampung No.11, RT.2/RW.3, Kamisan, Kec. Ciputat, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 08:30 - 18:00',
@@ -189,7 +189,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 2,
             'name' => 'FANIS Motor',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Iman M No.06, RT.4/RW.5, Parini, Kec. Serpong Utara, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 09:00 - 19:00',
@@ -202,7 +202,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 6,
             'name' => 'Bengkel Farah Motor',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Soekarno No.20, RT.3/RW.5, Lengko Sawah, Kec. Pondok Aren, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 08:00 - 18:00',
@@ -215,7 +215,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 5,
             'name' => 'FS Auto',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Brimo No.21, RT.4/RW.6, Damian, Kec. Pamulang, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 08:00 - 18:00',
@@ -228,7 +228,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 7,
             'name' => 'DAFFA SPEED',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Sarinah No.11, RT.4/RW.6, Damian, Kec. Setu, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 08:00 - 18:00',
@@ -241,7 +241,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 2,
             'name' => 'Bengkel Fajar Matahari',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Hj. Yamin No.03, RT.2/RW.2, Kampu, Kec. Serpong Utara, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 09:00 - 18:30',
@@ -254,7 +254,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 4,
             'name' => 'Oli Speed Cabang Ciputat Timur',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Ahmad Yani No.24, RT.1/RW.3, Samira, Kec. Ciputat Timur, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 09:00 - 18:30',
@@ -267,7 +267,7 @@ class WorkshopSeeder extends Seeder
             'subdistrict_id' => 6,
             'name' => 'ILA OLI',
             'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            <br>Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
             'address' => 'Jl. Kp. Halaman No.03, RT.3/RW.2, Suci, Kec. Pondok Aren, Kota Tangerang Selatan, Banten',
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 09:00 - 18:30',
