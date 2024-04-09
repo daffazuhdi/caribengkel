@@ -43,7 +43,7 @@ Route::post('/masuk', [LoginController::class, 'submit'])->name('login.submit');
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 Route::get('/bengkel', [BengkelController::class, 'showAll'])->name('bengkel');
-Route::get('/bengkel', [BengkelController::class, 'showAll'])->name('bengkel');
+// Route::get('/bengkel', [BengkelController::class, 'showAll'])->name('bengkel');
 // Route::get('/bengkel', function () {
 //     return view('bengkel', [
 //         "title" => "Bengkel"
@@ -60,6 +60,10 @@ Route::get('/tambah-bengkel-detail-back/{id}', [BengkelController::class, 'remov
 
 Route::post('/tambah-bengkel-detail-harga', [BengkelController::class, 'addWorkshopPrice']);
 
+Route::get('/ubah-bengkel-{id}', [BengkelController::class, 'edit']);
+Route::post('/ubah-bengkel-{id}', [BengkelController::class, 'update']);
+Route::get('/ubah-bengkel-detail-harga-{id}', [BengkelController::class, 'updatePrice']);
+
 Route::get('/tentangkami',[TentangKamiController::class, 'index']);
 
 Route::get('/bantuan', function () {
@@ -69,13 +73,14 @@ Route::get('/bantuan', function () {
 });
 
 Route::get('/bengkelDetail/{id}',[BengkelDetailController::class, 'test']);
+Route::post('/bengkel-detail-{id}', [BengkelController::class, 'delete']);
 
 Route::get('/profil', [UserController::class, 'viewProfile'])->name('profile.view');
 Route::post('/profil', [UserController::class, 'update'])->name('profile.update');
 Route::get('/ubah-profil', [UserController::class, 'detail']);
 
 Route::get('/kendaraan-{id}', [VehicleController::class, 'view']);
-Route::post('/kendaraan-{id}', [VehicleController::class, 'update']);
+Route::post('/kendaraan-{id}', [VehicleController::class, 'update'])->name('vehicle.update');
 
 Route::get('/tambah-kendaraan', [VehicleController::class, 'showToAdd']);
 Route::post('/tambah-kendaraan', [VehicleController::class, 'store']);
@@ -86,9 +91,14 @@ Route::get('/review/{id}/{sort}',[ReviewController::class, 'sort']);
 Route::get('/writeReview/{id}/',[WriteReviewController::class, 'showReview']);
 Route::post('/writeReview/{id}/',[WriteReviewController::class, 'writeReview']);
 
-
 Route::get('/coba', function () {
     return view('tambah-bengkel3', [
         "title" => "Bengkel"
         ]);
 });
+
+// Route::get('/testing/add/{id}', function () {
+//     return view('tambah-bengkel2', [
+//         "title" => "Tambah Bengkel"
+//         ]);
+// });

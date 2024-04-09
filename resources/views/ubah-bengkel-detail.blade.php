@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('container')
 <div class="container" style="width: 50%;">
-    <h2 class="mx-auto mb-5" style="font-size: 28px; font-weight: 600; text-align: center;">Tambah Bengkel</h2>
+    <h2 class="mx-auto mb-5" style="font-size: 28px; font-weight: 600; text-align: center;">Ubah Bengkel</h2>
     <div class="position-relative mb-4">
         <div class="progress" style="height: 3px;">
             <div class="progress-bar" role="progressbar" style="width: 50%; background-color: #0D5C63;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -28,9 +28,9 @@
         <h5 class="my-1" style="font-weight: 600;">Spesialisasi Dasar Bengkel</h5>
         <p>Isi informasi mengenai spesialisasi bengkel di bawah ini untuk mendaftarkan bengkel baru.</p>
 
-        <form method="post" action="/tambah-bengkel-detail" enctype="multipart/form-data">
+        <form method="post" action="#" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" id="workshop_id" name="workshop_id" value='{{$id}}'>
+            {{-- <input type="hidden" id="workshop_id" name="workshop_id" value='{{$id}}'> --}}
             <div class="container p-0">
                 <div class="row">
                     <div class="col-12 col-md-12">
@@ -42,10 +42,18 @@
                             <div class="row row-cols-4 mx-auto">
                                 @foreach ($specialty as $specialty)
                                 <div class="col form-check py-1">
-                                        <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}">
-                                        <label class="form-check-label" for="{{ $specialty->label }}">
-                                                {{ $specialty->name }}
-                                        </label>
+                                    {{-- @foreach ($workshop->specialties as $sp) --}}
+                                    {{-- @for ($s = $sp->min('id'); $s <= $sp->max('id'); $s++) --}}
+                                        {{-- @if($specialty->id == $sp->id) --}}
+                                            {{-- <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}" checked>
+                                        @else --}}
+                                            <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}">
+                                        {{-- @endif --}}
+                                    {{-- @endfor --}}
+                                    {{-- @endforeach --}}
+                                    <label class="form-check-label" for="{{ $specialty->label }}">
+                                        {{ $specialty->name }}
+                                    </label>
                                 </div>
                                 @endforeach
                             </div>
@@ -58,12 +66,18 @@
                             @enderror
                             <div class="row row-cols-4 mx-auto">
                                 @foreach ($facility as $f)
-                                    <div class="col form-check py-1">
-                                        <input class="form-check-input" type="checkbox" name="facility[]" id="#" value="{{ $f->id }}">
-                                        <label class="form-check-label" for="{{ $f->label }}">
-                                            {{ $f->name }}
-                                        </label>
-                                    </div>
+                                <div class="col form-check py-1">
+                                    {{-- @foreach ($workshop->facilities as $wf)
+                                        @if ($f->id == $wf->facility_id)
+                                            <input class="form-check-input" type="checkbox" name="facility[]" id="#" value="{{ $f->id }}" checked>
+                                        @else --}}
+                                            <input class="form-check-input" type="checkbox" name="facility[]" id="#" value="{{ $f->id }}">
+                                        {{-- @endif
+                                    @endforeach --}}
+                                    <label class="form-check-label" for="{{ $f->label }}">
+                                        {{ $f->name }}
+                                    </label>
+                                </div>
                                 @endforeach
                             </div>
                         </div>
@@ -154,11 +168,11 @@
                 </div>
             </div>
             <div class="tombol d-flex justify-content-between">
-                <div class="d-flex justify-content-end mt-4" style="margin-bottom: 16%;">
+                {{-- <div class="d-flex justify-content-end mt-4" style="margin-bottom: 16%;">
                     <a href="/tambah-bengkel-back/{{$id}}" class="btn btn px-3" style="font-size: 14px; background:transparent ;color:#0D5C63; font-weight: 500;">
                         Kembali
                     </a>
-                </div>
+                </div> --}}
                 <div class="d-flex justify-content-end mt-4" style="margin-bottom: 16%;">
                     <button class="btn btn-primary px-3" style="font-size: 14px;">
                         Selanjutnya

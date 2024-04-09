@@ -26,7 +26,7 @@
                   <div class="card h-100">
                     <div class="d-flex justify-content-right border-bottom align-items-center p-4" style="background: #F3F9F9;">
                         <div class="" style="padding-right: 1em;">
-                            <img src="{{ url('photos/'.$rating->workshop->photo) }}"  style="border-radius: 10%; object-fit: cover; width: 101px; height: 62px;" class="card-img-top" alt="{{ $rating->workshop->name }}">
+                            <img src="{{ url('storage/workshop/'.$rating->workshop->photo) }}"  style="border-radius: 10%; object-fit: cover; width: 101px; height: 62px;" class="card-img-top" alt="{{ $rating->workshop->name }}">
                         </div>
                         <div class="d-flex justify-content-between" style="flex-direction: column;">
                             <h5 class="card-title" style="font-size: 16px; font-weight: 600">{{ $rating->workshop->name }}</h5>

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('subdistrict_id')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('about', 500);
-            $table->string('address');
+            $table->string('address', 500);
             $table->string('photo');
             $table->string('operational_hour');
             $table->string('phone_number');
