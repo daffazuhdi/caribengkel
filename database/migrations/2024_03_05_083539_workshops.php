@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('photo');
             $table->string('operational_hour');
             $table->string('phone_number');
+            $table->string('location');
             $table->integer('is_active');
             $table->rememberToken();
             $table->timestamps();

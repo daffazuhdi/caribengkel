@@ -25,6 +25,7 @@ class WorkshopSeeder extends Seeder
             'photo' => 'bengkel_bos_bsd.png',
             'operational_hour' => 'Senin s.d. Sabtu, 10:00 - 16:00',
             'phone_number' => '(021) 5380810',
+            'location' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.682018265211!2d106.66706017499105!3d-6.3054431936837725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e4d36873d365%3A0x5e334177b38373b0!2sBengkel%20Mobil%20BOS%20BSD!5e0!3m2!1sen!2sid!4v1714017383490!5m2!1sen!2sid',
             'is_active' => 1
         ]);
 

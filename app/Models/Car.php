@@ -26,6 +26,10 @@ class Car extends Model
     protected $fillable = [
         'car_model_id',
         'license_plate',
-        'service_date',
+        'service_date'
     ];
+
+    public static function deleteCar($id) {
+        Car::where('id', $id)->delete();
+    }
 }

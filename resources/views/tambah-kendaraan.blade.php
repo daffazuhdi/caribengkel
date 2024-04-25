@@ -45,7 +45,7 @@
                             </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary my-4" style="font-size: 14px;">Simpan Data Kendaraan</button>
+                    <button type="submit" class="btn btn-primary my-4" style="font-size: 14px;">Simpan</button>
 
                 </form>
             </div>

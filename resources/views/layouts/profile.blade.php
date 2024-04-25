@@ -30,7 +30,7 @@
   </head>
   <body>
     @include('partials.navbar')
-    <div class="container py-4 px-0 m-auto">
+    <div class="container py-4 px-0 m-auto" style="min-height: 70vh;">
         <div class="d-flex flex-wrap justify-content-start gap-4 pb-4">
             <div class="my-1">
                 {{-- ubah route foto ke storage link --}}
@@ -44,7 +44,9 @@
                 </button>
             </div>
         </div>
-        <hr style="height:0.8px;border-width:0;color:gray;background-color:gray;margin: 2% 0;">
+        @if (Auth::user()->role_id == 2)
+          <hr style="height:0.8px;border-width:0;color:gray;background-color:gray;margin: 2% 0;">
+        @endif
         @yield('content')
     </div>
     @include('partials.footer')

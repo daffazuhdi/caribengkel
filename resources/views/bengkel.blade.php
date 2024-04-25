@@ -6,7 +6,7 @@
 @extends('layouts.main')
 @section('container')
         @if (session('message'))
-                <div class="alert alert-success main-content d-flex align-items-center" role="alert" style="font-weight: 600; border-radius: 0; padding: 0 100px;">
+                <div class="alert alert-success main-content d-flex align-items-center" role="alert" style="font-weight: 600; border-radius: 0; padding: 0 94px;">
                         <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1.1em" height="1.1em" viewBox="0 0 24 24">
                                 <path fill="#0D5C63" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/>
                         </svg>
@@ -15,67 +15,6 @@
         @endif
 
         <div class="container py-4 px-0 m-auto">
-                <div class="form-popup mx-auto" id="filter">
-                        <div class="position-relative" style="height: 3.6rem;">
-                        <button class="btn position-absolute end-0 p-0" style="border: none;" onclick="closeForm()" role="button">
-                                <img src="{{ url('photos/img_x.svg') }}" style="padding: 4px; color: #0D5C63; border-radius: 50%; background-color: #E7EFEF;">
-                        </button>
-                        </div>
-                        <div class="d-flex justify-content-between" style="color: #052023;">
-                        <h2 style="font-weight: 600; font-size: 24px;">Filter</h2>
-                        <button class="btn btn-outline-dark px-4 py-0" style="font-size: 14px;" onclick="#" role="button">
-                                Atur ulang
-                        </button>
-                        </div>
-                        <form class="form-container" action="/bengkel" method="get">
-                        <div class="container p-0">
-                                <div class="row mx-auto">
-                                <div class="col-md-12 px-0 border-bottom">
-                                        <label for="subdictrict" class="form-label-md">Lokasi Bengkel</label>
-                                        <select id="subdistrict" class="form-select form-control form-select-sm" name="subdistrict" placeholder="Wilayah">
-                                                <option value="">Semua Lokasi</option>
-                                                @foreach ($subdistrict as $sub)
-                                                        <option value="{{ $sub->id }}">{{ $sub->name }}</option>
-                                                @endforeach
-                                        </select>
-                                </div>
-                                <div class="col-md-12 px-0 border-bottom">
-                                        <legend class="form-label-md">Spesialisasi Bengkel</legend><br>
-                                        <div class="row row-cols-4 mx-auto">
-                                                @foreach ($specialty as $specialty)
-                                                <div class="col form-check">
-                                                        <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}">
-                                                        <label class="form-check-label" for="{{ $specialty->label }}">
-                                                                {{ $specialty->name }}
-                                                        </label>
-                                                </div>
-
-                                                @endforeach
-                                        </div>
-                                </div>
-                                <div class="col-md-12 px-0 mb-3">
-                                        <legend class="form-label-md">Merek Mobil</legend><br>
-                                        <div class="row row-cols-4 mx-auto">
-                                                @foreach ($brand as $brand)
-                                                <div class="col form-check">
-                                                        <input class="form-check-input" type="checkbox" name="brand[]" id="#" value="{{ $brand->id }}">
-                                                        <label class="form-check-label" for="{{ $brand->label }}">
-                                                                {{ $brand->name }}
-                                                        </label>
-                                                </div>
-                                                @endforeach
-                                        </div>
-                                </div>
-                                </div>
-                        </div>
-                        <div class="d-grid">
-                                <button class="btn btn-primary w-100 py-2" style="font-size: 14px;" role="button" type="submit">
-                                        Terapkan
-                                </button>
-                        </div>
-                        </form>
-                </div>
-
                 <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2>
 
                 <div class="d-flex justify-content-between py-3 px-0">
@@ -87,13 +26,81 @@
                                 </label>
                         </form>
 
-                        <button class="btn px-3 d-inline-flex align-items-center" style="background-color: #0D5C63; color: white; font-weight: 600; border-radius: 8px;" onclick="openForm()" type="#">
+                        <button class="btn px-3 d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#filterWorkshop" style="background-color: #0D5C63; color: white; font-weight: 600; border-radius: 8px;" type="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                                         <path fill="white" d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z"/>
                                 </svg>
                                 Filter
                         </button>
+
+                        <div class="modal fade" id="filterWorkshop" tabindex="-1" aria-labelledby="filterWorkshop" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content p-4">
+                                                <div class="modal-header p-0 border-0 d-flex justify-content-end">
+                                                        {{-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> --}}
+                                                        <button class="btn p-0" style="border: none;" data-bs-dismiss="modal" aria-label="Close" role="button">
+                                                                <img src="{{ url('photos/img_x.svg') }}" style="padding: 4px; color: #0D5C63; border-radius: 50%; background-color: #E7EFEF;">
+                                                        </button>
+                                                </div>
+                                                <div class="modal-body p-0 my-4">
+                                                        <div class="d-flex justify-content-between" style="color: #052023;">
+                                                        <h2 style="font-weight: 600; font-size: 24px;">Filter</h2>
+                                                                <button class="btn btn-outline-dark px-3 py-0" style="font-size: 14px;" onclick="#" role="button">
+                                                                        Atur ulang
+                                                                </button>
+                                                        </div>
+                                                        <form class="form-container m-0" action="/bengkel" method="get">
+                                                        <div class="container p-0 m-0">
+                                                                <div class="row mx-auto">
+                                                                <div class="col-md-12 px-0 pb-4 border-bottom">
+                                                                        <label for="subdictrict" class="form-label-md">Lokasi Bengkel</label>
+                                                                        <select id="subdistrict" class="form-select form-control form-select-sm" name="subdistrict" placeholder="Wilayah">
+                                                                                <option value="">Semua Lokasi</option>
+                                                                                @foreach ($subdistrict as $sub)
+                                                                                        <option value="{{ $sub->id }}">{{ $sub->name }}</option>
+                                                                                @endforeach
+                                                                        </select>
+                                                                </div>
+                                                                <div class="col-md-12 px-0 py-4 border-bottom">
+                                                                        <legend class="form-label-md mb-2">Spesialisasi Bengkel</legend>
+                                                                        <div class="row row-cols-4 mx-auto">
+                                                                                @foreach ($specialty as $specialty)
+                                                                                <div class="col form-check">
+                                                                                        <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}">
+                                                                                        <label class="form-check-label" for="{{ $specialty->label }}">
+                                                                                                {{ $specialty->name }}
+                                                                                        </label>
+                                                                                </div>
+                                                                                @endforeach
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-12 px-0 pt-4 pb-0">
+                                                                        <legend class="form-label-md mb-2">Merek Mobil</legend>
+                                                                        <div class="row row-cols-4 mx-auto">
+                                                                                @foreach ($brand as $brand)
+                                                                                <div class="col form-check">
+                                                                                        <input class="form-check-input" type="checkbox" name="brand[]" id="#" value="{{ $brand->id }}">
+                                                                                        <label class="form-check-label" for="{{ $brand->label }}">
+                                                                                                {{ $brand->name }}
+                                                                                        </label>
+                                                                                </div>
+                                                                                @endforeach
+                                                                        </div>
+                                                                </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer border-0 d-flex justify-content-end gap-2 p-0">
+                                                        <button class="btn btn-primary w-100 py-2" style="font-size: 14px;" role="button" type="submit">
+                                                                Terapkan
+                                                        </button>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
                 </div>
+
+                <!--- Admin --->
                 @if (Auth::user())
                         @if (Auth::user()->role_id == 1)
                         <hr style="height:1px;border-width:0;color:gray;background-color:gray">
@@ -167,18 +174,6 @@
 @endsection
 
 <style>
-        .form-popup {
-                display: none;
-                position: relative;
-                right: 0;
-                /* top: 0; */
-                background-color: white;
-                border-radius: 1em 0 0 1em;
-                z-index: 9;
-                width: 64%;
-                height: 100vh;
-                padding: 1% 4%;
-        }
         .col-md-12 {
                 padding: 1em 0 2em 0;
         }
@@ -204,11 +199,3 @@
                 background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23052023' d='m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5q0-1.875-1.312-3.187T9.5 5Q7.625 5 6.313 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14'/%3E%3C/svg%3E") center / contain no-repeat;
         }
 </style>
-<script>
-        function openForm() {
-                document.getElementById("filter").style.display = "block";
-        }
-        function closeForm() {
-                document.getElementById("filter").style.display = "none";
-        }
-</script>

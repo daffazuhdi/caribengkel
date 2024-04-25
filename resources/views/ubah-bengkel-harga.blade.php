@@ -28,7 +28,7 @@
         <h5 class="my-1" style="font-weight: 600;">Harga Layanan Bengkel</h5>
         <p>Isi informasi mengenai harga layanan bengkel di bawah ini untuk mendaftarkan bengkel baru.</p>
 
-        {{-- <form method="post" action="#" enctype="multipart/form-data">
+        <form method="post" action="/ubah-bengkel-harga/{{ $workshop->id }}" enctype="multipart/form-data">
             @csrf
             <div class="container p-0">
                 <div class="row">
@@ -39,43 +39,55 @@
                                 <table class="table">
                                     <thead class="table">
                                         <tr>
-                                        <th scope="col" style="background-color: #F3F9F9 !important; text-align: center; font-weight: 400;">Layanan</th>
-                                        <th scope="col" style="background-color: #F3F9F9 !important; text-align: center; font-weight: 400;">Harga</th>
+                                        <th scope="col" style="background-color: #F3F9F9 !important; text-align: center; font-weight: 400; font-size: 16px;">Layanan</th>
+                                        <th scope="col" style="background-color: #F3F9F9 !important; text-align: center; font-weight: 400; font-size: 16px;">Harga</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($service as $s)
                                             <tr>
-                                                <th scope="row">{{$s->name}}</th>
+                                                <th scope="row" style="font-weight: 600; font-size: 16px;">{{$s->name}}</th>
                                                 <td>
-                                                    <input type="hidden" id="workshop_id" name="workshop_id[]" value='{{$workshop_id}}'>
+                                                    <input type="hidden" id="workshop_id" name="workshop_id[]" value='{{$workshop->id}}'>
                                                     <input type="hidden" id="service_id" name="service_id[]" value='{{$s->id}}'>
-                                                    <input type="phone" class="form-control form-control-sm" name="price[]" id="service"
-                                                    placeholder="Rp. " value="">
+                                                    @php
+                                                        $trigger = 0;
+                                                    @endphp
+                                                    @foreach ($workshop->prices as $ws)
+                                                        @if ($ws->service_id == $s->id)
+                                                            <input type="phone" class="form-control form-control-sm" name="price[]" id="service"
+                                                            placeholder="Rp. " value="{{ $ws->price }}">
+                                                           @php
+                                                               $trigger++;
+                                                           @endphp
+                                                        @endif
+                                                    @endforeach
+                                                    @if ($trigger == 0)
+                                                        <input type="phone" class="form-control form-control-sm" name="price[]" id="service"
+                                                        placeholder="Rp. " value="">
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    </table>
-
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tombol d-flex justify-content-between">
-                <div class="d-flex justify-content-end mt-4" style="margin-bottom: 16%;">
-                    <a href="/tambah-bengkel-detail-back/{{$workshop_id}}" class="btn btn px-3" style="font-size: 14px; background:transparent ;color:#0D5C63; font-weight: 500;">
-                        Kembali
+            <div class="tombol d-flex justify-content-end">
+                {{-- <div class="d-flex justify-content-end mt-4" style="margin-bottom: 16%;">
+                    <a href="#">
                     </a>
-                </div>
+                </div> --}}
                 <div class="d-flex justify-content-end mt-4" style="margin-bottom: 16%;">
                     <button class="btn btn-primary px-3" style="font-size: 14px;">
                         Selanjutnya
                     </button>
                 </div>
             </div>
-        </form> --}}
+        </form>
     </div>
 </div>
 @endsection

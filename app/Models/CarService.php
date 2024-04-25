@@ -9,7 +9,7 @@ class CarService extends Model
 {
     use HasFactory;
 
-    public function car(){
+    public function car() {
         return $this->belongsTo(Car::class);
     }
 
@@ -17,4 +17,8 @@ class CarService extends Model
         'car_id',
         'service_date'
     ];
+
+    public static function index($id) {
+        return CarService::where('car_id', $id)->orderBy('service_date', 'desc')->get();
+    }
 }

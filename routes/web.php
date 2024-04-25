@@ -60,9 +60,11 @@ Route::get('/tambah-bengkel-detail-back/{id}', [BengkelController::class, 'remov
 
 Route::post('/tambah-bengkel-detail-harga', [BengkelController::class, 'addWorkshopPrice']);
 
-Route::get('/ubah-bengkel-{id}', [BengkelController::class, 'edit']);
-Route::post('/ubah-bengkel-{id}', [BengkelController::class, 'update']);
-Route::get('/ubah-bengkel-detail-harga-{id}', [BengkelController::class, 'updatePrice']);
+Route::get('/ubah-bengkel/{id}', [BengkelController::class, 'edit']);
+Route::post('/ubah-bengkel/{id}', [BengkelController::class, 'update']);
+Route::post('/ubah-bengkel-detail/{id}', [BengkelController::class, 'updateWorkshopDetail']);
+Route::post('/ubah-bengkel-harga/{id}', [BengkelController::class, 'updateWorkshopPrice']);
+// Route::get('/ubah-bengkel-detail-harga-{id}', [BengkelController::class, 'updatePrice']);
 
 Route::get('/tentangkami',[TentangKamiController::class, 'index']);
 
@@ -81,6 +83,7 @@ Route::get('/ubah-profil', [UserController::class, 'detail']);
 
 Route::get('/kendaraan-{id}', [VehicleController::class, 'view']);
 Route::post('/kendaraan-{id}', [VehicleController::class, 'update'])->name('vehicle.update');
+Route::post('/kendaraan/{id}', [VehicleController::class, 'delete']);
 
 Route::get('/tambah-kendaraan', [VehicleController::class, 'showToAdd']);
 Route::post('/tambah-kendaraan', [VehicleController::class, 'store']);

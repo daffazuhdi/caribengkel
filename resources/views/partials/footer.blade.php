@@ -33,9 +33,9 @@
                 <li class="nav-item" id="menu">
                     <a class="nav-link text-white" href="#">Tentang Kami</a>
                 </li>
-                <li class="nav-item" id="menu">
+                {{-- <li class="nav-item" id="menu">
                     <a class="nav-link text-white" href="#">Bantuan</a>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <div class="img-container d-flex justify-content-between">

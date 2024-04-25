@@ -28,7 +28,7 @@
         <h5 class="my-1" style="font-weight: 600;">Spesialisasi Dasar Bengkel</h5>
         <p>Isi informasi mengenai spesialisasi bengkel di bawah ini untuk mendaftarkan bengkel baru.</p>
 
-        <form method="post" action="#" enctype="multipart/form-data">
+        <form method="post" action="/ubah-bengkel-detail/{{ $workshop->id }}" enctype="multipart/form-data">
             @csrf
             {{-- <input type="hidden" id="workshop_id" name="workshop_id" value='{{$id}}'> --}}
             <div class="container p-0">
@@ -42,15 +42,21 @@
                             <div class="row row-cols-4 mx-auto">
                                 @foreach ($specialty as $specialty)
                                 <div class="col form-check py-1">
-                                    {{-- @foreach ($workshop->specialties as $sp) --}}
-                                    {{-- @for ($s = $sp->min('id'); $s <= $sp->max('id'); $s++) --}}
-                                        {{-- @if($specialty->id == $sp->id) --}}
-                                            {{-- <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}" checked>
-                                        @else --}}
-                                            <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}">
-                                        {{-- @endif --}}
-                                    {{-- @endfor --}}
-                                    {{-- @endforeach --}}
+                                    @php
+                                        $trigger = 0;
+                                    @endphp
+                                    @foreach ($workshop->specialties as $sp)
+                                        @if($specialty->id === $sp->id)
+                                            @php
+                                                $trigger++;
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                    @if($trigger !== 0)
+                                        <input class="form-check-input" type="checkbox" name="specialty[]" id="" value="{{ $specialty->id }}" checked>
+                                    @else
+                                        <input class="form-check-input" type="checkbox" name="specialty[]" id="" value="{{ $specialty->id }}">
+                                    @endif
                                     <label class="form-check-label" for="{{ $specialty->label }}">
                                         {{ $specialty->name }}
                                     </label>
@@ -67,13 +73,21 @@
                             <div class="row row-cols-4 mx-auto">
                                 @foreach ($facility as $f)
                                 <div class="col form-check py-1">
-                                    {{-- @foreach ($workshop->facilities as $wf)
-                                        @if ($f->id == $wf->facility_id)
-                                            <input class="form-check-input" type="checkbox" name="facility[]" id="#" value="{{ $f->id }}" checked>
-                                        @else --}}
-                                            <input class="form-check-input" type="checkbox" name="facility[]" id="#" value="{{ $f->id }}">
-                                        {{-- @endif
-                                    @endforeach --}}
+                                    @php
+                                        $trigger = 0;
+                                    @endphp
+                                    @foreach ($workshop->facilities as $wf)
+                                        @if ($f->id == $wf->id)
+                                            @php
+                                              $trigger++;
+                                            @endphp
+                                       @endif
+                                    @endforeach
+                                    @if($trigger !== 0)
+                                        <input class="form-check-input" type="checkbox" name="facility[]" id="#" value="{{ $f->id }}" checked>
+                                    @else
+                                        <input class="form-check-input" type="checkbox" name="facility[]" id="#" value="{{ $f->id }}">
+                                    @endif
                                     <label class="form-check-label" for="{{ $f->label }}">
                                         {{ $f->name }}
                                     </label>
@@ -90,7 +104,22 @@
                             <div class="row row-cols-4 mx-auto">
                                 @foreach ($car_brand as $cb)
                                     <div class="col form-check py-1">
-                                        <input class="form-check-input" type="checkbox" name="car_brand[]" id="#" value="{{ $cb->id }}">
+                                        @php
+                                            $trigger = 0;
+                                        @endphp
+                                        @foreach ($workshop->car_brands as $wc)
+                                            @if ($cb->id == $wc->id)
+                                                @php
+                                                    $trigger++;
+                                                @endphp
+                                            @endif
+                                        @endforeach
+                                        @if($trigger !== 0)
+                                            <input class="form-check-input" type="checkbox" name="car_brand[]" id="#" value="{{ $cb->id }}" checked>
+                                        @else
+                                            <input class="form-check-input" type="checkbox" name="car_brand[]" id="#" value="{{ $cb->id }}">
+                                        @endif
+                                        {{-- <input class="form-check-input" type="checkbox" name="car_brand[]" id="#" value="{{ $cb->id }}"> --}}
                                         <label class="form-check-label" for="{{ $cb->label }}">
                                             {{ $cb->name }}
                                         </label>
@@ -113,50 +142,78 @@
                                         <tr>
                                         <th scope="row" style="text-align: center; padding: 12px;">Senin</th>
                                         <td>
-                                            <input type="phone" class="form-control form-control-sm" name="day[]" id="senin"
-                                            placeholder="Jam" value="{{ old('senin') }}">
+                                            @foreach ($workshop->workhours as $ww)
+                                                @if ($ww->day_id == 1)
+                                                    <input type="phone" class="form-control form-control-sm" name="day[]" id="senin"
+                                                    placeholder="Jam" value="{{$ww->working_hour}}">
+                                                @endif
+                                            @endforeach
                                         </td>
                                         </tr>
                                         <tr>
                                         <th scope="row" style="text-align: center; padding: 12px;">Selasa</th>
                                         <td>
-                                            <input type="phone" class="form-control form-control-sm" name="day[]" id="selasa"
-                                            placeholder="Jam" value="{{ old('selasa') }}">
+                                            @foreach ($workshop->workhours as $ww)
+                                                @if ($ww->day_id == 2)
+                                                    <input type="phone" class="form-control form-control-sm" name="day[]" id="selasa"
+                                                    placeholder="Jam" value="{{$ww->working_hour}}">
+                                                @endif
+                                            @endforeach
                                         </td>
                                         </tr>
                                         <tr>
                                         <th scope="row" style="text-align: center; padding: 12px;">Rabu</th>
                                         <td>
-                                            <input type="phone" class="form-control form-control-sm" name="day[]" id="rabu"
-                                            placeholder="Jam" value="{{ old('rabu') }}">
+                                            @foreach ($workshop->workhours as $ww)
+                                                @if ($ww->day_id == 3)
+                                                    <input type="phone" class="form-control form-control-sm" name="day[]" id="rabu"
+                                                    placeholder="Jam" value="{{$ww->working_hour}}">
+                                                @endif
+                                            @endforeach
                                         </td>
                                         </tr>
                                         <tr>
                                         <th scope="row" style="text-align: center; padding: 12px;">Kamis</th>
                                         <td>
-                                            <input type="phone" class="form-control form-control-sm" name="day[]" id="kamis"
-                                            placeholder="Jam" value="{{ old('kamis') }}">
+                                            @foreach ($workshop->workhours as $ww)
+                                                @if ($ww->day_id == 4)
+                                                    <input type="phone" class="form-control form-control-sm" name="day[]" id="kamis"
+                                                    placeholder="Jam" value="{{$ww->working_hour}}">
+                                                @endif
+                                            @endforeach
                                         </td>
                                         </tr>
                                         <tr>
                                         <th scope="row" style="text-align: center; padding: 12px;">Jumat</th>
                                         <td>
-                                            <input type="phone" class="form-control form-control-sm" name="day[]" id="jumat"
-                                            placeholder="Jam" value="{{ old('jumat') }}">
+                                            @foreach ($workshop->workhours as $ww)
+                                                @if ($ww->day_id == 5)
+                                                    <input type="phone" class="form-control form-control-sm" name="day[]" id="jumat"
+                                                    placeholder="Jam" value="{{$ww->working_hour}}">
+                                                @endif
+                                            @endforeach
                                         </td>
                                         </tr>
                                         <tr>
                                         <th scope="row" style="text-align: center; padding: 12px;">Sabtu</th>
                                         <td>
-                                            <input type="phone" class="form-control form-control-sm" name="day[]" id="sabtu"
-                                            placeholder="Jam" value="{{ old('sabtu') }}">
+                                            @foreach ($workshop->workhours as $ww)
+                                                @if ($ww->day_id == 6)
+                                                    <input type="phone" class="form-control form-control-sm" name="day[]" id="sabtu"
+                                                    placeholder="Jam" value="{{$ww->working_hour}}">
+                                                @endif
+                                            @endforeach
                                         </td>
                                         </tr>
                                         <tr>
                                         <th scope="row" style="text-align: center; padding: 12px;">Minggu</th>
                                         <td>
-                                            <input type="phone" class="form-control form-control-sm" name="day[]" id="minggu"
-                                            placeholder="Jam" value="{{ old('minggu') }}">
+                                            @foreach ($workshop->workhours as $ww)
+                                                @if ($ww->day_id == 7)
+                                                    <input type="phone" class="form-control form-control-sm" name="day[]" id="minggu"
+                                                    placeholder="Jam" value="{{$ww->working_hour}}">
+                                                @endif
+                                            @endforeach
                                         </td>
                                         </tr>
                                     </tbody>
@@ -167,9 +224,9 @@
                     </div>
                 </div>
             </div>
-            <div class="tombol d-flex justify-content-between">
+            {{-- <div class="tombol d-flex justify-content-between"> --}}
                 {{-- <div class="d-flex justify-content-end mt-4" style="margin-bottom: 16%;">
-                    <a href="/tambah-bengkel-back/{{$id}}" class="btn btn px-3" style="font-size: 14px; background:transparent ;color:#0D5C63; font-weight: 500;">
+                    <a href="#" class="btn btn px-3" style="font-size: 14px; background:transparent ;color:#0D5C63; font-weight: 500;">
                         Kembali
                     </a>
                 </div> --}}
@@ -178,7 +235,7 @@
                         Selanjutnya
                     </button>
                 </div>
-            </div>
+            {{-- </div> --}}
         </form>
     </div>
 </div>

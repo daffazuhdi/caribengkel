@@ -19,7 +19,7 @@ return new class extends Migration
             // $table->foreignId('car_brand_id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('car_model_id')->onUpdate('cascade')->onDelete('cascade');
             $table->string('license_plate');
-            // $table->date('last_service_date');
+            // $table->Integer('is_active')->default('1');
             $table->rememberToken();
             $table->timestamps();
         });

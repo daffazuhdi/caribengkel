@@ -135,6 +135,13 @@ select option {
     background-color: #B00020;
 }
 
+.btn-outline-danger, .btn-outline-danger:hover, .btn-outline-danger:active, .btn-outline-danger:visited, .btn-outline-danger:focus {
+    background-color: white !important;
+    border: none;
+    color: #B00020;
+    font-weight: 500;
+}
+
 button.rounded-pill.active {
     font-size: 18px;
     font-weight: 600;

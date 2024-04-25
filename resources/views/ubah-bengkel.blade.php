@@ -30,7 +30,7 @@
 
         {{-- {{ $workshop->id }} --}}
 
-        <form method="post" action="/ubah-bengkel-{{ $workshop->id }}" enctype="multipart/form-data">
+        <form method="post" action="/ubah-bengkel/{{ $workshop->id }}" enctype="multipart/form-data">
             @csrf
             <div class="container p-0">
                 <div class="row">

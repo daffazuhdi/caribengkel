@@ -28,11 +28,14 @@ class VehicleController extends Controller
     }
 
     public function view($id) {
+        // return CarService::index($id);
         $car = Car::find($id);
         $car_model = CarModel::all();
         $car_brand = CarBrand::all();
+        $services = CarService::index($id);
+        $no = 1;
 
-        return view('ubah-kendaraan', compact('car', 'car_model', 'car_brand'), ['title' => "Ubah Kendaraan"]);
+        return view('ubah-kendaraan', compact('car', 'car_model', 'car_brand', 'services', 'no'), ['title' => "Ubah Kendaraan"]);
     }
 
     public function store(StoreRequest $request) {
@@ -106,6 +109,13 @@ class VehicleController extends Controller
         $car_service->save();
 
         return redirect('/profil');
+    }
+
+    public function delete($id) {
+        // return $id;
+        Car::deleteCar($id);
+
+        return redirect('/profil')->with('message', 'Kendaraan berhasil dihapus!');
     }
 
     public function getModels($id) {

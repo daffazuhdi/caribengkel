@@ -54,11 +54,11 @@
               <a href="{{ url('/profil') }}">
                 <div class="hoverable">Profil Saya</div>
               </a>
-              <a href="#">
+              {{-- <a href="#">
                 <div class="hoverable">
                   Notifikasi
                 </div>
-              </a>
+              </a> --}}
               <form action="/logout" method="post" class="m-0">
                 @csrf
                 <button type="submit" class="btn btn-link m-0 p-0 hoverable text-start" style="text-decoration: none; font-weight: 500; width: 100%;">

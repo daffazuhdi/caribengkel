@@ -38,7 +38,7 @@ class HomePageController extends Controller
 
         $specialty = Specialty::All();
 
-        $countWorkshop = Workshop::count('id');
+        $countWorkshop = Workshop::where('is_active', '1')->count('id');
         $countCustomer = Rating::groupBy('user_id')->count('id');
         $countUser = User::count('id');
         $countBrand = CarBrand::count('id');
