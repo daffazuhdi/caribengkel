@@ -18,43 +18,50 @@ class SpecialtySeeder extends Seeder
         Specialty::create([
             'id' => 1,
             'name' => 'AC',
-            'label' => 'ac'
+            'label' => 'ac',
+            'logo' => 'ac.svg'
         ]);
 
         Specialty::create([
             'id' => 2,
             'name' => 'Servis Kaki-kaki',
-            'label' => 'kakikaki'
+            'label' => 'kakikaki',
+            'logo' => 'kaki-kaki.svg'
         ]);
 
         Specialty::create([
             'id' => 3,
             'name' => 'Oli & Mesin',
-            'label' => 'olimesin'
+            'label' => 'olimesin',
+            'logo' => 'oli.svg'
         ]);
 
         Specialty::create([
             'id' => 4,
             'name' => 'Lampu',
-            'label' => 'lampu'
+            'label' => 'lampu',
+            'logo' => 'lampu.svg'
         ]);
 
         Specialty::create([
             'id' => 5,
             'name' => 'Ban',
-            'label' => 'ban'
+            'label' => 'ban',
+            'logo' => 'ban.svg'
         ]);
 
         Specialty::create([
             'id' => 6,
             'name' => 'Body & Cat',
-            'label' => 'bodycat'
+            'label' => 'bodycat',
+            'logo' => 'body.svg'
         ]);
 
         Specialty::create([
             'id' => 7,
             'name' => 'Jok Kulit & Interior',
-            'label' => 'jokinterior'
+            'label' => 'jokinterior',
+            'logo' => 'jok.svg'
         ]);
     }
 }

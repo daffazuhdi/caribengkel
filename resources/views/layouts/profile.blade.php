@@ -30,24 +30,25 @@
   </head>
   <body>
     @include('partials.navbar')
+    @yield('message')
     <div class="container py-4 px-0 m-auto" style="min-height: 70vh;">
-        <div class="d-flex flex-wrap justify-content-start gap-4 pb-4">
-            <div class="my-1">
-                {{-- ubah route foto ke storage link --}}
-                <img src="{{ url('storage/profiles/'.Auth::user()->photo) }}" style="border-radius: 50%; object-fit: cover; width: 110px; height: 110px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);" class="" alt="{{ Auth::user()->name }}">
-            </div>
-            <div class="my-1">
-                <h5 style="font-weight: 600;">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h5>
-                <h6 style="font-size: 16px; color: #303030;">{{ Auth::user()->email }}</h6>
-                <button class="btn btn-outline-dark px-3 mt-2">
-                    <a href="{{ url('/ubah-profil') }}" style="color: #052023">Ubah Profil</a>
-                </button>
-            </div>
-        </div>
-        @if (Auth::user()->role_id == 2)
-          <hr style="height:0.8px;border-width:0;color:gray;background-color:gray;margin: 2% 0;">
-        @endif
-        @yield('content')
+      <div class="d-flex flex-wrap justify-content-start gap-4 pb-4">
+          <div class="my-1">
+              {{-- ubah route foto ke storage link --}}
+              <img src="{{ url('storage/profiles/'.Auth::user()->photo) }}" style="border-radius: 50%; object-fit: cover; width: 110px; height: 110px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);" class="" alt="{{ Auth::user()->name }}">
+          </div>
+          <div class="my-1">
+              <h5 style="font-weight: 600;">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h5>
+              <h6 style="font-size: 16px; color: #303030;">{{ Auth::user()->email }}</h6>
+              <button class="btn btn-outline-dark px-3 mt-2">
+                  <a href="{{ url('/ubah-profil') }}" style="color: #052023">Ubah Profil</a>
+              </button>
+          </div>
+      </div>
+      @if (Auth::user()->role_id == 2)
+        <hr style="height:0.8px;border-width:0;color:gray;background-color:gray;margin: 2% 0;">
+      @endif
+      @yield('content')
     </div>
     @include('partials.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

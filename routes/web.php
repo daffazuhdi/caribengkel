@@ -75,7 +75,7 @@ Route::get('/bantuan', function () {
 });
 
 Route::get('/bengkelDetail/{id}',[BengkelDetailController::class, 'test']);
-Route::post('/bengkel-detail-{id}', [BengkelController::class, 'delete']);
+Route::post('/bengkel-detail/{id}', [BengkelController::class, 'delete']);
 
 Route::get('/profil', [UserController::class, 'viewProfile'])->name('profile.view');
 Route::post('/profil', [UserController::class, 'update'])->name('profile.update');

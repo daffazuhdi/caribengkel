@@ -22,12 +22,16 @@ class BengkelController extends Controller
 {
     public function showAll(Request $req)
     {
+        // return $req;
         $reqspec = $req->specialty;
         $reqbrand = $req->brand;
         $search = $req->search;
         $subdistrict = Subdistrict::all();
         $specialty = Specialty::all();
         $brand = CarBrand::all();
+        $filterSubdistrict = null;
+        $filterSpecialty = null;
+        $filterBrand = null;
 
         $query = Workshop::select('workshops.*','specialties.name AS specialty_name',
                                     'specialty_workshop.specialty_id', 'car_brand_workshop.car_brand_id',
@@ -50,20 +54,23 @@ class BengkelController extends Controller
 
         if(isset($req->subdistrict) && ($req->subdistrict != null)){
             $query = $query->where('subdistrict_id', $req->subdistrict);
+            $filterSubdistrict = $req->subdistrict;
         }
 
         if(isset($req->specialty) && ($req->specialty != null)){
             $query = $query->whereIn('specialty_id', $reqspec);
+            $filterSpecialty = $req->specialty;
         }
 
         if (isset($req->brand) && ($req->brand != null)){
             $query = $query->whereIn('car_brand_id', $reqbrand);
+            $filterBrand = $req->brand;
         }
 
         $limit = 16;
         $workshop = $query->where('workshops.is_active', '=', '1')->groupBy('workshops.id')->get();
 
-        return view('bengkel', compact('search', 'workshop', 'subdistrict', 'specialty', 'brand'),
+        return view('bengkel', compact('search', 'workshop', 'subdistrict', 'specialty', 'brand', 'filterSubdistrict', 'filterSpecialty', 'filterBrand'),
                     ['title' => "Bengkel"]
         );
     }

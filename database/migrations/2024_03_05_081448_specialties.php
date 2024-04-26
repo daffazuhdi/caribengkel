@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('label');
+            $table->string('logo');
             $table->rememberToken();
             $table->timestamps();
         });

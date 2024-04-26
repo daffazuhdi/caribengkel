@@ -76,7 +76,7 @@ class VehicleController extends Controller
             return redirect()->route('home');
         }
         else {
-            return redirect()->route('profile.view');
+            return redirect()->route('profile.view')->with('message', 'Kendaraan berhasil ditambahkan!');
         }
     }
 
@@ -108,7 +108,7 @@ class VehicleController extends Controller
 
         $car_service->save();
 
-        return redirect('/profil');
+        return redirect('/profil')->with('message', 'Kendaraan berhasil diperbarui!');
     }
 
     public function delete($id) {

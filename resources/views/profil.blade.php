@@ -1,5 +1,15 @@
 @section('title', $title)
 @extends('layouts.profile')
+@section('message')
+    @if (session('message'))
+        <div class="alert alert-success main-content d-flex align-items-center" role="alert" style="font-weight: 600; border-radius: 0; padding: 0 94px;">
+            <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1.1em" height="1.1em" viewBox="0 0 24 24">
+                <path fill="#0D5C63" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/>
+            </svg>
+            {{ session('message') }}
+        </div>
+    @endif
+@endsection
 @if (Auth::user()->role_id == 2)
     @section('content')
         <div class="d-flex justify-content-between">
@@ -23,7 +33,7 @@
             <div class="tab-pane fade show active px-0 py-4" id="review" role="tabpanel" aria-labelledby="review-tab" style="padding: 1%">
                 <div class="row row-cols-1 row-cols-md-3">
                     @foreach ($rating as $rating)
-                    <div class="col">
+                    <div class="col mb-4">
                     <div class="card h-100">
                         <div class="d-flex justify-content-right border-bottom align-items-center p-4" style="background: #F3F9F9;">
                             <div class="" style="padding-right: 1em;">

@@ -37,27 +37,30 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content p-4">
                                                 <div class="modal-header p-0 border-0 d-flex justify-content-end">
-                                                        {{-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> --}}
                                                         <button class="btn p-0" style="border: none;" data-bs-dismiss="modal" aria-label="Close" role="button">
                                                                 <img src="{{ url('photos/img_x.svg') }}" style="padding: 4px; color: #0D5C63; border-radius: 50%; background-color: #E7EFEF;">
                                                         </button>
                                                 </div>
                                                 <div class="modal-body p-0 my-4">
+                                                        <form class="form-container m-0" action="/bengkel" method="get">
                                                         <div class="d-flex justify-content-between" style="color: #052023;">
-                                                        <h2 style="font-weight: 600; font-size: 24px;">Filter</h2>
-                                                                <button class="btn btn-outline-dark px-3 py-0" style="font-size: 14px;" onclick="#" role="button">
+                                                                <h2 style="font-weight: 600; font-size: 24px;">Filter</h2>
+                                                                <button class="btn btn-outline-dark px-3 py-0" style="font-size: 14px;" type="button" onclick="uncheckAll()">
                                                                         Atur ulang
                                                                 </button>
                                                         </div>
-                                                        <form class="form-container m-0" action="/bengkel" method="get">
                                                         <div class="container p-0 m-0">
                                                                 <div class="row mx-auto">
                                                                 <div class="col-md-12 px-0 pb-4 border-bottom">
                                                                         <label for="subdictrict" class="form-label-md">Lokasi Bengkel</label>
                                                                         <select id="subdistrict" class="form-select form-control form-select-sm" name="subdistrict" placeholder="Wilayah">
-                                                                                <option value="">Semua Lokasi</option>
+                                                                            <option value="">Semua Lokasi</option>
                                                                                 @foreach ($subdistrict as $sub)
-                                                                                        <option value="{{ $sub->id }}">{{ $sub->name }}</option>
+                                                                                    @if ($sub->id == $filterSubdistrict)
+                                                                                        <option value="{{ $sub->id }}" class="subd"selected>{{ $sub->name }}
+                                                                                    @else
+                                                                                        <option value="{{ $sub->id }}">{{ $sub->name }}
+                                                                                    @endif
                                                                                 @endforeach
                                                                         </select>
                                                                 </div>
@@ -65,12 +68,29 @@
                                                                         <legend class="form-label-md mb-2">Spesialisasi Bengkel</legend>
                                                                         <div class="row row-cols-4 mx-auto">
                                                                                 @foreach ($specialty as $specialty)
-                                                                                <div class="col form-check">
-                                                                                        <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}">
-                                                                                        <label class="form-check-label" for="{{ $specialty->label }}">
-                                                                                                {{ $specialty->name }}
+                                                                                    <div class="col form-check">
+                                                                                        @php
+                                                                                            $trigger = 0;
+                                                                                        @endphp
+                                                                                        @if ($filterSpecialty != null)
+                                                                                            @foreach ($filterSpecialty as $fspe)
+                                                                                                @if ($specialty->id == $fspe)
+                                                                                                    @php
+                                                                                                        $trigger++;
+                                                                                                    @endphp
+                                                                                                @endif
+                                                                                            @endforeach
+                                                                                        @endif
+
+                                                                                        @if ($trigger != 0)
+                                                                                            <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}" checked>
+                                                                                        @else
+                                                                                            <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}">
+                                                                                        @endif
+                                                                                        <label class="form-check-label" for="{{ $specialty->label }}" >
+                                                                                            {{ $specialty->name }}
                                                                                         </label>
-                                                                                </div>
+                                                                                    </div>
                                                                                 @endforeach
                                                                         </div>
                                                                 </div>
@@ -79,7 +99,23 @@
                                                                         <div class="row row-cols-4 mx-auto">
                                                                                 @foreach ($brand as $brand)
                                                                                 <div class="col form-check">
+                                                                                    @php
+                                                                                        $trigger = 0;
+                                                                                    @endphp
+                                                                                    @if ($filterBrand != null)
+                                                                                        @foreach ($filterBrand as $fbra)
+                                                                                            @if ($brand->id == $fbra)
+                                                                                                @php
+                                                                                                    $trigger++;
+                                                                                                @endphp
+                                                                                            @endif
+                                                                                        @endforeach
+                                                                                    @endif
+                                                                                    @if ($trigger != 0)
+                                                                                        <input class="form-check-input" type="checkbox" name="brand[]" id="#" value="{{ $brand->id }}" checked>
+                                                                                    @else
                                                                                         <input class="form-check-input" type="checkbox" name="brand[]" id="#" value="{{ $brand->id }}">
+                                                                                    @endif
                                                                                         <label class="form-check-label" for="{{ $brand->label }}">
                                                                                                 {{ $brand->name }}
                                                                                         </label>
@@ -172,6 +208,17 @@
                 </div> --}}
         </div>
 @endsection
+<script>
+    //function buat reset filter
+    function uncheckAll() {
+        let inputs = document.querySelectorAll('.form-check-input');
+        var options = document.getElementById("subdistrict");
+        options.selectedIndex = 0;
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].checked = false;
+        }
+    }
+</script>
 
 <style>
         .col-md-12 {
