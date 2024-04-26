@@ -44,12 +44,12 @@
       <h6 class="mb-4">Hubungkan Kamu dengan Bengkel Terbaik</h6>
         <div class="row align-items-center">
           <div class="col-12 col-lg-6">
-            <p class="text-start" style="font-size: 14px">CariBengkel merupakan website yang menghubungkan kamu dengan <br> bengkel-bengkel terbaik di bidangnya di daerah Tangerang Selatan. </p>
-            <p class="text-start" style="font-size: 14px" >Kami berupaya untuk memudahkan pengguna kami dalam mencari <br> bengkel, berdasarkan lokasi, spesialisasi, merek mobil yang dikerjakan <br> oleh bengkel tersebut.</p>
+            <p class="text-start" style="font-size: 14px">CariBengkel merupakan website yang menghubungkan kamu dengan bengkel-bengkel terbaik di bidangnya di daerah Tangerang Selatan. </p>
+            <p class="text-start" style="font-size: 14px" >Kami berupaya untuk memudahkan pengguna kami dalam mencari bengkel, berdasarkan lokasi, spesialisasi, merek mobil yang dikerjakan oleh bengkel tersebut.</p>
             <button class="btn btn-primary d-flex justify-content-start"><a href="" style="text-decoration: none; color: #FFFFFF;">Mulai Cari Bengkel <img style="width: 20px; height: 20px;" src="{{ url('photos/arrow-right.svg') }}" alt=""></a></button>
           </div>
           <div class="col-12 col-lg-6">
-            <img class="float-lg-end" style="height: 300px" src="{{ url('photos/img_tentangkami.svg') }}" alt="">
+            <img class="float-lg-end img-tentangkami img-fluid" style="height: 300px" src="{{ url('photos/img_tentangkami.svg') }}" alt="">
           </div>
         </div>
     </div>
@@ -58,11 +58,11 @@
   <section>
     <div class="container py-80px">
       <div class="row align-items-baseline justify-content-between">
-        <div class="col-6">
+        <div class="col-lg-6 col-sm-12">
             <h6>Bengkel dengan Ulasan Teratas</h6>
-            <p style="font-size: 14px">Banyak orang yang memberikan ulasan bagus untuk bengkel ini.</p>
+            <p class="sub-bengkelterbaik" style="font-size: 14px">Banyak orang yang memberikan ulasan bagus untuk bengkel ini.</p>
         </div>
-        <div class="col d-flex justify-content-end">
+        <div class="col justify-content-end d-none d-md-flex">
           <button class="btn btn-primary d-flex justify-content-start"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #FFFFFF;">Lihat Semua</a></button>
         </div>
       </div>
@@ -104,6 +104,9 @@
         </a>
         </div>
         @endforeach
+      </div>
+      <div class="col d-block d-md-none">
+        <button class="btn btn-primary"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #FFFFFF;">Lihat Semua</a></button>
       </div>
     </div>
   </section>

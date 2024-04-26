@@ -36,11 +36,28 @@
             </div>
             @else
             <div class="d-grid gap-4">
-                <button type="button" class="btn btn-primary py-1" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #0D5C63; border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:8rem">
+                <button type="button" class="btn btn-primary py-1" data-bs-toggle="modal" data-bs-target="#loginFirst" style="background-color: #0D5C63; border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:8rem">
                     Tulis Ulasan
-                  </button>
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="loginFirst" tabindex="-1" aria-labelledby="loginFirst" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content p-4">
+                            <div class="modal-header p-0 border-0">
+                                <h5 class="modal-title" style="font-weight: 600;" id="deleteCar">Masuk Akun Terlebih Dahulu</h5>
+                            </div>
+                            <div class="modal-body p-0 mt-1 mb-4">
+                                <p class="m-0">Apabila ingin membuat ulasan, silahkan masuk akun terlebih dahulu.</p>
+                            </div>
+                            <div class="modal-footer border-0 d-flex justify-content-end gap-2 p-0">
+                                <button type="button" class="btn btn-outline-dark px-3" data-bs-dismiss="modal">Batal</button>
+                                <a href="/masuk"><button type="button" class="btn btn-primary">Masuk</button></a>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+
+                  {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -48,15 +65,15 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            Apabila kamu ingin membuat ulasan, silahkan masuk akun terlebih dahulu.
+                            Apabila ingin membuat ulasan, silahkan masuk akun terlebih dahulu.
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-outline-dark px-3" data-bs-dismiss="modal">Batal</button>
                           <a href="/masuk"><button type="button" class="btn btn-primary">Masuk</button></a>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
             </div>
             @endif
             <div class="d-grid gap-4">
