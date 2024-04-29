@@ -8,7 +8,7 @@
       <form class="w-50" role="search" action="/bengkel?search={{ $search }}" METHOD="get">
         <div class="input-group">
           <span class="input-group-text bg-white border-end-0"> <img style="width: 16px; height: 16px;" src="{{ url('photos/search.svg') }}" alt="Search"> </span>
-          <input class="form-control form-control-sm border-start-0 ps-0" type="search" placeholder="Nama, lokasi, atau spesialisasi bengkel" aria-label="Search" name="search" value="">
+          <input class="form-control form-control-sm border-start-0 ps-0" type="search" placeholder="Nama, lokasi, merek mobil, atau spesialisasi bengkel" aria-label="Search" name="search" value="">
         </div>
       </form>
     </div>
@@ -169,7 +169,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-lg-4 mb-3  d-grid gap-5">
+          <div class="col-12 col-lg-4 mb-3 d-grid gap-5">
             <div class="card border-0 px-4 py-3 mx-4" style="background-color: #F3F9F9">
               <div class="card-body text-left">
                 <img class="mb-3" style="width: 54px; height: 54px;" src="{{ url('photos/notification-benefit.png') }}" alt="">

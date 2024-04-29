@@ -28,19 +28,60 @@ class WriteReviewController extends Controller
         // return $req;
         $user_id = auth()->user()->id;
         $workshop_id = $id;
-        $specialty = Specialty::where('name', $req->specialty)->first();
         $rate = $req->rate;
         $comment = $req->comment;
 
-        DB::table('ratings')->insert([
-            'user_id' => $user_id,
-            'workshop_id' => $id,
-            'specialty_id' => $specialty->id,
-            'rate' => $rate,
-            'comment' => $comment,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
+        if ($req->specialty != 'null') {
+            $specialty = Specialty::where('name', $req->specialty)->first();
+
+            if ($comment != null) {
+                DB::table('ratings')->insert([
+                    'user_id' => $user_id,
+                    'workshop_id' => $id,
+                    'specialty_id' => $specialty->id,
+                    'rate' => $rate,
+                    'comment' => $comment,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+            }
+
+            else {
+                DB::table('ratings')->insert([
+                    'user_id' => $user_id,
+                    'workshop_id' => $id,
+                    'specialty_id' => $specialty->id,
+                    'rate' => $rate,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+            }
+        }
+        else{
+            if ($comment != null) {
+                DB::table('ratings')->insert([
+                    'user_id' => $user_id,
+                    'workshop_id' => $id,
+                    'specialty_id' => 0,
+                    'rate' => $rate,
+                    'comment' => $comment,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+            }
+
+            else {
+                DB::table('ratings')->insert([
+                    'user_id' => $user_id,
+                    'workshop_id' => $id,
+                    'specialty_id' => 0,
+                    'rate' => $rate,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+            }
+        }
+
 
         $workshop = Workshop::find($id);
         $rating = DB::table('ratings')->where('workshop_id', $id)->avg('rate');

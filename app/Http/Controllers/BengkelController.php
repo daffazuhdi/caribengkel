@@ -67,10 +67,19 @@ class BengkelController extends Controller
             $filterBrand = $req->brand;
         }
 
-        $limit = 16;
-        $workshop = $query->where('workshops.is_active', '=', '1')->groupBy('workshops.id')->get();
+        // $limit = 2;
+        $workshops = $query->where('workshops.is_active', '=', '1')->groupBy('workshops.id');
+        // return $workshops;
+        $count = $workshops->count();
+        // return $count;
 
-        return view('bengkel', compact('search', 'workshop', 'subdistrict', 'specialty', 'brand', 'filterSubdistrict', 'filterSpecialty', 'filterBrand'),
+        $workshops = $workshops->paginate(12);
+
+        $begin = $workshops->firstItem();
+        $end = $workshops->lastItem();
+
+        return view('bengkel', compact('search', 'workshops', 'subdistrict', 'specialty', 'brand',
+                    'filterSubdistrict', 'filterSpecialty', 'filterBrand', 'begin', 'end', 'count'),
                     ['title' => "Bengkel"]
         );
     }

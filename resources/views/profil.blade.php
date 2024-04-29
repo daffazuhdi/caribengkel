@@ -32,10 +32,10 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active px-0 py-4" id="review" role="tabpanel" aria-labelledby="review-tab" style="padding: 1%">
                 <div class="row row-cols-1 row-cols-md-3">
-                    @foreach ($rating as $rating)
+                    @foreach ($ratings as $rating)
                     <div class="col mb-4">
                     <div class="card h-100">
-                        <div class="d-flex justify-content-right border-bottom align-items-center p-4" style="background: #F3F9F9;">
+                        <div class="d-flex justify-content-right border-bottom align-items-center p-4" style="background: #F3F9F9; border-radius: 6px 6px 0 0;">
                             <div class="" style="padding-right: 1em;">
                                 <img src="{{ url('storage/workshop/'.$rating->workshop->photo) }}"  style="border-radius: 10%; object-fit: cover; width: 101px; height: 62px;" class="card-img-top" alt="{{ $rating->workshop->name }}">
                             </div>
@@ -43,7 +43,7 @@
                                 <h5 class="card-title" style="font-size: 16px; font-weight: 600">{{ $rating->workshop->name }}</h5>
                                 <div class="address d-flex justify-content-left align-items-center">
                                         <div class="img-fluid" style="padding-right: 4%">
-                                                <img src="{{ url('photos/mapsLogo.svg') }}" style="width:14px;" alt="{{ $rating->workshop->name }}">
+                                            <img src="{{ url('photos/mapsLogo.svg') }}" style="width:14px; border-radius: 4px;" alt="{{ $rating->workshop->name }}">
                                         </div>
                                         <div style="font-size: 12px; color: #052023; font-weight: 400">
                                                 {{ $rating->workshop->address }}
@@ -70,7 +70,11 @@
                             <div class="card-text">
                                 <h6 class="text-black-50 my-4" style="font-size: 14px;">{{ $rating->created_at->format('j F Y') }}</h6>
                                 <div class="card-text mt-3">
-                                    <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{ $rating->specialty->name }}</small>
+                                    @if ($rating->specialty_id != 0)
+                                        <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{ $rating->name }}</small>
+                                    @else
+                                        <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">Fasilitas</small>
+                                    @endif
                                 </div>
                             </div>
 
@@ -79,6 +83,31 @@
                     </div>
                     @endforeach
                 </div>
+
+                <div class="d-flex justify-content-center mt-4 mb-3">
+                    <ul class="pagination m-0">
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $ratings->previousPageUrl() }}"><</a>
+                        </li>
+                        @for ($page = 1; $page <= $ratings->lastPage(); $page++)
+                            @if ($page == $ratings->currentPage())
+                                <li class="page-item-active">
+                                    <a class="page-link" href="{{ $ratings->url($page) }}">{{ $page }}</a>
+                                </li>
+                            @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $ratings->url($page) }}">{{ $page }}</a>
+                                </li>
+                            @endif
+                        @endfor
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $ratings->nextPageUrl() }}">></a>
+                        </li>
+                    </ul>
+
+                </div>
+                <p class="d-flex justify-content-center">Menampilkan {{ $begin }} sampai {{ $end }} dari {{ $count }} hasil</p>
+                {{-- {{ $ratings->links() }} --}}
             </div>
             <div class="tab-pane fade px-0 py-4" id="vehicle" role="tabpanel" aria-labelledby="vehicle-tab" style="padding: 1%">
                 <div class="row row-cols-1 row-cols-md-4">

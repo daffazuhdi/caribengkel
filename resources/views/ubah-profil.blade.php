@@ -4,7 +4,7 @@
     <div class="container my-1">
         <img src="{{ url('storage/profiles/'.Auth::user()->photo) }}" style="border-radius: 50%; object-fit: cover; width: 110px; height: 110px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);" class="" alt="{{ Auth::user()->name }}">
     {{-- </div> --}}
-        <form class="my-4" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+        <form class="mt-4 mb-5" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="container p-0">
                 <div class="row">

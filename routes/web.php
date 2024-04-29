@@ -8,7 +8,7 @@ use App\Http\Controllers\BengkelController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WriteReviewController;
 
@@ -34,8 +34,8 @@ Route::get('/',[HomePageController::class, 'test'])->name('home');
 Route::get('/daftar', [RegisterController::class, 'show'])->name('register.show');
 Route::post('/daftar', [RegisterController::class, 'submit'])->name('register.submit');
 
-Route::get('/datakendaraan', [VehicleController::class, 'show'])->name('vehicle.show');
-Route::post('/datakendaraan', [VehicleController::class, 'store'])->name('vehicle.store');
+Route::get('/datakendaraan', [CarController::class, 'show'])->name('vehicle.show');
+Route::post('/datakendaraan', [CarController::class, 'store'])->name('vehicle.store');
 
 Route::get('/masuk', [LoginController::class, 'show'])->name('login.show');
 Route::post('/masuk', [LoginController::class, 'submit'])->name('login.submit');
@@ -77,16 +77,16 @@ Route::get('/bantuan', function () {
 Route::get('/bengkelDetail/{id}',[BengkelDetailController::class, 'test']);
 Route::post('/bengkel-detail/{id}', [BengkelController::class, 'delete']);
 
-Route::get('/profil', [UserController::class, 'viewProfile'])->name('profile.view');
+Route::get('/profil', [UserController::class, 'view'])->name('profile.view');
 Route::post('/profil', [UserController::class, 'update'])->name('profile.update');
 Route::get('/ubah-profil', [UserController::class, 'detail']);
 
-Route::get('/kendaraan-{id}', [VehicleController::class, 'view']);
-Route::post('/kendaraan-{id}', [VehicleController::class, 'update'])->name('vehicle.update');
-Route::post('/kendaraan/{id}', [VehicleController::class, 'delete']);
+Route::get('/kendaraan-{id}', [CarController::class, 'view']);
+Route::post('/kendaraan-{id}', [CarController::class, 'update'])->name('vehicle.update');
+Route::post('/kendaraan/{id}', [CarController::class, 'delete']);
 
-Route::get('/tambah-kendaraan', [VehicleController::class, 'showToAdd']);
-Route::post('/tambah-kendaraan', [VehicleController::class, 'store']);
+Route::get('/tambah-kendaraan', [CarController::class, 'showToAdd']);
+Route::post('/tambah-kendaraan', [CarController::class, 'store']);
 
 Route::get('/review/{id}',[ReviewController::class, 'test']);
 Route::get('/review/{id}/{sort}',[ReviewController::class, 'sort']);

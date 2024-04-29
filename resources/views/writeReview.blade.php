@@ -15,6 +15,7 @@
                     @foreach ($workshop->specialties as $w)
                         <option value="{{ $w->name }}">{{ $w->name }}</option>
                     @endforeach
+                    <option value=null>Fasilitas</option>
                 </select>
             </div>
 

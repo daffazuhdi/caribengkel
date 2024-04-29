@@ -15,14 +15,25 @@ use App\Models\Car;
 
 class UserController extends Controller
 {
-    public function viewProfile()
+    public function view()
     {
-        $rating = Rating::where('user_id', '=', Auth::user()->id)->get();
+        $ratings = Rating::select('ratings.*', 'specialties.name')
+                ->leftjoin('workshops', 'workshops.id', '=', 'ratings.workshop_id')
+                ->leftjoin('specialties', 'specialties.id', '=', 'ratings.specialty_id')
+                ->where('ratings.user_id', '=', Auth::user()->id)
+                ->where('workshops.is_active', '=', '1');
+
+        $count = $ratings->count();
+
+        $ratings = $ratings->paginate(9);
+        $begin = $ratings->firstItem();
+        $end = $ratings->lastItem();
+
         // $service_date = date($rating->service_date);
         $car_model = CarModel::all();
         $car_brand = CarBrand::all();
 
-        return view('profil', compact('rating', 'car_model', 'car_brand'), ["title" => "Profil"]);
+        return view('profil', compact('ratings', 'car_model', 'car_brand', 'begin', 'end', 'count'), ["title" => "Profil"]);
     }
 
     public function detail()

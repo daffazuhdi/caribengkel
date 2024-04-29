@@ -167,6 +167,21 @@ button.nav-link {
     margin: 4px 12px;;
 }
 
+.pagination li.page-item-active a.page-link {
+    background-color: #0D5C63 !important;
+    border: #0D5C63 solid 1px;
+    color: white;
+}
+
+.pagination li.page-item a.page-link {
+    color: #0D5C63 !important;
+}
+
+.pagination li.page-item a.page-link:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 .main-content {
     padding: 0px 120px;
 }

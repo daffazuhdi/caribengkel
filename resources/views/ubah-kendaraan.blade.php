@@ -73,6 +73,9 @@
                                         <span class="input-group-text d-none">
                                         </span>
                                     </span>
+                                @error('service_date')
+                                <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red">Tanggal yang diinput harus setelah tanggal servis terakhir</div>
+                                @enderror
                                 </div>
                             </div>
                             <table class="table mb-4">

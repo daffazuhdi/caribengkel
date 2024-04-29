@@ -1,42 +1,47 @@
 @extends('layouts.main')
 @section('title', $workshop->name)
 @section('container')
-<div class="container py-4 px-0 m-auto">
-    <div class="showRating d-flex my-0">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="2em" viewBox="0 0 24 24">
+<div class="container pb-4 px-0 m-auto">
+    <div class="showRating d-flex mt-4 mb-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 24 24">
             <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
         </svg>
-        <h3 style="padding-right: 0.5%;padding-left: 0.2%">{{number_format($rate, 1)}}</h3>
-        <h3 style="padding-right: 0.5%;">•</h3>
-        <h3>{{$countUlasan}} Ulasan</h3>
-  </div>
-  <div class="containerAllRate d-flex" style="justify-content: space-between">
-    <div class="row row-cols-1 row-cols-md-6 m-1">
-        @foreach ($workshop->specialties as $ws)
-        <div class="col p-0 m-1" style="width: 7rem;padding-right:0%">
-            <div class="card d-flex m-0 p-2 h-100">
-            <div class="card-body" style="padding:0.5rem">
-                <h6 class="card-title">{{$ws->name}}</h6>
-                <h7 class="card-subtitle mb-2 text-muted">
-                    @foreach ($spesialisasiRate as $sr)
-                        @if ($ws->id === $sr->specialty_id)
-                            {{number_format($sr->avgrate,1)}}
-                        @endif
-                    @endforeach
-                </h7>
-            </div>
-            </div>
-        </div>
-        @endforeach
+        <h5 style="padding-right: 0.5%;padding-left: 0.2%">{{number_format($rate, 1)}}</h5>
+        <h5 style="padding-right: 0.5%;">•</h5>
+        <h5>{{$countUlasan}} Ulasan</h5>
     </div>
-        <div class="containerButton d-flex">
+    <div class="containerAllRate d-flex" style="justify-content: space-between">
+        <div class="row d-flex gap-2 m-0">
+            @foreach ($workshop->specialties as $ws)
+            <div class="col col-md-auto p-0" style="min-width: 86px;">
+                <div class="card m-0 p-2 h-100">
+                <div class="card-body d-flex flex-column justify-content-between" style="padding:0.5rem">
+                    <div class="card-title m-0" style="font-weight: 500;">{{ $ws->name }}</div>
+                    <div class="mb-4">
+                    <h7 class="card-subtitle text-muted" style="font-weight: 500;">
+                        @foreach ($spesialisasiRate as $sr)
+                            @if ($ws->id === $sr->specialty_id)
+                                {{ number_format($sr->avgrate,1) }}
+                            @endif
+                        @endforeach
+                    </h7>
+                    </div>
+                    <div>
+                    <img src="{{ url('photos/'.$ws->logo) }}">
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div class="containerButton d-flex align-items-end gap-2">
             @if (Auth::user())
-            <div class="d-grid gap-4">
-                <a href="/writeReview/{{ $workshop->id }}" type="button" class="btn btn-success py-1" style="background-color: #0D5C63; border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:8rem">Tulis Ulasan</a>
+            <div class="">
+                <a href="/writeReview/{{ $workshop->id }}" type="button" class="btn btn-primary py-1" style="font-size: 14px;">Tulis Ulasan</a>
             </div>
             @else
-            <div class="d-grid gap-4">
-                <button type="button" class="btn btn-primary py-1" data-bs-toggle="modal" data-bs-target="#loginFirst" style="background-color: #0D5C63; border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:8rem">
+            <div class="">
+                <button type="button" class="btn btn-primary py-1" data-bs-toggle="modal" data-bs-target="#loginFirst">
                     Tulis Ulasan
                 </button>
                 <!-- Modal -->
@@ -53,7 +58,7 @@
                                 <button type="button" class="btn btn-outline-dark px-3" data-bs-dismiss="modal">Batal</button>
                                 <a href="/masuk"><button type="button" class="btn btn-primary">Masuk</button></a>
                             </div>
-                         </div>
+                            </div>
                     </div>
                 </div>
 
@@ -76,8 +81,8 @@
                   </div> --}}
             </div>
             @endif
-            <div class="d-grid gap-4">
-                <a href="" type="button" class="btn btn-success py-1 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color:black;border-color:black;border-radius: 8px;height: 2rem;margin-top:5.5rem;margin-right:0.5rem;width:8rem">Urutkan</a>
+            <div class="">
+                <a href="" type="button" class="btn btn-outline-dark py-1 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:14px;">Urutkan</a>
                 <ul class="dropdown-menu">
                     <form action="/review/{{ $workshop->id }}" method="POST">
                         <li><a class="dropdown-item" href="/review/{{ $workshop->id }}/{{'newest'}}" id="ulasanTerbaru" name="ulasanTerbaru" value="ulasanTerbaru">Ulasan Terbaru</a></li>
@@ -89,32 +94,39 @@
         </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 py-4 px-2">
+    <div class="row row-cols-1 row-cols-md-3 g-4 py-4 px-0">
         @foreach ($ratingDetail as $wr)
             <div class="col">
                 <div class="card h-100">
-                    <div class="card-body">
+                <div class="card-body d-flex flex-column justify-content-between">
                     <div class="cardTop d-flex" style="justify-content:space-between">
-                        <h6 class="card-title">{{$wr->user->first_name}} {{$wr->user->last_name}}</h6>
+                        <h6 class="card-title">{{ $wr->user->first_name }} {{ $wr->user->last_name }}</h6>
                         <div class="cardRating d-flex px-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" style="margin-right: 10%">
                                 <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
                             </svg>
-                            <h6 class="card-title">{{number_format($wr->rate, 1)}}</h6>
+                            <h6 class="card-title">{{ number_format($wr->rate, 1) }}</h6>
                         </div>
                     </div>
-                    <p class="card-text">{{$wr->comment}}</p>
-                    <p class="card-text text-muted">{{$wr->created_at->format('d M Y')}}</p>
-                    <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{$wr->specialty->name}}</small>
+                    <div class="card-text h-100">
+                        <p>{{ $wr->comment }}</p>
                     </div>
+                    <div class="">
+                        <p class="card-text text-muted" style="font-size: 14px;">{{ $wr->created_at->format('j F Y') }}</p>
+                        @if ($wr->specialty_id != 0)
+                            <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{ $wr->specialty->name }}</small>
+                        @else
+                            <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">Fasilitas</small>
+                        @endif
+
+                    </div>
+                </div>
                 </div>
             </div>
         @endforeach
-      </div>
-    {{-- {{$spesialisasiRate->avgrate}} --}}
-
-  </div>
-
+    </div>
+        {{-- {{$spesialisasiRate->avgrate}} --}}
+    </div>
 </div>
 @endsection
 

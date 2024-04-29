@@ -37,7 +37,7 @@
                         <div class="mb-4 py-1">
                             <label for="specialty" class="form-label-md">Spesialisasi</label>
                             @error('specialty')
-                                    <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red">Pilih Salah Satu Spesialisasi Bengkel</div>
+                                    <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red">Pilih salah satu spesialisasi bengkel</div>
                             @enderror
                             <div class="row row-cols-4 mx-auto">
                                 @foreach ($specialty as $specialty)
@@ -54,7 +54,7 @@
                         <div class="mb-4 py-1">
                             <label for="facility" class="form-label-md">Fasilitas</label>
                             @error('facility')
-                                <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red"> Pilih Salah Satu Fasilitas Bengkel</div>
+                                <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red">Pilih salah satu fasilitas bengkel</div>
                             @enderror
                             <div class="row row-cols-4 mx-auto">
                                 @foreach ($facility as $f)
@@ -71,7 +71,7 @@
                         <div class="mb-4 py-1">
                             <label for="car_brand" class="form-label-md">Merek Mobil</label>
                             @error('facility')
-                                <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red"> Pilih Salah Satu Merek Mobil Yang Dapat Ditangani Oleh Bengkel</div>
+                                <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red">Pilih salah satu merek mobil yang dapat ditangani oleh bengkel</div>
                             @enderror
                             <div class="row row-cols-4 mx-auto">
                                 @foreach ($car_brand as $cb)

@@ -32,7 +32,7 @@
 </head>
 <div class="sticky-top bg-white">
 <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
       <a class="navbar-brand m-0 p-0" href="/">
         <img src="{{ url('photos/logoNavbar.svg') }}" width="182px" height="36px"></img>
       </a>
@@ -46,26 +46,21 @@
 
         @if (Auth::user())
         <div class="dropdown hover_drop_down" style="float: right; margin-left: 10%;">
-          <img src="{{ Storage::url('/profiles/'.Auth::user()->photo) }}"
-            style="border-radius: 50%; object-fit: cover; width: 42px; height: 42px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);"
-            class="m-1" alt="{{ Auth::user()->name }}"
-          >
-          <div class="dropdown-menu">
-              <a href="{{ url('/profil') }}">
-                <div class="hoverable">Profil Saya</div>
-              </a>
-              {{-- <a href="#">
-                <div class="hoverable">
-                  Notifikasi
-                </div>
-              </a> --}}
-              <form action="/logout" method="post" class="m-0">
-                @csrf
-                <button type="submit" class="btn btn-link m-0 p-0 hoverable text-start" style="text-decoration: none; font-weight: 500; width: 100%;">
-                    Keluar
-                </button>
-              </form>
-          </div>
+            <img src="{{ Storage::url('/profiles/'.Auth::user()->photo) }}"
+                style="border-radius: 50%; object-fit: cover; width: 42px; height: 42px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);"
+                class="m-1" alt="{{ Auth::user()->name }}"
+            >
+            <div class="dropdown-menu px-0 py-2">
+                <a href="{{ url('/profil') }}">
+                    <div class="hoverable px-3 py-1" style="font-size: 16px; border-radius: 6px;">Profil Saya</div>
+                </a>
+                <form action="/logout" method="post" class="m-0">
+                    @csrf
+                    <button type="submit" class="btn btn-link px-3 py-1 hoverable text-start w-100" style="text-decoration: none; font-weight: 500; font-size: 16px;">
+                        Keluar
+                    </button>
+                </form>
+            </div>
         </div>
         @else
         <div class="d-flex" id="">
