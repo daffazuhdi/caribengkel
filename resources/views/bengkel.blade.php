@@ -31,14 +31,17 @@
                         <path fill="white" d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z"/>
                     </svg>
                     Filter
+                    @if ($countFilter != 0)
+                        ({{$countFilter}})
+                    @endif
                 </button>
 
                 <div class="modal fade" id="filterWorkshop" tabindex="-1" aria-labelledby="filterWorkshop" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content p-4">
                             <div class="modal-header p-0 border-0 d-flex justify-content-end">
-                                <button class="btn p-0" style="border: none;" data-bs-dismiss="modal" aria-label="Close" role="button">
-                                    <img src="{{ url('photos/img_x.svg') }}" style="padding: 4px; color: #0D5C63; border-radius: 50%; background-color: #E7EFEF;">
+                                <button class="btn p-0" style="border: none;" data-bs-dismiss="modal" aria-label="Close" role="button" type="button">
+                                    <img src="{{ url('photos/img_x.svg') }}" style="padding: 4px; color: #0D5C63; border-radius: 50%; background-color: #E7EFEF;" onclick="load_()">
                                 </button>
                             </div>
                                 <div class="modal-body p-0 my-4">
@@ -215,18 +218,30 @@
                 </div>
                 <p class="d-flex justify-content-center">Menampilkan {{ $begin }} sampai {{ $end }} dari {{ $count }} hasil</p>
         </div>
+
+        <script>
+            var i, checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+            function uncheckAll() {
+                let options = document.getElementById("subdistrict");
+                options.selectedIndex = 0;
+                for (i = 0; i < checkboxes.length; i++) {
+                    localStorage.setItem(checkboxes[i].value, checkboxes[i].checked);
+                    checkboxes[i].checked = false;
+                }
+            }
+
+            //masi ga fungsi, malah ke uncheck smua
+            // function load_() {
+            //     for (i = 0; i < checkboxes.length; i++) {
+            //         checkboxes[i].checked = localStorage.getItem(checkboxes[i].value) === 'true' ? true:false;
+            //     }
+            // }
+        </script>
+
+
 @endsection
-<script>
-    //function buat reset filter
-    function uncheckAll() {
-        let inputs = document.querySelectorAll('.form-check-input');
-        var options = document.getElementById("subdistrict");
-        options.selectedIndex = 0;
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].checked = false;
-        }
-    }
-</script>
+
 
 <style>
         .col-md-12 {

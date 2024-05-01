@@ -32,6 +32,7 @@ class BengkelController extends Controller
         $filterSubdistrict = null;
         $filterSpecialty = null;
         $filterBrand = null;
+        $countFilter = 0;
 
         $query = Workshop::select('workshops.*','specialties.name AS specialty_name',
                                     'specialty_workshop.specialty_id', 'car_brand_workshop.car_brand_id',
@@ -55,31 +56,35 @@ class BengkelController extends Controller
         if(isset($req->subdistrict) && ($req->subdistrict != null)){
             $query = $query->where('subdistrict_id', $req->subdistrict);
             $filterSubdistrict = $req->subdistrict;
+            $countFilter++;
         }
 
         if(isset($req->specialty) && ($req->specialty != null)){
             $query = $query->whereIn('specialty_id', $reqspec);
             $filterSpecialty = $req->specialty;
+            $countFilter = $countFilter + count($req->specialty);
         }
 
         if (isset($req->brand) && ($req->brand != null)){
             $query = $query->whereIn('car_brand_id', $reqbrand);
             $filterBrand = $req->brand;
+            $countFilter = $countFilter + count($req->brand);
         }
 
         // $limit = 2;
         $workshops = $query->where('workshops.is_active', '=', '1')->groupBy('workshops.id');
-        // return $workshops;
-        $count = $workshops->count();
-        // return $count;
+
 
         $workshops = $workshops->paginate(12);
 
         $begin = $workshops->firstItem();
         $end = $workshops->lastItem();
+        $count = $workshops->total();
+
+        // return $countFilter;
 
         return view('bengkel', compact('search', 'workshops', 'subdistrict', 'specialty', 'brand',
-                    'filterSubdistrict', 'filterSpecialty', 'filterBrand', 'begin', 'end', 'count'),
+                    'filterSubdistrict', 'filterSpecialty', 'filterBrand', 'begin', 'end', 'count', 'countFilter'),
                     ['title' => "Bengkel"]
         );
     }
