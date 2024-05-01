@@ -14,7 +14,7 @@
                 </div>
         @endif
 
-        <div class="container py-4 px-0 m-auto">
+        <div class="container py-4 px-0 m-auto" onload="save();">
             <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2>
 
             <div class="d-flex justify-content-between py-3 px-0">
@@ -26,7 +26,7 @@
                     </label>
                 </form>
 
-                <button class="btn px-3 d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#filterWorkshop" style="background-color: #0D5C63; color: white; font-weight: 600; border-radius: 8px;" type="#">
+                <button class="btn px-3 d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#filterWorkshop" style="background-color: #0D5C63; color: white; font-weight: 600; border-radius: 8px;" type="#"  onclick="load_()">
                     <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                         <path fill="white" d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z"/>
                     </svg>
@@ -37,11 +37,14 @@
                 </button>
 
                 <div class="modal fade" id="filterWorkshop" tabindex="-1" aria-labelledby="filterWorkshop" aria-hidden="true">
+                    @php
+                        $id = 0;
+                    @endphp
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content p-4">
                             <div class="modal-header p-0 border-0 d-flex justify-content-end">
                                 <button class="btn p-0" style="border: none;" data-bs-dismiss="modal" aria-label="Close" role="button" type="button">
-                                    <img src="{{ url('photos/img_x.svg') }}" style="padding: 4px; color: #0D5C63; border-radius: 50%; background-color: #E7EFEF;" onclick="load_()">
+                                    <img src="{{ url('photos/img_x.svg') }}" style="padding: 4px; color: #0D5C63; border-radius: 50%; background-color: #E7EFEF;">
                                 </button>
                             </div>
                                 <div class="modal-body p-0 my-4">
@@ -86,9 +89,9 @@
                                                             @endif
 
                                                             @if ($trigger != 0)
-                                                                <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}" checked>
+                                                                <input class="form-check-input" type="checkbox" name="specialty[]" id="{{$id++}}" value="{{ $specialty->id }}" checked>
                                                             @else
-                                                                <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}">
+                                                                <input class="form-check-input" type="checkbox" name="specialty[]" id="{{$id++}}" value="{{ $specialty->id }}">
                                                             @endif
                                                             <label class="form-check-label" for="{{ $specialty->label }}" >
                                                                 {{ $specialty->name }}
@@ -115,9 +118,9 @@
                                                             @endforeach
                                                         @endif
                                                         @if ($trigger != 0)
-                                                            <input class="form-check-input" type="checkbox" name="brand[]" id="#" value="{{ $brand->id }}" checked>
+                                                            <input class="form-check-input" type="checkbox" name="brand[]" id="{{$id++}}" value="{{ $brand->id }}" checked>
                                                         @else
-                                                            <input class="form-check-input" type="checkbox" name="brand[]" id="#" value="{{ $brand->id }}">
+                                                            <input class="form-check-input" type="checkbox" name="brand[]" id="{{$id++}}" value="{{ $brand->id }}">
                                                         @endif
                                                             <label class="form-check-label" for="{{ $brand->label }}">
                                                                     {{ $brand->name }}
@@ -136,6 +139,33 @@
                                 </div>
                         </div>
                     </div>
+                    <script>
+                        var i, checkboxes = document.querySelectorAll('input[type=checkbox]');
+                        let trigger = 1;
+                        let options = document.getElementById("subdistrict");
+                        
+                        function uncheckAll() {
+                            options.selectedIndex = 0;
+                            for (i = 0; i < checkboxes.length; i++) {
+                                // localStorage.setItem(checkboxes[i].id, checkboxes[i].checked);
+                                checkboxes[i].checked = false;
+                            }
+                        }
+
+                        function load_() {
+                            if (trigger == '1') {
+                                localStorage.setItem(options.id, options.selectedIndex)
+                                for (i = 0; i < checkboxes.length; i++) {
+                                    localStorage.setItem(checkboxes[i].id, checkboxes[i].checked);
+                                }
+                            }
+                            trigger++;
+                            options.selectedIndex = localStorage.getItem(options.id);
+                            for (i = 0; i < checkboxes.length; i++) {
+                                checkboxes[i].checked = localStorage.getItem(checkboxes[i].id) === 'true' ? true:false;
+                            }
+                        }
+                    </script>
                 </div>
             </div>
 
@@ -219,25 +249,7 @@
                 <p class="d-flex justify-content-center">Menampilkan {{ $begin }} sampai {{ $end }} dari {{ $count }} hasil</p>
         </div>
 
-        <script>
-            var i, checkboxes = document.querySelectorAll('input[type=checkbox]');
 
-            function uncheckAll() {
-                let options = document.getElementById("subdistrict");
-                options.selectedIndex = 0;
-                for (i = 0; i < checkboxes.length; i++) {
-                    localStorage.setItem(checkboxes[i].value, checkboxes[i].checked);
-                    checkboxes[i].checked = false;
-                }
-            }
-
-            //masi ga fungsi, malah ke uncheck smua
-            // function load_() {
-            //     for (i = 0; i < checkboxes.length; i++) {
-            //         checkboxes[i].checked = localStorage.getItem(checkboxes[i].value) === 'true' ? true:false;
-            //     }
-            // }
-        </script>
 
 
 @endsection

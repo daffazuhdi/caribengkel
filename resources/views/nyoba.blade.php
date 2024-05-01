@@ -6,7 +6,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <button onclick="save()">Save</button>
+    <button onclick="save()">Save</button>
   <button onclick="load_()">Load</button>
   <br><br>
   <input type="checkbox" value="1-1" /> Checkbox 1<br />
@@ -30,7 +30,7 @@
             }
         }
     </script>
-    
+
   <style>
      .rate {
          float: left;
