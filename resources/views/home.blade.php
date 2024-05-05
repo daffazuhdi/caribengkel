@@ -21,13 +21,13 @@
 
       <div class="row text-center">
         @foreach ($specialty as $s)
-        <div class="col-12 col-sm-3 mb-3">
+        <div class="col-6 col-sm-3 mb-3">
           <a href="/bengkel?specialty%5B%5D={{ $s->id }}" class="btn btn-primary w-100 h-100" style="text-decoration: none; text-align: center; color: #FFFFFF; font-size: 14px; ">
             {{ $s->name }}
           </a>
         </div>
         @endforeach
-        <div class="col-12 col-sm-3 mb-3">
+        <div class="col-6 col-sm-3 mb-3">
           <a href="{{ url('/bengkel') }}" class="btn btn-primary w-100 h-100" style="text-decoration: none; color: #FFFFFF; font-size: 14px;">
             Semua Bengkel
           </a>
@@ -62,7 +62,7 @@
             <h6>Bengkel dengan Ulasan Teratas</h6>
             <p class="sub-bengkelterbaik" style="font-size: 14px">Banyak orang yang memberikan ulasan bagus untuk bengkel ini.</p>
         </div>
-        <div class="col justify-content-end d-none d-md-flex">
+        <div class="col justify-content-end d-none d-md-flex w-100">
           <button class="btn btn-primary d-flex justify-content-start"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #FFFFFF;">Lihat Semua</a></button>
         </div>
       </div>
@@ -106,7 +106,7 @@
         @endforeach
       </div>
       <div class="col d-block d-md-none">
-        <button class="btn btn-primary"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #FFFFFF;">Lihat Semua</a></button>
+        <button class="btn btn-primary w-100"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #FFFFFF;">Lihat Semua</a></button>
       </div>
     </div>
   </section>
@@ -114,25 +114,25 @@
   <section style="background-color: #0D5C63">
     <div class="container py-40px">
       <div class="row text-center">
-        <div class="col-sm">
-          <div class="cmb-3">
+        <div class="col-3">
+          <div class="mb-3">
             <h2 style="color:#F3F9F9;">{{$countWorkshop}}</h2>
             <p style="font-size: 14px; color:#F3F9F9;">Bengkel</p>
           </div>
         </div>
-        <div class="col-sm">
+        <div class="col-3">
           <div class="mb-3">
             <h2 style="color:#F3F9F9;" >{{$countCustomer}}</h2>
             <p style="font-size: 14px; color:#F3F9F9;">Kustomer</p>
           </div>
         </div>
-        <div class="col-sm">
+        <div class="col-3">
           <div class="mb-3">
             <h2 style="color:#F3F9F9;">{{$countUser}}</h2>
             <p style="font-size: 14px; color:#F3F9F9;">Pengguna</p>
           </div>
         </div>
-        <div class="col-sm">
+        <div class="col-3">
           <div class="mb-3">
             <h2 style="color:#F3F9F9;">{{$countBrand}}</h2>
             <p style="font-size: 14px; color:#F3F9F9;">Merek Mobil</p>
