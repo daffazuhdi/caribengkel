@@ -5,7 +5,33 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<style>
+
+    <button onclick="save()">Save</button>
+  <button onclick="load_()">Load</button>
+  <br><br>
+  <input type="checkbox" value="1-1" /> Checkbox 1<br />
+  <input type="checkbox" value="1-2" /> Checkbox 2<br />
+  <input type="checkbox" value="1-3" /> Checkbox 3<br />
+  <input type="checkbox" value="1-4" /> Checkbox 4<br />
+  <input type="checkbox" value="1-5" /> Checkbox 5<br />
+
+    <script>
+        var i, checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+        function save() {
+            for (i = 0; i < checkboxes.length; i++) {
+                localStorage.setItem(checkboxes[i].value, checkboxes[i].checked);
+            }
+        }
+
+        function load_() {
+            for (i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = localStorage.getItem(checkboxes[i].value) === 'true' ? true:false;
+            }
+        }
+    </script>
+
+  <style>
      .rate {
          float: left;
          height: 46px;

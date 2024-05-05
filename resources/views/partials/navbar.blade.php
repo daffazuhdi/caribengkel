@@ -84,45 +84,45 @@
           <li class="nav-item"><a class="nav-link {{ ($title === "Tentang Kami" ? 'active' :'')}}" href="/tentangkami">Tentang Kami</a></li>
 
           @if (Auth::user())
-          <li class="nav-item d-block d-md-none"><a class="nav-link {{ ($title === "Profil Saya" ? 'active' :'')}}" href="/profil">Profil Saya</a></li>
-          <li class="nav-item d-block d-md-none">
-            <form action="/logout" method="post" class="m-0">
-              @csrf
-                <button type="submit" class="btn btn-primary my-2" style="text-decoration: none; font-weight: 500; font-size: 16px;">
-                  Keluar
-                </button>
-            </form>
-          </li>
+            <li class="nav-item d-block d-md-none"><a class="nav-link {{ ($title === "Profil Saya" ? 'active' :'')}}" href="/profil">Profil Saya</a></li>
+            <li class="nav-item d-block d-md-none">
+              <form action="/logout" method="post" class="m-0">
+                @csrf
+                  <button type="submit" class="btn btn-primary my-2" style="text-decoration: none; font-weight: 500; font-size: 16px;">
+                    Keluar
+                  </button>
+              </form>
+            </li>
+          @endif
         </ul>
-        @endif
 
         @if (Auth::user())
-        <div class="dropdown hover_drop_down d-none d-md-block">
-            <img src="{{ Storage::url('/profiles/'.Auth::user()->photo) }}"
-                style="border-radius: 50%; object-fit: cover; width: 42px; height: 42px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);"
-                class="m-1" alt="{{ Auth::user()->name }}"
-            >
-            <div class="dropdown-menu px-0 py-2">
-                <a href="{{ url('/profil') }}">
-                    <div class="hoverable px-3 py-1" style="font-size: 16px; border-radius: 6px;">Profil Saya</div>
-                </a>
-                <form action="/logout" method="post" class="m-0">
-                    @csrf
-                    <button type="submit" class="btn btn-link px-3 py-1 hoverable text-start w-100" style="text-decoration: none; font-weight: 500; font-size: 16px;">
-                        Keluar
-                    </button>
-                </form>
-            </div>
-        </div>
+          <div class="dropdown hover_drop_down d-none d-md-block">
+              <img src="{{ Storage::url('/profiles/'.Auth::user()->photo) }}"
+                  style="border-radius: 50%; object-fit: cover; width: 42px; height: 42px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);"
+                  class="m-1" alt="{{ Auth::user()->name }}"
+              >
+              <div class="dropdown-menu px-0 py-2">
+                  <a href="{{ url('/profil') }}">
+                      <div class="hoverable px-3 py-1" style="font-size: 16px; border-radius: 6px;">Profil Saya</div>
+                  </a>
+                  <form action="/logout" method="post" class="m-0">
+                      @csrf
+                      <button type="submit" class="btn btn-link px-3 py-1 hoverable text-start w-100" style="text-decoration: none; font-weight: 500; font-size: 16px;">
+                          Keluar
+                      </button>
+                  </form>
+              </div>
+          </div>
         @else
-        <div class="d-flex mt-2 mt-md-0 gap-2" id="">
-            <div class="btn btn-primary w-100">
-              <a style="color: white; font-weight: 500;" href="/daftar">Daftar</a>
-            </div>
-            <div class="btn w-100">
-              <a class="align-items-center" style="color: #052023; font-weight: 500" href="/masuk">Masuk</a>
-            </div>
-        </div>
+          <div class="d-flex mt-2 mt-md-0 gap-2" id="">
+              <div class="btn btn-primary w-100">
+                <a style="color: white; font-weight: 500;" href="/daftar">Daftar</a>
+              </div>
+              <div class="btn w-100">
+                <a class="align-items-center" style="color: #052023; font-weight: 500" href="/masuk">Masuk</a>
+              </div>
+          </div>
         @endif
       </div>
   </nav>

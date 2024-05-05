@@ -14,30 +14,35 @@
                 </div>
         @endif
 
-        <div class="container py-4 px-0 m-auto">
+        <div class="container py-4 px-0 m-auto" onload="save();">
             <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2>
 
             <div class="d-flex justify-content-between py-3 px-0">
-                <form class="d-flex align-items-center m-0" role="search">
-                    <label class="m-0">
-                        <input class="form-control m-0" style="padding-left: 2.2em" type="search" autocomplete="off"
-                                placeholder="Nama, lokasi, merek mobil, atau spesialisasi bengkel" name="search" value="{{ $search }}"
-                        >
-                    </label>
+                <form class="m-0 w-50 d-flex align-items-center" role="search">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0"> <img style="width: 16px; height: 16px;" src="{{ url('photos/search.svg') }}" alt="Search"> </span>
+                        <input class="form-control border-start-0 ps-0"  style="border-radius: 0 8px 8px 0;" type="search" placeholder="Nama, lokasi, merek mobil, atau spesialisasi bengkel" aria-label="Search" name="search" value="{{ $search }}">
+                    </div>
                 </form>
 
-                <button class="btn px-3 d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#filterWorkshop" style="background-color: #0D5C63; color: white; font-weight: 600; border-radius: 8px;" type="#">
+                <button class="btn px-3 d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#filterWorkshop" style="background-color: #0D5C63; color: white; font-weight: 600; border-radius: 8px;" type="#"  onclick="load_()">
                     <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                         <path fill="white" d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z"/>
                     </svg>
                     Filter
+                    @if ($countFilter != 0)
+                        ({{$countFilter}})
+                    @endif
                 </button>
 
                 <div class="modal fade" id="filterWorkshop" tabindex="-1" aria-labelledby="filterWorkshop" aria-hidden="true">
+                    @php
+                        $id = 0;
+                    @endphp
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content p-4">
                             <div class="modal-header p-0 border-0 d-flex justify-content-end">
-                                <button class="btn p-0" style="border: none;" data-bs-dismiss="modal" aria-label="Close" role="button">
+                                <button class="btn p-0" style="border: none;" data-bs-dismiss="modal" aria-label="Close" role="button" type="button">
                                     <img src="{{ url('photos/img_x.svg') }}" style="padding: 4px; color: #0D5C63; border-radius: 50%; background-color: #E7EFEF;">
                                 </button>
                             </div>
@@ -83,9 +88,9 @@
                                                             @endif
 
                                                             @if ($trigger != 0)
-                                                                <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}" checked>
+                                                                <input class="form-check-input" type="checkbox" name="specialty[]" id="{{$id++}}" value="{{ $specialty->id }}" checked>
                                                             @else
-                                                                <input class="form-check-input" type="checkbox" name="specialty[]" id="#" value="{{ $specialty->id }}">
+                                                                <input class="form-check-input" type="checkbox" name="specialty[]" id="{{$id++}}" value="{{ $specialty->id }}">
                                                             @endif
                                                             <label class="form-check-label" for="{{ $specialty->label }}" >
                                                                 {{ $specialty->name }}
@@ -112,9 +117,9 @@
                                                             @endforeach
                                                         @endif
                                                         @if ($trigger != 0)
-                                                            <input class="form-check-input" type="checkbox" name="brand[]" id="#" value="{{ $brand->id }}" checked>
+                                                            <input class="form-check-input" type="checkbox" name="brand[]" id="{{$id++}}" value="{{ $brand->id }}" checked>
                                                         @else
-                                                            <input class="form-check-input" type="checkbox" name="brand[]" id="#" value="{{ $brand->id }}">
+                                                            <input class="form-check-input" type="checkbox" name="brand[]" id="{{$id++}}" value="{{ $brand->id }}">
                                                         @endif
                                                             <label class="form-check-label" for="{{ $brand->label }}">
                                                                     {{ $brand->name }}
@@ -133,6 +138,33 @@
                                 </div>
                         </div>
                     </div>
+                    <script>
+                        var i, checkboxes = document.querySelectorAll('input[type=checkbox]');
+                        let trigger = 1;
+                        let options = document.getElementById("subdistrict");
+
+                        function uncheckAll() {
+                            options.selectedIndex = 0;
+                            for (i = 0; i < checkboxes.length; i++) {
+                                // localStorage.setItem(checkboxes[i].id, checkboxes[i].checked);
+                                checkboxes[i].checked = false;
+                            }
+                        }
+
+                        function load_() {
+                            if (trigger == '1') {
+                                localStorage.setItem(options.id, options.selectedIndex)
+                                for (i = 0; i < checkboxes.length; i++) {
+                                    localStorage.setItem(checkboxes[i].id, checkboxes[i].checked);
+                                }
+                            }
+                            trigger++;
+                            options.selectedIndex = localStorage.getItem(options.id);
+                            for (i = 0; i < checkboxes.length; i++) {
+                                checkboxes[i].checked = localStorage.getItem(checkboxes[i].id) === 'true' ? true:false;
+                            }
+                        }
+                    </script>
                 </div>
             </div>
 
@@ -182,7 +214,7 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                                             <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
                                         </svg>
-                                        {{ number_format($workshop->ratings_avg_rate, 1) }}
+                                        {{ number_format($workshop->reviews_avg_rating, 1) }}
                                     </small>
                                 </div>
                             </div>
@@ -215,18 +247,12 @@
                 </div>
                 <p class="d-flex justify-content-center">Menampilkan {{ $begin }} sampai {{ $end }} dari {{ $count }} hasil</p>
         </div>
+
+
+
+
 @endsection
-<script>
-    //function buat reset filter
-    function uncheckAll() {
-        let inputs = document.querySelectorAll('.form-check-input');
-        var options = document.getElementById("subdistrict");
-        options.selectedIndex = 0;
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].checked = false;
-        }
-    }
-</script>
+
 
 <style>
         .col-md-12 {
@@ -238,19 +264,5 @@
         .form-check-label, option {
                 font-size: 16px;
                 color: #303030;
-        }
-        label.m-0 {
-                position: relative;
-                width: 380px;
-        }
-
-        label.m-0:before {
-                content: "";
-                position: absolute;
-                left: 12px;
-                top: 0;
-                bottom: 0;
-                width: 20px;
-                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23052023' d='m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5q0-1.875-1.312-3.187T9.5 5Q7.625 5 6.313 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14'/%3E%3C/svg%3E") center / contain no-repeat;
         }
 </style>

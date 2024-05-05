@@ -258,7 +258,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" style="margin-right: 10%">
                                     <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
                                 </svg>
-                                <h6 class="card-title">{{ number_format($wr->rate, 1) }}</h6>
+                                <h6 class="card-title">{{ number_format($wr->rating, 1) }}</h6>
                             </div>
                         </div>
                         <div class="card-text h-100">

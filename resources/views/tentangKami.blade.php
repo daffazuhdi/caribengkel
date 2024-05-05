@@ -19,12 +19,8 @@
                     <h6 style="color: #052023">Misi</h6>
                     <p class="text-start" style="font-size: 14px">Menyediakan platform yang ramah pengguna untuk menghubungkan pengguna dengan bengkel terpercaya yang sesuai dengan kebutuhan mereka.</p>
                 </div>
-
-                <div class="col-12 col-lg-6 position-relative">
-                    
-                </div>
             </div>
-            <img style="width: 540px; position: absolute; bottom: 0; right: 0" src="{{ url('/photos/img_tentangkami_2.png') }}" alt="">
+            <img class="d-none d-md-block" style="width: 540px; position: absolute; bottom: 0; right: 0" src="{{ url('/photos/img_tentangkami_2.png') }}" alt="">
         </div>
      </section>
 @endsection

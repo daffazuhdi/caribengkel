@@ -88,7 +88,7 @@ Route::post('/kendaraan/{id}', [CarController::class, 'delete']);
 Route::get('/tambah-kendaraan', [CarController::class, 'showToAdd']);
 Route::post('/tambah-kendaraan', [CarController::class, 'store']);
 
-Route::get('/review/{id}',[ReviewController::class, 'test']);
+Route::get('/review/{id}',[ReviewController::class, 'test'])->name('review.show');
 Route::get('/review/{id}/{sort}',[ReviewController::class, 'sort']);
 
 Route::get('/writeReview/{id}/',[WriteReviewController::class, 'showReview']);

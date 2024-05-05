@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Workshop;
 use App\Models\Specialty;
-use App\Models\Rating;
+use App\Models\Review;
 use Illuminate\Support\Facades\DB;
 
 class ReviewController extends Controller
@@ -14,37 +14,47 @@ class ReviewController extends Controller
 
     public function test($id){
         $workshop = Workshop::find($id);
-        $rating = DB::table('ratings')->where('workshop_id', $id)->avg('rate');
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->paginate(15);
-        $countUlasan = DB::table('ratings')->where('workshop_id', $id)->count('rate');
-        $spesialisasiRate = DB::table('ratings')->select('*',DB::raw('AVG(rate) as avgrate'))
+        $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
+        $ratingDetail = Review::select('*')->where('workshop_id', $id)->paginate(15);
+        $countUlasan = DB::table('reviews')->where('workshop_id', $id)->count('rating');
+        $spesialisasiRate = DB::table('reviews')->select('*',DB::raw('AVG(rating) as avgrate'))
                             ->where('workshop_id', $id)
                             ->groupBy('specialty_id')
                             ->get();
-        return view('review', ['workshop' => $workshop,'title' => "Bengkel", 'rate' => $rating, 'countUlasan' => $countUlasan, 'spesialisasiRate' =>  $spesialisasiRate, 'ratingDetail' => $ratingDetail]);
+
+        $begin = $ratingDetail->firstItem();
+        $end = $ratingDetail->lastItem();
+        $count = $ratingDetail->total();
+
+        return view('review', ['workshop' => $workshop,'title' => "Bengkel", 'rate' => $rating, 'countUlasan' => $countUlasan, 'spesialisasiRate' =>  $spesialisasiRate, 'ratingDetail' => $ratingDetail, 'begin' => $begin, 'end' => $end, 'count' => $count]);
     }
 
     public function sort($id, $sort){
         $workshop = Workshop::find($id);
-        $rating = DB::table('ratings')->where('workshop_id', $id)->avg('rate');
-        $countUlasan = DB::table('ratings')->where('workshop_id', $id)->count('rate');
-        $spesialisasiRate = DB::table('ratings')->select('*',DB::raw('AVG(rate) as avgrate'))
+        $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
+        $countUlasan = DB::table('reviews')->where('workshop_id', $id)->count('rating');
+        $spesialisasiRate = DB::table('reviews')->select('*',DB::raw('AVG(rating) as avgrate'))
                             ->where('workshop_id', $id)
                             ->groupBy('specialty_id')
                             ->get();
        if ($sort == 'newest') {
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('created_at', 'DESC')->paginate(15);
+        $ratingDetail = Review::select('*')->where('workshop_id', $id)->orderBy('created_at', 'DESC')->paginate(15);
        }
        else if ($sort == 'lowtohigh') {
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('rate', 'ASC')->paginate(15);
+        $ratingDetail = Review::select('*')->where('workshop_id', $id)->orderBy('rating', 'ASC')->paginate(15);
        }
        else if ($sort == 'hightolow') {
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->orderBy('rate', 'DESC')->paginate(15);
+        $ratingDetail = Review::select('*')->where('workshop_id', $id)->orderBy('rating', 'DESC')->paginate(15);
        }
        else{
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->paginate(15);
+        $ratingDetail = Review::select('*')->where('workshop_id', $id)->paginate(15);
        }
-       return view('review', ['workshop' => $workshop,'title' => "Bengkel", 'rate' => $rating, 'countUlasan' => $countUlasan, 'spesialisasiRate' =>  $spesialisasiRate, 'ratingDetail' => $ratingDetail]);
+
+       $begin = $ratingDetail->firstItem();
+       $end = $ratingDetail->lastItem();
+       $count = $ratingDetail->total();
+
+       return view('review', ['workshop' => $workshop,'title' => "Bengkel", 'rate' => $rating, 'countUlasan' => $countUlasan, 'spesialisasiRate' =>  $spesialisasiRate, 'ratingDetail' => $ratingDetail, 'begin' => $begin, 'end' => $end, 'count' => $count]);
     }
 
 }

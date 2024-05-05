@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
-use App\Models\Rating;
+use App\Models\Review;
 use App\Models\CarModel;
 use App\Models\CarBrand;
 use App\Models\Car;
@@ -17,10 +17,10 @@ class UserController extends Controller
 {
     public function view()
     {
-        $ratings = Rating::select('ratings.*', 'specialties.name')
-                ->leftjoin('workshops', 'workshops.id', '=', 'ratings.workshop_id')
-                ->leftjoin('specialties', 'specialties.id', '=', 'ratings.specialty_id')
-                ->where('ratings.user_id', '=', Auth::user()->id)
+        $ratings = Review::select('reviews.*', 'specialties.name')
+                ->leftjoin('workshops', 'workshops.id', '=', 'reviews.workshop_id')
+                ->leftjoin('specialties', 'specialties.id', '=', 'reviews.specialty_id')
+                ->where('reviews.user_id', '=', Auth::user()->id)
                 ->where('workshops.is_active', '=', '1');
 
         $count = $ratings->count();
@@ -98,7 +98,7 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect('/profil');
+        return redirect('/profil')->with('message', 'Profil berhasil diperbarui!');
     }
 
     public function logout()
