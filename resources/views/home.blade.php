@@ -46,7 +46,7 @@
           <div class="col-12 col-lg-6">
             <p class="text-start" style="font-size: 14px">CariBengkel merupakan website yang menghubungkan kamu dengan bengkel-bengkel terbaik di bidangnya di daerah Tangerang Selatan. </p>
             <p class="text-start" style="font-size: 14px" >Kami berupaya untuk memudahkan pengguna kami dalam mencari bengkel, berdasarkan lokasi, spesialisasi, merek mobil yang dikerjakan oleh bengkel tersebut.</p>
-            <button class="btn btn-primary d-flex justify-content-start"><a href="" style="text-decoration: none; color: #FFFFFF;">Mulai Cari Bengkel <img style="width: 20px; height: 20px;" src="{{ url('photos/arrow-right.svg') }}" alt=""></a></button>
+            <button class="btn btn-primary d-flex justify-content-start"><a href="" style="text-decoration: none; color: #FFFFFF; font-size: 14px;">Mulai Cari Bengkel <img style="width: 20px; height: 20px;" src="{{ url('photos/arrow-right.svg') }}" alt=""></a></button>
           </div>
           <div class="col-12 col-lg-6">
             <img class="float-lg-end img-tentangkami img-fluid" style="height: 300px" src="{{ url('photos/img_tentangkami.svg') }}" alt="">
@@ -57,13 +57,13 @@
 
   <section>
     <div class="container py-80px">
-      <div class="row align-items-baseline justify-content-between">
+      <div class="row align-items-end justify-content-between mb-4">
         <div class="col-lg-6 col-sm-12">
             <h6>Bengkel dengan Ulasan Teratas</h6>
-            <p class="sub-bengkelterbaik" style="font-size: 14px">Banyak orang yang memberikan ulasan bagus untuk bengkel ini.</p>
+            <p class="sub-bengkelterbaik m-0" style="font-size: 14px">Banyak orang yang memberikan ulasan bagus untuk bengkel ini.</p>
         </div>
         <div class="col justify-content-end d-none d-md-flex">
-          <button class="btn btn-primary d-flex justify-content-start"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #FFFFFF;">Lihat Semua</a></button>
+          <button class="btn btn-primary d-flex justify-content-start"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #FFFFFF; font-size: 14px;">Lihat Semua</a></button>
         </div>
       </div>
       <div class="row row-cols-1 row-cols-md-4 my-2">
@@ -96,7 +96,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                                         <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
                                 </svg>
-                                {{ number_format($workshop->ratings_avg_rate, 1) }}
+                                {{ number_format($workshop->reviews_avg_rating, 1) }}
                         </small>
                 </div>
             </div>

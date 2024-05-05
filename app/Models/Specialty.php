@@ -19,8 +19,8 @@ class Specialty extends Model
         return $this->hasMany(Service::class);
     }
 
-    public function ratings()
+    public function reviews()
     {
-        return $this->hasMany(Rating::class);
+        return $this->hasMany(Review::class);
     }
 }

@@ -42,7 +42,7 @@ class BengkelController extends Controller
                 ->leftjoin('specialties', 'specialties.id', '=', 'specialty_workshop.specialty_id')
                 ->leftjoin('subdistricts', 'subdistricts.id', '=', 'workshops.subdistrict_id')
                 ->leftjoin('car_brands', 'car_brands.id', '=', 'car_brand_workshop.car_brand_id')
-                ->withAvg('ratings', 'rate')
+                ->withAvg('reviews', 'rating')
                 ->where('workshops.is_active', '=', '1');
 
         if (isset($req->search) && ($req->search != null)) {

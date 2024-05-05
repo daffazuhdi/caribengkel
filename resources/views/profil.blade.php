@@ -61,7 +61,7 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                                                         <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
                                                 </svg>
-                                                {{ number_format($rating->rate, 1) }}
+                                                {{ number_format($rating->rating, 1) }}
                                         </small>
                                     </div>
                                 </div>

@@ -37,9 +37,9 @@ class Workshop extends Model
         return $this->hasMany(WorkshopPrice::class);
     }
 
-    public function ratings()
+    public function reviews()
     {
-        return $this->hasMany(Rating::class);
+        return $this->hasMany(Review::class);
     }
 
     public function workhours()

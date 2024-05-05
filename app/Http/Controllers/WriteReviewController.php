@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Workshop;
 use App\Models\Specialty;
-use App\Models\Rating;
+use App\Models\Review;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -14,10 +14,10 @@ class WriteReviewController extends Controller
     //
     public function showReview($id){
         $workshop = Workshop::find($id);
-        $rating = DB::table('ratings')->where('workshop_id', $id)->avg('rate');
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->paginate(15);
-        $countUlasan = DB::table('ratings')->where('workshop_id', $id)->count('rate');
-        $spesialisasiRate = DB::table('ratings')->select('*',DB::raw('AVG(rate) as avgrate'))
+        $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
+        $ratingDetail = Review::select('*')->where('workshop_id', $id)->paginate(15);
+        $countUlasan = DB::table('reviews')->where('workshop_id', $id)->count('rating');
+        $spesialisasiRate = DB::table('reviews')->select('*',DB::raw('AVG(rating) as avgrate'))
                             ->where('workshop_id', $id)
                             ->groupBy('specialty_id')
                             ->get();
@@ -28,18 +28,18 @@ class WriteReviewController extends Controller
         // return $req;
         $user_id = auth()->user()->id;
         $workshop_id = $id;
-        $rate = $req->rate;
+        $rate = $req->rating;
         $comment = $req->comment;
 
         if ($req->specialty != 'null') {
             $specialty = Specialty::where('name', $req->specialty)->first();
 
             if ($comment != null) {
-                DB::table('ratings')->insert([
+                DB::table('reviews')->insert([
                     'user_id' => $user_id,
                     'workshop_id' => $id,
                     'specialty_id' => $specialty->id,
-                    'rate' => $rate,
+                    'rating' => $rate,
                     'comment' => $comment,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -47,11 +47,11 @@ class WriteReviewController extends Controller
             }
 
             else {
-                DB::table('ratings')->insert([
+                DB::table('reviews')->insert([
                     'user_id' => $user_id,
                     'workshop_id' => $id,
                     'specialty_id' => $specialty->id,
-                    'rate' => $rate,
+                    'rating' => $rate,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ]);
@@ -59,11 +59,11 @@ class WriteReviewController extends Controller
         }
         else{
             if ($comment != null) {
-                DB::table('ratings')->insert([
+                DB::table('reviews')->insert([
                     'user_id' => $user_id,
                     'workshop_id' => $id,
                     'specialty_id' => 0,
-                    'rate' => $rate,
+                    'rating' => $rate,
                     'comment' => $comment,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -71,11 +71,11 @@ class WriteReviewController extends Controller
             }
 
             else {
-                DB::table('ratings')->insert([
+                DB::table('reviews')->insert([
                     'user_id' => $user_id,
                     'workshop_id' => $id,
                     'specialty_id' => 0,
-                    'rate' => $rate,
+                    'rating' => $rate,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ]);
@@ -83,15 +83,15 @@ class WriteReviewController extends Controller
         }
 
 
-        $workshop = Workshop::find($id);
-        $rating = DB::table('ratings')->where('workshop_id', $id)->avg('rate');
-        $ratingDetail = Rating::select('*')->where('workshop_id', $id)->paginate(15);
-        $countUlasan = DB::table('ratings')->where('workshop_id', $id)->count('rate');
-        $spesialisasiRate = DB::table('ratings')->select('*',DB::raw('AVG(rate) as avgrate'))
-                            ->where('workshop_id', $id)
-                            ->groupBy('specialty_id')
-                            ->get();
+        // $workshop = Workshop::find($id);
+        // $rating = DB::table('ratings')->where('workshop_id', $id)->avg('rate');
+        // $ratingDetail = Rating::select('*')->where('workshop_id', $id)->paginate(15);
+        // $countUlasan = DB::table('ratings')->where('workshop_id', $id)->count('rate');
+        // $spesialisasiRate = DB::table('ratings')->select('*',DB::raw('AVG(rate) as avgrate'))
+        //                     ->where('workshop_id', $id)
+        //                     ->groupBy('specialty_id')
+        //                     ->get();
 
-        return view('review', ['workshop' => $workshop,'title' => "Bengkel", 'rate' => $rating, 'countUlasan' => $countUlasan, 'spesialisasiRate' =>  $spesialisasiRate, 'ratingDetail' => $ratingDetail]);
+        return redirect()->to('review/'.$id)->with(['id'=>$id,'message' => 'Ulasan berhasil ditambahkan!']);
     }
 }

@@ -18,12 +18,11 @@
             <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2>
 
             <div class="d-flex justify-content-between py-3 px-0">
-                <form class="d-flex align-items-center m-0" role="search">
-                    <label class="m-0">
-                        <input class="form-control m-0" style="padding-left: 2.2em" type="search" autocomplete="off"
-                                placeholder="Nama, lokasi, merek mobil, atau spesialisasi bengkel" name="search" value="{{ $search }}"
-                        >
-                    </label>
+                <form class="m-0 w-50 d-flex align-items-center" role="search">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0"> <img style="width: 16px; height: 16px;" src="{{ url('photos/search.svg') }}" alt="Search"> </span>
+                        <input class="form-control border-start-0 ps-0"  style="border-radius: 0 8px 8px 0;" type="search" placeholder="Nama, lokasi, merek mobil, atau spesialisasi bengkel" aria-label="Search" name="search" value="{{ $search }}">
+                    </div>
                 </form>
 
                 <button class="btn px-3 d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#filterWorkshop" style="background-color: #0D5C63; color: white; font-weight: 600; border-radius: 8px;" type="#"  onclick="load_()">
@@ -143,7 +142,7 @@
                         var i, checkboxes = document.querySelectorAll('input[type=checkbox]');
                         let trigger = 1;
                         let options = document.getElementById("subdistrict");
-                        
+
                         function uncheckAll() {
                             options.selectedIndex = 0;
                             for (i = 0; i < checkboxes.length; i++) {
@@ -215,7 +214,7 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                                             <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
                                         </svg>
-                                        {{ number_format($workshop->ratings_avg_rate, 1) }}
+                                        {{ number_format($workshop->reviews_avg_rating, 1) }}
                                     </small>
                                 </div>
                             </div>
@@ -265,19 +264,5 @@
         .form-check-label, option {
                 font-size: 16px;
                 color: #303030;
-        }
-        label.m-0 {
-                position: relative;
-                width: 380px;
-        }
-
-        label.m-0:before {
-                content: "";
-                position: absolute;
-                left: 12px;
-                top: 0;
-                bottom: 0;
-                width: 20px;
-                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23052023' d='m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5q0-1.875-1.312-3.187T9.5 5Q7.625 5 6.313 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14'/%3E%3C/svg%3E") center / contain no-repeat;
         }
 </style>

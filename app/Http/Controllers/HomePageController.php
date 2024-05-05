@@ -6,7 +6,7 @@ use App\Models\Car;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Origin;
-use App\Models\Rating;
+use App\Models\Review;
 use App\Models\CarBrand;
 use App\Models\Workshop;
 use App\Models\Facility;
@@ -32,14 +32,14 @@ class HomePageController extends Controller
        $workshop = Workshop::select('*')
                     //    ->join('specialty_workshop', 'specialty_workshop.workshop_id', '=', 'workshops.id')
                     //    ->join('car_brand_workshop', 'car_brand_workshop.workshop_id', '=', 'workshops.id')
-                    ->withAvg('ratings', 'rate')
+                    ->withAvg('reviews', 'rating')
                     // ->where('specialty_id', $req->specialty)
-                    ->orderBy('ratings_avg_rate', 'desc')->paginate(4);
+                    ->orderBy('reviews_avg_rating', 'desc')->paginate(4);
 
         $specialty = Specialty::All();
 
         $countWorkshop = Workshop::where('is_active', '1')->count('id');
-        $countCustomer = Rating::groupBy('user_id')->count('id');
+        $countCustomer = Review::groupBy('user_id')->count('id');
         $countUser = User::count('id');
         $countBrand = CarBrand::count('id');
 
