@@ -5,6 +5,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"></script> --}}
+
 
     <button onclick="save()">Save</button>
   <button onclick="load_()">Load</button>
@@ -31,7 +34,64 @@
         }
     </script>
 
+    <!-- Inspired by: https://codepen.io/jamesbarnett/pen/vlpkh -->
+
+    <div class="rating">
+        <input type="radio" id="star5" name="rating" value="5" />
+        <label class="star" for="star5" title="Awesome" aria-hidden="true"></label>
+        <input type="radio" id="star4" name="rating" value="4" />
+        <label class="star" for="star4" title="Great" aria-hidden="true"></label>
+        <input type="radio" id="star3" name="rating" value="3" />
+        <label class="star" for="star3" title="Very good" aria-hidden="true"></label>
+        <input type="radio" id="star2" name="rating" value="2" />
+        <label class="star" for="star2" title="Good" aria-hidden="true"></label>
+        <input type="radio" id="star1" name="rating" value="1" />
+        <label class="star" for="star1" title="Bad" aria-hidden="true"></label>
+    </div>
+    <script>
+        window.FontAwesomeConfig = {
+    searchPseudoElements: true
+}
+    </script>
   <style>
+    .rating {
+    margin-top: 40px;
+    border: none;
+    float: left;
+    }
+
+    .rating > label {
+    color: #90A0A3;
+    float: right;
+    }
+
+    .rating > label:before {
+    margin: 5px;
+    font-size: 2em;
+    font-family: "FontAwesome";
+    content: "\f005";
+    font-weight: 500;
+    display: inline-block;
+    }
+
+    .rating > input {
+    display: none;
+    }
+
+    .rating > input:checked ~ label,
+    .rating:not(:checked) > label:hover,
+    .rating:not(:checked) > label:hover ~ label {
+    color: #F79426;
+    }
+
+    .rating > input:checked + label:hover,
+    .rating > input:checked ~ label:hover,
+    .rating > label:hover ~ input:checked ~ label,
+    .rating > input:checked ~ label:hover ~ label {
+    color: #FECE31;
+    }
+
+
      .rate {
          float: left;
          height: 46px;

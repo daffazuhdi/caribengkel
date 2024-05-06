@@ -96,7 +96,7 @@ Route::get('/writeReview/{id}/',[WriteReviewController::class, 'showReview'])->m
 Route::post('/writeReview/{id}/',[WriteReviewController::class, 'writeReview']);
 
 Route::get('/coba', function () {
-    return view('tambah-bengkel3', [
+    return view('nyoba', [
         "title" => "Bengkel"
         ]);
 });
