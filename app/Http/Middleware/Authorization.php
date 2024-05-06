@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Authorization
 {
@@ -20,6 +21,6 @@ class Authorization
             return $next($request);
         }
 
-        return redirect('home')->with('error','You have no admin access.');
+        return redirect('/')->with('error','You have no admin access.');
     }
 }
