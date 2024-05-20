@@ -12,12 +12,11 @@
         font-weight: 400;
         font-style: normal;
         color: white;
-        /* padding: 2% 10%; */
-        /* background: none; */
       }
     </style>
 </head>
-<footer class="mt-auto py-4 px-5" style="background-color: #0D5C63;">
+<footer class="footer mt-auto py-4 px-5" style="background-color: #0D5C63;">
+    <div class="container">
     <div class="top-footer d-flex justify-content-between align-middle">
         <div class="top-footer-text" style="text-align: center;">
             <p class="m-0 py-1" style="font-size: 140%; font-weight: 500;">CariBengkel</p>
@@ -55,5 +54,6 @@
         <p class="m-0">&copy; 2024 CariBengkel</p>
         <a class="nav-link" style="font-weight: 500" href="#">Syarat dan Ketentuan</a>
         <a class="nav-link" style="font-weight: 500" href="#">Privasi</a>
+    </div>
     </div>
 </footer>

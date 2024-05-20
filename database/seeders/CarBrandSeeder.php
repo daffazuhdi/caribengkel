@@ -70,5 +70,47 @@ class CarBrandSeeder extends Seeder
             'name' => 'Suzuki',
             'label' => 'suzuki'
         ]);
+        CarBrand::create([
+            'id' => 10,
+            'origin_id' => 2,
+            'name' => 'Wuling',
+            'label' => 'wuling'
+        ]);
+        CarBrand::create([
+            'id' => 11,
+            'origin_id' => 2,
+            'name' => 'Chevrolet',
+            'label' => 'chevrolet'
+        ]);
+        CarBrand::create([
+            'id' => 12,
+            'origin_id' => 1,
+            'name' => 'Subaru',
+            'label' => 'subaru'
+        ]);
+        CarBrand::create([
+            'id' => 13,
+            'origin_id' => 1,
+            'name' => 'Mazda',
+            'label' => 'mazda'
+        ]);
+        CarBrand::create([
+            'id' => 14,
+            'origin_id' => 1,
+            'name' => 'Lexus',
+            'label' => 'lexus'
+        ]);
+        CarBrand::create([
+            'id' => 15,
+            'origin_id' => 1,
+            'name' => 'Nissan',
+            'label' => 'nissan'
+        ]);
+        CarBrand::create([
+            'id' => 16,
+            'origin_id' => 2,
+            'name' => 'Mercedes Benz',
+            'label' => 'merc'
+        ]);
     }
 }

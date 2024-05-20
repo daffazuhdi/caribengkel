@@ -3,7 +3,7 @@
 @section('container')
   <div class="container py-4 px-0 m-auto">
     <div class="fotoBengkel">
-      <img src="{{ url('storage/workshop/'.$workshop->photo) }}" class="img-fluid w-100 mx-auto" alt="..." style="border-radius: 4px; object-fit: cover; height: 60vh;">
+      <img src="{{ url('storage/workshop/'.$workshop->photo) }}" class="img-fluid w-100 mx-auto" alt="Responsive image" style="border-radius: 4px; object-fit: cover; height: 60vh;">
     </div>
     <div class="containerInformationCard my-4" style="display: flex;justify-content:space-between">
         <div class="information w-100">
@@ -47,12 +47,12 @@
                 <h4 style="font-weight: 600;">{{ $workshop->name }}</h4>
             @endif
             <div class="address d-flex justify-content-left align-items-center gap-3 mb-2 mt-3">
-            <div class="img-fluid">
-              <img src="{{ url('photos/mapsLogo.svg') }}" style="width:18px;" alt="...">
-            </div>
-            <div>
-              <p class="m-0" style="font-size: 18px; font-weight: 400;">{{ $workshop->address }}</p>
-            </div>
+                <div class="img-fluid">
+                    <img src="{{ url('photos/mapsLogo.svg') }}" style="width:18px;" alt="...">
+                </div>
+                <div>
+                    <p class="m-0" style="font-size: 18px; font-weight: 400;">{{ $workshop->address }}</p>
+                </div>
             </div>
             {{-- <div class="d-flex justify-content-left align-items-center" style="gap: 0.7rem;">
                 <div class="img-fluid">
@@ -65,8 +65,8 @@
         </div>
         @auth
             @if(Auth::user()->role_id == 2)
-                <div class="cardService">
-                    <div class="card" style="width: 23rem;">
+                <div class="cardService w-50">
+                    <div class="card " >
                         <div class="card-body">
                             <h5 class="card-title" style="padding-left:1%; font-size: 18px; font-weight: 600;">Ingin Servis?</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%">Lakukan penjadwalan sekarang</h6>
@@ -78,8 +78,8 @@
                 </div>
             @endauth
             @else
-            <div class="cardService">
-                <div class="card" style="width: 23rem;">
+            <div class="cardService w-50">
+                <div class="card">
                     <div class="card-body">
                     <h5 class="card-title" style="padding-left:1%; font-size: 18px; font-weight: 600;">Ingin Servis?</h5>
                     <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%">Lakukan penjadwalan sekarang</h6>
@@ -150,23 +150,67 @@
                 <h6 style="padding-top:2%;padding-bottom:2%">{{ $workshop->about }}</h6>
                 <div class="location">
                     @if ($workshop->location != null)
-                        <p><iframe src="{{ $workshop->location }}" width="400" height="300" style="border:0;width:100%" allowfullscreen="" loading="lazy"></iframe></p>
+                        <p><iframe src="{{ $workshop->location }}" width="400" height="300" style="border:0;width:100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
                     @else
-                        <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2971198600335!2d106.64732441476916!3d-6.224498995494186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb20a9906e13%3A0xf75c5296d0a385e4!2sBINUS%20UNIVERSITY%2C%20Kampus%20Alam%20Sutera!5e0!3m2!1sen!2sid!4v1623678826710!5m2!1sen!2sid" width="400" height="300" style="border:0;width:100%" allowfullscreen="" loading="lazy"></iframe></p>
+                        <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2971198600335!2d106.64732441476916!3d-6.224498995494186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb20a9906e13%3A0xf75c5296d0a385e4!2sBINUS%20UNIVERSITY%2C%20Kampus%20Alam%20Sutera!5e0!3m2!1sen!2sid!4v1623678826710!5m2!1sen!2sid" width="400" height="300" style="border:0;width:100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
                     @endif
                 </div>
             </div>
             <div class="tab-pane fade" id="fasilitas" role="tabpanel" aria-labelledby="fasilitas-tab" style="padding: 1%">
                 <h6 style="padding-top:2%;padding-bottom:2%">Berikut merupakan fasilitas yang disediakan oleh bengkel untuk kenyamanan para pelanggan:</h6>
-                @foreach ($workshop->facilities as $w)
-                    <p>• {{ $w->name }}</p>
-                @endforeach
+                @if ($countFac < 7)
+                    @foreach ($workshop->facilities as $w)
+                        <p>• {{ $w->name }}</p>
+                    @endforeach
+                @else
+                <div class="row">
+                    @php
+                        $col = 0;
+                    @endphp
+                    @foreach ($workshop->facilities as $w)
+                    <div class="col-lg-2">
+                            <p>• {{ $w->name }}</p>
+                    </div>
+                    @php
+                        $col++;
+                    @endphp
+                    @if ($col % 4 == 0)
+                        <div class="w-100"></div>
+                    @endif
+                    @endforeach
+
+                </div>
+                @endif
+
             </div>
             <div class="tab-pane fade" id="merekmobil" role="tabpanel" aria-labelledby="merekmobil-tab" style="padding: 1%">
                 <h6 style="padding-top:2%;padding-bottom:2%">Berikut merupakan merek mobil yang dapat dikerjakan oleh bengkel ini:</h6>
-                @foreach ($workshop->car_brands as $w)
-                    <p>• {{ $w->name }}</p>
-                @endforeach
+                {{-- <div class="d-flex flex-sm-column"> --}}
+                @if ($countCB < 7)
+                    @foreach ($workshop->car_brands as $w)
+                        <p>• {{ $w->name }}</p>
+                    @endforeach
+                @else
+                    <div class="row">
+                        @php
+                            $col = 0;
+                        @endphp
+                        @foreach ($workshop->car_brands as $w)
+                        <div class="col-lg-2">
+                                <p>• {{ $w->name }}</p>
+                        </div>
+                        @php
+                            $col++;
+                        @endphp
+                        @if ($col % 4 == 0)
+                            <div class="w-100"></div>
+                        @endif
+                        @endforeach
+
+                    </div>
+                @endif
+
+                {{-- </div> --}}
             </div>
             <div class="tab-pane fade" id="waktuoperasional" role="tabpanel" aria-labelledby="waktuoperasional-tab" style="padding-top: 3%">
                 <table class="table table-bordered mb-5">
@@ -210,7 +254,7 @@
             </div>
         </div>
 
-        <div class="showRating d-flex mt-4 mb-1">
+        <div class="showRating d-flex mt-4 mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                 <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
             </svg>
@@ -266,7 +310,11 @@
                         </div>
                         <div class="">
                             <p class="card-text text-muted" style="font-size: 14px;">{{ $wr->created_at->format('j F Y') }}</p>
-                            <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{ $wr->specialty->name }}</small>
+                            @if ($wr->specialty_id != 0)
+                                <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{ $wr->specialty->name }}</small>
+                            @else
+                                <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">Fasilitas</small>
+                            @endif
                         </div>
                     </div>
                     </div>

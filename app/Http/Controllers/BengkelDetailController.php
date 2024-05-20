@@ -20,7 +20,10 @@ class BengkelDetailController extends Controller
                             ->where('workshop_id', $id)
                             ->groupBy('specialty_id')
                             ->get();
-        return view('bengkelDetail', ['workshop' => $workshop,'title' => "Bengkel", 'rate' => $rating, 'countUlasan' => $countUlasan, 'spesialisasiRate' =>  $spesialisasiRate, 'ratingDetail' => $ratingDetail]);
+        $countCB = DB::table('car_brand_workshop')->where('workshop_id', $id)->count('workshop_id');
+        $countFac = DB::table('facility_workshop')->where('workshop_id', $id)->count('workshop_id');
+        // return $countFac;
+        return view('bengkelDetail', ['workshop' => $workshop,'title' => "Bengkel", 'rate' => $rating, 'countUlasan' => $countUlasan, 'spesialisasiRate' =>  $spesialisasiRate, 'ratingDetail' => $ratingDetail, 'countCB' => $countCB, 'countFac' => $countFac]);
     }
 
 }

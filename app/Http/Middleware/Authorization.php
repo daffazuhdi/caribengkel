@@ -17,10 +17,16 @@ class Authorization
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->role->name == "Admin") {
+        if (Auth::user() && Auth::user()->role->name == "Admin") {
             return $next($request);
         }
-
-        return redirect('/')->with('error','You have no admin access.');
+        elseif (Auth::guest()) {
+            session()->flash('message', 'Silakan masuk ke akun terlebih dahulu.');
+            return redirect('/');
+        }
+        else {
+            session()->flash('message', 'Anda tidak punya akses ke halaman yang dituju.');
+            return redirect('/');
+        }
     }
 }

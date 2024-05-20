@@ -1,6 +1,15 @@
 @section('title', $title)
 @extends('layouts.main')
 @section('container')
+@if (session('message'))
+<div class="alert alert-warning main-content d-flex align-items-center justify-content-start gap-2 m-0 py-2" role="alert" style="font-weight: 600; border-radius: 0; padding: 0 94px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+        <path fill="#fdad15" d="M12 1.75A10.25 10.25 0 1 0 22.25 12A10.26 10.26 0 0 0 12 1.75m-1 5a1 1 0 0 1 2 0v6.33a1 1 0 0 1-2 0zm1 11.08a1.25 1.25 0 1 1 1.25-1.25a1.24 1.24 0 0 1-1.21 1.23z"/>
+    </svg>
+    {{ session('message') }}
+</div>
+@endif
+
   <div style="border-radius: 0px" class="card  bg-dark text-white">
     <img src="{{ url('photos/img_hero.png') }}" class="card-img" alt="...">
     <div class="card-img-overlay d-flex flex-column text-center justify-content-center align-items-center">
@@ -22,7 +31,7 @@
       <div class="row text-center">
         @foreach ($specialty as $s)
         <div class="col-6 col-sm-3 mb-3">
-          <a href="/bengkel?specialty%5B%5D={{ $s->id }}" class="btn btn-primary w-100 h-100" style="text-decoration: none; text-align: center; color: #FFFFFF; font-size: 14px; ">
+          <a href="/bengkel?specialty%5B%5D={{ $s->id }}" class="btn btn-primary w-100 h-100 d-flex justify-content-center align-items-center" style="text-decoration: none; color: #FFFFFF; font-size: 14px; ">
             {{ $s->name }}
           </a>
         </div>

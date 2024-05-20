@@ -18,6 +18,11 @@ a {
     font-weight: 500;
 }
 
+/* .footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+} */
 
 .form-control:focus{
     border-color: #0D5C63;

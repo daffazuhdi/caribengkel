@@ -3,15 +3,19 @@
 @section('container')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="container py-4 px-0 m-auto">
-    <div class="col-lg-4">
+<div class="container px-0 m-auto" style="min-height: 70vh;">
+    <a class="nav-link d-inline-flex align-items-center gap-2" style="font-weight: 500;" href="{{ url('review/'.$workshop->id) }}">
+        <img src="{{ url('photos/arrow-back.svg') }}" width="20px;">
+        Kembali
+    </a>
+    <div class="col-lg-4 mt-4">
         <form action="/writeReview/{{ $workshop->id }}"  method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <h2>Ulasan</h2>
-            <div class="save" name ="user_id" id="user_id" value="{{auth()->user()->id}}"></div>
+            <h5>Ulasan</h5>
+            <div class="save" name ="user_id" id="user_id" value="{{ auth()->user()->id }}"></div>
 
-            <div class="specialty py-2">
-                <h6>Spesialisasi apa yang ingin kamu ulas?</h6>
+            <div class="specialty mt-3 mb-4">
+                <label for="specialty" class="form-label-md">Spesialisasi apa yang ingin kamu ulas?</label>
                 <select class="form-control form-control-sm" name="specialty">
                     @foreach ($workshop->specialties as $w)
                         <option value="{{ $w->name }}">{{ $w->name }}</option>
@@ -20,8 +24,11 @@
                 </select>
             </div>
 
-            <div class="rate py-2">
-                <h6>Bagaimana kamu menilai kinerja bengkel ini?</h6>
+            <div class="rate mb-2">
+                <label for="rating" class="form-label-md">Bagaimana kamu menilai kinerja bengkel ini?</label>
+                @error('rating')
+                    <div class="alert alert-danger py-0 px-0 my-0" style="font-size:11px;background:none;border:none;color:red">The rating field is required.</div>
+                @enderror
                 <fieldset class="form-group">
                     {{-- <div class="row"> --}}
                       <div class="rating">
@@ -40,14 +47,15 @@
                 </fieldset>
             </div>
 
-            <div class="comment py-2">
+            <div class="comment mb-4">
                 <div class="form-group">
-                    <h6>Komentar (Opsional)</h6>
-                    <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label for="comment" class="form-label-md">Komentar (Opsional)</label>
+                    <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="4"></textarea>
                 </div>
             </div>
-            <div class="submit py-2">
-                <button type="submit" class="btn btn-primary">Submit</button>
+
+            <div class="submit" style="margin: 60px 0 20px 0;">
+                <button type="submit" class="btn btn-primary" style="font-size: 14px">Kirim Ulasan</button>
             </div>
 
         </form>

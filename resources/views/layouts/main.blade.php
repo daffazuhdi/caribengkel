@@ -27,15 +27,35 @@
         color: #052023;
         min-height: 100vh;
       }
+      .container-fluid {
+        position: relative;
+        /* min-height: 100vh; */
+      }
+      .content-wrap {
+        padding-bottom: 40px;
+      }
+      .footer {
+        position: absolute;
+        /* bottom: 0; */
+        width: 100%;
+        height: 165px;
+      }
     </style>
   </head>
   <body>
     @include('partials.navbar')
-    <div class="container-fluid px-0 m-auto" style="min-height: 70vh;">
+    <div class="container-fluid px-0 m-auto">
+      <div class="content-wrap">
         @yield('container')
+      </div>
+      <footer class="footer">
+        @include('partials.footer')
+      </footer>
     </div>
-    @include('partials.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     @yield('script')
   </body>
+  {{-- <footer>
+    @include('partials.footer')
+  </footer> --}}
 </html>

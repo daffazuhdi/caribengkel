@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 @section('title', 'Data Kendaraan')
-    
+
 @section('content')
 <body>
     <div class="container-fluid mh-100 h-100">
@@ -24,7 +24,6 @@
 
                 <form action="{{ route('vehicle.store') }}" method="POST">
                     @csrf
-
                     <div class="mb-2">
                         <label for="car_brand_id" class="form-label">Merek mobil</label>
                         <select name="car_brand_id" id="car_brand_id" class="form-select form-control form-select-sm">
@@ -34,34 +33,54 @@
                             @endforeach
                         </select>
                     </div>
-    
+
                     <div class="mb-2">
                         <label for="car_model_id" class="form-label">Model mobil</label>
-                        <select name="car_model_id" id="car_model_id" class="form-select form-control form-select-sm" disabled>
-                          <option>Pilih merek mobil terlebih dahulu</option>
+                        <select name="car_model_id" id="car_model_id" class="form-select form-control form-select-sm @error('car_model_id') is-invalid @enderror" disabled>
+                        <option>Pilih merek mobil terlebih dahulu</option>
                         </select>
+                        @error('car_model_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
-    
+
                     <div class="mb-2">
                         <label for="license_plate" class="form-label">Plat nomor mobil</label>
-                        <input name="license_plate" id="license_plate" type="text" class="form-control form-control-sm" placeholder="Masukkan plat nomor mobil">
+                        <input name="license_plate" id="license_plate" type="text" class="form-control form-control-sm @error('license_plate') is-invalid @enderror" placeholder="Masukkan plat nomor mobil" value="{{ old('license_plate') }}">
+                        @error('license_plate')
+                             <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
-    
+
                     <div class="mb-4">
                         <label for="service_date" class="form-label">Terakhir servis/ganti oli</label>
                             <div class="date" style="position: relative">
                                 <img style="width: 16px; height: 16px; position: absolute; right: 10px; top: 6px;" src="{{ url('photos/calendar.svg') }}" alt="">
-                                <input type="text" name="service_date" id="service_date" class="form-control form-control-sm" placeholder="Tanggal/Bulan/Tahun">
+                                <input type="text" name="service_date" id="service_date" class="form-control form-control-sm @error('service_date') is-invalid @enderror" placeholder="Tanggal/Bulan/Tahun">
                                 <span class="input-group-append">
                                     <span class="input-group-text d-none">
                                     </span>
                                 </span>
+                                @error('service_date')
+                                    <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red">Selected date must be after the last service date.</div>
+                                @enderror
                             </div>
                     </div>
-    
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-start align-items-start gap-2">
+                            <input class="form-check-input" type="checkbox" name="is_notify" id="#" value=1 style="display: inline-block;">
+                            <label for="is_notify" class="form-label" style="margin-top: 3px">Beri notifikasi via WhatsApp jika sudah mendekati 6 bulan sejak servis terakhir</label>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-primary w-100">Simpan</button>
-    
+
                 </div>
+
                 </form>
 
                 <div style="position: relative; display: inline;" class="col-6 d-none d-md-block">
@@ -95,7 +114,7 @@
                             .end()
 
                         $("#car_model_id")
-                            .append( 
+                            .append(
                                 $("<option>")
                                     .val('')
                                     .html('Pilih tipe mobil')
@@ -103,7 +122,7 @@
 
                         result.forEach((model) => {
                             $("#car_model_id")
-                            .append( 
+                            .append(
                                 $("<option>")
                                     .val(model.id)
                                     .html(model.name)

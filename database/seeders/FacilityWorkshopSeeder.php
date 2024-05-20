@@ -53,11 +53,6 @@ class FacilityWorkshopSeeder extends Seeder
         ]);
         FacilityWorkshop::create([
             // 'id' => 2,
-            'workshop_id' => '3',
-            'facility_id' => '1',
-        ]);
-        FacilityWorkshop::create([
-            // 'id' => 2,
             'workshop_id' => '4',
             'facility_id' => '1',
         ]);
@@ -65,16 +60,6 @@ class FacilityWorkshopSeeder extends Seeder
             // 'id' => 2,
             'workshop_id' => '4',
             'facility_id' => '2',
-        ]);
-        FacilityWorkshop::create([
-            // 'id' => 2,
-            'workshop_id' => '4',
-            'facility_id' => '3',
-        ]);
-        FacilityWorkshop::create([
-            // 'id' => 2,
-            'workshop_id' => '4',
-            'facility_id' => '4',
         ]);
         FacilityWorkshop::create([
             // 'id' => 2,
@@ -320,6 +305,32 @@ class FacilityWorkshopSeeder extends Seeder
             // 'id' => 2,
             'workshop_id' => '20',
             'facility_id' => '6',
+        ]);
+        FacilityWorkshop::create([
+            // 'id' => 2,
+            'workshop_id' => '21',
+            'facility_id' => '1',
+        ]);
+        FacilityWorkshop::create([
+            // 'id' => 2,
+            'workshop_id' => '21',
+            'facility_id' => '2',
+        ]);
+        FacilityWorkshop::create([
+            // 'id' => 2,
+            'workshop_id' => '21',
+            'facility_id' => '3',
+        ]);
+
+        FacilityWorkshop::create([
+            // 'id' => 2,
+            'workshop_id' => '22',
+            'facility_id' => '1',
+        ]);
+        FacilityWorkshop::create([
+            // 'id' => 2,
+            'workshop_id' => '22',
+            'facility_id' => '2',
         ]);
     }
 }

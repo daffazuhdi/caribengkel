@@ -9,6 +9,9 @@ use App\Models\Review;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
+
+
 class WriteReviewController extends Controller
 {
     //
@@ -30,6 +33,18 @@ class WriteReviewController extends Controller
         $workshop_id = $id;
         $rate = $req->rating;
         $comment = $req->comment;
+
+        $rules = [
+            'rating' => 'required',
+        ];
+
+        $validator = Validator::make($req->all(), $rules);
+
+        if($validator->fails()){
+            return back()->withErrors($validator);
+            // ->with(['message' => 'Isi nilai rating dibawah ini.']);
+            // ->withErrors($validator);
+        }
 
         if ($req->specialty != 'null') {
             $specialty = Specialty::where('name', $req->specialty)->first();

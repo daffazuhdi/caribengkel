@@ -14,6 +14,7 @@ use App\Models\CarBrandWorkshop;
 use App\Models\Workhour;
 use App\Models\Service;
 use App\Models\WorkshopPrice;
+use App\Models\Review;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -34,6 +35,23 @@ class BengkelController extends Controller
         $filterBrand = null;
         $countFilter = 0;
 
+        // $rating = Review::select('reviews.*')
+        //             ->leftJoin('workshops', 'reviews.workshop_id', '=', 'workshops.id')
+        //             ->leftJoin('specialties', 'reviews.specialty_id', '=', 'specialties.id')
+        //             ->where('reviews.workshop_id', $id)
+        //             ->whereIn('reviews.specialty_id', function ($query) use ($id) {
+        //                 $query->select('specialty_workshop.specialty_id')
+        //                     ->from('workshops')
+        //                     ->leftJoin('specialty_workshop', 'workshops.id', '=', 'specialty_workshop.workshop_id')
+        //                     // ->leftjoin('reviews', 'workshops.id', '=', 'reviews.workshop_id')
+        //                     ->where('workshops.id', '=', $id);
+        //             });
+
+        // $facility = Review::where('specialty_id', '=', '0')
+        //             ->where('reviews.workshop_id', $id);
+        // $result = $rating->union($facility);
+        // $average = $result->avg('rating');
+
         $query = Workshop::select('workshops.*','specialties.name AS specialty_name',
                                     'specialty_workshop.specialty_id', 'car_brand_workshop.car_brand_id',
                                     'subdistricts.name AS subdistrict_name')
@@ -43,7 +61,7 @@ class BengkelController extends Controller
                 ->leftjoin('subdistricts', 'subdistricts.id', '=', 'workshops.subdistrict_id')
                 ->leftjoin('car_brands', 'car_brands.id', '=', 'car_brand_workshop.car_brand_id')
                 ->withAvg('reviews', 'rating')
-                ->where('workshops.is_active', '=', '1');
+                ->where('workshops.is_active', '=', '1')->orderBy('reviews_avg_rating', 'DESC');
 
         if (isset($req->search) && ($req->search != null)) {
             $query = $query->where('workshops.is_active', '=', '1')->where('workshops.name', 'LIKE', "%$search%")
@@ -76,6 +94,7 @@ class BengkelController extends Controller
 
 
         $workshops = $workshops->paginate(12);
+        $workshops->appends($req->all());
 
         $begin = $workshops->firstItem();
         $end = $workshops->lastItem();
@@ -106,7 +125,7 @@ class BengkelController extends Controller
             'subdistrict_id' => 'required',
             'address' => 'required|string|max:500',
             'about' => 'required|string|max:500',
-            'phone_number' => 'required|string|unique:App\Models\Workshop,phone_number|regex:/(0)[0-9]/|max:13',
+            'phone_number' => 'required|string|unique:App\Models\Workshop,phone_number|regex:/(0)[0-9]/|max:15',
             'photo' => 'required|mimes:jpg,png,jpeg,svg'
         ];
 
@@ -302,7 +321,7 @@ class BengkelController extends Controller
                 'subdistrict_id' => 'required',
                 'address' => 'required|string|max:500',
                 'about' => 'required|string|max:500',
-                'phone_number' => 'required|string|regex:/(0)[0-9]/|max:13',
+                'phone_number' => 'required|string|regex:/(0)[0-9]/|max:15',
                 'photo' => 'mimes:jpg,png,jpeg,svg'
             ];
         }
@@ -363,6 +382,7 @@ class BengkelController extends Controller
         // return $req2;
         $workhour = $req2->day;
         $workshop = Workshop::find($id);
+        $specialty = Specialty::all();
 
         $rules = [
             'specialty' => 'required',
@@ -385,6 +405,15 @@ class BengkelController extends Controller
         // update data -> if exist break; else create
         // delete data
         SpecialtyWorkshop::where('workshop_id', $id)->delete();
+
+        foreach ($specialty as $s) {
+            foreach ($req2->specialty as $rs) {
+                if($s->id != $rs){
+                    Review::where('workshop_id', $id)->where('specialty_id', $s->id)->delete();
+                }
+            }
+        }
+
         FacilityWorkshop::where('workshop_id', $id)->delete();
         CarBrandWorkshop::where('workshop_id', $id)->delete();
         Workhour::where('workshop_id', $id)->delete();
@@ -429,6 +458,8 @@ class BengkelController extends Controller
         $service = Service::select('*')->whereIn('specialty_id', $req2->specialty)->get();
         // $workshop_id = $id;
         $specialty = $req2->specialty;
+
+
 
         return view('ubah-bengkel-harga', compact('workshop', 'service', 'specialty'), ['title' => 'Ubah Bengkel']);
     }

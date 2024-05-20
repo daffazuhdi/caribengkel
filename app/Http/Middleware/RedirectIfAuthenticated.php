@@ -23,6 +23,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                session()->flash('message','Anda sudah masuk menggunakan akun.');
                 return redirect('/');
             }
         }

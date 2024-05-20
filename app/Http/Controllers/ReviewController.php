@@ -14,7 +14,19 @@ class ReviewController extends Controller
 
     public function test($id){
         $workshop = Workshop::find($id);
-        $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
+        // $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
+        $rating = Review::select('reviews.user_id', 'reviews.workshop_id', 'reviews.specialty_id', 'reviews.rating', 'reviews.comment', 'reviews.created_at')
+                    ->leftJoin('workshops', 'reviews.workshop_id', '=', 'workshops.id')
+                    ->leftJoin('specialties', 'reviews.specialty_id', '=', 'specialties.id')
+                    ->where('reviews.workshop_id', $id)
+                    // ->whereIn('reviews.specialty_id', function ($query) {
+                    //     $query->select('specialty_workshop.specialty_id')
+                    //         ->from('workshops')
+                    //         ->leftJoin('specialty_workshop', 'workshops.id', '=', 'specialty_workshop.workshop_id');
+                    // })
+                    ->avg('rating');
+                // ->orderBy('reviews.workshop_id')
+                // ->get();
         $ratingDetail = Review::select('*')->where('workshop_id', $id)->paginate(15);
         $countUlasan = DB::table('reviews')->where('workshop_id', $id)->count('rating');
         $spesialisasiRate = DB::table('reviews')->select('*',DB::raw('AVG(rating) as avgrate'))
@@ -31,7 +43,17 @@ class ReviewController extends Controller
 
     public function sort($id, $sort){
         $workshop = Workshop::find($id);
-        $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
+        // $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
+        $rating = Review::select('reviews.user_id', 'reviews.workshop_id', 'reviews.specialty_id', 'reviews.rating', 'reviews.comment', 'reviews.created_at')
+                    ->leftJoin('workshops', 'reviews.workshop_id', '=', 'workshops.id')
+                    ->leftJoin('specialties', 'reviews.specialty_id', '=', 'specialties.id')
+                    ->where('reviews.workshop_id', $id)
+                    ->whereIn('reviews.specialty_id', function ($query) {
+                        $query->select('specialty_workshop.specialty_id')
+                            ->from('workshops')
+                            ->leftJoin('specialty_workshop', 'workshops.id', '=', 'specialty_workshop.workshop_id');
+                    })
+                    ->avg('rating');
         $countUlasan = DB::table('reviews')->where('workshop_id', $id)->count('rating');
         $spesialisasiRate = DB::table('reviews')->select('*',DB::raw('AVG(rating) as avgrate'))
                             ->where('workshop_id', $id)

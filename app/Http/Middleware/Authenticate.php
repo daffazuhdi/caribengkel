@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Facades\Route;
 
 class Authenticate extends Middleware
 {
@@ -14,8 +15,15 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
+        // $route = Route::currentRouteName();
+        $route = str_replace(url('/'), '', url()->previous());
+
+        // return $route;
+
         if (! $request->expectsJson()) {
-            return route('login.show');
+            // session()->flash('message', $route);
+            session()->flash('message', 'Silakan masuk ke akun terlebih dahulu.');
+            return route('home');
         }
     }
 }

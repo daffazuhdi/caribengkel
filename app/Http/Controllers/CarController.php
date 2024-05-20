@@ -71,6 +71,10 @@ class CarController extends Controller
         // Insert Car User
         // Redirect
 
+        // return $request;
+
+        $is_notified = $request->is_notify;
+
         $validated = $request->validated();
 
         $car = [
@@ -79,13 +83,22 @@ class CarController extends Controller
         ];
 
         $new_car = Car::create($car);
+
         $service_date = Carbon::createFromFormat('d/m/Y', $validated['service_date'])->format('Y-m-d');
-
-        $car_service = [
-            "car_id" => $new_car->id,
-            "service_date" => $service_date,
-        ];
-
+        if ($is_notified == 1) {
+            $car_service = [
+                "car_id" => $new_car->id,
+                "service_date" => $service_date,
+                "is_notified" => 0
+            ];
+        }
+        else{
+            $car_service = [
+                "car_id" => $new_car->id,
+                "service_date" => $service_date,
+                "is_notified" => 1
+            ];
+        }
 
         $new_car_service = CarService::create($car_service);
 
@@ -110,14 +123,21 @@ class CarController extends Controller
         // Validate Input
         // Insert Car Service
         // Redirect
-        $car = Car::find($id);
-        $last = $car->car_services->max('service_date');
 
+        // return $request;
+
+        $car = Car::find($id);
+        $lastDate = $car->car_services->max('service_date');
+        $last = date('d/m/Y', strtotime($lastDate));
+
+        // return $last; #$request->service_date;
         $rules = [
             // 'car_model_id' => 'required',
             // 'license_plate' => 'required',
-            'service_date' => 'required|date|after:$last'
+            'service_date' => 'required|date_format:d/m/Y|after:'.$last
         ];
+
+        // return $request->service_date;
 
         $validator = Validator::make($request->all(), $rules);
 
@@ -133,6 +153,18 @@ class CarController extends Controller
         $car_service->car_id = $car->id;
         $car_service->service_date = $date;
 
+        $is_notify = $request->is_notify;
+        if ($is_notify == 1) {
+            $car_service->is_notified = 0;
+        }
+        else{
+            $car_service->is_notified = 1;
+        }
+
+        CarService::where('car_id', $id)->update([
+            'is_notified' => 1
+        ]);
+
         $car_service->save();
 
         return redirect('/profil')->with('message', 'Kendaraan berhasil diperbarui!');
@@ -141,6 +173,8 @@ class CarController extends Controller
     public function delete($id) {
         // return $id;
         Car::deleteCar($id);
+        CarUser::deleteCar($id);
+        CarService::deleteCar($id);
 
         return redirect('/profil')->with('message', 'Kendaraan berhasil dihapus!');
     }

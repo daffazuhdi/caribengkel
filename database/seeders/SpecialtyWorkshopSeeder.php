@@ -46,16 +46,6 @@ class SpecialtyWorkshopSeeder extends Seeder
         ]);
 
         SpecialtyWorkshop::create([
-            'specialty_id' => 4,
-            'workshop_id' => 3
-        ]);
-
-        SpecialtyWorkshop::create([
-            'specialty_id' => 5,
-            'workshop_id' => 3
-        ]);
-
-        SpecialtyWorkshop::create([
             'specialty_id' => 1,
             'workshop_id' => 4
         ]);
@@ -238,6 +228,25 @@ class SpecialtyWorkshopSeeder extends Seeder
         SpecialtyWorkshop::create([
             'specialty_id' => 6,
             'workshop_id' => 20
+        ]);
+        SpecialtyWorkshop::create([
+            'specialty_id' => 2,
+            'workshop_id' => 21
+        ]);
+
+        SpecialtyWorkshop::create([
+            'specialty_id' => 3,
+            'workshop_id' => 21
+        ]);
+
+        SpecialtyWorkshop::create([
+            'specialty_id' => 5,
+            'workshop_id' => 21
+        ]);
+
+        SpecialtyWorkshop::create([
+            'specialty_id' => 5,
+            'workshop_id' => 22
         ]);
     }
 }

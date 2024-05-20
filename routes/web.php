@@ -32,10 +32,10 @@ use App\Http\Controllers\WriteReviewController;
 Route::get('/',[HomePageController::class, 'test'])->name('home');
 // Route::get('/',[BengkelController::class, 'showAll']);
 
-Route::get('/daftar', [RegisterController::class, 'show'])->name('register.show');
+Route::get('/daftar', [RegisterController::class, 'show'])->name('register.show')->middleware('guest');
 Route::post('/daftar', [RegisterController::class, 'submit'])->name('register.submit');
 
-Route::get('/datakendaraan', [CarController::class, 'show'])->name('vehicle.show')->middleware('auth');
+Route::get('/datakendaraan', [CarController::class, 'show'])->name('vehicle.show')->middleware('auth.first'); // harusnya cuma bisa diakses abis regist
 Route::post('/datakendaraan', [CarController::class, 'store'])->name('vehicle.store');
 
 Route::get('/masuk', [LoginController::class, 'show'])->name('login.show')->middleware('guest');
@@ -44,6 +44,7 @@ Route::post('/masuk', [LoginController::class, 'submit'])->name('login.submit');
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 Route::get('/bengkel', [BengkelController::class, 'showAll'])->name('bengkel');
+
 // Route::get('/bengkel', [BengkelController::class, 'showAll'])->name('bengkel');
 // Route::get('/bengkel', function () {
 //     return view('bengkel', [
@@ -82,9 +83,9 @@ Route::get('/profil', [UserController::class, 'view'])->name('profile.view')->mi
 Route::post('/profil', [UserController::class, 'update'])->name('profile.update');
 Route::get('/ubah-profil', [UserController::class, 'detail'])->middleware('auth');
 
-Route::get('/kendaraan-{id}', [CarController::class, 'view'])->middleware('auth');
-Route::post('/kendaraan-{id}', [CarController::class, 'update'])->name('vehicle.update');
-Route::post('/kendaraan/{id}', [CarController::class, 'delete']);
+Route::get('/kendaraan/{id}', [CarController::class, 'view'])->middleware('auth');
+Route::post('/kendaraan/{id}', [CarController::class, 'update'])->name('vehicle.update');
+Route::post('/hapus-kendaraan/{id}', [CarController::class, 'delete']);
 
 Route::get('/tambah-kendaraan', [CarController::class, 'showToAdd'])->middleware('auth');
 Route::post('/tambah-kendaraan', [CarController::class, 'store']);

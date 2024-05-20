@@ -49,12 +49,18 @@
 
                 <div class="mb-2">
                     <label for="phone_number" class="form-label">Nomor telepon</label>
-                    <input type="phone" class="form-control form-control-sm @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number"  placeholder="Masukkan nomor telepon" value="{{ old('phone_number') }}">
-                    @error('phone_number')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                     @enderror
+                    {{-- <div class="input-group" style="">
+                        <div class="input-group-prepend" style="border-radius: 8px;">
+                            <span class="input-group-text text-muted px-2 py-2" style="font-size: 12px; border-top-right-radius: 0.8px !important; border-bottom-right-radius: 0.8px !important;">+62</span>
+                        </div> --}}
+                        <input type="phone" class="form-control form-control-sm @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" placeholder="Masukkan nomor telepon" value="{{ old('phone_number') }}" style="border-radius: 0 8px 8px 0;">
+
+                        @error('phone_number')
+                        <div class="invalid-feedback">
+                            {{ $message }} {{" It is must be started with '08'."}}
+                        </div>
+                        @enderror
+                    {{-- </div> --}}
                 </div>
 
                 <div class="mb-4">

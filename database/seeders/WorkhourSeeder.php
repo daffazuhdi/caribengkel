@@ -20,49 +20,49 @@ class WorkhourSeeder extends Seeder
             'id' => 1,
             'workshop_id' => 1,
             'day_id' => 1,
-            'working_hour' => '09.00 - 17.00',
+            'working_hour' => '08.00 - 21.00',
         ]);
 
         Workhour::create([
             'id' => 2,
             'workshop_id' => 1,
             'day_id' => 2,
-            'working_hour' => '09.00 - 17.00',
+            'working_hour' => '08.00 - 21.00',
         ]);
 
         Workhour::create([
             'id' => 3,
             'workshop_id' => 1,
             'day_id' => 3,
-            'working_hour' => '09.00 - 17.00',
+            'working_hour' => '08.00 - 21.00',
         ]);
 
         Workhour::create([
             'id' => 4,
             'workshop_id' => 1,
             'day_id' => 4,
-            'working_hour' => '09.00 - 17.00',
+            'working_hour' => '08.00 - 21.00',
         ]);
 
         Workhour::create([
             'id' => 5,
             'workshop_id' => 1,
             'day_id' => 5,
-            'working_hour' => '09.00 - 17.00',
+            'working_hour' => '08.00 - 21.00',
         ]);
 
         Workhour::create([
             'id' => 6,
             'workshop_id' => 1,
             'day_id' => 6,
-            'working_hour' => '09.00 - 17.00',
+            'working_hour' => '08.00 - 21.00',
         ]);
 
         Workhour::create([
             'id' => 7,
             'workshop_id' => 1,
             'day_id' => 7,
-            'working_hour' => '09.00 - 17.00',
+            'working_hour' => '08.00 - 21.00',
         ]);
 
         Workhour::create([
@@ -118,77 +118,77 @@ class WorkhourSeeder extends Seeder
             'id' => 15,
             'workshop_id' => 3,
             'day_id' => 1,
-            'working_hour' => '09.00 - 18.00',
+            'working_hour' => '08.00 - 16.30',
         ]);
 
         Workhour::create([
             'id' => 16,
             'workshop_id' => 3,
             'day_id' => 2,
-            'working_hour' => '09.00 - 18.00',
+            'working_hour' => '08.00 - 16.30',
         ]);
 
         Workhour::create([
             'id' => 17,
             'workshop_id' => 3,
             'day_id' => 3,
-            'working_hour' => '09.00 - 18.00',
+            'working_hour' => '08.00 - 16.30',
         ]);
 
         Workhour::create([
             'id' => 18,
             'workshop_id' => 3,
             'day_id' => 4,
-            'working_hour' => '09.00 - 18.00',
+            'working_hour' => '08.00 - 16.30',
         ]);
 
         Workhour::create([
             'id' => 19,
             'workshop_id' => 3,
             'day_id' => 5,
-            'working_hour' => '09.00 - 19.00',
+            'working_hour' => '08.00 - 16.30',
         ]);
 
         Workhour::create([
             'id' => 20,
             'workshop_id' => 3,
             'day_id' => 6,
-            'working_hour' => '09.30 - 18.00',
+            'working_hour' => '08.00 - 16.30',
         ]);
 
         Workhour::create([
             'id' => 21,
             'workshop_id' => 3,
             'day_id' => 7,
-            'working_hour' => '-',
+            'working_hour' => '08.00 - 16.30',
         ]);
 
         Workhour::create([
             'id' => 22,
             'workshop_id' => 4,
             'day_id' => 1,
-            'working_hour' => '09.00 - 18.00',
+            'working_hour' => '09.00 - 17.00',
         ]);
 
         Workhour::create([
             'id' => 23,
             'workshop_id' => 4,
             'day_id' => 2,
-            'working_hour' => '09.00 - 18.00',
+            'working_hour' => '09.00 - 17.00',
         ]);
 
         Workhour::create([
             'id' => 24,
             'workshop_id' => 4,
             'day_id' => 3,
-            'working_hour' => '09.00 - 18.00',
+            'working_hour' => '09.00 - 17.00',
         ]);
 
         Workhour::create([
             'id' => 25,
             'workshop_id' => 4,
             'day_id' => 4,
-            'working_hour' => '09.00 - 18.00',
+            'working_hour' => '09.00 - 17.00',
         ]);
 
         Workhour::create([
@@ -202,14 +202,14 @@ class WorkhourSeeder extends Seeder
             'id' => 27,
             'workshop_id' => 4,
             'day_id' => 6,
-            'working_hour' => '09.00 - 18.00',
+            'working_hour' => '09.00 - 17.00',
         ]);
 
         Workhour::create([
             'id' => 28,
             'workshop_id' => 4,
             'day_id' => 7,
-            'working_hour' => '09.00 - 18.00',
+            'working_hour' => '10.00 - 17.00',
         ]);
 
         Workhour::create([
@@ -925,5 +925,104 @@ class WorkhourSeeder extends Seeder
             'day_id' => 7,
             'working_hour' => '09.00 - 18.00',
         ]);
+        Workhour::create([
+            'id' => 131,
+            'workshop_id' => 21,
+            'day_id' => 1,
+            'working_hour' => '08.00 - 17.00',
+        ]);
+
+        Workhour::create([
+            'id' => 132,
+            'workshop_id' => 21,
+            'day_id' => 2,
+            'working_hour' => '08.00 - 17.00',
+        ]);
+
+        Workhour::create([
+            'id' => 133,
+            'workshop_id' => 21,
+            'day_id' => 3,
+            'working_hour' => '08.00 - 17.00',
+        ]);
+
+        Workhour::create([
+            'id' => 134,
+            'workshop_id' => 21,
+            'day_id' => 4,
+            'working_hour' => '08.00 - 17.00',
+        ]);
+
+        Workhour::create([
+            'id' => 135,
+            'workshop_id' => 21,
+            'day_id' => 5,
+            'working_hour' => '08.00 - 17.00',
+        ]);
+
+        Workhour::create([
+            'id' => 136,
+            'workshop_id' => 21,
+            'day_id' => 6,
+            'working_hour' => '08.00 - 17.00',
+        ]);
+
+        Workhour::create([
+            'id' => 137,
+            'workshop_id' => 21,
+            'day_id' => 7,
+            'working_hour' => '08.00 - 17.00',
+        ]);
+
+        Workhour::create([
+            'id' => 138,
+            'workshop_id' => 22,
+            'day_id' => 1,
+            'working_hour' => '08.00 - 18.30',
+        ]);
+
+        Workhour::create([
+            'id' => 139,
+            'workshop_id' => 22,
+            'day_id' => 2,
+            'working_hour' => '08.00 - 18.30',
+        ]);
+
+        Workhour::create([
+            'id' => 140,
+            'workshop_id' => 22,
+            'day_id' => 3,
+            'working_hour' => '08.00 - 18.30',
+        ]);
+
+        Workhour::create([
+            'id' => 141,
+            'workshop_id' => 22,
+            'day_id' => 4,
+            'working_hour' => '08.00 - 18.30',
+        ]);
+
+        Workhour::create([
+            'id' => 142,
+            'workshop_id' => 22,
+            'day_id' => 5,
+            'working_hour' => '08.00 - 18.30',
+        ]);
+
+        Workhour::create([
+            'id' => 143,
+            'workshop_id' => 22,
+            'day_id' => 6,
+            'working_hour' => '08.00 - 18.30',
+        ]);
+
+        Workhour::create([
+            'id' => 144,
+            'workshop_id' => 22,
+            'day_id' => 7,
+            'working_hour' => '08.00 - 18.30',
+        ]);
+
+
     }
 }

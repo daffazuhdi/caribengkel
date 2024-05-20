@@ -19,12 +19,13 @@ class WorkshopSeeder extends Seeder
             'id' => 1,
             'subdistrict_id' => 1,
             'name' => 'Bengkel Mobil BOS BSD',
-            'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
+            'about' => 'Bengkel Mobil BOS BSD merupakan salah satu jaringan Bengkel BOS yang tersebar di seluruh Indonesia. Bengkel BOS menyediakan jasa ganti ban, ganti oli, dan servis lainnya seperti spooring, balancing, isi nitrogen, tune-up, servis kaki-kaki, kuras matic, oli differential, oli transmisi serta service berkala. Layanan Safety Check 58 komponen mobil diberikan gratis setiap pelanggan melakukan servis.
+            Mekanik Bengkel Mobil BOS dibekali pelatihan dan alat-alat yang modern dengan standarisasi bengkel resmi yang menjadikan mekanik kami ahli dibidangnya.
+            Fasilitas nyaman seperti ruang tunggu ber-AC, toilet bersih, Wifi, kopi dan teh disediakan bagi pelanggan Bengkel BOS.',
             'address' => 'Jl. Kp., Cilenggang, Kec. Serpong, Kota Tangerang Selatan',
             'photo' => 'bengkel_bos_bsd.png',
             'operational_hour' => 'Senin s.d. Sabtu, 10:00 - 16:00',
-            'phone_number' => '(021) 5380810',
+            'phone_number' => '+6285695930369',
             'location' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.682018265211!2d106.66706017499105!3d-6.3054431936837725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e4d36873d365%3A0x5e334177b38373b0!2sBengkel%20Mobil%20BOS%20BSD!5e0!3m2!1sen!2sid!4v1714017383490!5m2!1sen!2sid',
             'is_active' => 1
         ]);
@@ -46,25 +47,25 @@ class WorkshopSeeder extends Seeder
             'id' => 3,
             'subdistrict_id' => 2,
             'name' => 'BengkelIN BSD',
-            'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
-            'address' => 'Kec. Serpong Utara',
-            'photo' => 'bengkel_ac_ciputat.png',
+            'about' => 'BengkelIN merupakan bengkel umum yang memiliki beberapa layanan untuk ganti oli, servis kaki-kaki, ac mobil, dan juga tune up.',
+            'address' => 'Jl. Buaran raya Jl. Raya Viktor Bsd No.87, Ciater, Kec. Serpong, Kota Tangerang Selatan, Banten 15310',
+            'photo' => 'bengkelin.png',
             'operational_hour' => 'Senin s.d. Sabtu, 10:00 - 16:00',
-            'phone_number' => '(021) 5380924',
+            'phone_number' => '+6285695930369',
+            'location' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d126894.69278893943!2d106.5346449!3d-6.3345173!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e4c857795a1f%3A0x5dbb17ae050e06a3!2sBENGKELIN%20Viktor-BSD%20MOTUL%20Authorized%20Partner%20Garage!5e0!3m2!1sen!2sid!4v1715939666926!5m2!1sen!2sid',
             'is_active' => 1
         ]);
 
         Workshop::create([
             'id' => 4,
-            'subdistrict_id' => 1,
-            'name' => 'Bengkel Dokter Mobil BSD',
-            'about' => 'Kami menyediakan berbagai jenis service diantaranya Tune Up, Spooring balancing, Service rem, Jasa kuras mesin/matic, Dll.
-            Selain itu kami juga memiliki beberapa jenis paket service berkala, paket Sultan, paket ekonomis dan paket bensin.',
-            'address' => 'Jl. Ciater Bar. No.182, Buaran, Kec. Serpong, Kota Tangerang Selatan, Banten 15310',
-            'photo' => 'bengkel_ac_ciputat.png',
+            'subdistrict_id' => 2,
+            'name' => 'Bengkel Dokter Mobil Alam Sutera',
+            'about' => 'Dokter Mobil merupakan bengkel mobil modern spesialisasi AC mobil dan tune up. Merupakan pionir bengkel mobil bersertifikasi ISO 9001:2015, dengan kualitas yang transparan dan masa garansi di seluruh cabang untuk jaminan layanannya.',
+            'address' => 'Jl. Raya Serpong Kilometer 7, Pakualam, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15143',
+            'photo' => 'doktermobil.png',
             'operational_hour' => 'Senin s.d. Sabtu, 10:00 - 16:00',
-            'phone_number' => '(021) 53809115',
+            'phone_number' => '+6285695930369',
+            'location' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7932.460307124377!2d106.63303119357909!3d-6.233362200000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fbacaf073d2d%3A0x94fd9cbe33521505!2sDokter%20mobil%20Alam%20sutra!5e0!3m2!1sen!2sid!4v1715943806373!5m2!1sen!2sid',
             'is_active' => 1
         ]);
 
@@ -273,6 +274,32 @@ class WorkshopSeeder extends Seeder
             'photo' => 'bengkel_ac_ciputat.png',
             'operational_hour' => 'Senin s.d. Jumat, 09:00 - 18:30',
             'phone_number' => '0812-3691-1111',
+            'is_active' => 1
+        ]);
+
+        Workshop::create([
+            'id' => 21,
+            'subdistrict_id' => 6,
+            'name' => 'A JAYA BAN',
+            'about' => 'A JAYA BAN adalah bengkel umum yang berada di Tangerang Selatan, dan bisa anda hubungi atau datangi untuk melakukan service kendaraan Daihatsu, Honda, Mazda, Mitsubishi, Nissan, Suzuki, Toyota, dan Wuling.',
+            'address' => 'Jl. Jombang Raya No.5d, Pd. Aren, Kec. Pd. Aren, Kota Tangerang, Banten 15226',
+            'photo' => 'ajayaban.png',
+            'operational_hour' => 'Senin s.d. Jumat, 09:00 - 18:30',
+            'phone_number' => '+6285695930369',
+            'location' => 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3966.042085111008!2d106.7041471!3d-6.2581868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMTUnMjkuNSJTIDEwNsKwNDInMTUuMyJF!5e0!3m2!1sen!2sid!4v1716015775040!5m2!1sen!2sid',
+            'is_active' => 1
+        ]);
+
+        Workshop::create([
+            'id' => 22,
+            'subdistrict_id' => 1,
+            'name' => 'BSD Rims Center',
+            'about' => 'BRC (BSD RIMS CENTER) adalah bengkel ban yang berada di Tangerang Selatan, dan bisa anda hubungi atau datangi untuk melakukan service kendaraan Daihatsu, Honda, Mazda, Mitsubishi, Nissan, Suzuki, Toyota, dan Wuling.',
+            'address' => 'Jl. Letnan Sutopo, Rw. Buntu, Kec. Serpong, Kota Tangerang Selatan, Banten 15310',
+            'photo' => 'bsdrimscenter.png',
+            'operational_hour' => 'Senin s.d. Jumat, 09:00 - 18:30',
+            'phone_number' => '+6285695930369',
+            'location' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.85770344832991!2d106.68274469269225!3d-6.30004902323271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb003066df31%3A0x5503f9dae8d5e7d5!2sBSD%20Rims%20Center%20(BRC)%20-%20Velg%2C%20Ban%2C%20Spooring%20Mobil%20BSD!5e0!3m2!1sen!2sid!4v1716018321085!5m2!1sen!2sid',
             'is_active' => 1
         ]);
     }

@@ -72,7 +72,7 @@ class VehicleController extends Controller
 
         $route = Route::currentRouteName();
 
-        if($route == 'vehicle.store') {
+        if( $route == 'vehicle.store' ) {
             return redirect()->route('home');
         }
         else {

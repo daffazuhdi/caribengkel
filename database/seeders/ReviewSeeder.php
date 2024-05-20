@@ -60,27 +60,6 @@ class ReviewSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
 
-        Review::create([
-            'id' => 5,
-            'user_id' => 2,
-            'workshop_id' => 3,
-            'specialty_id' => 5,
-            'rating' => 4,
-            'comment' => 'Penggantian ban dilakukan secara cepat',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        Review::create([
-            'id' => 6,
-            'user_id' => 3,
-            'workshop_id' => 3,
-            'specialty_id' => 4,
-            'rating' => 2,
-            'comment' => 'Not recommended',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
 
         Review::create([
             'id' => 7,

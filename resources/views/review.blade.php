@@ -12,7 +12,12 @@
 @endif
 
 {{-- {{ session('message') }} --}}
-<div class="container pb-4 px-0 m-auto">
+<div class="container pb-4 px-0 m-auto" style="min-height: 70vh;">
+    <a class="nav-link d-inline-flex align-items-center gap-2" style="font-weight: 500;" href="/bengkelDetail/{{ $workshop->id }}">
+        <img src="{{ url('photos/arrow-back.svg') }}" width="20px;">
+        Kembali
+    </a>
+
     <div class="showRating d-flex mt-4 mb-1">
         <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 24 24">
             <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
@@ -105,6 +110,9 @@
         </div>
     </div>
 
+    @if ($count == 0)
+    <p class="d-flex justify-content-center align-items-center" style="min-height: 40vh;">Belum ada ulasan</p>
+    @else
     <div class="row row-cols-1 row-cols-md-3 g-4 py-4 px-0">
         @foreach ($ratingDetail as $wr)
             <div class="col">
@@ -138,28 +146,32 @@
     </div>
         {{-- {{$spesialisasiRate->avgrate}} --}}
     </div>
-    <div class="d-flex justify-content-center mt-1 mb-3">
-        <ul class="pagination m-0">
-            <li class="page-item">
-                <a class="page-link" href="{{ $ratingDetail->previousPageUrl() }}"><</a>
-            </li>
-            @for ($page = 1; $page <= $ratingDetail->lastPage(); $page++)
-                @if ($page == $ratingDetail->currentPage())
-                    <li class="page-item-active">
-                        <a class="page-link" href="{{ $ratingDetail->url($page) }}">{{ $page }}</a>
-                    </li>
-                @else
-                    <li class="page-item">
-                        <a class="page-link" href="{{ $ratingDetail->url($page) }}">{{ $page }}</a>
-                    </li>
-                @endif
-            @endfor
-            <li class="page-item">
-                <a class="page-link" href="{{ $ratingDetail->nextPageUrl() }}">></a>
-            </li>
-        </ul>
+
+    <div class="mt-3 mb-5">
+        <div class="d-flex justify-content-center mt-1 mb-3">
+            <ul class="pagination m-0">
+                <li class="page-item">
+                    <a class="page-link" href="{{ $ratingDetail->previousPageUrl() }}"><</a>
+                </li>
+                @for ($page = 1; $page <= $ratingDetail->lastPage(); $page++)
+                    @if ($page == $ratingDetail->currentPage())
+                        <li class="page-item-active">
+                            <a class="page-link" href="{{ $ratingDetail->url($page) }}">{{ $page }}</a>
+                        </li>
+                    @else
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $ratingDetail->url($page) }}">{{ $page }}</a>
+                        </li>
+                    @endif
+                @endfor
+                <li class="page-item">
+                    <a class="page-link" href="{{ $ratingDetail->nextPageUrl() }}">></a>
+                </li>
+            </ul>
+        </div>
+        <p class="d-flex justify-content-center">Menampilkan {{ $begin }} sampai {{ $end }} dari {{ $count }} hasil</p>
     </div>
-    <p class="d-flex justify-content-center">Menampilkan {{ $begin }} sampai {{ $end }} dari {{ $count }} hasil</p>
+    @endif
 </div>
 @endsection
 

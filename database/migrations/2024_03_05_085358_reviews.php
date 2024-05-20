@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('workshop_id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('specialty_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('specialty_id');
             $table->integer('rating');
             $table->string('comment');
             $table->rememberToken();

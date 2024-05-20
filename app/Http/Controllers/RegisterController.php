@@ -16,7 +16,10 @@ class RegisterController extends Controller
     }
 
     public function submit(RegisterRequest $request) {
+        // $request->input('phone_number') = '+62'.$request->input('phone_number');
+
         $validated = $request->validated();
+
         $validated['password'] = bcrypt($validated['password']);
         $validated['photo'] = "template.svg";
         $validated['is_active'] = 1;
