@@ -91,6 +91,17 @@
                             @enderror
                         </div>
                         <div class="mb-4">
+                            <label for="location" class="form-label-md">Link lokasi bengkel</label>
+                            <textarea name="location" id="location" class="form-control form-control-sm @error('location') is-invalid @enderror"
+                                        placeholder="Masukkan alamat bengkel" rows=3
+                            >{{ $workshop->location }}</textarea>
+                            @error('location')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-4">
                             <label for="about" class="form-label-md">Deskripsi bengkel</label>
                             <textarea name="about" id="about" class="form-control form-control-sm @error('about') is-invalid @enderror"
                                         placeholder="Masukkan deskripsi bengkel" rows=5

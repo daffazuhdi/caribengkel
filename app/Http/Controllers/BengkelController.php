@@ -120,12 +120,13 @@ class BengkelController extends Controller
 
     public function addWorkshop(Request $req1)
     {
+        // return $req1;
         $rules = [
             'name' => 'required|string|max:255',
             'subdistrict_id' => 'required',
             'address' => 'required|string|max:500',
             'about' => 'required|string|max:500',
-            'phone_number' => 'required|string|unique:App\Models\Workshop,phone_number|regex:/(0)[0-9]/|max:15',
+            'phone_number' => 'required|string|unique:App\Models\Workshop,phone_number|regex:/(0)[0-9]/|max:13',
             'photo' => 'required|mimes:jpg,png,jpeg,svg'
         ];
 
@@ -140,15 +141,27 @@ class BengkelController extends Controller
         $fileName = $req1->name.'.'.time().'.'.$extension;
 
         Storage::putFileAs('public/workshop', $file, $fileName);
-
-        $createWorkshop = Workshop::create([
-            'name' => $req1->name,
-            'subdistrict_id' => $req1->subdistrict_id,
-            'address' => $req1->address,
-            'phone_number' => $req1->phone_number,
-            'about' => $req1->about,
-            'photo' => $fileName
-        ]);
+        if($req1->location != null){
+            $createWorkshop = Workshop::create([
+                'name' => $req1->name,
+                'subdistrict_id' => $req1->subdistrict_id,
+                'address' => $req1->address,
+                'phone_number' => $req1->phone_number,
+                'location' => $req1->location,
+                'about' => $req1->about,
+                'photo' => $fileName
+            ]);
+        }
+        else{
+            $createWorkshop = Workshop::create([
+                'name' => $req1->name,
+                'subdistrict_id' => $req1->subdistrict_id,
+                'address' => $req1->address,
+                'phone_number' => $req1->phone_number,
+                'about' => $req1->about,
+                'photo' => $fileName
+            ]);
+        }
 
         $id = $createWorkshop->id;
 
@@ -355,6 +368,7 @@ class BengkelController extends Controller
                 'subdistrict_id' => $req1->subdistrict_id,
                 'address' => $req1->address,
                 'phone_number' => $req1->phone_number,
+                'location' => $req1->location,
                 'about' => $req1->about,
                 'photo' => $fileName
             ]);
@@ -365,6 +379,7 @@ class BengkelController extends Controller
                 'subdistrict_id' => $req1->subdistrict_id,
                 'address' => $req1->address,
                 'phone_number' => $req1->phone_number,
+                'location' => $req1->location,
                 'about' => $req1->about
             ]);
         }

@@ -10,7 +10,7 @@ class Workshop extends Model
 
     use HasFactory;
 
-    protected $fillable = ['name', 'subdistrict_id', 'address', 'photo', 'phone_number', 'about', 'is_active'];
+    protected $fillable = ['name', 'subdistrict_id', 'address', 'photo', 'phone_number', 'about', 'location','is_active'];
 
     public function subdistrict()
     {
