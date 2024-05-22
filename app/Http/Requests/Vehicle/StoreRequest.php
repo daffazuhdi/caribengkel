@@ -25,7 +25,8 @@ class StoreRequest extends FormRequest
     {
         return [
             //
-            'car_model_id' => 'required',
+            
+            'car_model' => 'required',
             'license_plate' => 'required',
             'service_date' => 'required',            
         ];

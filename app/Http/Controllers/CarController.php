@@ -78,7 +78,7 @@ class CarController extends Controller
         $validated = $request->validated();
 
         $car = [
-            "car_model_id" => $validated['car_model_id'],
+            "car_model_id" => $validated['car_model'],
             "license_plate" => $validated['license_plate'],
         ];
 

@@ -11,7 +11,7 @@
     <div class="col-lg-4 mt-4">
         <form action="/writeReview/{{ $workshop->id }}"  method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <h5>Ulasan</h5>
+            <h5>Tulis Ulasan</h5>
             <div class="save" name ="user_id" id="user_id" value="{{ auth()->user()->id }}"></div>
 
             <div class="specialty mt-3 mb-4">

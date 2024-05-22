@@ -29,11 +29,11 @@
                             </div>
 
                             <div class="mb-4">
-                                <label for="car_model_id" class="form-label-md">Tipe mobil</label>
-                                <select name="car_model_id" id="car_model_id" class="form-select form-control form-select-sm @error('car_model_id') is-invalid @enderror" disabled>
+                                <label for="car_model" class="form-label-md">Tipe mobil</label>
+                                <select name="car_model" id="car_model" class="form-select form-control form-select-sm @error('car_model') is-invalid @enderror" disabled>
                                 <option>Pilih merek mobil terlebih dahulu</option>
                                 </select>
-                                @error('car_model_id')
+                                @error('car_model')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -99,14 +99,14 @@
                 dataType: 'json',
                 success: function (result) {
                     // Hapus Existing Options
-                    $("#car_model_id")
+                    $("#car_model")
                         .find('option')
                         .remove()
                         .end()
 
                     if (!result.length) {
                         // TODO: To be deleted
-                        $("#car_model_id")
+                        $("#car_model")
                         .append(
                             $("<option>")
                                 .val('')
@@ -116,7 +116,7 @@
                         return
                     }
 
-                    $("#car_model_id")
+                    $("#car_model")
                         .append(
                             $("<option>")
                                 .val('')
@@ -124,7 +124,7 @@
                         )
 
                     result.forEach((model) => {
-                        $("#car_model_id")
+                        $("#car_model")
                         .append(
                             $("<option>")
                                 .val(model.id)
