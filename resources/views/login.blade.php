@@ -51,7 +51,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100">Masuk</button>
+                    <button type="submit" class="btn btn-primary w-100" style="font-size: 14px;">Masuk</button>
                 </form>
 
                 <p class="text-center mt-4" style="font-size: 12px;">Belum memiliki akun? <a href="{{ route('register.show') }}">Daftar</a></p>

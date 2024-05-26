@@ -100,7 +100,7 @@ class BengkelController extends Controller
         $end = $workshops->lastItem();
         $count = $workshops->total();
 
-        // return $countFilter;
+        // return $specialty;
 
         return view('bengkel', compact('search', 'workshops', 'subdistrict', 'specialty', 'brand',
                     'filterSubdistrict', 'filterSpecialty', 'filterBrand', 'begin', 'end', 'count', 'countFilter'),

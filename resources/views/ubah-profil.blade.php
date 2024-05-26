@@ -65,7 +65,7 @@
                 </div>
             </div>
             <button class="btn btn-primary my-4" style="font-size: 14px;">
-                Simpan Profil
+                Simpan
             </button>
         </form>
     </div>

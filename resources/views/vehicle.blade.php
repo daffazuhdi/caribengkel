@@ -77,7 +77,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100">Simpan</button>
+                    <button type="submit" class="btn btn-primary w-100" style="font-size: 14px;">Simpan</button>
 
                 </div>
 

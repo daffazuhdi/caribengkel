@@ -15,7 +15,18 @@
         @endif
 
         <div class="container py-4 px-0 m-auto" onload="save();">
-            <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2>
+            {{-- <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2> --}}
+            @if ($filterSpecialty != 0 && $countFilter == 1)
+                @foreach ($specialty as $s)
+                    @foreach ($filterSpecialty as $filsp)
+                        @if ($s->id == $filsp)
+                        <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel {{ $s->name }}</h2>
+                        @endif
+                    @endforeach
+                @endforeach
+            @else
+                <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2>
+            @endif
 
             <div class="d-flex justify-content-between py-3 px-0">
                 <form class="m-0 w-50 d-flex align-items-center" role="search">
@@ -168,22 +179,24 @@
                 </div>
             </div>
 
-                <!--- Admin --->
-                @if (Auth::user())
-                    @if (Auth::user()->role_id == 1)
-                        <hr style="height:1px;border-width:0;color:gray;background-color:gray">
-                        <div class="d-flex justify-content-end">
-                            <a href="{{ url('/tambah-bengkel') }}" class="btn btn-outline-dark px-3 mt-2 mb-3 d-inline-flex align-items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1em" height="1em" viewBox="0 0 256 256">
-                                    <path fill="052023" d="M228 128a12 12 0 0 1-12 12h-76v76a12 12 0 0 1-24 0v-76H40a12 12 0 0 1 0-24h76V40a12 12 0 0 1 24 0v76h76a12 12 0 0 1 12 12"/>
-                                </svg>
-                                Tambah Bengkel
-                            </a>
-                        </div>
-                    @endif
-                @else
+            <!--- Admin --->
+            @if (Auth::user())
+                @if (Auth::user()->role_id == 1)
+                    <hr style="height:1px;border-width:0;color:gray;background-color:gray">
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ url('/tambah-bengkel') }}" class="btn btn-outline-dark px-3 mt-2 mb-3 d-inline-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1em" height="1em" viewBox="0 0 256 256">
+                                <path fill="052023" d="M228 128a12 12 0 0 1-12 12h-76v76a12 12 0 0 1-24 0v-76H40a12 12 0 0 1 0-24h76V40a12 12 0 0 1 24 0v76h76a12 12 0 0 1 12 12"/>
+                            </svg>
+                            Tambah Bengkel
+                        </a>
+                    </div>
                 @endif
-
+            @endif
+                
+            @if ($count == 0)
+                <div class="d-flex justify-content-center align-items-center" style="min-height: 40vh;">Belum ada bengkel yang sesuai</div>
+            @else
                 <div class="row row-cols-1 row-cols-md-4 my-2" style="padding-bottom: 2em;">
                     @foreach ($workshops as $workshop)
                     <div class="col mb-4">
@@ -246,10 +259,8 @@
                     </ul>
                 </div>
                 <p class="d-flex justify-content-center">Menampilkan {{ $begin }} sampai {{ $end }} dari {{ $count }} hasil</p>
+            @endif
         </div>
-
-
-
 
 @endsection
 

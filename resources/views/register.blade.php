@@ -73,7 +73,7 @@
                      @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Daftar</button>
+                <button type="submit" class="btn btn-primary w-100" style="font-size: 14px;">Daftar</button>
             </form>
 
             <p class="text-center mt-4" style="font-size: 12px;">Sudah memiliki akun? <a href="{{ route('login.show') }}">Masuk</a></p>
