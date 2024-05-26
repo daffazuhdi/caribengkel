@@ -14,18 +14,18 @@
                 </div>
         @endif
 
-        <div class="container py-4 px-0 m-auto" onload="save();">
+        <div class="bengkel-page container py-4 px-0 m-auto" onload="save();">
             {{-- <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2> --}}
             @if ($filterSpecialty != 0 && $countFilter == 1)
                 @foreach ($specialty as $s)
                     @foreach ($filterSpecialty as $filsp)
                         @if ($s->id == $filsp)
-                        <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel {{ $s->name }}</h2>
+                        <h2 class="title-bengkel m-0" style="font-size: 28px; font-weight: 600;">Bengkel {{ $s->name }}</h2>
                         @endif
                     @endforeach
                 @endforeach
             @else
-                <h2 class="m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2>
+                <h2 class="title-bengkel m-0" style="font-size: 28px; font-weight: 600;">Bengkel</h2>
             @endif
 
             <div class="d-flex justify-content-between py-3 px-0">
@@ -112,7 +112,7 @@
                                             </div>
                                             <div class="col-md-12 px-0 pt-4 pb-0">
                                                 <legend class="form-label-md mb-2">Merek Mobil</legend>
-                                                <div class="row row-cols-4 mx-auto">
+                                                <div class="brand-filter row row-cols-4 mx-auto">
                                                     @foreach ($brand as $brand)
                                                     <div class="col form-check">
                                                         @php
@@ -193,7 +193,7 @@
                     </div>
                 @endif
             @endif
-                
+
             @if ($count == 0)
                 <div class="d-flex justify-content-center align-items-center" style="min-height: 40vh;">Belum ada bengkel yang sesuai</div>
             @else

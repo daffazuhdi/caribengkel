@@ -16,7 +16,7 @@
 
             <div class="specialty mt-3 mb-4">
                 <label for="specialty" class="form-label-md">Spesialisasi apa yang ingin kamu ulas?</label>
-                <select class="form-control form-control-sm" name="specialty">
+                <select class="form-select form-control form-select-sm" name="specialty">
                     @foreach ($workshop->specialties as $w)
                         <option value="{{ $w->name }}">{{ $w->name }}</option>
                     @endforeach

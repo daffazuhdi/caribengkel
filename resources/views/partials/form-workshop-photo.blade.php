@@ -11,7 +11,12 @@
             Pilih Gambar
         </div>
     </div>
-    <input type="file" id="photo" name="photo" accept="image/*" class="@error('photo') is-invalid @enderror" onchange="previewImage()" style="display: none;">
+    <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png" class="@error('photo') is-invalid @enderror" onchange="previewImage()" style="display: none;">
+    @error('photo')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+    @enderror
 </div>
 
 @section('script')

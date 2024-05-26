@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', $workshop->name)
 @section('container')
-  <div class="container py-4 px-0 m-auto">
+  <div class="container py-4 px-4 m-auto">
     <div class="fotoBengkel">
       <img src="{{ url('storage/workshop/'.$workshop->photo) }}" class="img-fluid w-100 mx-auto" alt="Responsive image" style="border-radius: 4px; object-fit: cover; height: 60vh;">
     </div>
@@ -11,7 +11,7 @@
             @if(Auth::user()->role_id == 1)
                 <div class="d-flex justify-content-between">
                   <h4 style="font-weight: 600; margin: 0;">{{ $workshop->name }}</h4>
-                  <div class="d-flex justify-content-left gap-2">
+                  <div class="d-flex justify-content-left align-items-center gap-2">
                       <a href="/ubah-bengkel/{{ $workshop->id }}" class="btn btn-outline-dark px-3">
                         <img src="{{ url('photos/edit.svg') }}" width="16px;">
                       </a>
@@ -264,24 +264,24 @@
             <h5>{{ $countUlasan }} Ulasan</h5>
         </div>
         <div class="containerAllRate d-flex align-items-end justify-content-between">
-            <div class="row d-flex gap-2 m-0">
+            <div class="specialtyCard row d-flex gap-2 m-0">
                 @foreach ($workshop->specialties as $ws)
                 <div class="col col-md-auto p-0" style="min-width: 86px;">
                     <div class="card m-0 p-2 h-100">
                         <div class="card-body d-flex flex-column justify-content-between" style="padding:0.5rem">
                             <div class="card-title m-0" style="font-weight: 500;">{{ $ws->name }}</div>
-                                <div class="mb-4">
-                                    <h7 class="card-subtitle text-muted" style="font-weight: 500;">
-                                        @foreach ($spesialisasiRate as $sr)
-                                            @if ($ws->id === $sr->specialty_id)
-                                                {{ number_format($sr->avgrate,1) }}
-                                            @endif
-                                        @endforeach
-                                    </h7>
-                                </div>
-                                <div>
-                                    <img src="{{ url('photos/'.$ws->logo) }}">
-                                </div>
+                            <div class="mb-4">
+                                <h7 class="card-subtitle text-muted" style="font-weight: 500;">
+                                    @foreach ($spesialisasiRate as $sr)
+                                        @if ($ws->id === $sr->specialty_id)
+                                            {{ number_format($sr->avgrate,1) }}
+                                        @endif
+                                    @endforeach
+                                </h7>
+                            </div>
+                            <div>
+                                <img src="{{ url('photos/'.$ws->logo) }}">
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -235,3 +235,62 @@ p.text.page {
         margin-top: 12px;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .col.col-md-auto {
+        width: 20%;
+    }
+    .containerAllRate {
+        flex-direction: column;
+        /* justify-content: start !important; */
+        gap: 8px;
+    }
+    img.img-fluid {
+        height: 40vh !important;
+    }
+    .top-footer {
+        display: flex !important;
+        justify-content: center !important;
+        flex-direction: column;
+        /* justify-content: start !important; */
+        align-items: center;
+        gap: 12px;
+    }
+    .footer-social {
+        gap: 8px;
+        margin: 4px 0;
+    }
+    .footer-text {
+        justify-content: center !important;
+    }
+    .footer-social a, #navbarText a {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    #navbarText{
+        display: flex !important;
+        flex-direction: column;
+        /* background-color:#745f63; */
+        align-items: center;
+    }
+    section, .bengkel-page, .ubah-profil-page {
+        padding: 0 20px !important;
+    }
+    .title-home {
+        font-size: 20px;
+    }
+    .title-bengkel {
+        margin-top: 14px !important;
+    }
+    .profile-page {
+        padding: 0 20px !important;
+        margin: 24px 0 !important;
+    }
+    .brand-filter {
+        /* columns: 400px 3 !important; */
+        column-gap: 32px !important;
+    }
+    .container.tambah-bengkel {
+        width: 75% !important;
+    }
+}

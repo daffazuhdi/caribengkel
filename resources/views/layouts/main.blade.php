@@ -34,21 +34,21 @@
       .content-wrap {
         padding-bottom: 40px;
       }
-      .footer {
+      .footer-main {
         position: absolute;
-        /* bottom: 0; */
+        /* bottom: -250.4px; */
         width: 100%;
-        height: 165px;
+        /* height: 165px; */
       }
     </style>
   </head>
   <body>
     @include('partials.navbar')
-    <div class="container-fluid px-0 m-auto">
+    <div class="container-fluid px-0 m-0">
       <div class="content-wrap">
         @yield('container')
       </div>
-      <footer class="footer">
+      <footer class="footer-main">
         @include('partials.footer')
       </footer>
     </div>

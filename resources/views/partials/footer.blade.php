@@ -16,7 +16,7 @@
     </style>
 </head>
 <footer class="footer mt-auto py-4 px-5" style="background-color: #0D5C63;">
-    <div class="container">
+    {{-- <div class="container"> --}}
     <div class="top-footer d-flex justify-content-between align-middle">
         <div class="top-footer-text" style="text-align: center;">
             <p class="m-0 py-1" style="font-size: 140%; font-weight: 500;">CariBengkel</p>
@@ -30,11 +30,11 @@
                     <a class="nav-link text-white" href="{{ url('/bengkel') }}">Bengkel</a>
                 </li>
                 <li class="nav-item" id="menu">
-                    <a class="nav-link text-white" href="#">Tentang Kami</a>
+                    <a class="nav-link text-white" href="{{ url('/tentangkami') }}">Tentang Kami</a>
                 </li>
             </ul>
         </div>
-        <div class="img-container d-flex justify-content-between">
+        <div class="footer-social img-container d-flex justify-content-between">
             <a class="m-auto px-1" href="http://facebook.com" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 1024 1024">
                     <path fill="white" d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32m-92.4 233.5h-63.9c-50.1 0-59.8 23.8-59.8 58.8v77.1h119.6l-15.6 120.7h-104V912H539.2V602.2H434.9V481.4h104.3v-89c0-103.3 63.1-159.6 155.3-159.6c44.2 0 82.1 3.3 93.2 4.8v107.9z"/>
@@ -50,10 +50,10 @@
 
     <div class="py-3"></div>
 
-    <div class="footer-text d-flex justify-content-between" style="font-size: 90%; width: 30%;">
+    <div class="footer-text d-flex justify-content-start" style="font-size: 90%;">
         <p class="m-0">&copy; 2024 CariBengkel</p>
-        <a class="nav-link" style="font-weight: 500" href="#">Syarat dan Ketentuan</a>
-        <a class="nav-link" style="font-weight: 500" href="#">Privasi</a>
+        {{-- <a class="nav-link" style="font-weight: 500" href="#">Syarat dan Ketentuan</a>
+        <a class="nav-link" style="font-weight: 500" href="#">Privasi</a> --}}
     </div>
-    </div>
+    {{-- </div> --}}
 </footer>

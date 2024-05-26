@@ -37,11 +37,6 @@
                     <div class="col-12 col-md-12">
                         <div class="mb-4">
                             @include('partials.form-workshop-photo')
-                            @error('photo')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
                         </div>
                         <div class="mb-4">
                             <label for="name" class="form-label-md">Nama bengkel</label>

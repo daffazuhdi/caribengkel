@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('container')
 
-    <div class="container my-1">
+    <div class="ubah-profil-page container my-1">
         @include('partials.back-arrow')
 
         <form class="mt-4 mb-5" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">

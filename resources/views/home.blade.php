@@ -13,7 +13,7 @@
   <div style="border-radius: 0px" class="card  bg-dark text-white">
     <img src="{{ url('photos/img_hero.png') }}" class="card-img" alt="...">
     <div class="card-img-overlay d-flex flex-column text-center justify-content-center align-items-center">
-      <h2 class="mb-4">Temukan Bengkel Sesuai dengan <br> Kebutuhan Kendaraanmu</h2>
+      <h2 class="title-home mb-4">Temukan Bengkel Sesuai dengan <br> Kebutuhan Kendaraanmu</h2>
       <form class="w-50" role="search" action="/bengkel?search={{ $search }}" METHOD="get">
         <div class="input-group">
           <span class="input-group-text bg-white border-end-0"> <img style="width: 16px; height: 16px;" src="{{ url('photos/search.svg') }}" alt="Search"> </span>

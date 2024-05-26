@@ -1,7 +1,7 @@
 @section('title', $title)
 @extends('layouts.main')
 @section('container')
-<div class="container" style="width: 50%;">
+<div class="container tambah-bengkel" style="width: 50%;">
     <h2 class="mx-auto mb-5" style="font-size: 28px; font-weight: 600; text-align: center;">Tambah Bengkel</h2>
     <div class="position-relative mb-4">
         <div class="progress" style="height: 3px;">
@@ -35,25 +35,6 @@
                     <div class="col-12 col-md-12">
                         <div class="mb-4">
                             @include('partials.form-workshop-photo')
-                            {{-- <div class="form-group">
-                                <div class="picture-container d-flex flex-column gap-3 align-items-center justify-content-center" style="border: 1.6px dashed #C2C2C2; border-radius: 8px; cursor: pointer; min-height: 300px;"
-                                    onclick="document.getElementById('photo').click()">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="placeholder-icon">
-                                        <path fill="none" stroke="#d9d9d9" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M11.678 20.271C7.275 21.318 4 25.277 4 30c0 5.523 4.477 10 10 10c.947 0 1.864-.132 2.733-.378m19.322-19.351c4.403 1.047 7.677 5.006 7.677 9.729c0 5.523-4.477 10-10 10c-.947 0-1.864-.132-2.732-.378M36 20c0-6.627-5.373-12-12-12s-12 5.373-12 12m5.065 7.881L24 20.924L31.132 28M24 38V24.462"/>
-                                    </svg>
-                                    <img id="preview" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 400px;">
-                                    <span class="placeholder-text" style="color: #303030; font-weight: 500; font-size: 18px;">Unggah atau Jatuhkan Gambar</span>
-                                    <div class="btn btn-primary placeholder-button" style="font-size: 14px;">
-                                        Pilih Gambar
-                                    </div>
-                                </div>
-                                <input type="file" id="photo" name="photo" accept="image/*" class="@error('photo') is-invalid @enderror" onchange="previewImage()" style="display: none;">
-                            </div> --}}
-                            @error('photo')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
                         </div>
                         <div class="mb-4">
                             <label for="name" class="form-label-md">Nama bengkel</label>
