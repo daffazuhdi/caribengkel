@@ -10,7 +10,7 @@
           @auth
             @if(Auth::user()->role_id == 1)
                 <div class="d-flex justify-content-between">
-                  <h4 style="font-weight: 600; margin: 0;">{{ $workshop->name }}</h4>
+                  <h4 style="font-weight: 600; margin: 0;font-size: min(5vw, 20px)">{{ $workshop->name }}</h4>
                   <div class="d-flex justify-content-left align-items-center gap-2">
                       <a href="/ubah-bengkel/{{ $workshop->id }}" class="btn btn-outline-dark px-3">
                         <img src="{{ url('photos/edit.svg') }}" width="16px;">
@@ -41,17 +41,17 @@
                   </div>
                 </div>
             @elseif(Auth::user()->role_id == 2)
-                <h4 style="font-weight: 600;">{{ $workshop->name }}</h4>
+                <h4 style="font-weight: 600;font-size: min(5vw, 20px)">{{ $workshop->name }}</h4>
             @endauth
             @else
-                <h4 style="font-weight: 600;">{{ $workshop->name }}</h4>
+                <h4 style="font-weight: 600;font-size: min(5vw, 22px)">{{ $workshop->name }}</h4>
             @endif
             <div class="address d-flex justify-content-left align-items-center gap-3 mb-2 mt-3">
                 <div class="img-fluid">
                     <img src="{{ url('photos/mapsLogo.svg') }}" style="width:18px;" alt="...">
                 </div>
-                <div>
-                    <p class="m-0" style="font-size: 18px; font-weight: 400;">{{ $workshop->address }}</p>
+                <div class="bengkel-detail-address">
+                    <p class="m-0" style="font-weight: 400; font-size: 100%">{{ $workshop->address }}</p>
                 </div>
             </div>
             {{-- <div class="d-flex justify-content-left align-items-center" style="gap: 0.7rem;">
@@ -68,7 +68,7 @@
                 <div class="cardService w-50">
                     <div class="card " >
                         <div class="card-body">
-                            <h5 class="card-title" style="padding-left:1%; font-size: 18px; font-weight: 600;">Ingin Servis?</h5>
+                            <h5 class="card-title" style="padding-left:1%; font-size: 100%; font-weight: 600;">Ingin Servis?</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%">Lakukan penjadwalan sekarang</h6>
                             <div class="d-grid gap-2">
                                 <a href="https://api.whatsapp.com/send?phone={{$workshop->phone_number}}&text=Halo%2C%20{{ $workshop->name }}.%0ASaya%20dari%20CariBengkel%20ingin%20melakukan%20booking%20service%20atas%20nama%20{{ Auth::user()->first_name }}%20{{ Auth::user()->last_name }}.%20" class="btn btn-primary" style="background-color: #0D5C63;color:white;text-decoration:none;">Jadwalkan Servis Sekarang</a>
@@ -81,10 +81,10 @@
             <div class="cardService w-50">
                 <div class="card">
                     <div class="card-body">
-                    <h5 class="card-title" style="padding-left:1%; font-size: 18px; font-weight: 600;">Ingin Servis?</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%">Lakukan penjadwalan sekarang</h6>
+                    <h5 class="card-title" style="padding-left:1%; font-size: 100%; font-weight: 600;">Ingin Servis?</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%; font-size: 90%">Lakukan penjadwalan sekarang</h6>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginFirst" style="background-color: #0D5C63;color:white;text-decoration:none;">Jadwalkan Servis Sekarang</button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginFirst" style="background-color: #0D5C63;color:white;text-decoration:none; font-size: 90%">Jadwalkan Servis Sekarang</button>
                         <div class="modal fade" id="loginFirst" tabindex="-1" aria-labelledby="loginFirst" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered">
                               <div class="modal-content p-4">
@@ -130,25 +130,25 @@
 
         <ul class="nav nav-tabs" id="myTab" role="tablist" style="background:none;border:none">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="tentang-tab" data-bs-toggle="tab" data-bs-target="#tentang" type="button" role="tab" aria-controls="tentang" aria-selected="true">Tentang</button>
+            <button class="nav-link active" id="tentang-tab" data-bs-toggle="tab" data-bs-target="#tentang" type="button" role="tab" aria-controls="tentang" aria-selected="true" style="margin-bottom: 5%; font-size:100%">Tentang</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="fasilitas-tab" data-bs-toggle="tab" data-bs-target="#fasilitas" type="button" role="tab" aria-controls="fasilitas" aria-selected="false">Fasilitas</button>
+            <button class="nav-link" id="fasilitas-tab" data-bs-toggle="tab" data-bs-target="#fasilitas" type="button" role="tab" aria-controls="fasilitas" aria-selected="false" style="margin-bottom: 5%; font-size:100%">Fasilitas</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="merekmobil-tab" data-bs-toggle="tab" data-bs-target="#merekmobil" type="button" role="tab" aria-controls="merekmobil" aria-selected="false">Merek Mobil</button>
+            <button class="nav-link" id="merekmobil-tab" data-bs-toggle="tab" data-bs-target="#merekmobil" type="button" role="tab" aria-controls="merekmobil" aria-selected="false" style="margin-bottom: 5%; font-size:100%">Merek Mobil</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="waktuoperasional-tab" data-bs-toggle="tab" data-bs-target="#waktuoperasional" type="button" role="tab" aria-controls="waktuoperasional" aria-selected="false">Waktu Operasional</button>
+            <button class="nav-link" id="waktuoperasional-tab" data-bs-toggle="tab" data-bs-target="#waktuoperasional" type="button" role="tab" aria-controls="waktuoperasional" aria-selected="false" style="margin-bottom: 5%; font-size:100%">Waktu Operasional</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="hargalayanan-tab" data-bs-toggle="tab" data-bs-target="#hargalayanan" type="button" role="tab" aria-controls="hargalayanan" aria-selected="false">Harga Layanan</button>
+            <button class="nav-link" id="hargalayanan-tab" data-bs-toggle="tab" data-bs-target="#hargalayanan" type="button" role="tab" aria-controls="hargalayanan" aria-selected="false" style="margin-bottom: 5%; font-size:100%">Harga Layanan</button>
         </li>
         </ul>
 
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="tentang" role="tabpanel" aria-labelledby="tentang-tab" style="padding: 1%">
-                <h6 style="padding-top:2%;padding-bottom:2%">{{ $workshop->about }}</h6>
+            <div class="bengkel-detail-tab tab-pane fade show active" id="tentang" role="tabpanel" aria-labelledby="tentang-tab" style="padding: 1%">
+                <h6 style="padding-top:1%;padding-bottom:2%">{{ $workshop->about }}</h6>
                 <div class="location">
                     @if ($workshop->location != null)
                         <p><iframe src="{{ $workshop->location }}" width="400" height="300" style="border:0;width:100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
@@ -157,8 +157,8 @@
                     @endif
                 </div>
             </div>
-            <div class="tab-pane fade" id="fasilitas" role="tabpanel" aria-labelledby="fasilitas-tab" style="padding: 1%">
-                <h6 style="padding-top:2%;padding-bottom:2%">Berikut merupakan fasilitas yang disediakan oleh bengkel untuk kenyamanan para pelanggan:</h6>
+            <div class="bengkel-detail-tab tab-pane fade" id="fasilitas" role="tabpanel" aria-labelledby="fasilitas-tab" style="padding: 1%">
+                <h6 style="padding-top:1%;padding-bottom:2%">Berikut merupakan fasilitas yang disediakan oleh bengkel untuk kenyamanan para pelanggan:</h6>
                 @if ($countFac < 7)
                     @foreach ($workshop->facilities as $w)
                         <p>• {{ $w->name }}</p>
@@ -184,8 +184,8 @@
                 @endif
 
             </div>
-            <div class="tab-pane fade" id="merekmobil" role="tabpanel" aria-labelledby="merekmobil-tab" style="padding: 1%">
-                <h6 style="padding-top:2%;padding-bottom:2%">Berikut merupakan merek mobil yang dapat dikerjakan oleh bengkel ini:</h6>
+            <div class="bengkel-detail-tab tab-pane fade" id="merekmobil" role="tabpanel" aria-labelledby="merekmobil-tab" style="padding: 1%">
+                <h6 style="padding-top:1%;padding-bottom:2%">Berikut merupakan merek mobil yang dapat dikerjakan oleh bengkel ini:</h6>
                 {{-- <div class="d-flex flex-sm-column"> --}}
                 @if ($countCB < 7)
                     @foreach ($workshop->car_brands as $w)
@@ -213,7 +213,7 @@
 
                 {{-- </div> --}}
             </div>
-            <div class="tab-pane fade" id="waktuoperasional" role="tabpanel" aria-labelledby="waktuoperasional-tab" style="padding-top: 3%">
+            <div class="bengkel-detail-tab tab-pane fade" id="waktuoperasional" role="tabpanel" aria-labelledby="waktuoperasional-tab" style="padding-top: 2%">
                 <table class="table table-bordered mb-5">
                     <thead>
                         <tr>
@@ -235,7 +235,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane fade" id="hargalayanan" role="tabpanel" aria-labelledby="hargalayanan-tab" style="padding-top: 3%">
+            <div class="bengkel-detail-tab tab-pane fade" id="hargalayanan" role="tabpanel" aria-labelledby="hargalayanan-tab" style="padding-top: 2%">
                 <table class="table table-bordered mb-5">
                     <thead>
                         <tr>
@@ -256,15 +256,15 @@
         </div>
 
         <div class="showRating d-flex mt-4 mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 24 24">
+            <svg  class="mr-1 mb-1" xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 24 24">
                 <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
             </svg>
-            <h5 style="padding-right: 0.5%;padding-left: 0.2%">{{ number_format($rate, 1) }}</h5>
-            <h5 style="padding-right: 0.5%;">•</h5>
-            <h5>{{ $countUlasan }} Ulasan</h5>
+            <h5 class="mx-1 mb-1">{{ number_format($rate, 1) }}</h5>
+            <h5 class="mx-1 mb-1">•</h5>
+            <h5 class="mx-1 mb-1">{{ $countUlasan }} Ulasan</h5>
         </div>
         <div class="containerAllRate d-flex align-items-end justify-content-between">
-            <div class="specialtyCard row d-flex gap-2 m-0">
+            <div class="specialtyCard-detail row d-flex gap-2 m-0">
                 @foreach ($workshop->specialties as $ws)
                 <div class="col col-md-auto p-0" style="min-width: 86px;">
                     <div class="card m-0 p-2 h-100">
@@ -287,8 +287,8 @@
                 </div>
                 @endforeach
             </div>
-            <div class="">
-                <a href="/review/{{ $workshop->id }}" type="button" class="btn btn-primary" style="font-size: 14px;">Lihat Semua</a>
+            <div class="lihat-semua-detail justify-content-end d-none d-md-flex">
+                <a href="/review/{{ $workshop->id }}" type="button" class="btn btn-primary d-flex justify-content-start" style="font-size: 14px;">Lihat Semua</a>
             </div>
         </div>
 
@@ -322,7 +322,10 @@
                 </div>
             @endforeach
         </div>
-      {{-- {{$spesialisasiRate->avgrate}} --}}
+
+        <div class="lihat-semua-detail d-block d-md-none">
+            <a href="/review/{{ $workshop->id }}" type="button" class="btn btn-primary w-100" style="font-size: 14px;">Lihat Semua</a>
+        </div>
 
     </div>
   </div>
@@ -331,11 +334,13 @@
     .nav-tabs .nav-item .nav-link {
       color: #040404;
       border: none;
-      font-size: 18px;
+      /* font-size: 18px; */
+      /* margin: 4% 6% !important; */
     }
     .nav-tabs .nav-item .nav-link.active {
       border:none;
-      background:none;border-bottom:3px solid black;color:#0D5C63
+      background:none;border-bottom:3px solid black;color:#0D5C63;
+      /* margin: 10% 30%!important; */
     }
  </style>
 

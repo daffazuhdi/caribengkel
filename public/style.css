@@ -234,19 +234,26 @@ p.text.page {
         height: 200px;
         margin-top: 12px;
     }
+    .containerAllRate {
+        flex-direction: column;
+        align-items: start !important;
+        gap: 8px !important;
+    }
 }
 
 @media screen and (max-width: 500px) {
+
+    .navbar-brand img{
+        width: 125px;
+    }
     .col.col-md-auto {
         width: 20%;
     }
-    .containerAllRate {
-        flex-direction: column;
-        /* justify-content: start !important; */
-        gap: 8px;
-    }
+    /* .specialtyCard-detail {
+        align-items: start !important;
+    } */
     img.img-fluid {
-        height: 40vh !important;
+        height: 20vh !important;
     }
     .top-footer {
         display: flex !important;
@@ -273,7 +280,7 @@ p.text.page {
         /* background-color:#745f63; */
         align-items: center;
     }
-    section, .bengkel-page, .ubah-profil-page {
+    section, .bengkel-page, .ubah-profil-page, .review-page{
         padding: 0 20px !important;
     }
     .title-home {
@@ -292,5 +299,13 @@ p.text.page {
     }
     .container.tambah-bengkel {
         width: 75% !important;
+    }
+
+    .bengkel-detail-tab{
+        padding: 2.5% !important;
+    }
+
+    .bengkel-detail-address{
+        font-size: 90% !important;
     }
 }

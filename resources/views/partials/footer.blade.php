@@ -19,7 +19,7 @@
     {{-- <div class="container"> --}}
     <div class="top-footer d-flex justify-content-between align-middle">
         <div class="top-footer-text" style="text-align: center;">
-            <p class="m-0 py-1" style="font-size: 140%; font-weight: 500;">CariBengkel</p>
+            <p class="m-0 py-1" style="font-size: 120%; font-weight: 500;">CariBengkel</p>
         </div>
         <div class="collapse navbar-collapse d-flex justify-content-center p-0 m-0" id="navbarSupportedContent">
             <ul class="nav justify-content-center" id="navbarText">

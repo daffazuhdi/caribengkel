@@ -39,7 +39,11 @@ class HomePageController extends Controller
         $specialty = Specialty::All();
 
         $countWorkshop = Workshop::where('is_active', '1')->count('id');
-        $countCustomer = Review::groupBy('user_id')->count('id');
+        $getCountCustomer= Review::select('user_id')->groupBy('user_id')->get();
+        $countCustomer = 0;
+        foreach ($getCountCustomer as $C) {
+            $countCustomer++;
+        };
         $countUser = User::count('id');
         $countBrand = CarBrand::count('id');
 

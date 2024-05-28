@@ -422,11 +422,12 @@ class BengkelController extends Controller
         SpecialtyWorkshop::where('workshop_id', $id)->delete();
 
         foreach ($specialty as $s) {
-            foreach ($req2->specialty as $rs) {
-                if($s->id != $rs){
-                    Review::where('workshop_id', $id)->where('specialty_id', $s->id)->delete();
-                }
-            }
+            // foreach ($req2->specialty as $rs) {
+            //     if($s->id != $rs){
+                    // return $s->id;
+                    Review::where('workshop_id', $id)->whereNotIn('specialty_id', $req2->specialty)->delete();
+                // }
+            // }
         }
 
         FacilityWorkshop::where('workshop_id', $id)->delete();
