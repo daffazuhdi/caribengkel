@@ -39,7 +39,7 @@ class ServiceReminder extends Command
         //dev
         $sixMonth = Carbon::now();
 
-        $car = CarService::select('car_services.id as id','car_services.car_id', 'users.first_name','users.phone_number', 'car_brands.name as carBrand', 'car_models.name as carModel','car_services.service_date', 'cars.license_plate')
+        $car = CarService::select('car_services.id as id','car_services.car_id', 'users.first_name','users.phone_number as phoneNumber', 'car_brands.name as carBrand', 'car_models.name as carModel','car_services.service_date', 'cars.license_plate')
 
                     ->leftjoin('car_user', 'car_user.car_id', '=', 'car_services.car_id')
                     ->leftjoin('cars', 'cars.id', '=', 'car_services.car_id')
@@ -55,11 +55,22 @@ class ServiceReminder extends Command
 
             // require_once '/path/to/vendor/autoload.php';
 
+            //nanti dipake hrsnya gini
+            //
+            $str = $c->phoneNumber;
+            $str = substr($str, 1);
+            $str = "+62" .$str. "";
+            echo $str;
+
+
+            $nomer = "+6285695930369"; //+6287871120749
+            //MG09ae7ab09cd1274faa7aef78bd67706a
+            //AC9d06f79964e5e4077a0066b680662907
             $sid    = "AC9d06f79964e5e4077a0066b680662907";
-            $token  = "ae3247b8a73ca9e4b1fac6783ec76ddf";
+            $token  = "0921a5a3cec8fc7aada271565ba9479f";
             $twilio = new Client($sid, $token);
             $message = $twilio->messages
-            ->create("whatsapp:+6285695930369", // to
+            ->create("whatsapp:{$str}", // harusnya yg $str
               array(
                 "from" => "whatsapp:+14155238886",
                 "body" =>  "Halo, Bapak/Ibu " .$c->first_name. "!\n\nKami dari CariBengkel ingin mengingatkan bahwa kendaraan bapak/ibu, dengan:\n\nTipe Mobil: *" .$c->carBrand. " ".$c->carModel. "*\nPlat Nomor: *" .$c->license_plate. "*\n\nSudah mendekati 6 bulan sejak servis terakhir. Silakan lakukan penjadwalan servis dan perbarui tanggal terakhir servis melalui CariBengkel.id (http://CariBengkel.id). Terima kasih! 🚙💨"
@@ -77,9 +88,9 @@ class ServiceReminder extends Command
 
             //update TABLE car_service kolom is_notified disini
 
-            CarService::where('id', $c->id)->update([
-                'is_notified' => 1,
-            ]);
+            // CarService::where('id', $c->id)->update([
+            //     'is_notified' => 1,
+            // ]);
 
         }
         // echo $query2;
