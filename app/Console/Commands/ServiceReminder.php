@@ -62,12 +62,11 @@ class ServiceReminder extends Command
             $str = "+62" .$str. "";
             echo $str;
 
-
-            $nomer = "+6285695930369"; //+6287871120749
+            // $nomer = "+6285695930369"; //+6287871120749
             //MG09ae7ab09cd1274faa7aef78bd67706a
             //AC9d06f79964e5e4077a0066b680662907
             $sid    = "AC9d06f79964e5e4077a0066b680662907";
-            $token  = "0921a5a3cec8fc7aada271565ba9479f";
+            $token  = "aa3203742b99462648039ddf1cc2e8a6";
             $twilio = new Client($sid, $token);
             $message = $twilio->messages
             ->create("whatsapp:{$str}", // harusnya yg $str
@@ -80,25 +79,20 @@ class ServiceReminder extends Command
             print($message->sid);
 
 
-            echo $message = "Halo, Bapak/Ibu " .$c->first_name. "!\n\nKami dari CariBengkel ingin mengingatkan bahwa kendaraan bapak/ibu, dengan:\n\nTipe Mobil: *" .$c->carBrand. " ".$c->carModel. "*\nPlat Nomor: *" .$c->license_plate. "*\n\nSudah mendekati 6 bulan sejak servis terakhir. Silakan lakukan penjadwalan servis dan perbarui tanggal terakhir servis melalui CariBengkel.id (http://CariBengkel.id). Terima kasih! 🚙💨";
-            echo "\n";
+            // echo $message = "Halo, Bapak/Ibu " .$c->first_name. "!\n\nKami dari CariBengkel ingin mengingatkan bahwa kendaraan bapak/ibu, dengan:\n\nTipe Mobil: *" .$c->carBrand. " ".$c->carModel. "*\nPlat Nomor: *" .$c->license_plate. "*\n\nSudah mendekati 6 bulan sejak servis terakhir. Silakan lakukan penjadwalan servis dan perbarui tanggal terakhir servis melalui CariBengkel.id (http://CariBengkel.id). Terima kasih! 🚙💨";
+            // echo "\n";
 
-            echo $c->id;
-            echo "\n";
+            // echo $c->id;
+            // echo "\n";
 
             //update TABLE car_service kolom is_notified disini
 
-            // CarService::where('id', $c->id)->update([
-            //     'is_notified' => 1,
-            // ]);
+            CarService::where('id', $c->id)->update([
+                'is_notified' => 1,
+            ]);
 
         }
-        // echo $query2;
-        $str = '081381912727';
-        $str = substr($str, 1);
-        $str = "+62" .$str. "";
-        echo $str;
-        echo "\n\n\n\n";
+
         return Command::SUCCESS;
     }
 }
