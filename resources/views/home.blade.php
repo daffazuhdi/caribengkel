@@ -55,7 +55,7 @@
           <div class="col-12 col-lg-6">
             <p class="text-start" style="font-size: 14px">CariBengkel merupakan website yang menghubungkan kamu dengan bengkel-bengkel terbaik di bidangnya di daerah Tangerang Selatan. </p>
             <p class="text-start" style="font-size: 14px" >Kami berupaya untuk memudahkan pengguna kami dalam mencari bengkel, berdasarkan lokasi, spesialisasi, merek mobil yang dikerjakan oleh bengkel tersebut.</p>
-            <button class="btn btn-primary d-flex justify-content-start"><a href="" style="text-decoration: none; color: #FFFFFF; font-size: 14px;">Mulai Cari Bengkel <img style="width: 20px; height: 20px;" src="{{ url('photos/arrow-right.svg') }}" alt=""></a></button>
+            <button class="btn btn-primary d-flex justify-content-start"><a href="/bengkel" style="text-decoration: none; color: #FFFFFF; font-size: 14px;">Mulai Cari Bengkel <img style="width: 20px; height: 20px;" src="{{ url('photos/arrow-right.svg') }}" alt=""></a></button>
           </div>
           <div class="col-12 col-lg-6">
             <img class="float-lg-end img-tentangkami img-fluid" style="height: 300px" src="{{ url('photos/img_tentangkami.svg') }}" alt="">
