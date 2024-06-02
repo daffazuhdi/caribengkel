@@ -81,51 +81,77 @@
             <div class="cardService w-50">
                 <div class="card">
                     <div class="card-body">
-                    <h5 class="card-title" style="padding-left:1%; font-size: 100%; font-weight: 600;">Ingin Servis?</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%; font-size: 90%">Lakukan penjadwalan sekarang</h6>
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginFirst" style="background-color: #0D5C63;color:white;text-decoration:none; font-size: 90%">Jadwalkan Servis Sekarang</button>
-                        <div class="modal fade" id="loginFirst" tabindex="-1" aria-labelledby="loginFirst" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content p-4">
-                                  <div class="modal-header p-0 border-0">
-                                      <h5 class="modal-title" style="font-weight: 600;" id="deleteCar">Masuk Akun Terlebih Dahulu</h5>
-                                  </div>
-                                  <div class="modal-body p-0 mt-1 mb-4">
-                                      <p class="m-0">Apabila ingin melakukan penjadwalan bengkel, silahkan masuk akun terlebih dahulu.</p>
-                                  </div>
-                                  <div class="modal-footer border-0 d-flex justify-content-end gap-2 p-0">
-                                      <button type="button" class="btn btn-outline-dark px-3" data-bs-dismiss="modal">Batal</button>
-                                      <a href="/masuk"><button type="button" class="btn btn-primary">Masuk</button></a>
-                                  </div>
-                               </div>
-                          </div>
-                      </div>
-                        {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-                            <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Masuk Akun Terlebih Dahulu</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Apabila ingin melakukan penjadwalan bengkel, silahkan masuk akun terlebih dahulu.
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-outline-dark px-3" data-bs-dismiss="modal">Batal</button>
-                                  <a href="/masuk"><button type="button" class="btn btn-primary">Masuk</button></a>
+                        <h5 class="card-title" style="padding-left:1%; font-size: 100%; font-weight: 600;">Ingin Servis?</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%; font-size: 90%">Lakukan penjadwalan sekarang</h6>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginFirst" style="background-color: #0D5C63;color:white;text-decoration:none; font-size: 90%">Jadwalkan Servis Sekarang</button>
+                            <div class="modal fade" id="loginFirst" tabindex="-1" aria-labelledby="loginFirst" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content p-4">
+                                        <div class="modal-header p-0 border-0">
+                                            <h5 class="modal-title" style="font-weight: 600;" id="deleteCar">Masuk Akun Terlebih Dahulu</h5>
+                                        </div>
+                                        <div class="modal-body p-0 mt-1 mb-4">
+                                            <p class="m-0">Apabila ingin melakukan penjadwalan bengkel, silahkan masuk akun terlebih dahulu.</p>
+                                        </div>
+                                        <div class="modal-footer border-0 d-flex justify-content-end gap-2 p-0">
+                                            <button type="button" class="btn btn-outline-dark px-3" data-bs-dismiss="modal">Batal</button>
+                                            <a href="/masuk"><button type="button" class="btn btn-primary">Masuk</button></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            </div>
-                        </div> --}}
-                        {{--  --}}
-                    </div>
+                        </div>
                     </div>
                 </div>
             </div>
             @endif
-
         </div>
+        {{-- <div class="d-block d-md-none justify-content-center">
+            @auth
+            @if(Auth::user()->role_id == 2)
+                <div class="cardService d-block d-md-none">
+                    <div class="card " >
+                        <div class="card-body">
+                            <h5 class="card-title" style="padding-left:1%; font-size: 100%; font-weight: 600;">Ingin Servis?</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%">Lakukan penjadwalan sekarang</h6>
+                            <div class="d-grid gap-2">
+                                <a href="https://api.whatsapp.com/send?phone={{$workshop->phone_number}}&text=Halo%2C%20{{ $workshop->name }}.%0ASaya%20dari%20CariBengkel%20ingin%20melakukan%20booking%20service%20atas%20nama%20{{ Auth::user()->first_name }}%20{{ Auth::user()->last_name }}.%20" class="btn btn-primary" style="background-color: #0D5C63;color:white;text-decoration:none;">Jadwalkan Servis Sekarang</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endauth
+            @else
+            <div class="cardService d-block d-md-none">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="padding-left:1%; font-size: 100%; font-weight: 600;">Ingin Servis?</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%; font-size: 90%">Lakukan penjadwalan sekarang</h6>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginFirst" style="background-color: #0D5C63;color:white;text-decoration:none; font-size: 90%">Jadwalkan Servis Sekarang</button>
+                            <div class="modal fade" id="loginFirst" tabindex="-1" aria-labelledby="loginFirst" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content p-4">
+                                        <div class="modal-header p-0 border-0">
+                                            <h5 class="modal-title" style="font-weight: 600;" id="deleteCar">Masuk Akun Terlebih Dahulu</h5>
+                                        </div>
+                                        <div class="modal-body p-0 mt-1 mb-4">
+                                            <p class="m-0">Apabila ingin melakukan penjadwalan bengkel, silahkan masuk akun terlebih dahulu.</p>
+                                        </div>
+                                        <div class="modal-footer border-0 d-flex justify-content-end gap-2 p-0">
+                                            <button type="button" class="btn btn-outline-dark px-3" data-bs-dismiss="modal">Batal</button>
+                                            <a href="/masuk"><button type="button" class="btn btn-primary">Masuk</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+        </div> --}}
         <hr style="height:1px;border-width:0;color:gray;background-color:gray">
 
         <ul class="nav nav-tabs" id="myTab" role="tablist" style="background:none;border:none">

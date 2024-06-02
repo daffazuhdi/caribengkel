@@ -239,6 +239,13 @@ p.text.page {
         align-items: start !important;
         gap: 8px !important;
     }
+    .containerInformationCard {
+        flex-direction: column;
+        gap: 8px !important;
+    }
+    .cardService {
+        width: 100% !important;
+    }
 }
 
 @media screen and (max-width: 500px) {
