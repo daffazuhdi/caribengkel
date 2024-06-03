@@ -47,7 +47,9 @@ class ServiceReminder extends Command
                     ->leftjoin('car_brands', 'car_models.car_brand_id', '=', 'car_brands.id')
                     ->leftjoin('users', 'users.id', '=', 'car_user.user_id')
                     // ->where('car_services.service_date', '<=', $sixMonth)->groupBy('car_id')->get(['car_id', DB::raw('MAX(service_date) as service_date')])
-                    ->where('car_services.is_notified', '=', 0)->get();
+                    ->where('car_services.is_notified', '=', 0)
+                    ->where('car_services.service_date', '<=', $sixMonth)
+                    ->get();
 
 
 
@@ -60,13 +62,13 @@ class ServiceReminder extends Command
             $str = $c->phoneNumber;
             $str = substr($str, 1);
             $str = "+62" .$str. "";
-            echo $str;
+            // echo $str;
 
             // $nomer = "+6285695930369"; //+6287871120749
             //MG09ae7ab09cd1274faa7aef78bd67706a
             //AC9d06f79964e5e4077a0066b680662907
             $sid    = "AC9d06f79964e5e4077a0066b680662907";
-            $token  = "aa3203742b99462648039ddf1cc2e8a6";
+            $token  = "a69f1607ac96168031c3252918064350";
             $twilio = new Client($sid, $token);
             $message = $twilio->messages
             ->create("whatsapp:{$str}", // harusnya yg $str
@@ -76,14 +78,14 @@ class ServiceReminder extends Command
               )
             );
 
-            print($message->sid);
+            // print($message->sid);
 
 
             // echo $message = "Halo, Bapak/Ibu " .$c->first_name. "!\n\nKami dari CariBengkel ingin mengingatkan bahwa kendaraan bapak/ibu, dengan:\n\nTipe Mobil: *" .$c->carBrand. " ".$c->carModel. "*\nPlat Nomor: *" .$c->license_plate. "*\n\nSudah mendekati 6 bulan sejak servis terakhir. Silakan lakukan penjadwalan servis dan perbarui tanggal terakhir servis melalui CariBengkel.id (http://CariBengkel.id). Terima kasih! 🚙💨";
             // echo "\n";
 
-            // echo $c->id;
-            // echo "\n";
+            echo $c->id;
+            echo "\n";
 
             //update TABLE car_service kolom is_notified disini
 
