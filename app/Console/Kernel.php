@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('service:reminder')->everyTenMinutes();
+        $schedule->command('service:reminder')->everyMinute();
         // ;
         // ->dailyAt('22:39')->timezone('Asia/Jakarta');
     }
