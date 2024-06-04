@@ -1,0 +1,385 @@
+lcd
+   INFO  Running scheduled tasks every minute.  
+
+lcd
+  2024-06-04 12:35:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:36:00 Running ['artisan' service:reminder] ...... 1,309ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:37:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:38:00 Running ['artisan' service:reminder] ........ 180ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:39:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:40:00 Running ['artisan' service:reminder] ........ 185ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:41:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:42:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:43:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:44:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:45:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:46:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:47:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:48:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd  2024-06-04 12:49:00 Running ['artisan' service:reminder] ........ 180ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:50:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:51:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:52:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:53:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:54:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd  2024-06-04 12:55:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:56:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:57:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:58:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 12:59:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd  2024-06-04 13:00:00 Running ['artisan' service:reminder] ........ 194ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:01:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:02:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:03:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:04:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:05:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:06:00 Running ['artisan' service:reminder] ........ 180ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:07:00 Running ['artisan' service:reminder] ........ 180ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd  2024-06-04 13:08:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:09:00 Running ['artisan' service:reminder] ........ 180ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:10:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:11:00 Running ['artisan' service:reminder] ........ 179ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:12:00 Running ['artisan' service:reminder] ........ 180ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:13:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:14:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:15:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:16:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:17:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:18:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd  2024-06-04 13:19:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:20:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:21:00 Running ['artisan' service:reminder] ........ 179ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:22:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:23:00 Running ['artisan' service:reminder] ........ 180ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd  2024-06-04 13:24:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:25:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:26:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:27:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:28:00 Running ['artisan' service:reminder] ........ 179ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:29:00 Running ['artisan' service:reminder] ........ 179ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:30:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:31:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:32:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:33:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:34:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:35:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:36:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:37:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:38:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:39:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd  2024-06-04 13:40:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd  2024-06-04 13:41:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:42:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:43:00 Running ['artisan' service:reminder] ........ 180ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:44:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:45:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:46:00 Running ['artisan' service:reminder] ........ 179ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:47:00 Running ['artisan' service:reminder] ...... 1,282ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:48:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:49:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:50:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:51:00 Running ['artisan' service:reminder] ...... 1,317ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:52:00 Running ['artisan' service:reminder] ........ 180ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:53:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:54:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:55:00 Running ['artisan' service:reminder] ........ 185ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:56:00 Running ['artisan' service:reminder] ...... 1,306ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:57:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:58:00 Running ['artisan' service:reminder] ........ 179ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 13:59:00 Running ['artisan' service:reminder] ........ 180ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 14:00:00 Running ['artisan' service:reminder] ........ 194ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 14:01:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 14:02:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 14:03:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd  2024-06-04 14:04:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 14:05:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 14:06:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd  2024-06-04 14:07:00 Running ['artisan' service:reminder] ........ 184ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 14:08:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 14:09:00 Running ['artisan' service:reminder] ........ 181ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 14:10:00 Running ['artisan' service:reminder] ........ 182ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 14:11:00 Running ['artisan' service:reminder] ........ 183ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
+lcd
+  2024-06-04 14:12:00 Running ['artisan' service:reminder] ........ 185ms DONE
+  ⇂ '/usr/bin/php8.3' 'artisan' service:reminder > '/dev/null' 2>&1  
+
