@@ -3,7 +3,7 @@
 @section('container')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="container px-0 m-auto" style="min-height: 70vh;">
+<div class="write-review-page container px-0 m-auto" style="min-height: 70vh;">
     <a class="nav-link d-inline-flex align-items-center gap-2" style="font-weight: 500;" href="{{ url()->previous() }}">
         <img src="{{ url('photos/arrow-back.svg') }}" width="20px;">
         Kembali
