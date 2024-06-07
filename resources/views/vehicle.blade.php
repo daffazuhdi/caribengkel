@@ -20,7 +20,7 @@
                         <a style="font-size: 12px;" href="{{ route('login.show') }}">Lewati</a>
                     </div>
                 </div>
-                <p style="margin-bottom: 8px; font-size: 12px">Buatlah akun untuk menikmati semua fitur yang kami sediakan.</p>
+                <p style="margin-bottom: 8px; font-size: 12px">Masukkan data kendaraan Anda untuk mendapatkan <i>service reminder</i></p>
 
                 <form action="{{ route('vehicle.store') }}" method="POST">
                     @csrf
