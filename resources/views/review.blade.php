@@ -13,7 +13,7 @@
 
 {{-- {{ session('message') }} --}}
 <div class="review-page container pb-4 px-0 m-auto" style="min-height: 70vh;">
-    <a class="nav-link d-inline-flex align-items-center gap-2" style="font-weight: 500;" href="{{ url()->previous() }}">
+    <a class="nav-link d-inline-flex align-items-center gap-2" style="font-weight: 500;" href="{{  url('/bengkelDetail/' . $workshop->id) }}">
         <img src="{{ url('photos/arrow-back.svg') }}" width="20px;">
         Kembali
     </a>
@@ -26,7 +26,7 @@
         <h5 class="mx-1 mb-1">•</h5>
         <h5 class="mx-1 mb-1">{{$countUlasan}} Ulasan</h5>
     </div>
-    <div class="containerAllRate d-flex" style="justify-content: space-between">
+    <div class="containerAllRate d-flex align-items-end" style="justify-content: space-between">
         <div class="row d-flex gap-2 m-0">
             @foreach ($workshop->specialties as $ws)
             <div class="col col-md-auto p-0" style="min-width: 86px;">
@@ -50,17 +50,18 @@
             </div>
             @endforeach
         </div>
-        <div class="containerButton d-flex align-items-end gap-2">
+        <div class="containerButton d-flex justify-content-start gap-2">
             @if (Auth::user())
-            <div class="">
+            {{-- <div class=""> --}}
                 <a href="/writeReview/{{ $workshop->id }}" type="button" class="btn btn-primary d-flex justify-content-start" style="font-size: 14px">
-                <svg xmlns="http://www.w3.org/2000/svg"  style="margin-right: 0.4em" width="1.4em" height="1.4em" viewBox="0 0 24 24">
-                    <path fill="white" fill-rule="evenodd" d="M17.907 4.93c.104-.105.294-.186.539-.18a.85.85 0 0 1 .572.216c.13.13.222.34.231.575s-.065.413-.167.515l-7.49 7.5l-1.273.116l.1-1.245zm2.173-1.024c-.437-.438-1.037-.643-1.6-.656s-1.182.167-1.635.62l-7.682 7.692a.75.75 0 0 0-.217.47l-.194 2.407a.75.75 0 0 0 .816.807l2.43-.22a.75.75 0 0 0 .463-.218l7.682-7.692c.456-.456.627-1.073.605-1.635a2.37 2.37 0 0 0-.668-1.575M5.812 4.75a2.57 2.57 0 0 0-2.563 2.562v10.875a2.57 2.57 0 0 0 2.563 2.563h10.875a2.57 2.57 0 0 0 2.563-2.562V12.75a.75.75 0 0 0-1.5 0v5.438c0 .582-.48 1.062-1.063 1.062H5.812c-.583 0-1.063-.48-1.063-1.062V7.312c0-.582.48-1.062 1.063-1.062h5.437a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/>
-                </svg>
-                Tulis Ulasan</a>
-            </div>
+                    <svg xmlns="http://www.w3.org/2000/svg"  style="margin-right: 0.4em" width="1.4em" height="1.4em" viewBox="0 0 24 24">
+                        <path fill="white" fill-rule="evenodd" d="M17.907 4.93c.104-.105.294-.186.539-.18a.85.85 0 0 1 .572.216c.13.13.222.34.231.575s-.065.413-.167.515l-7.49 7.5l-1.273.116l.1-1.245zm2.173-1.024c-.437-.438-1.037-.643-1.6-.656s-1.182.167-1.635.62l-7.682 7.692a.75.75 0 0 0-.217.47l-.194 2.407a.75.75 0 0 0 .816.807l2.43-.22a.75.75 0 0 0 .463-.218l7.682-7.692c.456-.456.627-1.073.605-1.635a2.37 2.37 0 0 0-.668-1.575M5.812 4.75a2.57 2.57 0 0 0-2.563 2.562v10.875a2.57 2.57 0 0 0 2.563 2.563h10.875a2.57 2.57 0 0 0 2.563-2.562V12.75a.75.75 0 0 0-1.5 0v5.438c0 .582-.48 1.062-1.063 1.062H5.812c-.583 0-1.063-.48-1.063-1.062V7.312c0-.582.48-1.062 1.063-1.062h5.437a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/>
+                    </svg>
+                    Tulis Ulasan
+                </a>
+            {{-- </div> --}}
             @else
-            <div class="">
+            {{-- <div class=""> --}}
                 <button type="button" class="btn btn-primary d-flex justify-content-start" data-bs-toggle="modal" data-bs-target="#loginFirst" style="font-size: 14px">
                     <svg xmlns="http://www.w3.org/2000/svg"  style="margin-right: 0.4em" width="1.4em" height="1.4em" viewBox="0 0 24 24">
                         <path fill="white" fill-rule="evenodd" d="M17.907 4.93c.104-.105.294-.186.539-.18a.85.85 0 0 1 .572.216c.13.13.222.34.231.575s-.065.413-.167.515l-7.49 7.5l-1.273.116l.1-1.245zm2.173-1.024c-.437-.438-1.037-.643-1.6-.656s-1.182.167-1.635.62l-7.682 7.692a.75.75 0 0 0-.217.47l-.194 2.407a.75.75 0 0 0 .816.807l2.43-.22a.75.75 0 0 0 .463-.218l7.682-7.692c.456-.456.627-1.073.605-1.635a2.37 2.37 0 0 0-.668-1.575M5.812 4.75a2.57 2.57 0 0 0-2.563 2.562v10.875a2.57 2.57 0 0 0 2.563 2.563h10.875a2.57 2.57 0 0 0 2.563-2.562V12.75a.75.75 0 0 0-1.5 0v5.438c0 .582-.48 1.062-1.063 1.062H5.812c-.583 0-1.063-.48-1.063-1.062V7.312c0-.582.48-1.062 1.063-1.062h5.437a.75.75 0 0 0 0-1.5z" clip-rule="evenodd"/>
@@ -84,10 +85,10 @@
                             </div>
                     </div>
                 </div>
-            </div>
+            {{-- </div> --}}
             @endif
-            <div class="">
-                <a href="" type="button" class="btn btn-outline-dark dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:14px;">Urutkan</a>
+            <div class="d-flex justify-content-start align-items-center">
+                <a href="#" type="button" class="btn btn-outline-dark dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:14px;">Urutkan</a>
                 <ul class="dropdown-menu">
                     <form action="/review/{{ $workshop->id }}" method="POST">
                         <li><a class="dropdown-item" href="/review/{{ $workshop->id }}/{{'newest'}}" id="ulasanTerbaru" name="ulasanTerbaru" value="ulasanTerbaru">Ulasan Terbaru</a></li>
