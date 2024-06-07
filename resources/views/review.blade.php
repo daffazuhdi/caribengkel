@@ -143,7 +143,7 @@
     @if ($count == 0)
     <p class="d-flex justify-content-center align-items-center" style="min-height: 40vh;">Belum ada ulasan</p>
     @else
-    <div class="row row-cols-1 row-cols-md-3 g-4 py-4 px-0">
+    <div class="row row-cols-1 row-cols-md-3 g-4 py-3 px-0">
         @foreach ($ratingDetail as $wr)
             <div class="col">
                 <div class="card h-100">
