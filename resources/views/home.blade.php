@@ -72,7 +72,7 @@
             <p class="sub-bengkelterbaik m-0" style="font-size: 14px">Banyak orang yang memberikan ulasan bagus untuk bengkel ini.</p>
         </div>
         <div class="col justify-content-end d-none d-md-flex w-100">
-          <button class="btn btn-primary d-flex justify-content-start"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #FFFFFF; font-size: 14px;">Lihat Semua</a></button>
+          <button class="btn btn-outline-dark d-flex justify-content-start"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #052023; font-size: 14px; border-color:#052023">Lihat Semua Bengkel</a></button>
         </div>
       </div>
       <div class="row row-cols-1 row-cols-md-4 my-2">
@@ -115,7 +115,7 @@
         @endforeach
       </div>
       <div class="col d-block d-md-none">
-        <button class="btn btn-primary w-100"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #FFFFFF;">Lihat Semua</a></button>
+        <button class="btn btn-outline-dark w-100"><a href="{{ route('bengkel') }}" style="text-decoration: none; color: #052023; border-color:#052023; font-size: 14px;">Lihat Semua Bengkel</a></button>
       </div>
     </div>
   </section>
