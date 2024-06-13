@@ -116,12 +116,12 @@
           </div>
         @else
           <div class="d-flex mt-2 mt-md-0 gap-2" id="">
-              <div class="btn btn-primary w-100">
-                <a style="color: white; font-weight: 500;" href="/daftar">Daftar</a>
-              </div>
-              <div class="btn w-100">
-                <a class="align-items-center" style="color: #052023; font-weight: 500" href="/masuk">Masuk</a>
-              </div>
+              <a style="color: white; font-weight: 500;" href="/daftar" class="btn btn-primary w-100">
+                Daftar
+              </a>
+              <a style="color: #052023; font-weight: 500" href="/masuk" class="btn w-100 text-center">
+                Masuk
+              </a>
           </div>
         @endif
       </div>
