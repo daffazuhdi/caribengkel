@@ -30,10 +30,10 @@
                         <label for="email" class="form-label">Email</label>
                         <input name="email" id="email" type="email" class="form-control form-control-sm @error('email') is-invalid @enderror @error('credentials') is-invalid @enderror" placeholder="Masukkan email" value="{{ old('email') }}">
                         @error('email')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                         @enderror
+                            <div class="invalid-feedback">
+                                Email diperlukan
+                            </div>
+                        @enderror
                         @error('credentials')
                             <div class="invalid-feedback">
                                 {{ $message }}
