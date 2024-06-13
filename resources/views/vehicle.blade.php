@@ -66,7 +66,9 @@
                                     </span>
                                 </span>
                                 @error('service_date')
-                                    <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red">Selected date must be after the last service date.</div>
+                                    <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red">
+                                        Tanggal terakhir servis wajib diisi.
+                                    </div>
                                 @enderror
                             </div>
                     </div>

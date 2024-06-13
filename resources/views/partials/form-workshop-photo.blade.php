@@ -14,7 +14,7 @@
     <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png" class="@error('photo') is-invalid @enderror" onchange="previewImage()" style="display: none;">
     @error('photo')
     <div class="invalid-feedback">
-        {{ $message }}
+        Foto wajib diisi dalam format .jpg, .jpeg, atau .png.
     </div>
     @enderror
 </div>

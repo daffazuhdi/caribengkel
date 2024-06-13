@@ -12,7 +12,7 @@ class BengkelDetailController extends Controller
 {
     //
     public function test($id){
-        $workshop = Workshop::find($id);
+        $workshop = Workshop::findOrFail($id);
         $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
         $ratingDetail = Review::select('*')->where('workshop_id', $id)->limit('3')->get();
         $countUlasan = DB::table('reviews')->where('workshop_id', $id)->count('rating');

@@ -35,8 +35,8 @@ Route::get('/',[HomePageController::class, 'test'])->name('home');
 Route::get('/daftar', [RegisterController::class, 'show'])->name('register.show')->middleware('guest');
 Route::post('/daftar', [RegisterController::class, 'submit'])->name('register.submit');
 
-Route::get('/datakendaraan', [CarController::class, 'show'])->name('vehicle.show')->middleware('auth.first'); // harusnya cuma bisa diakses abis regist
-Route::post('/datakendaraan', [CarController::class, 'store'])->name('vehicle.store');
+Route::get('/data-kendaraan', [CarController::class, 'show'])->name('vehicle.show')->middleware('auth.first'); // harusnya cuma bisa diakses abis regist
+Route::post('/data-kendaraan', [CarController::class, 'store'])->name('vehicle.store');
 
 Route::get('/masuk', [LoginController::class, 'show'])->name('login.show')->middleware('guest');
 Route::post('/masuk', [LoginController::class, 'submit'])->name('login.submit');
@@ -44,13 +44,6 @@ Route::post('/masuk', [LoginController::class, 'submit'])->name('login.submit');
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 Route::get('/bengkel', [BengkelController::class, 'showAll'])->name('bengkel');
-
-// Route::get('/bengkel', [BengkelController::class, 'showAll'])->name('bengkel');
-// Route::get('/bengkel', function () {
-//     return view('bengkel', [
-//         "title" => "Bengkel"
-//         ]);
-// });
 
 Route::get('/tambah-bengkel', [BengkelController::class, 'add'])->middleware(Authorization::class);
 Route::post('/tambah-bengkel', [BengkelController::class, 'addWorkshop']);
@@ -68,7 +61,7 @@ Route::post('/ubah-bengkel-detail/{id}', [BengkelController::class, 'updateWorks
 Route::post('/ubah-bengkel-harga/{id}', [BengkelController::class, 'updateWorkshopPrice']);
 // Route::get('/ubah-bengkel-detail-harga-{id}', [BengkelController::class, 'updatePrice']);
 
-Route::get('/tentangkami',[TentangKamiController::class, 'index']);
+Route::get('/tentang-kami',[TentangKamiController::class, 'index']);
 
 Route::get('/bantuan', function () {
     return view('bantuan', [
@@ -76,7 +69,7 @@ Route::get('/bantuan', function () {
         ]);
 });
 
-Route::get('/bengkelDetail/{id}',[BengkelDetailController::class, 'test']);
+Route::get('/bengkel/{id}',[BengkelDetailController::class, 'test']);
 Route::post('/bengkel-detail/{id}', [BengkelController::class, 'delete']);
 
 Route::get('/profil', [UserController::class, 'view'])->name('profile.view')->middleware('auth');
@@ -90,17 +83,17 @@ Route::post('/hapus-kendaraan/{id}', [CarController::class, 'delete']);
 Route::get('/tambah-kendaraan', [CarController::class, 'showToAdd'])->middleware('auth');
 Route::post('/tambah-kendaraan', [CarController::class, 'store']);
 
-Route::get('/review/{id}',[ReviewController::class, 'test'])->name('review.show');
-Route::get('/review/{id}/{sort}',[ReviewController::class, 'sort']);
+Route::get('/ulasan/{id}',[ReviewController::class, 'test'])->name('review.show');
+Route::get('/ulasan/{id}/{sort}',[ReviewController::class, 'sort']);
 
-Route::get('/writeReview/{id}/',[WriteReviewController::class, 'showReview'])->middleware('auth');
-Route::post('/writeReview/{id}/',[WriteReviewController::class, 'writeReview']);
+Route::get('/tulis-ulasan/{id}/',[WriteReviewController::class, 'showReview'])->middleware('auth');
+Route::post('/tulis-ulasan/{id}/',[WriteReviewController::class, 'writeReview']);
 
-Route::get('/coba', function () {
-    return view('nyoba', [
-        "title" => "Bengkel"
-        ]);
-});
+// Route::get('/coba', function () {
+//     return view('nyoba', [
+//         "title" => "Bengkel"
+//         ]);
+// });
 
 // Route::get('/testing/add/{id}', function () {
 //     return view('tambah-bengkel2', [

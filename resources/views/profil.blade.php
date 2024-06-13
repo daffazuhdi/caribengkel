@@ -2,7 +2,7 @@
 @extends('layouts.profile')
 @section('message')
     @if (session('message'))
-        <div class="alert alert-success main-content d-flex align-items-center" role="alert" style="font-weight: 600; border-radius: 0; padding: 0 94px;">
+        <div class="success-message alert alert-success main-content d-flex align-items-center" role="alert" style="font-weight: 600; border-radius: 0; padding: 0 94px;">
             <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1.1em" height="1.1em" viewBox="0 0 24 24">
                 <path fill="#0D5C63" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"/>
             </svg>
@@ -10,10 +10,10 @@
         </div>
     @endif
 @endsection
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <a href="https://api.whatsapp.com/send/?phone=%2B14155238886&text=join+combination-yellow&type=phone_number&app_absent=0" class="float" target="_blank">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://api.whatsapp.com/send/?phone=%2B14155238886&text=join+combination-yellow&type=phone_number&app_absent=0" class="float" target="_blank">
     <i class="fa fa-whatsapp my-float"></i>
-    </a>
+</a>
 @if (Auth::user()->role_id == 2)
     @section('content')
         <div class="d-flex justify-content-between">

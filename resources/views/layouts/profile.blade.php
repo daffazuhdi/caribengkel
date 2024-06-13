@@ -40,9 +40,9 @@
           <div class="my-1">
               <h5 style="font-weight: 600;">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h5>
               <h6 style="font-size: 16px; color: #303030;">{{ Auth::user()->email }}</h6>
-              <button class="btn btn-outline-dark px-3 mt-2">
-                  <a href="{{ url('/ubah-profil') }}" style="color: #052023">Ubah Profil</a>
-              </button>
+              <a class="btn btn-outline-dark px-3 mt-2" href="{{ url('/ubah-profil') }}" style="color: #052023">
+                Ubah Profil
+              </a>
           </div>
       </div>
       @if (Auth::user()->role_id == 2)

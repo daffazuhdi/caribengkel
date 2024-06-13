@@ -81,7 +81,7 @@
         <ul class="navbar-nav mx-auto">
           <li class="nav-item mt-2 mt-md-0"><a class="nav-link {{ ($title === "Beranda" ? 'active' :'')}}" href="/">Beranda</a></li>
           <li class="nav-item"><a class="nav-link {{ ($title === "Bengkel" ? 'active' :'')}}" href="/bengkel">Bengkel</a></li>
-          <li class="nav-item"><a class="nav-link {{ ($title === "Tentang Kami" ? 'active' :'')}}" href="/tentangkami">Tentang Kami</a></li>
+          <li class="nav-item"><a class="nav-link {{ ($title === "Tentang Kami" ? 'active' :'')}}" href="/tentang-kami">Tentang Kami</a></li>
 
           @if (Auth::user())
             <li class="nav-item d-block d-md-none"><a class="nav-link {{ ($title === "Profil Saya" ? 'active' :'')}}" href="/profil">Profil Saya</a></li>

@@ -37,7 +37,9 @@
                         <div class="mb-4 py-1">
                             <label for="specialty" class="form-label-md">Spesialisasi</label>
                             @error('specialty')
-                                    <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red"> Choose minimum 1 workshop specialty</div>
+                            <div class="alert alert-danger py-0 px-0" style="font-size:12px;background:none;border:none;color:red">
+                                Pilih setidaknya 1 spesialisasi.
+                            </div>
                             @enderror
                             <div class="row row-cols-4 mx-auto">
                                 @foreach ($specialty as $specialty)
@@ -68,7 +70,9 @@
                         <div class="mb-4 py-1">
                             <label for="facility" class="form-label-md">Fasilitas</label>
                             @error('facility')
-                                <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red"> Choose minimum 1 workshop facility</div>
+                            <div class="alert alert-danger py-0 px-0" style="font-size:12px;background:none;border:none;color:red">
+                                Pilih setidaknya 1 fasilitas.
+                            </div>
                             @enderror
                             <div class="row row-cols-4 mx-auto">
                                 @foreach ($facility as $f)
@@ -98,8 +102,10 @@
 
                         <div class="mb-4 py-1">
                             <label for="car_brand" class="form-label-md">Merek Mobil</label>
-                            @error('facility')
-                                <div class="alert alert-danger py-0 px-0" style="font-size:11px;background:none;border:none;color:red"> Choose minimum 1 Car Brand that can be handled by workshop</div>
+                            @error('car_brand')
+                                <div class="alert alert-danger py-0 px-0" style="font-size:12px;background:none;border:none;color:red">
+                                    Pilih setidaknya 1 merek mobil yang dapat ditangani oleh bengkel.
+                                </div>
                             @enderror
                             <div class="row row-cols-4 mx-auto">
                                 @foreach ($car_brand as $cb)

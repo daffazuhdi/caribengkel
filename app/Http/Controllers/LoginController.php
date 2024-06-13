@@ -20,6 +20,6 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
 
-        return redirect()->back()->withInput()->withErrors(['credentials' => 'Email atau kata sandi salah']);
+        return redirect()->back()->withInput()->withErrors(['credentials' => 'Email atau kata sandi salah.']);
     }
 }

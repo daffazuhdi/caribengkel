@@ -12,26 +12,31 @@
                     <div class="col-12 col-md-6">
                         <img src="{{ url('storage/profiles/'.Auth::user()->photo) }}" style="border-radius: 50%; object-fit: cover; width: 110px; height: 110px; filter: drop-shadow(0.1em 0.1em 0.1em #727272);" class="" alt="{{ Auth::user()->name }}">
                         <div class="mb-4">
-                            <label for="photo" class="form-label"></label>
+                            <label for="photo" class="form-label @error('photo') is-invalid @enderror"></label>
                             <br>
-                            <input type="file" id="photo" name="photo">
+                            <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.svg" >
+                            @error('photo')
+                            <div class="invalid-feedback">
+                                Format foto harus dalam .jpg, .jpeg, .png, atau .svg.
+                            </div>
+                            @enderror
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <label for="first_name" class="form-label-md">Nama depan</label>
-                                <input name="first_name" id="first_name" type="text" class="form-control form-control-sm" value="{{ Auth::user()->first_name }}">
+                                <input name="first_name" id="first_name" type="text" class="form-control form-control-sm @error('first_name') is-invalid @enderror" value="{{ Auth::user()->first_name }}">
                                 @error('first_name')
                                 <div class="invalid-feedback">
-                                    {{ $message }}
+                                    Nama depan wajib diisi.
                                 </div>
                                 @enderror
                             </div>
                             <div class="col-md-6">
                                 <label for="last_name" class="form-label-md">Nama akhir</label>
-                                <input name="last_name" id="last_name" type="text" class="form-control form-control-sm" value="{{ Auth::user()->last_name }}">
+                                <input name="last_name" id="last_name" type="text" class="form-control form-control-sm @error('last_name') is-invalid @enderror" value="{{ Auth::user()->last_name }}">
                                 @error('last_name')
                                 <div class="invalid-feedback">
-                                    {{ $message }}
+                                    Nama akhir wajib diisi.
                                 </div>
                                 @enderror
                             </div>
@@ -40,11 +45,6 @@
                             <div class="mb-4">
                                 <label for="email" class="form-label-md">Email</label>
                                 <input name="email" id="email" type="email" class="form-control form-control-sm" value="{{ Auth::user()->email }}">
-                                @error('email')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
                             </div>
                         </fieldset>
                         <div class="mb-4">
@@ -56,7 +56,7 @@
                                 <input type="text" class="form-control form-control-sm @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" value="{{ str_replace('+62', '', Auth::user()->phone_number) }}">
                                 @error('phone_number')
                                 <div class="invalid-feedback">
-                                    {{ $message }}
+                                    Nomor telepon wajib diisi dan dimulai dengan '08'.
                                 </div>
                                 @enderror
                             {{-- </div> --}}

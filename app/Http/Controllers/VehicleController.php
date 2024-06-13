@@ -29,7 +29,7 @@ class VehicleController extends Controller
 
     public function view($id) {
         // return CarService::index($id);
-        $car = Car::find($id);
+        $car = Car::findOrFail($id);
         $car_model = CarModel::all();
         $car_brand = CarBrand::all();
         $services = CarService::index($id);
@@ -84,7 +84,7 @@ class VehicleController extends Controller
         // Validate Input
         // Insert Car Service
         // Redirect
-        $car = Car::find($id);
+        $car = Car::findOrFail($id);
 
         $rules = [
             // 'car_model_id' => 'required',

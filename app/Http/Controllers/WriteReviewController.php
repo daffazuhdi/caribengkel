@@ -16,7 +16,7 @@ class WriteReviewController extends Controller
 {
     //
     public function showReview($id){
-        $workshop = Workshop::find($id);
+        $workshop = Workshop::findOrFail($id);
         $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
         $ratingDetail = Review::select('*')->where('workshop_id', $id)->paginate(15);
         $countUlasan = DB::table('reviews')->where('workshop_id', $id)->count('rating');

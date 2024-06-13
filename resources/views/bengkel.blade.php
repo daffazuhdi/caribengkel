@@ -200,7 +200,7 @@
                 <div class="row row-cols-1 row-cols-md-4 my-2" style="padding-bottom: 2em;">
                     @foreach ($workshops as $workshop)
                     <div class="col mb-4">
-                    <a href="/bengkelDetail/{{ $workshop->id }}" class="" style="text-decoration: none">
+                    <a href="/bengkel/{{ $workshop->id }}" class="" style="text-decoration: none">
                         <div class="card h-100">
                             <div style="padding: 1em 1em 0 1em;">
                                 <img src="{{ url('storage/workshop/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: 100vh; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">

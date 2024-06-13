@@ -23,7 +23,7 @@
                                 </select>
                                 @error('car_brand_id')
                                 <div class="invalid-feedback">
-                                    {{ $message }}
+                                    Merek mobil wajib diisi.
                                 </div>
                                 @enderror
                             </div>
@@ -35,7 +35,7 @@
                                 </select>
                                 @error('car_model')
                                 <div class="invalid-feedback">
-                                    {{ $message }}
+                                    Tipe mobil wajib diisi.
                                 </div>
                                 @enderror
                             </div>
@@ -45,7 +45,7 @@
                                 <input name="license_plate" id="license_plate" type="text" class="form-control form-control-sm @error('license_plate') is-invalid @enderror" placeholder="Masukkan plat nomor mobil" value="{{ old('license_plate') }}">
                                 @error('license_plate')
                                 <div class="invalid-feedback">
-                                    {{ $message }}
+                                    Plat nomor mobil wajib diisi.
                                 </div>
                                 @enderror
                             </div>
@@ -61,7 +61,7 @@
                                     </span>
                                     @error('service_date')
                                     <div class="invalid-feedback">
-                                        {{ $message }}
+                                        Tanggal terakhir servis wajib diisi.
                                     </div>
                                     @enderror
                                 </div>

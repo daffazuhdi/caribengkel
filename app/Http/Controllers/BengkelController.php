@@ -315,7 +315,7 @@ class BengkelController extends Controller
 
     public function edit($id)
     {
-        $workshop = Workshop::find($id);
+        $workshop = Workshop::findOrFail($id);
         $subdistrict = Subdistrict::all();
 
         return view('ubah-bengkel', compact('workshop', 'subdistrict'), ['title' => 'Ubah Bengkel']);
@@ -324,7 +324,7 @@ class BengkelController extends Controller
     public function update(Request $req1, $id)
     {
         // return $id;
-        $workshop = Workshop::find($id);
+        $workshop = Workshop::findOrFail($id);
         // return $workshop;
 
         if($req1->phone_number == $workshop->phone_number)
@@ -396,7 +396,7 @@ class BengkelController extends Controller
     {
         // return $req2;
         $workhour = $req2->day;
-        $workshop = Workshop::find($id);
+        $workshop = Workshop::findOrFail($id);
         $specialty = Specialty::all();
 
         $rules = [
@@ -413,7 +413,7 @@ class BengkelController extends Controller
             $facility = Facility::all();
             $car_brand = CarBrand::all();
 
-            return view('ubah-bengkel-detail', compact('specialty', 'facility', 'car_brand'), ['title' => 'Ubah Bengkel'])->withErrors($validator);
+            return view('ubah-bengkel-detail', compact('specialty', 'facility', 'car_brand', 'workshop'), ['title' => 'Ubah Bengkel'])->withErrors($validator);
             // return back()->withErrors($validator);
         }
 
@@ -482,7 +482,7 @@ class BengkelController extends Controller
 
     public function updatePrice($id)
     {
-        $workshop = Workshop::find($id);
+        $workshop = Workshop::findOrFail($id);
         return view('', compact('workshop'), ['title' => 'Ubah Bengkel']);
     }
 

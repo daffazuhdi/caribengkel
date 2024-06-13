@@ -41,7 +41,7 @@
                             <input name="name" id="name" type="text" class="form-control form-control-sm @error('name') is-invalid @enderror" placeholder="Masukkan nama bengkel" value="{{ old('name') }}">
                             @error('name')
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                Nama bengkel wajib diisi.
                             </div>
                             @enderror
                         </div>
@@ -55,7 +55,7 @@
                             </select>
                             @error('subdistrict_id')
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                Kecamatan wajib diisi.
                             </div>
                             @enderror
                         </div>
@@ -66,7 +66,7 @@
                             >{{ old('address') }}</textarea>
                             @error('address')
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                Alamat bengkel wajib diisi.
                             </div>
                             @enderror
                         </div>
@@ -76,7 +76,7 @@
                             placeholder="Masukkan nomor telepon" value="{{ old('phone_number') }}">
                             @error('phone_number')
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                Nomor telepon harus dimulai dengan '0'.
                             </div>
                             @enderror
                         </div>
@@ -98,7 +98,7 @@
                             >{{ old('about') }}</textarea>
                             @error('about')
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                Deskripsi bengkel wajib diisi.
                             </div>
                             @enderror
                         </div>

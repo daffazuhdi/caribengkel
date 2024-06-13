@@ -22,7 +22,7 @@
                         <input type="text" class="form-control form-control-sm @error('first_name') is-invalid @enderror" name="first_name" id="first_name" placeholder="Masukkan nama depan" value="{{ old('first_name') }}">
                         @error('first_name')
                         <div class="invalid-feedback">
-                            {{ $message }}
+                            Nama depan wajib diisi.
                         </div>
                          @enderror
                     </div>
@@ -31,7 +31,7 @@
                         <input type="text" class="form-control form-control-sm @error('last_name') is-invalid @enderror" name="last_name" id="last_name" placeholder="Masukkan nama akhir" value="{{ old('last_name') }}">
                         @error('last_name')
                         <div class="invalid-feedback">
-                            {{ $message }}
+                            Nama akhir wajib diisi.
                         </div>
                          @enderror
                     </div>
@@ -42,7 +42,7 @@
                     <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" name="email" id="email" placeholder="Masukkan email" value="{{ old('email') }}">
                     @error('email')
                     <div class="invalid-feedback">
-                        {{ $message }}
+                        Email wajib diisi.
                     </div>
                     @enderror
                 </div>
@@ -57,7 +57,7 @@
 
                         @error('phone_number')
                         <div class="invalid-feedback">
-                            {{ $message }} {{" It is must be started with '08'."}}
+                            Nomor telepon harus dimulai dengan '08'.
                         </div>
                         @enderror
                     {{-- </div> --}}
@@ -68,9 +68,9 @@
                     <input type="password" class="form-control form-control-sm  @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan kata sandi (min. 8 karakter)">
                     @error('password')
                     <div class="invalid-feedback">
-                        {{ $message }}
+                        Kata sandi setidaknya terdiri atas 8 karakter dengan 1 huruf kapital, 1 angka, dan 1 karakter spesial.
                     </div>
-                     @enderror
+                    @enderror
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100" style="font-size: 14px;">Daftar</button>

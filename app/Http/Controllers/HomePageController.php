@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\DB;
 class HomePageController extends Controller
 {
     public function test(Request $search){
-        $user = Workshop::find(1);
+        // $user = Workshop::findOrFail(1);
         // $search = $req->search;
         // $querySearch = Workshop::select('*')
         //                 ->leftjoin('specialty_workshop', 'specialty_workshop.workshop_id', '=', 'workshops.id')
@@ -47,7 +47,7 @@ class HomePageController extends Controller
         $countUser = User::count('id');
         $countBrand = CarBrand::count('id');
 
-        return view('home', ['user' => $user, 'workshop' => $workshop, 'specialty' => $specialty,
+        return view('home', ['workshop' => $workshop, 'specialty' => $specialty,
                     'countWorkshop' => $countWorkshop, 'countCustomer' => $countCustomer,
                     'countUser' => $countUser, 'countBrand' => $countBrand,
                     'search' => $search, 'title' => "Beranda"]);

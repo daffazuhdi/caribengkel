@@ -13,7 +13,7 @@ class ReviewController extends Controller
     //
 
     public function test($id){
-        $workshop = Workshop::find($id);
+        $workshop = Workshop::findOrFail($id);
         // $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
         $rating = Review::select('reviews.user_id', 'reviews.workshop_id', 'reviews.specialty_id', 'reviews.rating', 'reviews.comment', 'reviews.created_at')
                     ->leftJoin('workshops', 'reviews.workshop_id', '=', 'workshops.id')
@@ -42,7 +42,7 @@ class ReviewController extends Controller
     }
 
     public function sort($id, $sort){
-        $workshop = Workshop::find($id);
+        $workshop = Workshop::findOrFail($id);
         // $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
         $rating = Review::select('reviews.user_id', 'reviews.workshop_id', 'reviews.specialty_id', 'reviews.rating', 'reviews.comment', 'reviews.created_at')
                     ->leftJoin('workshops', 'reviews.workshop_id', '=', 'workshops.id')

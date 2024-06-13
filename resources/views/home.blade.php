@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('container')
 @if (session('message'))
-<div class="alert alert-warning main-content d-flex align-items-center justify-content-start gap-2 m-0 py-2" role="alert" style="font-weight: 600; border-radius: 0; padding: 0 94px;">
+<div class="warning-message alert alert-warning main-content d-flex align-items-center justify-content-start gap-2 m-0" role="alert" style="font-weight: 600; border-radius: 0; padding: 0 94px;">
     <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
         <path fill="#fdad15" d="M12 1.75A10.25 10.25 0 1 0 22.25 12A10.26 10.26 0 0 0 12 1.75m-1 5a1 1 0 0 1 2 0v6.33a1 1 0 0 1-2 0zm1 11.08a1.25 1.25 0 1 1 1.25-1.25a1.24 1.24 0 0 1-1.21 1.23z"/>
     </svg>
@@ -37,7 +37,7 @@
         </div>
         @endforeach
         <div class="col-6 col-sm-3 mb-3">
-          <a href="{{ url('/bengkel') }}" class="btn btn-primary w-100 h-100" style="text-decoration: none; color: #FFFFFF; font-size: 14px;">
+          <a href="{{ url('/bengkel') }}" class="btn btn-primary w-100 h-100 d-flex justify-content-center align-items-center" style="text-decoration: none; color: #FFFFFF; font-size: 14px;">
             Semua Bengkel
           </a>
         </div>
@@ -78,10 +78,10 @@
       <div class="row row-cols-1 row-cols-md-4 my-2">
         @foreach ($workshop as $workshop)
         <div class="col mb-2">
-        <a href="/bengkelDetail/{{ $workshop->id }}" class="" style="text-decoration: none">
+        <a href="/bengkel/{{ $workshop->id }}" class="" style="text-decoration: none">
           <div class="card h-100">
             <div style="padding: 1em 1em 0 1em;">
-                <img src="{{ url('storage/workshop/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: auto; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
+                <img src="{{ url('storage/workshop/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: 100vh; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
             </div>
             <div class="card-body border-bottom mx-3 py-3 px-0">
                 <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>

@@ -55,7 +55,7 @@ class CarController extends Controller
 
     public function view($id) {
         // return CarService::index($id);
-        $car = Car::find($id);
+        $car = Car::findOrFail($id);
         $car_model = CarModel::all();
         $car_brand = CarBrand::all();
         $services = CarService::index($id);
@@ -126,7 +126,7 @@ class CarController extends Controller
 
         // return $request;
 
-        $car = Car::find($id);
+        $car = Car::findOrFail($id);
         $lastDate = $car->car_services->max('service_date');
         $last = date('d/m/Y', strtotime($lastDate));
 
