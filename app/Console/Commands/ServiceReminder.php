@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
 use App\Models\CarService;
@@ -74,7 +75,7 @@ class ServiceReminder extends Command
             ->create("whatsapp:{$str}", // harusnya yg $str
               array(
                 "from" => "whatsapp:+14155238886",
-                "body" =>  "Halo, Bapak/Ibu " .$c->first_name. "!\n\nKami dari CariBengkel ingin mengingatkan bahwa kendaraan bapak/ibu, dengan:\n\nTipe Mobil: *" .$c->carBrand. " ".$c->carModel. "*\nPlat Nomor: *" .$c->license_plate. "*\n\nSudah mendekati 6 bulan sejak servis terakhir. Silakan lakukan penjadwalan servis dan perbarui tanggal terakhir servis melalui CariBengkel.id (http://CariBengkel.id). Terima kasih! 🚙💨"
+                "body" =>  "Halo, Bapak/Ibu " .$c->first_name. "!\n\nKami dari CariBengkel ingin mengingatkan bahwa kendaraan bapak/ibu, dengan:\n\nTipe Mobil: *" .$c->carBrand. " ".$c->carModel. "*\nPlat Nomor: *" .$c->license_plate. "*\n\nSudah mendekati 6 bulan sejak servis terakhir. Silakan lakukan penjadwalan servis dan perbarui tanggal terakhir servis melalui CariBengkel (http://cari-bengkel.my.id). Terima kasih! 🚙💨"
               )
             );
 
@@ -94,6 +95,8 @@ class ServiceReminder extends Command
             ]);
 
         }
+
+	Log::debug("Run Schedule");
 
         return Command::SUCCESS;
     }
