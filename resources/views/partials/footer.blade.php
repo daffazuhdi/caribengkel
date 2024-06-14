@@ -30,7 +30,7 @@
                     <a class="nav-link text-white" href="{{ url('/bengkel') }}">Bengkel</a>
                 </li>
                 <li class="nav-item" id="menu">
-                    <a class="nav-link text-white" href="{{ url('/tentangkami') }}">Tentang Kami</a>
+                    <a class="nav-link text-white" href="{{ url('/tentang-kami') }}">Tentang Kami</a>
                 </li>
             </ul>
         </div>
