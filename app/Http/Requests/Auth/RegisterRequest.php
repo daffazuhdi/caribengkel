@@ -32,4 +32,12 @@ class RegisterRequest extends FormRequest
             'password' => ['required', Password::min(8)->mixedCase()->numbers()->symbols()]
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'password.required' => 'Kata sandi wajib diisi.',
+            'password.min' => 'Kata sandi setidaknya terdiri atas 8 karakter.'
+        ];
+    }
 }

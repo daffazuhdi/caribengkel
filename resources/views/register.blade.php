@@ -14,9 +14,9 @@
             padding-top: 24px !important;
         }
     }
-    .password-notice:focus {
+    /* .password-notice:focus {
         display: block !important;
-    }
+    } */
 </style>
 <div class="container-fluid mh-100 h-100">
     <div class="row align-items-center justify-content-center scroll-page">
@@ -73,7 +73,7 @@
 
                         @error('phone_number')
                         <div class="invalid-feedback">
-                            <small>Nomor telepon harus dimulai dengan '08'.</small>
+                            <small>Nomor telepon wajib diisi dan dimulai dengan '08'.</small>
                         </div>
                         @enderror
                     {{-- </div> --}}
@@ -81,19 +81,20 @@
 
                 <div class="mb-4">
                     <label for="password" class="form-label">Kata sandi</label>
-                    <input type="password" class="form-control form-control-sm  @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan kata sandi (min. 8 karakter)">
-                    <div class="password-notice my-1 d-block">
-                        <small>
-                            Kata sandi setidaknya terdiri atas 8 karakter dengan 1 huruf kapital, 1 angka, dan 1 karakter spesial (!.^#$).
-                        </small>
-                    </div>
+                    <input type="password" class="form-control form-control-sm @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan kata sandi (min. 8 karakter)">
                     @error('password')
                     <div class="invalid-feedback">
                         <small>
-                            Kata sandi setidaknya terdiri atas 8 karakter dengan 1 huruf kapital, 1 angka, dan 1 karakter spesial.
+                            {{ $message }}
                         </small>
                     </div>
                     @enderror
+                    <div class="password-notice mt-2 d-block">
+                        <p style="font-size: 74%; margin: 0;">
+                            Kata sandi setidaknya terdiri atas 8 karakter dengan 1 huruf kapital, 1 huruf kecil, 1 angka, dan 1 karakter spesial (!.^#$).
+                        </p>
+                    </div>
+
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100" style="font-size: 14px;">Daftar</button>

@@ -114,9 +114,9 @@ return [
     'numeric' => 'The :attribute must be a number.',
     'password' => [
         'letters' => 'The :attribute must contain at least one letter.',
-        'mixed' => 'The :attribute must contain at least one uppercase and one lowercase letter.',
-        'numbers' => 'The :attribute must contain at least one number.',
-        'symbols' => 'The :attribute must contain at least one symbol.',
+        'mixed' => 'Kata sandi setidaknya terdiri atas 1 huruf kapital dan 1 huruf kecil.',
+        'numbers' => 'Kata sandi setidaknya terdiri atas 1 angka.',
+        'symbols' => 'Kata sandi setidaknya terdiri atas 1 simbol atau karakter spesial.',
         'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.',
     ],
     'present' => 'The :attribute field must be present.',
