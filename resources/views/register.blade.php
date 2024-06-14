@@ -2,8 +2,21 @@
 @section('title', 'Daftar')
 
 @section('content')
+
+<style>
+    .fe{
+        font-size: 11px
+    }
+
+    @media(max-width: 575.98px){
+        .scroll-page{
+            overflow: scroll !important;
+            padding-top: 24px !important;
+        }
+    }
+</style>
 <div class="container-fluid mh-100 h-100">
-    <div class="row align-items-center justify-content-center">
+    <div class="row align-items-center justify-content-center scroll-page">
         <div class="col-12 col-md-6 main-content">
 
             <div class="text-center d-md-none d-sm-block">
