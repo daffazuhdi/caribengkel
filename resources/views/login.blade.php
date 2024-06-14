@@ -31,12 +31,12 @@
                         <input name="email" id="email" type="email" class="form-control form-control-sm @error('email') is-invalid @enderror @error('credentials') is-invalid @enderror" placeholder="Masukkan email" value="{{ old('email') }}">
                         @error('email')
                             <div class="invalid-feedback">
-                                Email wajib diisi.
+                                <small>Email wajib diisi.</small>
                             </div>
                         @enderror
                         @error('credentials')
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                <small>{{ $message }}</small>
                             </div>
                         @enderror
                     </div>
@@ -46,7 +46,7 @@
                         <input name="password" id="password" type="password" class="form-control form-control-sm @error('password') is-invalid border-danger @enderror @error('credentials') border-danger @enderror" placeholder="Masukkan kata sandi (min. 8 karakter)">
                         @error('password')
                         <div class="invalid-feedback">
-                            Kata sandi wajib diisi.
+                            <small>Kata sandi wajib diisi.</small>
                         </div>
                         @enderror
                     </div>

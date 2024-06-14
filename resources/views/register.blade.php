@@ -14,6 +14,9 @@
             padding-top: 24px !important;
         }
     }
+    .password-notice:focus {
+        display: block !important;
+    }
 </style>
 <div class="container-fluid mh-100 h-100">
     <div class="row align-items-center justify-content-center scroll-page">
@@ -35,18 +38,18 @@
                         <input type="text" class="form-control form-control-sm @error('first_name') is-invalid @enderror" name="first_name" id="first_name" placeholder="Masukkan nama depan" value="{{ old('first_name') }}">
                         @error('first_name')
                         <div class="invalid-feedback">
-                            Nama depan wajib diisi.
+                            <small>Nama depan wajib diisi.</small>
                         </div>
-                         @enderror
+                        @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="last_name" class="form-label">Nama akhir</label>
                         <input type="text" class="form-control form-control-sm @error('last_name') is-invalid @enderror" name="last_name" id="last_name" placeholder="Masukkan nama akhir" value="{{ old('last_name') }}">
                         @error('last_name')
                         <div class="invalid-feedback">
-                            Nama akhir wajib diisi.
+                            <small>Nama akhir wajib diisi.</small>
                         </div>
-                         @enderror
+                        @enderror
                     </div>
                 </div>
 
@@ -55,7 +58,7 @@
                     <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" name="email" id="email" placeholder="Masukkan email" value="{{ old('email') }}">
                     @error('email')
                     <div class="invalid-feedback">
-                        Email wajib diisi.
+                        <small>Email wajib diisi.</small>
                     </div>
                     @enderror
                 </div>
@@ -70,7 +73,7 @@
 
                         @error('phone_number')
                         <div class="invalid-feedback">
-                            Nomor telepon harus dimulai dengan '08'.
+                            <small>Nomor telepon harus dimulai dengan '08'.</small>
                         </div>
                         @enderror
                     {{-- </div> --}}
@@ -79,9 +82,16 @@
                 <div class="mb-4">
                     <label for="password" class="form-label">Kata sandi</label>
                     <input type="password" class="form-control form-control-sm  @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan kata sandi (min. 8 karakter)">
+                    <div class="password-notice my-1 d-block">
+                        <small>
+                            Kata sandi setidaknya terdiri atas 8 karakter dengan 1 huruf kapital, 1 angka, dan 1 karakter spesial (!.^#$).
+                        </small>
+                    </div>
                     @error('password')
                     <div class="invalid-feedback">
-                        Kata sandi setidaknya terdiri atas 8 karakter dengan 1 huruf kapital, 1 angka, dan 1 karakter spesial.
+                        <small>
+                            Kata sandi setidaknya terdiri atas 8 karakter dengan 1 huruf kapital, 1 angka, dan 1 karakter spesial.
+                        </small>
                     </div>
                     @enderror
                 </div>

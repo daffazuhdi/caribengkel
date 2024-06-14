@@ -107,6 +107,6 @@ class WriteReviewController extends Controller
         //                     ->groupBy('specialty_id')
         //                     ->get();
 
-        return redirect()->to('review/'.$id)->with(['id'=>$id,'message' => 'Ulasan berhasil ditambahkan!']);
+        return redirect()->to('ulasan/'.$id)->with(['id'=>$id,'message' => 'Ulasan berhasil ditambahkan!']);
     }
 }

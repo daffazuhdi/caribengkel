@@ -21,7 +21,7 @@
                             </div>
                             @enderror
                         </div>
-                        <div class="row mb-4">
+                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <label for="first_name" class="form-label-md">Nama depan</label>
                                 <input name="first_name" id="first_name" type="text" class="form-control form-control-sm @error('first_name') is-invalid @enderror" value="{{ Auth::user()->first_name }}">
