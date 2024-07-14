@@ -120,6 +120,6 @@ class VehicleController extends Controller
 
     public function getModels($id) {
         $models = CarModel::where('car_brand_id', $id)->get();
-        return response()->json($models, 200);
+        return response()->json($models, 200); // list of car models
     }
 }

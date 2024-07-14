@@ -102,18 +102,18 @@
                 format: 'dd/mm/yyyy'
             });
             $('#car_brand_id').on('change', (event) => {
-                const id = event.target.value
+                const id = event.target.value // misalkan car_brand_id-nya berubah nanti bakalan ngejalanin fungsi ajax
 
-                $.ajax({
-                    url: `{{ url('api/car/models/${id}' )}}`,
-                    type: "GET",
-                    dataType: 'json',
-                    success: function (result) {
+                $.ajax({ // Fungsi bawaan javascript -> gunanya untuk mengambil data dari rest api
+                    url: `{{ url('api/car/models/${id}' )}}`, // routes, api.php
+                    type: "GET", // HTTP Method -> Get untuk ngambil data, dimana get ini cuma bisa didapat dalam bentuk URL
+                    dataType: 'json', // tipe data lainnya bisa aja xml
+                    success: function (result) { // ketrigger ketika data car model udh ke ambil
                         // Hapus Existing Options
-                        $("#car_model")
+                        $("#car_model") // Hapus dulu option yang ada di car model
                             .find('option')
                             .remove()
-                            .end()
+                            .end() // Balikin statenya ke awal
 
                         $("#car_model")
                             .append(
@@ -126,10 +126,10 @@
                             $("#car_model")
                             .append(
                                 $("<option>")
-                                    .val(model.id)
+                                    .val(model.id) // ini didapet dari data jsonnya
                                     .html(model.name)
                             )
-                            .prop('disabled', false)
+                            .prop('disabled', false) // by default optionnya gabisa diklik, jadi enable 
                         })
                     }
                 });

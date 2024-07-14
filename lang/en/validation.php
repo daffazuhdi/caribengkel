@@ -119,13 +119,17 @@ return [
         'symbols' => 'Kata sandi setidaknya terdiri atas 1 simbol atau karakter spesial.',
         'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.',
     ],
+    // 'phone_number' => [
+    //     'unique' => 'Nomor telepon sudah terdaftar dengan akun lain. Silakan gunakan nomor telepon lain.',
+    //     'required' => 'Nomor telepon wajib diisi dan dimulai dengan 08.'
+    // ],
     'present' => 'The :attribute field must be present.',
     'prohibited' => 'The :attribute field is prohibited.',
     'prohibited_if' => 'The :attribute field is prohibited when :other is :value.',
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    'required' => ':Attribute wajib diisi.',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_if_accepted' => 'The :attribute field is required when :other is accepted.',

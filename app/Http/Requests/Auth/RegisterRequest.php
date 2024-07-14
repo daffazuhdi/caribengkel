@@ -37,7 +37,9 @@ class RegisterRequest extends FormRequest
     {
         return [
             'password.required' => 'Kata sandi wajib diisi.',
-            'password.min' => 'Kata sandi setidaknya terdiri atas 8 karakter.'
+            'password.min' => 'Kata sandi setidaknya terdiri atas 8 karakter.',
+            'phone_number.unique' => 'Nomor telepon sudah terdaftar dengan akun lain. Silakan gunakan nomor telepon lain.',
+            'phone_number.required' => 'Nomor telepon wajib diisi dan dimulai dengan "08."'
         ];
     }
 }

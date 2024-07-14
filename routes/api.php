@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/car/models/{id}', [VehicleController::class, 'getModels'])->name('car.models');
+Route::get('/car/models/{id}', [VehicleController::class, 'getModels'])->name('car.models'); // apinya ngambil dari sini, jadi route ini itu bukan untuk nampilan page, tapi untuk ngambil data car model berdasarkan dari car brandnya

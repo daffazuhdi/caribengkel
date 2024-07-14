@@ -58,7 +58,7 @@
                     <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" name="email" id="email" placeholder="Masukkan email" value="{{ old('email') }}">
                     @error('email')
                     <div class="invalid-feedback">
-                        <small>Email wajib diisi.</small>
+                        <small>{{ $message }}</small>
                     </div>
                     @enderror
                 </div>
@@ -73,7 +73,7 @@
 
                         @error('phone_number')
                         <div class="invalid-feedback">
-                            <small>Nomor telepon wajib diisi dan dimulai dengan '08'.</small>
+                            <small>{{ $message }}</small>
                         </div>
                         @enderror
                     {{-- </div> --}}
