@@ -39,7 +39,9 @@ class RegisterRequest extends FormRequest
             'password.required' => 'Kata sandi wajib diisi.',
             'password.min' => 'Kata sandi setidaknya terdiri atas 8 karakter.',
             'phone_number.unique' => 'Nomor telepon sudah terdaftar dengan akun lain. Silakan gunakan nomor telepon lain.',
-            'phone_number.required' => 'Nomor telepon wajib diisi dan dimulai dengan "08."'
+            'phone_number.required' => 'Nomor telepon wajib diisi dan dimulai dengan "08."',
+            'phone_number.max' => 'Panjang nomor telepon maksimal 13 angka.',
+            'email.unique' => 'Email sudah terdaftar.',
         ];
     }
 }
