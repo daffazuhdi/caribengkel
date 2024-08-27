@@ -32,7 +32,16 @@
 
             <form action="{{ route('register.submit') }}" method="POST">
                 @csrf
-                <div class="input-group mb-2">
+                <div class="mb-2">
+                    {{-- <div class="input-group-prepend"> --}}
+                        <label class="form-label" for="role">Masuk Sebagai</label>
+                    {{-- </div> --}}
+                    <select class="form-select form-control form-select-sm" id="role" name="role">
+                        <option selected value="2">Pengguna Mobil</option>
+                        <option value="1">Admin Bengkel</option>
+                    </select>
+                </div>
+                {{-- <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="role">Masuk Sebagai</label>
                     </div>
@@ -40,8 +49,8 @@
                         <option selected value="2">Pengguna Mobil</option>
                         <option value="1">Admin Bengkel</option>
                     </select>
-                </div>
-                
+                </div> --}}
+
                 <div class="row g-3 mb-2">
                     <div class="col-md-6">
                         <label for="first_name" class="form-label">Nama depan</label>
