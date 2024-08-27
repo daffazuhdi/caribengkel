@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('workshops', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subdistrict_id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('about', 500);
             $table->string('address', 500);
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('location', 900);
             $table->integer('is_active');
+            $table->integer('is_approved');
             $table->rememberToken();
             $table->timestamps();
          });

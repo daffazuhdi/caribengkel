@@ -9,6 +9,7 @@ class Facility extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
     public function workshops()
     {
         return $this->belongsToMany(Workshop::class);

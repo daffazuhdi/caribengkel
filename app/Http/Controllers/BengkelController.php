@@ -18,6 +18,8 @@ use App\Models\Review;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 
 class BengkelController extends Controller
 {
@@ -90,7 +92,7 @@ class BengkelController extends Controller
         }
 
         // $limit = 2;
-        $workshops = $query->where('workshops.is_active', '=', '1')->groupBy('workshops.id');
+        $workshops = $query->where('workshops.is_approved', '=', '1')->groupBy('workshops.id');
 
 
         $workshops = $workshops->paginate(12);
@@ -176,7 +178,8 @@ class BengkelController extends Controller
     public function addWorkshopDetail(Request $req2)
     {
         $workhour = $req2->day;
-
+        $otherFacility = $req2->otherFacility;
+        $otherCarBrand = $req2->otherCarBrand;
     //    return $req2;
 
         $rules = [
@@ -216,6 +219,33 @@ class BengkelController extends Controller
                 'workshop_id' => $req2->workshop_id,
                 'car_brand_id' => $cb
             ]);
+        }
+
+        foreach ($otherFacility as $of) {
+            if ($of != null) {
+                Facility::create([
+                    'name' => $of
+                ]);
+
+                FacilityWorkshop::create([
+                    'workshop_id' => $req2->workshop_id,
+                    'facility_id' => Facility::where('name', $of)->first()->id
+                ]);
+            }
+        }
+
+        foreach ($otherCarBrand as $oc) {
+            if ($oc != null) {
+                CarBrand::create([
+                    'name' => $oc,
+                    'label' => $oc
+                ]);
+
+                CarBrandWorkshop::create([
+                    'workshop_id' => $req2->workshop_id,
+                    'car_brand_id' => CarBrand::where('name', $oc)->first()->id
+                ]);
+            }
         }
 
         $day_id = 0;
@@ -267,10 +297,12 @@ class BengkelController extends Controller
         }, $serviceInput, $Fprice, $workshop_id);
 
         Workshop::where('id', $workshop_id)->update([
-            'is_active' => '1'
+            'is_active' => '1',
+            'is_approved' => '0',
+            'user_id' => Auth::user()->id
         ]);
 
-        return redirect('/bengkel')->with('message', 'Bengkel berhasil ditambahkan!');
+        return redirect('/profil')->with('message', 'Bengkel berhasil ditambahkan!');
     }
 
     public function removeWorkshop($id)
@@ -396,6 +428,8 @@ class BengkelController extends Controller
     {
         // return $req2;
         $workhour = $req2->day;
+        $otherFacility = $req2->otherFacility;
+        $otherCarBrand = $req2->otherCarBrand;
         $workshop = Workshop::findOrFail($id);
         $specialty = Specialty::all();
 
@@ -434,6 +468,10 @@ class BengkelController extends Controller
         CarBrandWorkshop::where('workshop_id', $id)->delete();
         Workhour::where('workshop_id', $id)->delete();
 
+        //kalo ada fasilitas tambahan
+
+
+
         // create
         foreach ($req2->specialty as $s) {
             SpecialtyWorkshop::create([
@@ -454,6 +492,33 @@ class BengkelController extends Controller
                 'workshop_id' => $id,
                 'car_brand_id' => $cb
             ]);
+        }
+
+        foreach ($otherFacility as $of) {
+            if ($of != null) {
+                Facility::create([
+                    'name' => $of
+                ]);
+
+                FacilityWorkshop::create([
+                    'workshop_id' => $id,
+                    'facility_id' => Facility::where('name', $of)->first()->id
+                ]);
+            }
+        }
+
+        foreach ($otherCarBrand as $oc) {
+            if ($oc != null) {
+                CarBrand::create([
+                    'name' => $oc,
+                    'label' => $oc
+                ]);
+
+                CarBrandWorkshop::create([
+                    'workshop_id' => $id,
+                    'car_brand_id' => CarBrand::where('name', $oc)->first()->id
+                ]);
+            }
         }
 
         $day_id = 0;
@@ -514,11 +579,29 @@ class BengkelController extends Controller
         }, $serviceInput, $Fprice, $workshop_id);
 
         Workshop::where('id', $workshop_id)->update([
-            'is_active' => '1'
+            'is_active' => '1',
+            'is_approved' =>' 0',
+            'user_id' => Auth::user()->id
         ]);
 
-        return redirect('/bengkel')->with('message', 'Bengkel berhasil diubah!');
+        return redirect('/profil')->with('message', 'Bengkel berhasil diubah!');
     }
+
+    public function approveWorkshop($id){
+        Workshop::where('id', $id)->update([
+            'is_approved' => '1'
+        ]);
+
+        return redirect('/profil')->with('message', 'Bengkel berhasil disetujui!');
+    }
+
+    public function rejectWorkshop($id){
+        Workshop::where('id', $id)->update([
+            'is_approved' => '2'
+        ]);
+        return redirect('/profil')->with('message', 'Bengkel berhasil ditolak!');
+    }
+
 
 
 

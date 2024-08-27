@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Authorization;
+use App\Http\Middleware\AuthorizationSuperAdmin;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\BengkelDetailController;
@@ -88,6 +89,11 @@ Route::get('/ulasan/{id}/{sort}',[ReviewController::class, 'sort']);
 
 Route::get('/tulis-ulasan/{id}/',[WriteReviewController::class, 'showReview'])->middleware('auth');
 Route::post('/tulis-ulasan/{id}/',[WriteReviewController::class, 'writeReview']);
+
+Route::get('/terima-bengkel/{id}', [BengkelController::class, 'approveWorkshop']);
+Route::post('/tolak-bengkel/{id}', [BengkelController::class, 'rejectWorkshop']);
+
+Route::get('/semua-user', [UserController::class, 'viewAllUser'])->middleware(AuthorizationSuperAdmin::class);
 
 // Route::get('/coba', function () {
 //     return view('nyoba', [

@@ -14,8 +14,66 @@
 <a href="https://api.whatsapp.com/send/?phone=%2B14155238886&text=join+combination-yellow&type=phone_number&app_absent=0" class="float" target="_blank">
     <i class="fa fa-whatsapp my-float"></i>
 </a>
+@section('content')
+@if (Auth::user()->role_id == 1)
+    <hr style="height:1px;border-width:0;color:gray;background-color:gray">
+    <div class="d-flex justify-content-end">
+        <a href="{{ url('/tambah-bengkel') }}" class="btn btn-outline-dark px-3 mt-2 mb-3 d-inline-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1em" height="1em" viewBox="0 0 256 256">
+                <path fill="052023" d="M228 128a12 12 0 0 1-12 12h-76v76a12 12 0 0 1-24 0v-76H40a12 12 0 0 1 0-24h76V40a12 12 0 0 1 24 0v76h76a12 12 0 0 1 12 12"/>
+            </svg>
+            Tambah Bengkel
+        </a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-4 my-2" style="padding-bottom: 2em;">
+        @foreach ($workshops as $workshop)
+        <div class="col mb-4">
+        <a href="/bengkel/{{ $workshop->id }}" class="" style="text-decoration: none">
+            <div class="card h-100">
+                <div style="padding: 1em 1em 0 1em;">
+                    <img src="{{ url('storage/workshop/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: 100vh; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
+                </div>
+                <div class="card-body border-bottom mx-3 py-3 px-0">
+                    <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>
+                    <div class="address d-flex justify-content-left align-items-center">
+                        <div class="img-fluid" style="padding-right: 4%">
+                                <img src="{{ url('photos/mapsLogo.svg') }}" style="width:16px;" alt="{{ $workshop->name }}">
+                        </div>
+                        <div>
+                                <p class="m-0" style="font-size: 14px; font-weight: 400;">{{ $workshop->address }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-text d-flex justify-content-between m-3" style="">
+                    <div class="card-text d-flex flex-wrap gap-1">
+                        @if ($workshop->is_approved == 0)
+                            <small class="rounded-pill px-2 py-1" style="color: #b88f27;">Waiting for Approval</small>
+                        @elseif ($workshop->is_approved == 1)
+                            <small class="rounded-pill px-2 py-1" style="color: #0D5C63;">Approved</small>
+                            @elseif ($workshop->is_approved == 2)
+                            <small class="rounded-pill px-2 py-1" style="color: red;">Rejected</small>
+                        @endif
+                        {{-- <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{  ($workshop->is_approved == 1 ? 'Approved': 'Waiting for Approval')}}</small> --}}
+                    </div>
+                    <div class="card-text">
+                        <small class="d-flex align-items-center" style="font-size: 16px; font-weight: 600; color: #052023">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="1.25em" height="1.25em" viewBox="0 0 24 24">
+                                <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
+                            </svg>
+                            {{ number_format($workshop->reviews_avg_rating, 1) }}
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </a>
+        </div>
+        @endforeach
+    </div>
+
+@endif
 @if (Auth::user()->role_id == 2)
-    @section('content')
+
         <div class="d-flex justify-content-between">
             <ul class="nav nav-tabs" id="myTab" role="tablist" style="background:none;border:none">
                 <li class="nav-item" role="presentation">
@@ -145,8 +203,112 @@
                 @endif
             </div>
         </div>
-    @endsection
+
 @endif
+@if (Auth::user()->role_id == 3)
+    <hr style="height:1px;border-width:0;color:gray;background-color:gray">
+    <div class="d-flex justify-content-end">
+        <a href="{{ url('/tambah-bengkel') }}" class="btn btn-outline-dark px-3 mt-2 mb-3 d-inline-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.4em" width="1em" height="1em" viewBox="0 0 256 256">
+                <path fill="052023" d="M228 128a12 12 0 0 1-12 12h-76v76a12 12 0 0 1-24 0v-76H40a12 12 0 0 1 0-24h76V40a12 12 0 0 1 24 0v76h76a12 12 0 0 1 12 12"/>
+            </svg>
+            Tambah Bengkel
+        </a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-4 my-2" style="padding-bottom: 2em;">
+        @foreach ($workshopsSA as $workshop)
+            @if ($workshop->is_approved == 0)
+                <div class="col mb-4">
+                    <a href="/bengkel/{{ $workshop->id }}" class="" style="text-decoration: none">
+                        <div class="card h-100">
+                            <div style="padding: 1em 1em 0 1em;">
+                                <img src="{{ url('storage/workshop/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: 100vh; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
+                            </div>
+                            <div class="card-body border-bottom mx-3 py-3 px-0">
+                                <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>
+                                <div class="address d-flex justify-content-left align-items-center">
+                                    <div class="img-fluid" style="padding-right: 4%">
+                                            <img src="{{ url('photos/mapsLogo.svg') }}" style="width:16px;" alt="{{ $workshop->name }}">
+                                    </div>
+                                    <div>
+                                            <p class="m-0" style="font-size: 14px; font-weight: 400;">{{ $workshop->address }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-text d-flex justify-content-between m-3" style="">
+                                <div class="card-text d-flex flex-wrap gap-1">
+                                    @if ($workshop->is_approved == 0)
+                                        <small class="rounded-pill px-2 py-1" style="color: #b88f27;">Waiting for Approval</small>
+                                    @elseif ($workshop->is_approved == 1)
+                                        <small class="rounded-pill px-2 py-1" style="color: #0D5C63;">Approved</small>
+                                        @elseif ($workshop->is_approved == 2)
+                                        <small class="rounded-pill px-2 py-1" style="color: red;">Rejected</small>
+                                    @endif
+                                    {{-- <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{  ($workshop->is_approved == 1 ? 'Approved': 'Waiting for Approval')}}</small> --}}
+                                </div>
+                                <div class="card-text">
+                                    <small class="d-flex align-items-center" style="font-size: 16px; font-weight: 600; color: #052023">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="1.25em" height="1.25em" viewBox="0 0 24 24">
+                                            <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
+                                        </svg>
+                                        {{ number_format($workshop->reviews_avg_rating, 1) }}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endif
+        @endforeach
+        @foreach ($workshopsSA as $workshop)
+            @if ($workshop->is_approved == 1)
+                <div class="col mb-4">
+                    <a href="/bengkel/{{ $workshop->id }}" class="" style="text-decoration: none">
+                        <div class="card h-100">
+                            <div style="padding: 1em 1em 0 1em;">
+                                <img src="{{ url('storage/workshop/'.$workshop->photo) }}"  style="border-radius: 8px; object-fit: cover; width: 100vh; height: 152px;" class="card-img-top img-fluid" alt="{{ $workshop->name }}">
+                            </div>
+                            <div class="card-body border-bottom mx-3 py-3 px-0">
+                                <h5 class="card-title" style="font-size: 18px; font-weight: 600">{{ $workshop->name }}</h5>
+                                <div class="address d-flex justify-content-left align-items-center">
+                                    <div class="img-fluid" style="padding-right: 4%">
+                                            <img src="{{ url('photos/mapsLogo.svg') }}" style="width:16px;" alt="{{ $workshop->name }}">
+                                    </div>
+                                    <div>
+                                            <p class="m-0" style="font-size: 14px; font-weight: 400;">{{ $workshop->address }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-text d-flex justify-content-between m-3" style="">
+                                <div class="card-text d-flex flex-wrap gap-1">
+                                    @if ($workshop->is_approved == 0)
+                                        <small class="rounded-pill px-2 py-1" style="color: #b88f27;">Waiting for Approval</small>
+                                    @elseif ($workshop->is_approved == 1)
+                                        <small class="rounded-pill px-2 py-1" style="color: #0D5C63;">Approved</small>
+                                        @elseif ($workshop->is_approved == 2)
+                                        <small class="rounded-pill px-2 py-1" style="color: red;">Rejected</small>
+                                    @endif
+                                    {{-- <small class="rounded-pill px-2 py-1" style="color: #0D5C63; border: 1px solid #0D5C63;">{{  ($workshop->is_approved == 1 ? 'Approved': 'Waiting for Approval')}}</small> --}}
+                                </div>
+                                <div class="card-text">
+                                    <small class="d-flex align-items-center" style="font-size: 16px; font-weight: 600; color: #052023">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="1.25em" height="1.25em" viewBox="0 0 24 24">
+                                            <path fill="#fac45b" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/>
+                                        </svg>
+                                        {{ number_format($workshop->reviews_avg_rating, 1) }}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endif
+        @endforeach
+
+@endif
+@endsection
+
 
 <style>
     h4, h6, a, .placeholder {

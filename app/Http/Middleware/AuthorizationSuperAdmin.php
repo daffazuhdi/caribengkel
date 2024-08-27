@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Authorization
+class AuthorizationSuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,16 +17,17 @@ class Authorization
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->role->name == "Admin" || Auth::user() && Auth::user()->role->name == "Admin Bengkel") {
+        if (Auth::user() && Auth::user()->role->name == "Admin") {
             return $next($request);
         }
-        elseif (Auth::guest()) {
-            session()->flash('message', 'Silakan masuk ke akun terlebih dahulu.');
-            return redirect('/');
-        }
+        // elseif (Auth::guest()) {
+        //     session()->flash('message', 'Silakan masuk ke akun terlebih dahulu.');
+        //     return redirect('/');
+        // }
         else {
             session()->flash('message', 'Anda tidak punya akses ke halaman yang dituju.');
             return redirect('/');
         }
+        // return $next($request);
     }
 }

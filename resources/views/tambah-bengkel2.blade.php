@@ -70,6 +70,14 @@
                                     </div>
                                 @endforeach
                             </div>
+                            <div class="mb-2">
+                                <label for="fasilitasTambahan" class="form-label">Fasilitas Tambahan (Opsional, Maksmial 5)</label>
+                                <input type="fasilitasTambahan" class="form-control form-control-sm @error('email') is-invalid @enderror mb-2" name="otherFacility[]" id="otherFacility[]" placeholder="Masukkan Fasilitas Lain (Opsional)" value="">
+                                <input type="fasilitasTambahan" class="form-control form-control-sm @error('email') is-invalid @enderror mb-2" name="otherFacility[]" id="otherFacility[]" placeholder="Masukkan Fasilitas Lain (Opsional)" value="">
+                                <input type="fasilitasTambahan" class="form-control form-control-sm @error('email') is-invalid @enderror mb-2" name="otherFacility[]" id="otherFacility[]" placeholder="Masukkan Fasilitas Lain (Opsional)" value="">
+                                <input type="fasilitasTambahan" class="form-control form-control-sm @error('email') is-invalid @enderror mb-2" name="otherFacility[]" id="otherFacility[]" placeholder="Masukkan Fasilitas Lain (Opsional)" value="">
+                                <input type="fasilitasTambahan" class="form-control form-control-sm @error('email') is-invalid @enderror mb-2" name="otherFacility[]" id="otherFacility[]" placeholder="Masukkan Fasilitas Lain (Opsional)" value="">
+                            </div>
                         </div>
 
                         <div class="mb-4 py-1">
@@ -88,6 +96,14 @@
                                         </label>
                                     </div>
                                 @endforeach
+                            </div>
+                            <div class="mb-2">
+                                <label for="merekMobilTambahan" class="form-label">Merek Mobil Tambahan (Opsional, Maksmial 5)</label>
+                                <input type="merekMobilTambahan" class="form-control form-control-sm @error('email') is-invalid @enderror mb-2" name="otherCarBrand[]" id="otherCarBrand[]" placeholder="Masukkan Merek Mobil Tambahan (Opsional)" value="">
+                                <input type="merekMobilTambahan" class="form-control form-control-sm @error('email') is-invalid @enderror mb-2" name="otherCarBrand[]" id="otherCarBrand[]" placeholder="Masukkan Merek Mobil Tambahan (Opsional)" value="">
+                                <input type="merekMobilTambahan" class="form-control form-control-sm @error('email') is-invalid @enderror mb-2" name="otherCarBrand[]" id="otherCarBrand[]" placeholder="Masukkan Merek Mobil Tambahan (Opsional)" value="">
+                                <input type="merekMobilTambahan" class="form-control form-control-sm @error('email') is-invalid @enderror mb-2" name="otherCarBrand[]" id="otherCarBrand[]" placeholder="Masukkan Merek Mobil Tambahan (Opsional)" value="">
+                                <input type="merekMobilTambahan" class="form-control form-control-sm @error('email') is-invalid @enderror mb-2" name="otherCarBrand[]" id="otherCarBrand[]" placeholder="Masukkan Merek Mobil Tambahan (Opsional)" value="">
                             </div>
                         </div>
 

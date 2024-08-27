@@ -35,7 +35,8 @@ class ServiceReminder extends Command
     public function handle()
     {
         // real
-        // $sixMonth = Carbon::now()->subMonths(5);
+        // fiveMonth = Carbon::now()->subMonths(5);
+        // $sixMonth = Carbon::now()->subMonths(6);
 
         //dev
         $sixMonth = Carbon::now();
@@ -50,6 +51,11 @@ class ServiceReminder extends Command
                     // ->where('car_services.service_date', '<=', $sixMonth)->groupBy('car_id')->get(['car_id', DB::raw('MAX(service_date) as service_date')])
                     ->where('car_services.is_notified', '=', 0)
                     ->where('car_services.service_date', '<=', $sixMonth)
+
+                    // real scenario
+                    // ->where('car_services.service_date, '<=', $fiveMonth)
+                    //-> where('car_services.service_date, '>=', $sixMonth)
+                    
                     ->get();
 
 

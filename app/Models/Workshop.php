@@ -10,11 +10,16 @@ class Workshop extends Model
 
     use HasFactory;
 
-    protected $fillable = ['name', 'subdistrict_id', 'address', 'photo', 'phone_number', 'about', 'location','is_active'];
+    protected $fillable = ['name', 'subdistrict_id', 'address', 'photo', 'phone_number', 'about', 'location','is_active', 'is_approved', 'user_id'];
 
     public function subdistrict()
     {
         return $this->belongsTo(Subdistrict::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function facilities()

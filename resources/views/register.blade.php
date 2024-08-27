@@ -32,6 +32,16 @@
 
             <form action="{{ route('register.submit') }}" method="POST">
                 @csrf
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="role">Masuk Sebagai</label>
+                    </div>
+                    <select class="custom-select" id="role" name="role">
+                        <option selected value="2">Pengguna Mobil</option>
+                        <option value="1">Admin Bengkel</option>
+                    </select>
+                </div>
+                
                 <div class="row g-3 mb-2">
                     <div class="col-md-6">
                         <label for="first_name" class="form-label">Nama depan</label>
@@ -52,6 +62,9 @@
                         @enderror
                     </div>
                 </div>
+
+
+
 
                 <div class="mb-2">
                     <label for="email" class="form-label">Email</label>

@@ -12,6 +12,7 @@ use App\Models\Review;
 use App\Models\CarModel;
 use App\Models\CarBrand;
 use App\Models\Car;
+use App\Models\Workshop;
 
 class UserController extends Controller
 {
@@ -23,6 +24,27 @@ class UserController extends Controller
                 ->where('reviews.user_id', '=', Auth::user()->id)
                 ->where('workshops.is_active', '=', '1');
 
+        // $workshops = Workshop::select()
+        //         ->where('users.id', '=', Auth::user()->id);
+
+        $query = Workshop::select('workshops.*','specialties.name AS specialty_name',
+                                    'specialty_workshop.specialty_id', 'car_brand_workshop.car_brand_id',
+                                    'subdistricts.name AS subdistrict_name')
+                ->leftjoin('specialty_workshop', 'specialty_workshop.workshop_id', '=', 'workshops.id')
+                ->leftjoin('car_brand_workshop', 'car_brand_workshop.workshop_id', '=', 'workshops.id')
+                ->leftjoin('specialties', 'specialties.id', '=', 'specialty_workshop.specialty_id')
+                ->leftjoin('subdistricts', 'subdistricts.id', '=', 'workshops.subdistrict_id')
+                ->leftjoin('car_brands', 'car_brands.id', '=', 'car_brand_workshop.car_brand_id')
+                ->withAvg('reviews', 'rating')
+                ->where('workshops.is_active', '=', '1')->orderBy('reviews_avg_rating', 'DESC');
+        $workshopsSA = $query->groupBy('workshops.id')->get();
+
+        $workshops = $query->where('workshops.user_id', '=', Auth::user()->id)->groupBy('workshops.id')->get();
+
+
+
+        // dd($workshopsSA);
+
         $count = $ratings->count();
 
         $ratings = $ratings->paginate(9);
@@ -33,7 +55,7 @@ class UserController extends Controller
         $car_model = CarModel::all();
         $car_brand = CarBrand::all();
 
-        return view('profil', compact('ratings', 'car_model', 'car_brand', 'begin', 'end', 'count'), ["title" => "Profil"]);
+        return view('profil', compact('ratings', 'car_model', 'car_brand', 'begin', 'end', 'count', 'workshops', 'workshopsSA'), ["title" => "Profil"]);
     }
 
     public function detail()
@@ -107,5 +129,10 @@ class UserController extends Controller
         // request()->session()->invalidate();
         // request()->session()->regenerateToken();
         return redirect('/');
+    }
+
+    public function viewAllUser(){
+        $users = User::all();
+        return view('semua-user', compact('users'), ["title" => "Semua User"]);
     }
 }

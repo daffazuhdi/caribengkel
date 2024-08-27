@@ -42,6 +42,75 @@
                 </div>
             @elseif(Auth::user()->role_id == 2)
                 <h4 style="font-weight: 600;font-size: min(5vw, 20px)">{{ $workshop->name }}</h4>
+            @elseif(Auth::user()->role_id == 3)
+                @if($workshop->is_approved == 1)
+                    <div class="d-flex justify-content-between">
+                        <h4 style="font-weight: 600; margin: 0;font-size: min(5vw, 20px)">{{ $workshop->name }}</h4>
+                        <div class="d-flex justify-content-left align-items-center gap-2">
+                            <a href="/ubah-bengkel/{{ $workshop->id }}" class="btn btn-outline-dark px-3">
+                            <img src="{{ url('photos/edit.svg') }}" width="16px;">
+                            </a>
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteWorkshop" style="padding: 6px 17px;">
+                            <img src="{{ url('photos/delete.svg') }}" width="14px;">
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="deleteWorkshop" tabindex="-1" aria-labelledby="deleteWorkshop" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content p-4">
+                                <div class="modal-header p-0 border-0">
+                                    <h5 class="modal-title" style="font-weight: 600;" id="deleteWorkshop">Hapus Bengkel?</h5>
+                                </div>
+                                <div class="modal-body p-0 mt-1 mb-4">
+                                    <p class="m-0">Kamu akan secara permanen menghapus bengkel ini.</p>
+                                </div>
+                                <div class="modal-footer border-0 d-flex justify-content-end gap-2 p-0">
+                                    <button type="button" class="btn btn-outline-dark px-3" data-bs-dismiss="modal">Batal</button>
+                                    <form class="m-0" action="/bengkel-detail/{{ $workshop->id }}" method="post">
+                                    @csrf
+                                    <button class="btn btn-danger px-3" type="submit">Hapus</button>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                {{-- ini kalo si bengkel belom ke verified / masi waiting for approval --}}
+                @elseif($workshop->is_approved == 0)
+                    <div class="d-flex justify-content-between">
+                        <h4 style="font-weight: 600; margin: 0;font-size: min(5vw, 20px)">{{ $workshop->name }}</h4>
+                        <div class="d-flex justify-content-left align-items-center gap-2">
+
+                            <a href="/terima-bengkel/{{ $workshop->id }}" class="btn btn-success px-3">
+                            {{-- <img src="{{ url('photos/edit.svg') }}" width="16px;"> --}}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8"><path fill="white" d="m6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3L0 4.41l.72.72l1.5 1.5l.69.72l.72-.72l3.5-3.5l.72-.72z"/></svg>
+                            </a>
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#rejectWorkshop" style="padding: 6px 17px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8"><path fill="white" d="M1.41 0L0 1.41l.72.72L2.5 3.94L.72 5.72L0 6.41l1.41 1.44l.72-.72l1.81-1.81l1.78 1.81l.69.72l1.44-1.44l-.72-.69l-1.81-1.78l1.81-1.81l.72-.72L6.41 0l-.69.72L3.94 2.5L2.13.72z"/></svg>
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="rejectWorkshop" tabindex="-1" aria-labelledby="rejectWorkshop" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content p-4">
+                                <div class="modal-header p-0 border-0">
+                                    <h5 class="modal-title" style="font-weight: 600;" id="rejectWorkshop">Tolak Bengkel?</h5>
+                                </div>
+                                <div class="modal-body p-0 mt-1 mb-4">
+                                    <p class="m-0">Kamu akan menolak bengkel ini.</p>
+                                </div>
+                                <div class="modal-footer border-0 d-flex justify-content-end gap-2 p-0">
+                                    <button type="button" class="btn btn-outline-dark px-3" data-bs-dismiss="modal">Batal</button>
+                                    <form class="m-0" action="/tolak-bengkel/{{ $workshop->id }}" method="post">
+                                    @csrf
+                                    <button class="btn btn-danger px-3" type="submit">Hapus</button>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             @endauth
             @else
                 <h4 style="font-weight: 600;font-size: min(5vw, 22px)">{{ $workshop->name }}</h4>

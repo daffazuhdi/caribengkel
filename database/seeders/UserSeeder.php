@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'role_id' => 1,
             'first_name' => 'Daffa',
             'last_name' => 'Zuhdi',
-            'email' => 'daffazhdihh@gmail.com',
+            'email' => 'adminbengkel@mail.com',
             'phone_number' => '085695930369',
             'password' => bcrypt('password'),
             'photo' => 'user_1_profile.png',
@@ -93,6 +93,18 @@ class UserSeeder extends Seeder
             'first_name' => 'Farah',
             'last_name' => 'Syifa',
             'email' => 'farahsyff@mail.com',
+            'phone_number' => '-',
+            'password' => bcrypt('password'),
+            'photo' => 'template.svg',
+            'is_active' => 1
+        ]);
+
+        User::create([
+            'id' => 8,
+            'role_id' => 3,
+            'first_name' => 'Super',
+            'last_name' => 'Admin',
+            'email' => 'superadmin@mail.com',
             'phone_number' => '-',
             'password' => bcrypt('password'),
             'photo' => 'template.svg',
