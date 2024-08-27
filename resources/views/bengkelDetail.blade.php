@@ -140,7 +140,7 @@
                             <h5 class="card-title" style="padding-left:1%; font-size: 100%; font-weight: 600;">Ingin Servis?</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%">Lakukan penjadwalan sekarang</h6>
                             <div class="d-grid gap-2">
-                                <a href="https://api.whatsapp.com/send?phone={{$workshop->phone_number}}&text=Halo%2C%20{{ $workshop->name }}.%0ASaya%20dari%20CariBengkel%20ingin%20melakukan%20booking%20service%20atas%20nama%20{{ Auth::user()->first_name }}%20{{ Auth::user()->last_name }}.%20" class="btn btn-primary" style="background-color: #0D5C63;color:white;text-decoration:none;">Jadwalkan Servis Sekarang</a>
+                                <a href="https://api.whatsapp.com/send?phone={{$workshop->phone_number}}&text=Halo%2C%20{{ $workshop->name }}.%0ASaya%20dari%20CariBengkel%20ingin%20melakukan%20booking%20service%20atas%20nama%20{{ Auth::user()->first_name }}%20{{ Auth::user()->last_name }}.%20" class="btn btn-primary" style="background-color: #0D5C63;color:white;text-decoration:none;">Hubungi Bengkel</a>
                             </div>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
                         <h5 class="card-title" style="padding-left:1%; font-size: 100%; font-weight: 600;">Ingin Servis?</h5>
                         <h6 class="card-subtitle mb-2 text-body-secondary" style="padding-left:1%; font-size: 90%">Lakukan penjadwalan sekarang</h6>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginFirst" style="background-color: #0D5C63;color:white;text-decoration:none; font-size: 90%">Jadwalkan Servis Sekarang</button>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginFirst" style="background-color: #0D5C63;color:white;text-decoration:none; font-size: 90%">Hubungi Bengkel</button>
                             <div class="modal fade" id="loginFirst" tabindex="-1" aria-labelledby="loginFirst" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content p-4">
