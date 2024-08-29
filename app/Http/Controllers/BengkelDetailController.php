@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class BengkelDetailController extends Controller
 {
     //
-    public function test($id){
+    public function view($id){
         $workshop = Workshop::findOrFail($id);
         $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
         $ratingDetail = Review::select('*')->where('workshop_id', $id)->limit('3')->get();

@@ -30,7 +30,7 @@ use App\Http\Controllers\WriteReviewController;
 //         "title" => "Beranda"
 //         ]);
 // });
-Route::get('/',[HomePageController::class, 'test'])->name('home');
+Route::get('/',[HomePageController::class, 'view'])->name('home');
 // Route::get('/',[BengkelController::class, 'showAll']);
 
 Route::get('/daftar', [RegisterController::class, 'show'])->name('register.show')->middleware('guest');
@@ -70,7 +70,7 @@ Route::get('/bantuan', function () {
         ]);
 });
 
-Route::get('/bengkel/{id}',[BengkelDetailController::class, 'test']);
+Route::get('/bengkel/{id}',[BengkelDetailController::class, 'view']);
 Route::post('/bengkel-detail/{id}', [BengkelController::class, 'delete']);
 
 Route::get('/profil', [UserController::class, 'view'])->name('profile.view')->middleware('auth');
@@ -84,7 +84,7 @@ Route::post('/hapus-kendaraan/{id}', [CarController::class, 'delete']);
 Route::get('/tambah-kendaraan', [CarController::class, 'showToAdd'])->middleware('auth');
 Route::post('/tambah-kendaraan', [CarController::class, 'store']);
 
-Route::get('/ulasan/{id}',[ReviewController::class, 'test'])->name('review.show');
+Route::get('/ulasan/{id}',[ReviewController::class, 'view'])->name('review.show');
 Route::get('/ulasan/{id}/{sort}',[ReviewController::class, 'sort']);
 
 Route::get('/tulis-ulasan/{id}/',[WriteReviewController::class, 'showReview'])->middleware('auth');

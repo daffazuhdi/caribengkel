@@ -12,7 +12,7 @@ class ReviewController extends Controller
 {
     //
 
-    public function test($id){
+    public function view($id){
         $workshop = Workshop::findOrFail($id);
         // $rating = DB::table('reviews')->where('workshop_id', $id)->avg('rating');
         $rating = Review::select('reviews.user_id', 'reviews.workshop_id', 'reviews.specialty_id', 'reviews.rating', 'reviews.comment', 'reviews.created_at')

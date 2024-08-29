@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\DB;
 
 class HomePageController extends Controller
 {
-    public function test(Request $search){
+    public function view(Request $search){
         // $user = Workshop::findOrFail(1);
         // $search = $req->search;
         // $querySearch = Workshop::select('*')
